@@ -12,11 +12,11 @@
 
 #### Required Stories
 
-* [] Test Story
+* [ ] Test Story
 
 #### Stretch Stories
 
-* [] Test Story
+* [ ] Test Story
 
 ## Wireframes
 
