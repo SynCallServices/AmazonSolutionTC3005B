@@ -4,14 +4,20 @@ appRoute:
 # env:
 #   variables:
 #     key: value
+backend:
+  phases:
+    # IMPORTANT - Please verify your build commands
+    build:
+      commands:
+        - amplifyPush --simple
+        - npm i
+        - npm run build
 frontend:
   phases:
     preBuild:
       commands:
-
     build:
       commands:
-        - npm run build
   artifacts:
     baseDirectory: build
     files:
