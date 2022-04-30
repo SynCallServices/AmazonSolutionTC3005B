@@ -1,0 +1,14 @@
+{
+  "resourceName": "syncallmain",
+  "policyUUID": "f29e8c20",
+  "bucketName": "syncallmainbucket",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
