@@ -8,9 +8,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - cd amazon-solution
-        - npm ci
-        - amplify pull --appId d2xphabbge80wt --envName dev
+
     build:
       commands:
         - npm run build
