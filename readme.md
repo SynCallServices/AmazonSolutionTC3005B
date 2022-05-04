@@ -4,8 +4,6 @@
 
 ## Overview
 
-### Description
-
 ## Product Spec
 
 ### User Stories
