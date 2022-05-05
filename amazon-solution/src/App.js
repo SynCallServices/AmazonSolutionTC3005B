@@ -2,10 +2,8 @@ import LogIn from './views/LogIn/LogIn.js'
 
 function App() {
   return (
-    <div>
-      <LogIn />
-    </div>
+    <LogIn />
   )
 }
 
-export default App
+export default App;
