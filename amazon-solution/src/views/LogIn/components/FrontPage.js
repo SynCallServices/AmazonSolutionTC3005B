@@ -1,5 +1,6 @@
 import AWS from "aws-sdk";
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 
 function FrontPage({ signOut, user }) {
   const connect = new AWS.Connect();
@@ -33,6 +34,7 @@ function FrontPage({ signOut, user }) {
       <h1>Hello {user.username}</h1>
       <h2>Role: {role}</h2>
       <button onClick={signOut}>Sign Out</button>
+      <Link to='/dashboard'>Dashboard</Link>
     </div>
   )
 }
