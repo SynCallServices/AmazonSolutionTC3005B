@@ -13,6 +13,7 @@ function App() {
   const [user, setUser] = React.useState(null)
 
   function getUser(awsUser) {
+    console.log('user changed')
     setUser(awsUser)
   }
 
