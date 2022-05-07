@@ -1,8 +1,8 @@
 import AuthenticatorEmail from './components/AuthenticatorEmail.js';
 
-function LogIn() {
+function LogIn(props) {
   return (
-    <AuthenticatorEmail />
+    <AuthenticatorEmail logInUser={props.logInUser}/>
   )
 }
 

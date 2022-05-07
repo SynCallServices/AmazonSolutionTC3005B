@@ -2,9 +2,13 @@ import AWS from "aws-sdk";
 import { useState } from "react";
 import { Link } from 'react-router-dom'
 
-function FrontPage({ signOut, user }) {
+function FrontPage({ signOut, user, logInUser }) {
   const connect = new AWS.Connect();
   const [role, setRole] = useState("...");
+  const [finalUser, setFinalUser] = useState({
+    userData: '',
+    userRole: '...'
+  })
 
   // example of how to obtain the security profile of a user
   connect.describeUser({
@@ -27,6 +31,8 @@ function FrontPage({ signOut, user }) {
           break;
       }
     }
+    setFinalUser({userData: user, userRole: role})
+    logInUser(finalUser)
   })
 
   return (
