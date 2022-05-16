@@ -6,7 +6,7 @@ import AWS from 'aws-sdk';
 
 import '@aws-amplify/ui-react/styles.css'
 
-function AuthenticatorEmail() {
+function AuthenticatorEmail(props) {
   const services = {
     async handleSignUp(formData) {
 
@@ -84,7 +84,7 @@ function AuthenticatorEmail() {
           }
         }
       }}>
-      {({ signOut, user }) => <FrontPage signOut={signOut} user={user} />}
+      {({ signOut, user }) => <FrontPage signOut={signOut} user={user} logInUser={props.logInUser}/>}
     </Authenticator>
   )
 }
