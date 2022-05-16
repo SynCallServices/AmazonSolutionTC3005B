@@ -34,7 +34,8 @@ function FrontPage({ signOut, user }) {
       <h1>Hello {user.username}</h1>
       <h2>Role: {role}</h2>
       <button onClick={signOut}>Sign Out</button>
-      <Link to='/dashboard'>Dashboard</Link>
+      // Ids will change
+      <Link to={role === 'supervisor' ? 'admin' : 'dashboard' }>Dashboard</Link>
     </div>
   )
 }
