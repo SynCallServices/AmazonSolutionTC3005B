@@ -57,15 +57,6 @@ export const createAgent = /* GraphQL */ `
     createAgent(input: $input, condition: $condition) {
       agentId
       videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
         nextToken
       }
       id
@@ -82,15 +73,6 @@ export const updateAgent = /* GraphQL */ `
     updateAgent(input: $input, condition: $condition) {
       agentId
       videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
         nextToken
       }
       id
@@ -107,15 +89,6 @@ export const deleteAgent = /* GraphQL */ `
     deleteAgent(input: $input, condition: $condition) {
       agentId
       videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
         nextToken
       }
       id

@@ -1,19 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import './assets/styles/App.css';
-import Home from './components/Home'
 import reportWebVitals from './tests/reportWebVitals';
 import "@aws-amplify/ui-react/styles.css";
 
 import { Amplify } from 'aws-amplify';
 import awsConfig from './aws-exports';
-import RecordButtons from './components/RecordButtons';
+
+import Home from './components/Home'
 
 Amplify.configure(awsConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <RecordButtons />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );
