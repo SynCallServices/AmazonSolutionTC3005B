@@ -5,6 +5,8 @@ import DashBoard from './views/Dashboard/Dashboard.js'
 import DashBoardAdmin from './views/DashboardAdmin/DashboardAdmin.js'
 import CallManager from './views/Dashboard/components/CallManager.js'
 import VideoForm from './views/Dashboard/components/VideoForm.js'
+import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
+import Settings from './views/Dashboard/components/Settings.js'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
@@ -29,6 +31,8 @@ function App() {
         }>
           <Route path='callmanager' element={<CallManager />}/>
           <Route path='videoform' element={<VideoForm/>}/>
+          <Route path='videodashboard' element={<VideoDashboard/>}/>
+          <Route path='settings' element={<Settings/>}/>
         </Route>
       </Routes>
 
