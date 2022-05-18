@@ -3,6 +3,7 @@ import App from './App'
 
 import { withAuthenticator } from '@aws-amplify/ui-react';
 
+
 function Home({ signOut, user }) {
   return (
     <div className='container'>
