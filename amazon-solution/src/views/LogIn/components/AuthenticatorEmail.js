@@ -1,17 +1,24 @@
 import React from 'react';
+import { Navigate } from 'react-router-dom'
 import { Authenticator } from '@aws-amplify/ui-react';
 import { Auth } from 'aws-amplify';
-import FrontPage from './FrontPage';
 import AWS from 'aws-sdk';
+import { UserContext } from '../../../App.js'
 
 import '@aws-amplify/ui-react/styles.css'
 
-function AuthenticatorEmail(props) {
+function AuthenticatorEmail() {
+
+  const {user, setUser} = React.useContext(UserContext)
+
   const services = {
     async handleSignUp(formData) {
 
       let { username, password, attributes } = formData;
       const connect = new AWS.Connect();
+
+      console.log(attributes)
+      console.log('BRUH')
 
       connect.createUser({
         InstanceId: process.env.REACT_APP_INSTANCE_ID,
@@ -84,7 +91,17 @@ function AuthenticatorEmail(props) {
           }
         }
       }}>
-      {({ signOut, user }) => <FrontPage signOut={signOut} user={user} logInUser={props.logInUser}/>}
+      {({ signOut, user }) => {
+
+        setUser(prev => ({
+        ...prev,
+        username: user,
+        signOut: () => (signOut()),
+        }))
+
+        return <Navigate to='dashboard' />
+
+      }}
     </Authenticator>
   )
 }

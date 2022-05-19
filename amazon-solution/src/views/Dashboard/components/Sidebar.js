@@ -1,11 +1,56 @@
+import React from 'react'
+import AWS from "aws-sdk";
 import { Link } from 'react-router-dom'
+import { Auth } from 'aws-amplify';
 import { MdSpaceDashboard } from 'react-icons/md'
 import { IoCall } from 'react-icons/io5'
 import { RiSettingsFill } from 'react-icons/ri'
 import { HiMenu } from 'react-icons/hi'
 import { IoLogOut } from 'react-icons/io5'
 
+import { UserContext } from '../../../App.js'
+
 function Sidebar() {
+
+  const connect = new AWS.Connect();
+
+  const {user, setUser} = React.useContext(UserContext)
+  const [role, setRole] = React.useState("...");
+
+  async function signOut() {
+    console.log('bruh')
+    try {
+        await Auth.signOut();
+    } catch (error) {
+        console.log('error signing out: ', error);
+    }
+  }
+
+  React.useEffect(() => {
+    // example of how to obtain the security profile of a user
+    connect.describeUser({
+      InstanceId: process.env.REACT_APP_INSTANCE_ID,
+      UserId: user.username.attributes["custom:connect_id"]
+    }, function (err, data) {
+      if (err) {
+        console.log(err)
+      } else {
+        const securityProfile = data.User.SecurityProfileIds[0];
+        switch (securityProfile) {
+          case process.env.REACT_APP_AGENT_ID:
+            setRole("agent");
+            break;
+          case process.env.REACT_APP_SUPERVISOR_ID:
+            setRole("supervisor");
+            break;
+          case process.env.REACT_APP_ADMIN_ID:
+            setRole("admin");
+            break;
+        }
+      }
+    })
+  }, [])
+
   return (
     <nav className='sidebar'>
       <div className='logo-content'>
@@ -50,10 +95,10 @@ function Sidebar() {
       <div className='profile-content'>
         <div className='profile'>
           <div className='profile-details'>
-            <div className="profile-name">Jorge Cabiedes</div>
-            <div className="profile-role">Agent</div>
+            <div className="profile-name">{user.username.username}</div>
+            <div className="profile-role">{role}</div>
           </div>
-          <div className='log-out'>
+          <div className='log-out' onClick={signOut}>
             <IoLogOut />
           </div>
         </div>
