@@ -7,8 +7,10 @@
     "defaultAuthType": {
       "mode": "API_KEY",
       "expirationTime": 365,
-      "apiKeyExpirationDate": "2023-04-28T00:07:03.785Z",
+      "apiKeyExpirationDate": "2023-05-19T21:21:25.179Z",
       "keyDescription": "syncallapi"
-    }
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
   }
 }

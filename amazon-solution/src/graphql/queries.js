@@ -10,7 +10,6 @@ export const getVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -28,7 +27,6 @@ export const listVideos = /* GraphQL */ `
         id
         createdAt
         updatedAt
-        agentVideosId
       }
       nextToken
     }
@@ -38,9 +36,6 @@ export const getAgent = /* GraphQL */ `
   query GetAgent($id: ID!) {
     getAgent(id: $id) {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt

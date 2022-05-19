@@ -68,6 +68,9 @@ export async function create(agentId_) {
 }
 
 export async function update(videos_) {
+    /**
+     * Given a list of videos, update the amount of videos an agent has
+     */
     try {
         const result = API.graphql(graphqlOperation(
             updateAgent, { input: { videos: videos_ } }
@@ -85,10 +88,14 @@ export async function update(videos_) {
     }
 }
 
-export async function del(id_) {
+export async function del(agentId_) {
+    /**
+     * Given a agentId, deletes a agent entry in DynamoDB.
+     * @param {String} agentId_ A agentId of an existing entry.
+     */
     try {
         const agentData = await API.graphql(graphqlOperation(
-            listAgents, { filter: { agentId: { eq: id_ } } }
+            listAgents, { filter: { agentId: { eq: agentId_ } } }
         ))
         const agent = agentData.data.listAgents.items[0];
         if (!agent) {

@@ -10,7 +10,6 @@ type Video @model {
 
 type Agent @model {
   agentId: ID!
-  videos: [Video] @hasMany
 }
 
 type Voice @model {

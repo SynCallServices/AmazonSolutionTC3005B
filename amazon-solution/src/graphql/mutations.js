@@ -13,7 +13,6 @@ export const createVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -29,7 +28,6 @@ export const updateVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -45,7 +43,6 @@ export const deleteVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -56,9 +53,6 @@ export const createAgent = /* GraphQL */ `
   ) {
     createAgent(input: $input, condition: $condition) {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt
@@ -72,9 +66,6 @@ export const updateAgent = /* GraphQL */ `
   ) {
     updateAgent(input: $input, condition: $condition) {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt
@@ -88,9 +79,6 @@ export const deleteAgent = /* GraphQL */ `
   ) {
     deleteAgent(input: $input, condition: $condition) {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt

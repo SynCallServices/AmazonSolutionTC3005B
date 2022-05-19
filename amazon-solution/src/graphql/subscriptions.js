@@ -10,7 +10,6 @@ export const onCreateVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -23,7 +22,6 @@ export const onUpdateVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -36,7 +34,6 @@ export const onDeleteVideo = /* GraphQL */ `
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -44,9 +41,6 @@ export const onCreateAgent = /* GraphQL */ `
   subscription OnCreateAgent {
     onCreateAgent {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt
@@ -57,9 +51,6 @@ export const onUpdateAgent = /* GraphQL */ `
   subscription OnUpdateAgent {
     onUpdateAgent {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt
@@ -70,9 +61,6 @@ export const onDeleteAgent = /* GraphQL */ `
   subscription OnDeleteAgent {
     onDeleteAgent {
       agentId
-      videos {
-        nextToken
-      }
       id
       createdAt
       updatedAt
