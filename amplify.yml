@@ -3,9 +3,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm install -g n
-        - n lts
-        - n prune
         - cd amazon-solution
         - npm install
     build:
