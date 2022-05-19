@@ -40,4 +40,4 @@ function App() {
   )
 }
 
-export default withAuthenticator(App, false);
+export default App;

@@ -18,11 +18,12 @@ function Sidebar() {
   const [role, setRole] = React.useState("...");
 
   async function signOut() {
-    console.log('bruh')
     try {
-        await Auth.signOut();
+      console.log('bruh')
+      await Auth.signOut();
+      setUser(null)
     } catch (error) {
-        console.log('error signing out: ', error);
+      console.log('error signing out: ', error);
     }
   }
 
@@ -98,7 +99,7 @@ function Sidebar() {
             <div className="profile-name">{user.username.username}</div>
             <div className="profile-role">{role}</div>
           </div>
-          <div className='log-out' onClick={signOut}>
+          <div className='log-out' onClick={() => signOut()}>
             <IoLogOut />
           </div>
         </div>
