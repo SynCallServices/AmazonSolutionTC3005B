@@ -43,20 +43,20 @@ export async function get(id_) {
     }
 }
 
-export async function create(voiceId_) {
+export async function create(voiceId_, agentId_) {
     try {
         const voiceData = await API.graphql(graphqlOperation(
-            listVoices, { filter: { agentId: { eq: voiceId_ } } }
+            listVoices, { filter: { voiceId: { eq: voiceId_ } } }
         ))
         if (voiceData.data.listVoices.items[0]) {
             throw new Error("Voice Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVoice, { input: { agentId: voiceId_ } } 
+            createVoice, { input: { voiceId: voiceId_, agentId: agentId_ } } 
         )) 
         return {
             status: "Succesfull",
-            message: "",
+            message: "Voice recording created succesfully",
             data: result
         }
     } catch (error) {

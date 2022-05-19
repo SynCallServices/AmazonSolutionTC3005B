@@ -6,7 +6,7 @@ export const onCreateVideo = /* GraphQL */ `
     onCreateVideo {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
@@ -18,7 +18,7 @@ export const onUpdateVideo = /* GraphQL */ `
     onUpdateVideo {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
@@ -30,7 +30,7 @@ export const onDeleteVideo = /* GraphQL */ `
     onDeleteVideo {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
@@ -41,6 +41,7 @@ export const onCreateAgent = /* GraphQL */ `
   subscription OnCreateAgent {
     onCreateAgent {
       agentId
+      folder
       id
       createdAt
       updatedAt
@@ -51,6 +52,7 @@ export const onUpdateAgent = /* GraphQL */ `
   subscription OnUpdateAgent {
     onUpdateAgent {
       agentId
+      folder
       id
       createdAt
       updatedAt
@@ -61,6 +63,7 @@ export const onDeleteAgent = /* GraphQL */ `
   subscription OnDeleteAgent {
     onDeleteAgent {
       agentId
+      folder
       id
       createdAt
       updatedAt
@@ -72,7 +75,7 @@ export const onCreateVoice = /* GraphQL */ `
     onCreateVoice {
       voiceId
       agentId
-      voicePath
+      path
       id
       createdAt
       updatedAt
@@ -84,7 +87,7 @@ export const onUpdateVoice = /* GraphQL */ `
     onUpdateVoice {
       voiceId
       agentId
-      voicePath
+      path
       id
       createdAt
       updatedAt
@@ -96,7 +99,43 @@ export const onDeleteVoice = /* GraphQL */ `
     onDeleteVoice {
       voiceId
       agentId
-      voicePath
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateRecording = /* GraphQL */ `
+  subscription OnCreateRecording {
+    onCreateRecording {
+      recordingId
+      agentId
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateRecording = /* GraphQL */ `
+  subscription OnUpdateRecording {
+    onUpdateRecording {
+      recordingId
+      agentId
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteRecording = /* GraphQL */ `
+  subscription OnDeleteRecording {
+    onDeleteRecording {
+      recordingId
+      agentId
+      path
       id
       createdAt
       updatedAt

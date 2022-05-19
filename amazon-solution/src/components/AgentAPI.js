@@ -2,9 +2,13 @@
 import {API, graphqlOperation} from 'aws-amplify';
 
 import { listAgents } from '../graphql/queries';
-import { createAgent, deleteAgent, updateAgent } from '../graphql/mutations'
+import { createAgent, deleteAgent } from '../graphql/mutations'
+import { listRecordings } from '../graphql/queries';
 
 export async function list() {
+    /**
+     * List all the agents.
+     */
     try {
         const agentsData = await API.graphql(graphqlOperation(listAgents));
         const agentsList = agentsData.data.listAgents.items;
@@ -21,10 +25,14 @@ export async function list() {
     }
 }
 
-export async function get(id_) {
+export async function get(agentId_) {
+    /**
+     * Given a agentId, return the information of an agent.
+     * @param {String} agentId_ A agentId of an existing entry.
+     */
     try {
         const agentData = await API.graphql(graphqlOperation(
-            listAgents, { filter: { agentId: { eq: id_ } } }
+            listAgents, { filter: { agentId: { eq: agentId_ } } }
         ))
         const agent = agentData.data.listAgents.items[0];
         if (!agent) {
@@ -44,6 +52,10 @@ export async function get(id_) {
 }
 
 export async function create(agentId_) {
+    /**
+     * Create a Agent entry in DynamoDB.
+     * @param {String} agentId_ An Id for the new agent
+     */
     try {
         const agentData = await API.graphql(graphqlOperation(
             listAgents, { filter: { agentId: { eq: agentId_ } } }
@@ -52,7 +64,7 @@ export async function create(agentId_) {
             throw new Error("Agent already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createAgent, { input: { agentId: agentId_ } } 
+            createAgent, { input: { agentId: agentId_, folder: `public/${agentId_}` } } 
         )) 
         return {
             status: "Succesfull",
@@ -67,18 +79,20 @@ export async function create(agentId_) {
     }
 }
 
-export async function update(videos_) {
+export async function getRecordings(agentId_) {
     /**
-     * Given a list of videos, update the amount of videos an agent has
+     * Given a agentId, return all the recordings that agent has recorded.
+     * @param {String} agentId_ A agentId of an existing entry.
      */
     try {
-        const result = API.graphql(graphqlOperation(
-            updateAgent, { input: { videos: videos_ } }
+        const recordingsData = await API.graphql(graphqlOperation(
+            listRecordings, { filter: { agentId: { eq: agentId_} } }
         ))
+        const recordingsList = recordingsData.data.listRecordings.items;
         return {
             status: "Succesfull",
-            message: "Updated agent correctly",
-            data: result
+            message: "Correctly fetched all the recordings belonging to the agent",
+            data: recordingsList
         }
     } catch (error) {
         return {
