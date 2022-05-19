@@ -54,7 +54,7 @@ export async function get(agentId_) {
 export async function create(agentId_) {
     /**
      * Create a Agent entry in DynamoDB.
-     * @param {String} agentId_ An Id for the new agent
+     * @param {String} agentId_ An Id for the new agent.
      */
     try {
         const agentData = await API.graphql(graphqlOperation(

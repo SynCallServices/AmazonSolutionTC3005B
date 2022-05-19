@@ -5,6 +5,9 @@ import { listVoices } from '../graphql/queries';
 import { createVoice, deleteVoice } from '../graphql/mutations';
 
 export async function list() {
+    /**
+     * List all the voiceRecordings. 
+     */
     try {
         const voicesData = await API.graphql(graphqlOperation(listVoices))
         const voicesList = voicesData.data.listVoices.items
@@ -21,10 +24,14 @@ export async function list() {
     }
 }
 
-export async function get(id_) {
+export async function get(voiceId_) {
+    /**
+     * Given a voiceId, return the information of a voice recording.
+     * @param {String} voiceId_ A voiceId of an existing entry.
+     */
     try {
         const voiceData = await API.graphql(graphqlOperation(
-            listVoices, { filter: { voiceId: { eq: id_ } } }
+            listVoices, { filter: { voiceId: { eq: voiceId_ } } }
         ))
         const voice = voiceData.data.listVoices.items[0]
         if (!voice) {
@@ -44,6 +51,11 @@ export async function get(id_) {
 }
 
 export async function create(voiceId_, agentId_) {
+    /**
+     * Given a new voiceoId and a agentId, create a new entry of a voice recording in dynamoDB.
+     * @param {String} voiceId_ An Id for the new voice recording.
+     * @param {String} agentId_ The Id of the agent that recorded the audio.
+     */
     try {
         const voiceData = await API.graphql(graphqlOperation(
             listVoices, { filter: { voiceId: { eq: voiceId_ } } }
@@ -67,10 +79,14 @@ export async function create(voiceId_, agentId_) {
     }
 }
 
-export async function del(id_) {
+export async function del(voiceId_) {
+    /**
+     * Given a voiceId, deletes a voice recording entry in DynamoDB.
+     * @param {String} voiceId_ A voiceId of an existing entry.
+     */
     try {
         const voiceData = await API.graphql(graphqlOperation(
-            listVoices, { filter: { voiceId: { eq: id_ } } }
+            listVoices, { filter: { voiceId: { eq: voiceId_ } } }
         ))
         const voice = voiceData.data.listVoices.items[0];
         if (!voice) {

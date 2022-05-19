@@ -85,15 +85,20 @@ export async function list() {
 }
 
 export async function create(videoId_, agentId_) {
+    /**
+     * Given a new videoId and a agentId, create a new entry of a video in dynamoDB.
+     * @param {String} videoId_ An Id for the new video.
+     * @param {String} agentId_ The Id of the agent that recorded the video.
+     */
     try {
         const videoData = await API.graphql(graphqlOperation(
             listVideos, { filter: { videoId: { eq: videoId_ } } }
         ))
-        if (videoData.data.listVoices.items[0]) {
+        if (videoData.data.listVideos.items[0]) {
             throw new Error("Video Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVideo, { input: { voiceId: videoId_, agentId: agentId_ } } 
+            createVideo, { input: { videoId: videoId_, agentId: agentId_ } } 
         )) 
         return {
             status: "Succesfull",
@@ -108,76 +113,59 @@ export async function create(videoId_, agentId_) {
     }
 }
 
-// // fetchVideos returns a dictionary, this needs to be handled in 
-// // frontend for displaying the videos
-// export async function fetchAllVideos() {
-//     try {
-//         const videoData = await API.graphql(graphqlOperation(listVideos));
-//         const videoList = videoData.data.listVideos.items;
-//         console.log('videos external', videoList); // -> just for testing 
-//         // videoList returns a dictionary for the front end to display
-//         return videoList;
-//     } catch (error) { console.log('Error fetching Videos 🥴', error); }
-// }
+export async function get(videoId_) {
+    /**
+     * Given a videoId, return the information of a video.
+     * @param {String} videoId_ A videoId of an existing entry.
+     */
+    try {
+        const videoData = await API.graphql(graphqlOperation(
+            listVideos, { filter: { videoId: { eq: videoId_ } } }
+        ))
+        const video = videoData.data.listVideos.items[0]
+        if (!video) {
+            throw new Error("Video does not exist")
+        }
+        return {
+            status: "Succesfull",
+            message: "Fetched a video correctly"
+        }
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
+}
 
-// // For updating, unchanged field should be copied in front end so that videoData
-// // has everything it previously had, plus the changes
-// export async function updateOnDynamo(videoData) {
-//     try {
-//         if (videoData.videoId)
-//             await API.graphql(graphqlOperation(mutations.updateVideo, { input: videoData }));
-//     } catch (error) {
-//         console.log(`Error updating ${videoData.videoId} 🥴`, error);
-//     }
-// }
+export async function del(videoId_) {
+    /**
+     * Given a videoId, deletes a video entry in DynamoDB.
+     * @param {String} videoId_ A videoId of an existing entry.
+     */
+    try {
+        const videoData = await API.graphql(graphqlOperation(
+            listVideos, { filter: { videoId: { eq: videoId_ } } }
+        ))
+        const video = videoData.data.listVideos.items[0];
+        if (!video) {
+            throw new Error("Video recording does not exist")
+        }
 
-// // Only the id is needed for deleting an item
-// export async function deleteOnDynamo(videoId) {
-//     try {
-//         if (videoId !== '')
-//             await API.graphql(graphqlOperation(mutations.deleteVideo, { input: videoId }));
-//     } catch (error) {
-
-//     }
-// }
-
-// // export async function fileUploaded(e) {
-// //     file = e.target.files[0];
-// // }
-// // export async function addVideo(info) {
-// //     try {
-// //         if (!info.videoId || !info.videoPath) return;
-// //         const videoUpload = { ...state };
-// //         setVideoRecordings([...videoRecordings, videoUpload]);
-// //         setState(video);
-// //         await Storage.put(file.name, file)
-// //         // Create a video
-// //         await API.graphql(graphqlOperation(createVideo, { input: videoUpload }));
-// //     } catch (error) { console.log('Error uploading video 🥴 ', error); }
-// //     return window.location.reload();
-// // }
-
-
-// //  Aqui sigue para no cagarla
-// // export async function fetchVideo(id) {
-// //     console.log(`Got into fetchVideo function, with id ${id}`);
-// //     try {
-// //         console.log(await API.graphql(graphqlOperation(getVideo, { id: id })));
-// //         // const videoData = await API.graphql(graphqlOperation(getVideo, { id: id }));
-// //         // console.log(videoData);
-// //     } catch (err) {
-// //         console.log(`Error fetching the video with id ${id}, ${err}`)
-// //     }
-// // }
-
-// export async function fetchVideo(id) {
-//     console.log(`Got into fetchVideo function, with id ${id}`);
-//     try {
-//         // console.log(await API.graphql({ query: listVideos, filter: { videoId: id } }));
-//         console.log(await API.graphql({ query: listVideos, variables: { filter: {videoId: id} } }));
-//         // const videoData = await API.graphql(graphqlOperation(getVideo, { id: id }));
-//         // console.log(videoData);
-//     } catch (err) {
-//         console.log(`Error fetching the video with videoId ${id}`, err)
-//     }
-// }
+        const videoId = video.id
+        
+        const result = await API.graphql(graphqlOperation(
+            deleteVideo, { input: { id: videoId } }
+        ))
+        return {
+            status: "Succesfull",
+            message: "Video deleted correctly",
+            data: result
+        }
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
+}
