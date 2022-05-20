@@ -6,7 +6,8 @@ frontend:
         - node -v
         - npm -v
         - cd amazon-solution
-        - amplify pull --appId $APP_ID --envName $BACKEND_ENV
+        - ls
+        - amplify pull 
         - npm ci
         - npm upgrade
         - npm outdated
