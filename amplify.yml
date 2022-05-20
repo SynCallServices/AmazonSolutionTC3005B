@@ -3,11 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
+        - node -v
+        - npm -v
         - cd amazon-solution
+        - pwd
         - npm install
-        - npm audit fix --force
-        - echo "Hello"
-        - npm audit fix --force
     build:
       commands:
         - pwd
