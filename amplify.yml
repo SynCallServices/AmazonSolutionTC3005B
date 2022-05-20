@@ -7,7 +7,6 @@ frontend:
         - npm -v
         - cd amazon-solution
         - ls
-        - amplify pull 
         - npm ci
         - npm upgrade
         - npm outdated
