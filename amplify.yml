@@ -9,8 +9,6 @@ frontend:
     preBuild:
       commands:
         - ls
-        - node -v
-        - npm -v
         - cd amazon-solution
         - amplify pull
         - ls
