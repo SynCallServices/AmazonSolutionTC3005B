@@ -1,4 +1,9 @@
 version: 1
+backend:
+  phases:
+    postBuild:
+        commands:
+        - ls
 frontend:
   phases:
     preBuild:
