@@ -3,9 +3,11 @@ frontend:
   phases:
     preBuild:
       commands:
+        - ls
         - node -v
         - npm -v
         - cd amazon-solution
+        - ls
         - pwd
         - npm install
         - npm upgrade
