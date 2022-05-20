@@ -1,9 +1,4 @@
 version: 1
-backend:
-  phases:
-    build:
-      commands:
-        - amplify pull
 frontend:
   phases:
     preBuild:
