@@ -3,13 +3,12 @@ frontend:
   phases:
     preBuild:
       commands:
-        - ls
         - node -v
         - npm -v
         - cd amazon-solution
-        - ls
-        - pwd
-        - npm install
+        - amplify env checkout $BACKEND_ENV
+        - npm ci
+        - amplify env checkout $BACKEND_ENV
         - npm upgrade
         - npm outdated
     build:
