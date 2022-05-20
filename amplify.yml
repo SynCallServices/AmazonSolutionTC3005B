@@ -8,6 +8,8 @@ frontend:
         - cd amazon-solution
         - pwd
         - npm install
+        - npm upgrade
+        - npm outdated
     build:
       commands:
         - pwd
