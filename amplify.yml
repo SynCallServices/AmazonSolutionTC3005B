@@ -6,6 +6,7 @@ frontend:
         - node -v
         - npm -v
         - cd amazon-solution
+        - amplify pull
         - ls
         - npm ci
         - npm upgrade
