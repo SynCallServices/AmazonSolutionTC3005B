@@ -1,14 +1,16 @@
 version: 1
-# backend:
-#   phases:
-#     preBuild:
-#         commands:
-#         - ls
-#     postBuild:
-#         commands:
-#         - ls
-#         - cd amazon-solution
-#         - ls
+backend:
+  phases:
+    preBuild:
+      commands:
+        - ls
+        - cd amazon-solution
+    build:
+      commands:
+        - amplify push
+    postBuild:
+        commands:
+        - ls
 frontend:
   phases:
     preBuild:
