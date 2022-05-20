@@ -7,7 +7,7 @@ backend:
         - cd amazon-solution
     build:
       commands:
-        - amplify push
+        - amplify pull
     postBuild:
         commands:
         - ls
