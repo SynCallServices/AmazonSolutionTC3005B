@@ -1,6 +1,6 @@
 version: 1
 applications:
-  - appRoot: amazon-solution
+  - appRoot: amazon-solution/
 frontend:
   phases:
     preBuild:
