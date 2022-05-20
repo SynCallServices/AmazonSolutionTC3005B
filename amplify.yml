@@ -1,18 +1,19 @@
 version: 1
-backend:
-  phases:
-    preBuild:
-        commands:
-        - ls
-    postBuild:
-        commands:
-        - ls
-        - cd amazon-solution
-        - ls
+# backend:
+#   phases:
+#     preBuild:
+#         commands:
+#         - ls
+#     postBuild:
+#         commands:
+#         - ls
+#         - cd amazon-solution
+#         - ls
 frontend:
   phases:
     preBuild:
       commands:
+        - ls
         - node -v
         - npm -v
         - cd amazon-solution
