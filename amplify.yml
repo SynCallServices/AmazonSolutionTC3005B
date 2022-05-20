@@ -4,6 +4,8 @@ backend:
     postBuild:
         commands:
         - ls
+        - cd amazon-solution
+        - ls
 frontend:
   phases:
     preBuild:
