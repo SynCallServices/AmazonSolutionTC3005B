@@ -1,16 +1,12 @@
 version: 1
-backend:
-  phases:
-    build:
-      commands:
-        - amplify pull
+applications:
+  - appRoot: ./amazon-solution
 frontend:
   phases:
     preBuild:
       commands:
         - ls
-        - cd amazon-solution
-        - amplify pull
+        - amplify push
         - ls
         - npm ci
         - npm upgrade
