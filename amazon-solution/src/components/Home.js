@@ -3,13 +3,11 @@ import APITest from './APITest'
 
 
 
-function Home({ signOut, user }) {
+function Home() {
   console.log(process.env.REACT_APP_TEST)
   return (
     <div className='container'>
-      <h1>Hello {user.username}</h1>
       <APITest />
-      <button onClick={signOut}>Sign out</button>
     </div>
   )
 }
