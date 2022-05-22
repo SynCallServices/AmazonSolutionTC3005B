@@ -1,0 +1,23 @@
+version: 1
+backend:
+  phases:
+    build:
+      commands:
+        - ls
+        - cd amazon-solution
+        - ls
+        - amplifyPush --simple
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - ls
+    build:
+      commands:
+  artifacts:
+    baseDirectory: build
+    files:
+        - '**/*'
+  cache:
+    paths:
+        - node_modules/**/*
