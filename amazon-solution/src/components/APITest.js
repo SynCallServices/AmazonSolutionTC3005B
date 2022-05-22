@@ -1,9 +1,8 @@
-import logo from '../assets/images/logo.svg';
 import '../assets/styles/App.css';
 import * as agent from "./AgentAPI"
 import "../assets/styles/App.css"
 
-function App() {
+function APITest() {
 
   function AgentCreate() {
     const x = agent.create("001")
@@ -42,4 +41,4 @@ function App() {
   );
 }
 
-export default App;
+export default APITest;
