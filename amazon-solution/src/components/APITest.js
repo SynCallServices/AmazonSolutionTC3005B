@@ -18,10 +18,6 @@ function APITest() {
     x.then((res) => console.log(res))
   }
 
-  function AddVideos(video) {
-    const x = agent.update(video)
-    x.then((res) => console.log(res))
-  }
 
   function DeleteAgent() {
     const x = agent.del("001")
