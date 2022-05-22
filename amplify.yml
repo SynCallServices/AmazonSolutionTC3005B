@@ -29,7 +29,7 @@ frontend:
     postBuild:
       commands:
   artifacts:
-    baseDirectory: build
+    baseDirectory: amazon-solution/build
     files:
         - '**/*'
   cache:
