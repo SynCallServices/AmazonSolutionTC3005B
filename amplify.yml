@@ -12,9 +12,12 @@ frontend:
     preBuild:
       commands:
         - ls
+        - npm ci
     build:
       commands:
-      - npm run build
+        - npm run build
+    postBuild:
+      commands:
   artifacts:
     baseDirectory: build
     files:
