@@ -7,6 +7,12 @@ backend:
         - cd amazon-solution
         - ls
         - amplifyPush --simple
+    postBuild:
+      commands:
+        - ls
+        - cd ..
+        - ls
+        - cd amazon-solution
 frontend:
   phases:
     preBuild:
@@ -16,6 +22,10 @@ frontend:
     build:
       commands:
         - npm run build
+        - ls 
+        - cd build
+        - ls 
+        - cd ..
     postBuild:
       commands:
   artifacts:
