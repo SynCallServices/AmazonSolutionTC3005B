@@ -3,6 +3,7 @@ backend:
   phases:
     build:
       commands:
+        - ls
         - cd amazon-solution
         - ls
         - amplifyPush --simple
@@ -10,9 +11,6 @@ frontend:
   phases:
     preBuild:
       commands:
-        - ls
-        - cd src
-        - cd graphql
         - ls
     build:
       commands:
