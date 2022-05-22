@@ -1,33 +1,25 @@
-version: 1
+version: 2
 backend:
   phases:
     build:
       commands:
-        - ls
         - cd amazon-solution
-        - ls
         - amplifyPush --simple
     postBuild:
       commands:
-        - ls
-        - cd ..
-        - ls
-        - cd amazon-solution
+        - echo "Build completed succesfully"
+        - amplify status
 frontend:
   phases:
     preBuild:
       commands:
-        - ls
         - npm ci
     build:
       commands:
         - npm run build
-        - ls 
-        - cd build
-        - ls 
-        - cd ..
     postBuild:
       commands:
+        - echo "Frontend setup passed correctly"
   artifacts:
     baseDirectory: amazon-solution/build
     files:

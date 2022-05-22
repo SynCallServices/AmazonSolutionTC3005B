@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "@aws-amplify/ui-react/styles.css";
 
-// import { Amplify } from 'aws-amplify';
-// import awsConfig from './aws-exports';
+import { Amplify } from 'aws-amplify';
+import awsConfig from './aws-exports';
 
 import Home from './components/Home'
 
-// Amplify.configure(awsConfig);
+Amplify.configure(awsConfig);
 
 ReactDOM.render(
   <React.StrictMode>
