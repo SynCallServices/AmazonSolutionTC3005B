@@ -1,6 +1,5 @@
-import '../assets/styles/App.css';
 import * as agent from "./AgentAPI"
-import "../assets/styles/App.css"
+// import "../assets/styles/App.css"
 
 function APITest() {
 
