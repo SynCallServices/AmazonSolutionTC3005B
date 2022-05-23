@@ -7,6 +7,7 @@ export const getVideo = /* GraphQL */ `
       videoId
       agentId
       path
+      startTime
       id
       createdAt
       updatedAt
@@ -24,6 +25,7 @@ export const listVideos = /* GraphQL */ `
         videoId
         agentId
         path
+        startTime
         id
         createdAt
         updatedAt
@@ -67,6 +69,7 @@ export const getVoice = /* GraphQL */ `
       voiceId
       agentId
       path
+      startTime
       id
       createdAt
       updatedAt
@@ -84,6 +87,7 @@ export const listVoices = /* GraphQL */ `
         voiceId
         agentId
         path
+        startTime
         id
         createdAt
         updatedAt

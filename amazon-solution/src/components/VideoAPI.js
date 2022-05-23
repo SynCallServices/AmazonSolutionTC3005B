@@ -84,7 +84,7 @@ export async function list() {
     }
 }
 
-export async function create(videoId_, agentId_) {
+export async function create(videoId_, agentId_, startTime_) {
     /**
      * Given a new videoId and a agentId, create a new entry of a video in dynamoDB.
      * @param {String} videoId_ An Id for the new video.
@@ -98,7 +98,7 @@ export async function create(videoId_, agentId_) {
             throw new Error("Video Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVideo, { input: { videoId: videoId_, agentId: agentId_ } } 
+            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_ } } 
         )) 
         return {
             status: "Succesfull",
