@@ -10,7 +10,7 @@ function VideoPlayerComp(props) {
           <RiCloseLine className='close-btn--icon' onClick={() => props.setTrigger(false)}/>
         </button>
         <VideoPlayer 
-          src='https://media.w3.org/2010/05/bunny/movie.mp4'
+          src='https://d1msutvtlsu91z.cloudfront.net/public/videos/Rick.mp4'
         />
       </div>
     </div>

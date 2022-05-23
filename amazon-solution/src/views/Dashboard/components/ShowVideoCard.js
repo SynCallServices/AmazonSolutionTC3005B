@@ -3,14 +3,14 @@ import VideoPlayerComp from './VideoPlayerComp.js'
 import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import '../../../css/videoCard.css'
 
-function ShowVideoCard() {
+function ShowVideoCard(props) {
 
   const [playPopUp , setPlayPopUp] = React.useState(false);
 
   return (
     <div className="card">
       <div className="video-container">
-        <div className="video-text">Video Titleeeeeeeeeeeeee</div>
+        <div className="video-text">{props.videoTitle}</div>
         <div className='video-info'>
           <div className="video-time"> 3:00 </div>
           <div className="video-rating">
