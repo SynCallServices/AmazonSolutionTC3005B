@@ -64,7 +64,7 @@ export async function create(voiceId_, agentId_, startTime_) {
             throw new Error("Voice Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVoice, { input: { voiceId: voiceId_, agentId: agentId_, startTime: startTime_ } } 
+            createVoice, { input: { voiceId: voiceId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/${agentId_}_${startTime_}` } } 
         )) 
         return {
             status: "Succesfull",
