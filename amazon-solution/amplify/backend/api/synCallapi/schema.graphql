@@ -7,7 +7,6 @@ type Video @model {
   agentId: String!
   path: String!
   startTime: String!
-  duration: Int
 }
 
 type Agent @model {
@@ -20,13 +19,10 @@ type Voice @model {
   agentId: String!
   path: String!
   startTime: String!
-  duration: Int
 }
 
 type Recording @model {
   recordingId: ID!
   agentId: String!
   path: String!
-  title: String!
-  duration: Int
 } 

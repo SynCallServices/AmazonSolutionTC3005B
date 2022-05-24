@@ -1,8 +1,8 @@
 // AWS
 import {API, graphqlOperation, Storage } from 'aws-amplify';
 
-import { listVideos } from '../graphql/queries';
-import { deleteVideo, createVideo } from '../graphql/mutations';
+import { listVideos } from '../../../graphql/queries';
+import { deleteVideo, createVideo } from '../../../graphql/mutations';
 
 // S3
 

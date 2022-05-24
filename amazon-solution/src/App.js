@@ -8,6 +8,7 @@ import VideoForm from './views/Dashboard/components/VideoForm.js'
 import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
+import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
@@ -32,6 +33,7 @@ function App() {
               <Route path='videoform' element={<VideoForm/>}/>
               <Route path='videodashboard' element={<ShowVideos/>}/>
               <Route path='settings' element={<Settings/>}/>
+              <Route path='screenrecorder' element={<ScreenRecorder/>}/>
             </Route>
         </Routes>
       </UserContext.Provider>

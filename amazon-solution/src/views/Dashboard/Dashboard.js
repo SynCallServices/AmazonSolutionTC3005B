@@ -10,6 +10,7 @@ function DashBoard() {
         <Link to='callmanager'>Open Call Manager</Link>
         <Link to='videoform'>Open Video Form</Link>
         <Link to='videodashboard'>Video Dashboard</Link>
+        <Link to='screenrecorder'>Screen Recorder</Link>
         <Outlet />
       </div>
     </div>

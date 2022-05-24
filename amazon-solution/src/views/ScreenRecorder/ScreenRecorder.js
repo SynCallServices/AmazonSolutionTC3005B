@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import RecordRTC  from "recordrtc";
-import * as video from "./VideoAPI"
+import * as video from "./components/VideoAPI.js"
 
 function ScreenRecorder() {
 
@@ -34,6 +34,7 @@ function ScreenRecorder() {
     
   };
 
+  // Change hard coded values
   const uploadBlob = () => {
     const videoId = "001_test"
     const uploadingVideo = video.uploadVideo(blob, "001", videoId)
