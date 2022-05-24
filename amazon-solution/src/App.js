@@ -7,7 +7,7 @@ import CallManager from './views/Dashboard/components/CallManager.js'
 import VideoForm from './views/Dashboard/components/VideoForm.js'
 import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
-import { withAuthenticator } from '@aws-amplify/ui-react';
+import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
@@ -30,12 +30,11 @@ function App() {
             }>
               <Route path='callmanager' element={<CallManager />}/>
               <Route path='videoform' element={<VideoForm/>}/>
-              <Route path='videodashboard' element={<VideoDashboard/>}/>
+              <Route path='videodashboard' element={<ShowVideos/>}/>
               <Route path='settings' element={<Settings/>}/>
             </Route>
         </Routes>
       </UserContext.Provider>
-
     </div>
   )
 }
