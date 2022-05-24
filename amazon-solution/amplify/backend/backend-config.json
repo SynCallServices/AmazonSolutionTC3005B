@@ -35,13 +35,14 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-04-28T00:07:03.785Z",
+              "apiKeyExpirationDate": "2023-05-22T05:36:52.399Z",
               "description": "syncallapi"
             }
           },
           "additionalAuthenticationProviders": []
         }
-      }
+      },
+      "dependsOn": []
     }
   },
   "storage": {

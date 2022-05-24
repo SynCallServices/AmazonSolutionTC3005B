@@ -6,11 +6,10 @@ export const getVideo = /* GraphQL */ `
     getVideo(id: $id) {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -24,11 +23,10 @@ export const listVideos = /* GraphQL */ `
       items {
         videoId
         agentId
-        videoPath
+        path
         id
         createdAt
         updatedAt
-        agentVideosId
       }
       nextToken
     }
@@ -38,18 +36,7 @@ export const getAgent = /* GraphQL */ `
   query GetAgent($id: ID!) {
     getAgent(id: $id) {
       agentId
-      videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
-        nextToken
-      }
+      folder
       id
       createdAt
       updatedAt
@@ -65,9 +52,7 @@ export const listAgents = /* GraphQL */ `
     listAgents(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         agentId
-        videos {
-          nextToken
-        }
+        folder
         id
         createdAt
         updatedAt
@@ -81,7 +66,7 @@ export const getVoice = /* GraphQL */ `
     getVoice(id: $id) {
       voiceId
       agentId
-      voicePath
+      path
       id
       createdAt
       updatedAt
@@ -98,7 +83,38 @@ export const listVoices = /* GraphQL */ `
       items {
         voiceId
         agentId
-        voicePath
+        path
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getRecording = /* GraphQL */ `
+  query GetRecording($id: ID!) {
+    getRecording(id: $id) {
+      recordingId
+      agentId
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listRecordings = /* GraphQL */ `
+  query ListRecordings(
+    $filter: ModelRecordingFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listRecordings(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        recordingId
+        agentId
+        path
         id
         createdAt
         updatedAt

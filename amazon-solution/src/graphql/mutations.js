@@ -9,11 +9,10 @@ export const createVideo = /* GraphQL */ `
     createVideo(input: $input, condition: $condition) {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -25,11 +24,10 @@ export const updateVideo = /* GraphQL */ `
     updateVideo(input: $input, condition: $condition) {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -41,11 +39,10 @@ export const deleteVideo = /* GraphQL */ `
     deleteVideo(input: $input, condition: $condition) {
       videoId
       agentId
-      videoPath
+      path
       id
       createdAt
       updatedAt
-      agentVideosId
     }
   }
 `;
@@ -56,18 +53,7 @@ export const createAgent = /* GraphQL */ `
   ) {
     createAgent(input: $input, condition: $condition) {
       agentId
-      videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
-        nextToken
-      }
+      folder
       id
       createdAt
       updatedAt
@@ -81,18 +67,7 @@ export const updateAgent = /* GraphQL */ `
   ) {
     updateAgent(input: $input, condition: $condition) {
       agentId
-      videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
-        nextToken
-      }
+      folder
       id
       createdAt
       updatedAt
@@ -106,18 +81,7 @@ export const deleteAgent = /* GraphQL */ `
   ) {
     deleteAgent(input: $input, condition: $condition) {
       agentId
-      videos {
-        items {
-          videoId
-          agentId
-          videoPath
-          id
-          createdAt
-          updatedAt
-          agentVideosId
-        }
-        nextToken
-      }
+      folder
       id
       createdAt
       updatedAt
@@ -132,7 +96,7 @@ export const createVoice = /* GraphQL */ `
     createVoice(input: $input, condition: $condition) {
       voiceId
       agentId
-      voicePath
+      path
       id
       createdAt
       updatedAt
@@ -147,7 +111,7 @@ export const updateVoice = /* GraphQL */ `
     updateVoice(input: $input, condition: $condition) {
       voiceId
       agentId
-      voicePath
+      path
       id
       createdAt
       updatedAt
@@ -162,7 +126,52 @@ export const deleteVoice = /* GraphQL */ `
     deleteVoice(input: $input, condition: $condition) {
       voiceId
       agentId
-      voicePath
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createRecording = /* GraphQL */ `
+  mutation CreateRecording(
+    $input: CreateRecordingInput!
+    $condition: ModelRecordingConditionInput
+  ) {
+    createRecording(input: $input, condition: $condition) {
+      recordingId
+      agentId
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateRecording = /* GraphQL */ `
+  mutation UpdateRecording(
+    $input: UpdateRecordingInput!
+    $condition: ModelRecordingConditionInput
+  ) {
+    updateRecording(input: $input, condition: $condition) {
+      recordingId
+      agentId
+      path
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteRecording = /* GraphQL */ `
+  mutation DeleteRecording(
+    $input: DeleteRecordingInput!
+    $condition: ModelRecordingConditionInput
+  ) {
+    deleteRecording(input: $input, condition: $condition) {
+      recordingId
+      agentId
+      path
       id
       createdAt
       updatedAt

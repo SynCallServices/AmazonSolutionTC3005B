@@ -1,27 +1,29 @@
-version: 1
-appRoute: 
-  - ./amazon-solution
-# env:
-#   variables:
-#     key: value
+version: 2
 backend:
   phases:
-    # IMPORTANT - Please verify your build commands
     build:
       commands:
+        - cd amazon-solution
         - amplifyPush --simple
-        - npm i
-        - npm run build
+    postBuild:
+      commands:
+        - echo "Build completed succesfully"
+        - amplify status
 frontend:
   phases:
     preBuild:
       commands:
+        - npm ci
     build:
       commands:
+        - npm run build
+    postBuild:
+      commands:
+        - echo "Frontend setup passed correctly"
   artifacts:
-    baseDirectory: build
+    baseDirectory: amazon-solution/build
     files:
-        - '**/*'
+      - '**/*'
   cache:
     paths:
-        - node_modules/**/*
+      - node_modules/**/*

@@ -5,16 +5,22 @@ input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONL
 type Video @model {
   videoId: ID!
   agentId: String!
-  videoPath: String!
+  path: String!
 }
 
 type Agent @model {
   agentId: ID!
-  videos: [Video] @hasMany
+  folder: String!
 }
 
 type Voice @model {
   voiceId: ID!
   agentId: String!
-  voicePath: String!
+  path: String!
 }
+
+type Recording @model {
+  recordingId: ID!
+  agentId: String!
+  path: String!
+} 
