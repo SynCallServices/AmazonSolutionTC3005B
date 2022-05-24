@@ -1,16 +1,17 @@
 // AWS
 import {API, graphqlOperation, Storage } from 'aws-amplify';
 
-import { listVideos } from './graphql/queries';
+import { listVideos } from '../graphql/queries';
 import { deleteVideo, createVideo } from '../graphql/mutations';
 
 // S3
 
-export async function uploadVideo(video, agentId) {
+export async function uploadVideo(video, agentId, videoId) {
     /**
      * Updload a video to S3.
      * @param {Blob} video A blob containing the video file.
      * @param {String} agentId The agentId of the agent that recorded this video.
+     * @param {String} videoId A new Id that will repesent this video 
      */
     try {
         if (!video) {
@@ -19,7 +20,7 @@ export async function uploadVideo(video, agentId) {
         if (!agentId) {
             throw new Error("agentId not provided")
         }
-        const result = await Storage.put(`${agentId}/videos`, video, {
+        const result = await Storage.put(`${agentId}/videos/${videoId}`, video, {
             level: "public"
         })
         return {
@@ -98,7 +99,7 @@ export async function create(videoId_, agentId_, startTime_) {
             throw new Error("Video Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_ } } 
+            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/videos/${videoId_}` } } 
         )) 
         return {
             status: "Succesfull",

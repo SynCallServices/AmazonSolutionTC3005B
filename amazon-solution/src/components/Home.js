@@ -1,11 +1,12 @@
-import APITest from './APITest'
+import ScreenRecorder  from "./ScreenRecorder";
+import { withAuthenticator } from "@aws-amplify/ui-react"
 
 function Home() {
   return (
     <div className='container'>
-      <APITest />
+      <ScreenRecorder />
     </div>
   )
 }
 
-export default Home; 
+export default withAuthenticator(Home); 

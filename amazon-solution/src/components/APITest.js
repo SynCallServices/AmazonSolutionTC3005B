@@ -8,11 +8,6 @@ function APITest() {
     x.then((res) => console.log(res))
   }
 
-  function AgentCreate() {
-    const x = agent.create("001")
-    x.then((res) => console.log(res))
-  }
-
   function AgentList() {
     const x = agent.list()
     x.then((res) => console.log(res))
