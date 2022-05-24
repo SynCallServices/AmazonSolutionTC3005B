@@ -1,9 +1,10 @@
 import * as agent from "./AgentAPI"
+import * as voice from "./VoiceAPI"
 
 function APITest() {
 
-  function AgentCreate() {
-    const x = agent.create("001")
+  function VoiceCreate() {
+    const x = voice.create("003", "001", "23-03-2022/17_13")
     x.then((res) => console.log(res))
   }
 
@@ -26,7 +27,7 @@ function APITest() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={AgentCreate}>Create</button>
+        <button onClick={VoiceCreate}>Create</button>
         <button onClick={AgentList}>List</button>      
         <button onClick={AgentGet}>Get</button>
         <button onClick={DeleteAgent}>Delete</button>   
