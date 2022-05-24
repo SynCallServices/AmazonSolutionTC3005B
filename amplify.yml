@@ -23,7 +23,7 @@ frontend:
   artifacts:
     baseDirectory: amazon-solution/build
     files:
-        - '**/*'
+      - '**/*'
   cache:
     paths:
-        - node_modules/**/*
+      - node_modules/**/*

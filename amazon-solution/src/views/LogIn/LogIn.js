@@ -1,5 +1,9 @@
+import AuthenticatorEmail from './components/AuthenticatorEmail.js';
+
 function LogIn() {
-  return ()
+  return (
+    <AuthenticatorEmail />
+  )
 }
 
-export default LogIn
+export default LogIn;
