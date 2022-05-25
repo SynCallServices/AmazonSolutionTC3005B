@@ -1,9 +1,13 @@
+import React from 'react'
 import { useState, useRef } from "react";
 import RecordRTC  from "recordrtc";
 import * as video from "./components/VideoAPI.js"
+import { UserContext } from '../../App.js'
+import { v4 as uuidv4 } from 'uuid'
 
 function ScreenRecorder() {
 
+  const {user, setUser} = React.useContext(UserContext)
   const [stream, setStream] = useState(null);
   const [blob, setBlob] = useState(null);
   const recorderRef = useRef(null);
@@ -36,10 +40,11 @@ function ScreenRecorder() {
 
   // Change hard coded values
   const uploadBlob = () => {
-    const videoId = "001_test"
-    const uploadingVideo = video.uploadVideo(blob, "001", videoId)
+    
+    const videoId = uuidv4()
+    const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
     uploadingVideo.then((res) => console.log(res))
-    const videoEntry = video.create(videoId, "001", "00-00-00_00:00")
+    const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], "00-00-00_00:00")
     videoEntry.then((res) => console.log(res))
   }  
 
