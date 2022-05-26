@@ -12,6 +12,7 @@ const docClient = new AWS.DynamoDB.DocumentClient();
 
 function ScreenRecorder() {
 
+  const [isRecording, setIsRecording] = useState(false)
   const [containerDiv, setContainerDiv] = useState(null);
   const [callConnected, setCallConnected] = useState(false);
   const [contactId, setContactId] = useState('');
@@ -131,15 +132,22 @@ function ScreenRecorder() {
   }
 
   async function handleRecording() {
-    const screenStream = await navigator.mediaDevices.getDisplayMedia(videoMediaConstraints);
-    setStream(screenStream);
-    recorderRef.current = new RecordRTC(screenStream, {
-      type: "video",
-    });
-    recorderRef.current.startRecording();
+
+    if (!isRecording) {
+      console.log('START RECORDING')
+      setIsRecording(prevState => !prevState)
+      const screenStream = await navigator.mediaDevices.getDisplayMedia(videoMediaConstraints);
+      setStream(screenStream);
+      recorderRef.current = new RecordRTC(screenStream, {
+        type: "video",
+      });
+      recorderRef.current.startRecording();
+    }
   };
 
   const handleStop = () => {
+    setIsRecording(prevState => !prevState)
+
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
       console.log(res)

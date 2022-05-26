@@ -75,7 +75,7 @@ function Sidebar() {
           <span className='tooltip'>Dashboard</span>
         </li>
         <li>
-          <Link className='link' to='callmanager'>
+          <Link className='link' to='screenrecorder'>
             <i>
               <IoCall />
             </i>
