@@ -76,10 +76,21 @@ body {
   line-height: 50px;
   transform: translateX(-50%);
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .sidebar.active .menu-btn {
   left: 90%;
+  cursor: pointer;
+}
+
+.sidebar.active .menu-btn:hover {
+  left: 90%;
+  color: #CA5A56;
+}
+
+.sidebar .menu-btn:hover {
+  color: #CA5A56;
 }
 
 .sidebar ul {
@@ -232,12 +243,23 @@ body {
   border-radius: 12px;
   text-align: center;
   left: 50%;
+  padding-top: 5px;
+  margin-right: 5px;
   transition: all 0.5s ease;
+  cursor: pointer;
 }
 
 .sidebar.active .profile .log-out {
   left: 88%;
   transition: all 0.5s ease;
+}
+
+.sidebar.active .profile .log-out:hover {
+  background: #4c316a;
+}
+
+.sidebar .profile .log-out:hover {
+  background: #4c316a;
 }
 
 .dashboard--content {
