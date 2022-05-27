@@ -135,7 +135,7 @@ function ScreenRecorder() {
 
     if (!isRecording) {
       console.log('START RECORDING')
-      setIsRecording(prevState => !prevState)
+      setIsRecording(true)
       const screenStream = await navigator.mediaDevices.getDisplayMedia(videoMediaConstraints);
       setStream(screenStream);
       recorderRef.current = new RecordRTC(screenStream, {
@@ -146,7 +146,7 @@ function ScreenRecorder() {
   };
 
   const handleStop = () => {
-    setIsRecording(prevState => !prevState)
+    setIsRecording(false)
 
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
