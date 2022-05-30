@@ -17,10 +17,17 @@ function ScreenRecorder() {
   }
 
   async function handleRecording() {
+    const startTime = Date();
     const screenStream = await navigator.mediaDevices.getDisplayMedia(videoMediaConstraints);
     setStream(screenStream);
     recorderRef.current = new RecordRTC(screenStream, {
       type: "video",
+      mimeType: 'video/webm',
+      checkForInactiveTracks: true,
+      timeSlice: 5000,
+      ondataavailable: function() {
+        uploadBlob(startTime);
+      }
     });
     recorderRef.current.startRecording();
   };
@@ -31,14 +38,16 @@ function ScreenRecorder() {
       console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
-    
+
   };
 
-  const uploadBlob = () => {
+  const uploadBlob = (startTime) => {
+    const finishTime = Date();
     const videoId = "001_test"
-    const uploadingVideo = video.uploadVideo(blob, "001", videoId)
+    const finalTimeStamp = finishTime - startTime;
+    const uploadingVideo = video.uploadVideo(blob, "001", videoId) // video, agentID, videoID.
     uploadingVideo.then((res) => console.log(res))
-    const videoEntry = video.create(videoId, "001", "00-00-00_00:00")
+    const videoEntry = video.create(videoId, "001", "00-00-00_00:00") // change last parameter.
     videoEntry.then((res) => console.log(res))
   }  
 
