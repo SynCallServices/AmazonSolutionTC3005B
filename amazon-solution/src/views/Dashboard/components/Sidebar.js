@@ -52,14 +52,21 @@ function Sidebar() {
     })
   }, [])
 
+  const [sidebarActive, setSidebarActive] = React.useState(false);
+
+  function sidebarUtil() {
+    setSidebarActive(prevState => !prevState);
+    console.log('here');
+  }
+
   return (
-    <nav className='sidebar'>
+    <nav className={sidebarActive ? 'sidebar' : 'sidebar active'}>
       <div className='logo-content'>
         <div className='logo'>
           <img src={require('../../../assets/Syncall_Logo.png')} className='logo-icon'/>
           <div className='logo-name'>SynCall</div>
         </div>
-        <div className='menu-btn'>
+        <div className='menu-btn' onClick={sidebarUtil}>
           <HiMenu />
         </div>
       </div>
