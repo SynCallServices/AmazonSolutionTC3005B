@@ -1,73 +1,56 @@
-import * as agent from "./AgentAPI"
 import * as voice from "./VoiceAPI"
 import * as video from "./VideoAPI"
 
 function APITest() {
 
-  function VoiceCreate(voiceId, agentId) {
-    const x = voice.create(voiceId, agentId, "00:00")
-    x.then((res) => console.log(res))
-  }
-
-  function AgentCreate(agentId) {
-    const x = agent.create(agentId)
-    x.then((res) => console.log(res))
-  }
-
-  function VideoCreate(videoId, agentId) {
-    const x = video.create(videoId, agentId, "00:00")
-    x.then((res) => console.log(res))
-  }
-
-
-  function AgentList() {
-  const x = agent.list()
-  x.then((res) => console.log(res))
-  }
-  
-  function VideoList() {
+  function ListVideo() {
     const x = video.list()
     x.then((res) => console.log(res))
   }
-
-  function VoiceList() {
-    const x = voice.list()
+  
+  function CreateVideo() {
+    const x = video.create("videoIdTest", "aa73f0a3-df6b-4380-9c20-2522a72e436c", "00:00", "Cool Video", 420)
     x.then((res) => console.log(res))
   }
 
-  function CreateHundoAgents() {
-    for (let i = 0; i < 100; i++) {
-      const x = agent.create(`${i}`)
-      x.then((res) => console.log(`Agent ${i} created`))
-    }
+  function DownloadVoice(voicePath) {
+    const x = voice.downloadVoice(voicePath)
+    x.then((res) => {
+    })
+  }
+  
+  function GetVoice() {
+    const x = voice.get("aa73f0a3-df6b-4380-9c20-2522a72e436c_756629dc-206a-48bc-8dfc-e536d27cfba1")
+    x.then((res) => {
+      if (res.status === "Succesfull") {
+        const data = res.data;
+        console.log(data)
+      } else {
+        console.log(res.data)
+      }
+    })
   }
 
-  function CreateHundoVideos() {
-    for (let i = 0; i < 100; i++) {
-      const agentId = Math.floor(Math.random() * 100)
-      const x = video.create(`${i}`, agentId, "00:00")
-      x.then((res) => console.log(`Video ${i} created for agent ${agentId}`, res))
-    }
+  function GetVideo() {
+    const x = video.get("videoIdTest")
+    x.then((res) => {
+      console.log(res)
+      if (res.status === "Succesfull") {
+        const data = res.data
+        console.log(data)
+      } else {
+        console.log(res.data)
+      }
+    })
   }
-
-  function CreateHundoVoices() {
-    for (let i = 0; i < 100; i++) {
-      const agentId = Math.floor(Math.random() * 100)
-      const x = voice.create(`${i}`, agentId, "00:00")
-      x.then((res) => console.log(`Voice ${i} created for agent ${agentId}`, res))
-    }
-  }
-
 
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={CreateHundoAgents}>Create Hundo Agents</button> 
-        <button onClick={CreateHundoVideos}>Create Hundo Videos</button> 
-        <button onClick={CreateHundoVoices}>Create Hundo Audios</button>
-        <button onClick={VideoList}>List Videos</button>
-        <button onClick={AgentList}>List Agents</button> 
-        <button onClick={VoiceList}>List Audios</button>
+        <button onClick={GetVoice}>Get Audios</button>
+        <button onClick={CreateVideo}>Create Video</button>
+        <button onClick={ListVideo}>List Video</button>
+        <button onClick={GetVideo}>Get Video</button>
       </header>
     </div>
   );

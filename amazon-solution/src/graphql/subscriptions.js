@@ -8,6 +8,8 @@ export const onCreateVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      title
+      duration
       id
       createdAt
       updatedAt
@@ -21,6 +23,8 @@ export const onUpdateVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      title
+      duration
       id
       createdAt
       updatedAt
@@ -34,6 +38,8 @@ export const onDeleteVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      title
+      duration
       id
       createdAt
       updatedAt

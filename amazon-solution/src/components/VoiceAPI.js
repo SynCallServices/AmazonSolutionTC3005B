@@ -4,6 +4,33 @@ import {API, graphqlOperation} from 'aws-amplify';
 import { listVoices } from '../graphql/queries';
 import { createVoice, deleteVoice } from '../graphql/mutations';
 
+
+export async function downloadVoice(voicePath) {
+    /**
+     * Download a voice from S3.
+     * @param {String} voicePath The path in which the voice is stored
+     */
+
+    try {
+      const result = await Storage.get(voicePath)
+
+      // Fetch the voice and convert it into a blob
+      fetch(result)
+      .then((res) => {
+        return {
+            status: "Succesfull",
+            message: "Correctly downloaded the voice",
+            data: res.blob()
+        } 
+      })
+    } catch (error) {
+      return {
+          status: "Unsuccesfull",
+          data: error
+      }
+    }
+}
+
 export async function list() {
     /**
      * List all the voiceRecordings. 
