@@ -27,6 +27,8 @@
 
 .video-outer {
   z-index: 100;
+  max-width: 250;
+  max-height: 500;
 }
 .video-info {
   display: flex;
