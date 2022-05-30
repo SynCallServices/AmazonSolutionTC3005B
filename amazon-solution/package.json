@@ -1,17 +1,18 @@
 {
-  "name": "amazon-solution",
+  "name": "amazon-connect-ccp",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/cli": "^8.1.0",
-    "@aws-amplify/ui-react": "^2.15.8",
+    "@ffmpeg/core": "^0.10.0",
+    "@ffmpeg/ffmpeg": "^0.10.1",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^14.1.1",
-    "aws-amplify": "^4.3.20",
+    "@testing-library/user-event": "^13.5.0",
+    "amazon-connect-streams": "^2.1.1",
+    "http-proxy-middleware": "^2.0.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -37,9 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "engines": {
-    "npm": ">=8.0.0",
-    "node": ">=16.14.0"
   }
 }

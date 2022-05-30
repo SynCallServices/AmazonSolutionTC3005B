@@ -1,5 +1,0 @@
-{
-  "AppSyncApiName": "synCallapi",
-  "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
-}
