@@ -21,7 +21,7 @@
 - Ximena González - A01028604
 
 ### Version:
-2.1
+2.2
 
 ### Date:
 02/03/2022
