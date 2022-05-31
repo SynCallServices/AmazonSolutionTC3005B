@@ -1,10 +1,15 @@
-import * as agent from "./AgentAPI"
 import * as voice from "./VoiceAPI"
+import * as video from "./VideoAPI"
 
 function APITest() {
 
-  function VoiceCreate() {
-    const x = voice.create("003", "001", "23-03-2022/17_13")
+  function ListVideo() {
+    const x = video.list()
+    x.then((res) => console.log(res))
+  }
+  
+  function CreateVideo() {
+    const x = video.create("videoIdTest", "aa73f0a3-df6b-4380-9c20-2522a72e436c", "00:00", "Cool Video", 420)
     x.then((res) => console.log(res))
   }
 
@@ -27,10 +32,10 @@ function APITest() {
   return (
     <div className="App">
       <header className="App-header">
-        <button onClick={VoiceCreate}>Create</button>
-        <button onClick={AgentList}>List</button>      
-        <button onClick={AgentGet}>Get</button>
-        <button onClick={DeleteAgent}>Delete</button>   
+        <button onClick={GetVoice}>Get Audios</button>
+        <button onClick={CreateVideo}>Create Video</button>
+        <button onClick={ListVideo}>List Video</button>
+        <button onClick={GetVideo}>Get Video</button>
       </header>
     </div>
   );
