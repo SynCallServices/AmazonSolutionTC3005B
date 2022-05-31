@@ -4,6 +4,8 @@ import * as video from "./VideoAPI"
 
 function ScreenRecorder() {
 
+  const arrayOfTimeStamps = [];
+
   const [stream, setStream] = useState(null);
   const [blob, setBlob] = useState(null);
   const recorderRef = useRef(null);
@@ -45,6 +47,14 @@ function ScreenRecorder() {
     const finishTime = Date();
     const videoId = "001_test"
     const finalTimeStamp = finishTime - startTime;
+    
+    
+    const tempArray = [startTime, finalTimeStamp];
+    arrayOfTimeStamps.push(tempArray);
+    console.log(arrayOfTimeStamps);
+    tempArray = [];
+
+
     const uploadingVideo = video.uploadVideo(blob, "001", videoId) // video, agentID, videoID.
     uploadingVideo.then((res) => console.log(res))
     const videoEntry = video.create(videoId, "001", "00-00-00_00:00") // change last parameter.
