@@ -4,12 +4,13 @@ import '../../../css/videoCard.css'
 
 function VideoPlayerComp(props) {
   return (props.trigger) ? (
-    <div className='video-outer'>
-      <div className='video-inner'>
-        <button className='close-btn'>
+    <div className='video-outer' onClick={() => props.setTrigger(false)}>
+      <div className='video-inner' >
+        <button className='close-btn' >
           <RiCloseLine className='close-btn--icon' onClick={() => props.setTrigger(false)}/>
         </button>
         <VideoPlayer 
+          className='video-player'
           src={`https://d1msutvtlsu91z.cloudfront.net/${props.videoPath}`}
         />
       </div>
