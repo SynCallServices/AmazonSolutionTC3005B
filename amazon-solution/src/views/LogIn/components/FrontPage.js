@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from 'react-router-dom'
 
 function FrontPage({ signOut, user, logInUser }) {
-  const connect = new AWS.Connect();
+  const amazonConnect = new AWS.Connect();
   const [role, setRole] = useState("...");
   const [finalUser, setFinalUser] = useState({
     userData: '',
@@ -14,7 +14,7 @@ function FrontPage({ signOut, user, logInUser }) {
 
   React.useEffect(() => {
     // example of how to obtain the security profile of a user
-    connect.describeUser({
+    amazonConnect.describeUser({
       InstanceId: process.env.REACT_APP_INSTANCE_ID,
       UserId: user.attributes["custom:connect_id"]
     }, function (err, data) {

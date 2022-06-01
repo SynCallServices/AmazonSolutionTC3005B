@@ -25,6 +25,9 @@
   margin-left: 3px;
 }
 
+.video-outer {
+  z-index: 100;
+}
 .video-info {
   display: flex;
   align-items: center;

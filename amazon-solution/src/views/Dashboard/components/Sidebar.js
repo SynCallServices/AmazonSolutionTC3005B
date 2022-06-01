@@ -12,7 +12,7 @@ import { UserContext } from '../../../App.js'
 
 function Sidebar() {
 
-  const connect = new AWS.Connect();
+  const amazonConnect = new AWS.Connect();
 
   const {user, setUser} = React.useContext(UserContext)
   const [role, setRole] = React.useState("...");
@@ -29,7 +29,7 @@ function Sidebar() {
 
   React.useEffect(() => {
     // example of how to obtain the security profile of a user
-    connect.describeUser({
+    amazonConnect.describeUser({
       InstanceId: process.env.REACT_APP_INSTANCE_ID,
       UserId: user.username.attributes["custom:connect_id"]
     }, function (err, data) {
@@ -82,7 +82,7 @@ function Sidebar() {
           <span className='tooltip'>Dashboard</span>
         </li>
         <li>
-          <Link className='link' to='callmanager'>
+          <Link className='link' to='screenrecorder'>
             <i>
               <IoCall />
             </i>

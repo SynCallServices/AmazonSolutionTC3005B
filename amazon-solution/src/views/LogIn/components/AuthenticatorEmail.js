@@ -15,12 +15,12 @@ function AuthenticatorEmail() {
     async handleSignUp(formData) {
 
       let { username, password, attributes } = formData;
-      const connect = new AWS.Connect();
+      const amazonConnect = new AWS.Connect();
 
       console.log(attributes)
       console.log('BRUH')
 
-      connect.createUser({
+      amazonConnect.createUser({
         InstanceId: process.env.REACT_APP_INSTANCE_ID,
         PhoneConfig: {
             PhoneType: "SOFT_PHONE"
