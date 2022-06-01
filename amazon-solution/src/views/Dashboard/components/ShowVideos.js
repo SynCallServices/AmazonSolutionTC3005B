@@ -1,19 +1,28 @@
+import React from 'react'
 import ShowVideoCard from './ShowVideoCard.js'
-import vidsData from '../../../data/videosData.js'
+import * as video from '../../ScreenRecorder/components/VideoAPI'
 
 function ShowVideos() {
 
-  const videos = vidsData.data.videos;
+  const [videoCards, setVideoCards] = React.useState()
 
-  const videoCards = videos.map(vidData => {
-    return (
-      <ShowVideoCard
-        videoTitle={vidData.title}
-        vidDuration={vidData.duration}
-        vidRating={vidData.rating}
-      />
-    )
-  })
+  React.useEffect(() => {
+    video.list().then(value => {
+      console.log(value)
+      setVideoCards(value.data.map(vid => (
+        <ShowVideoCard 
+          videoTitle = {vid.title}
+          videoPath = {vid.path}
+          vidDuration = "2.00"
+          vidRating = "4.9"
+          key = {vid.videoId}
+        />
+      )))
+    }).catch(err => {
+        console.log(err)
+    })
+
+  }, [])
 
   return (
     <div className="showvideos">

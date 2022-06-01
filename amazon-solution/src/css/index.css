@@ -36,6 +36,11 @@ body {
   width: 240px;
 }
 
+#ccp {
+  position: fixed;
+  height: 100%;
+}
+
 .sidebar .logo-content .logo {
   color: #fff;
   display: flex;

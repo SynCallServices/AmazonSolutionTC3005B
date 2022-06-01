@@ -20,7 +20,7 @@ function ShowVideoCard(props) {
         </div>
           <AiFillPlayCircle className='play-button' onClick={() => setPlayPopUp(true)}/>
       </div>
-      <VideoPlayerComp trigger={playPopUp} setTrigger={setPlayPopUp}/>
+      <VideoPlayerComp trigger={playPopUp} setTrigger={setPlayPopUp} videoPath={props.videoPath}/>
     </div>
   )
 }

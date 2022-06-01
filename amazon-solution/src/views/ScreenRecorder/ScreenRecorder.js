@@ -115,7 +115,7 @@ function ScreenRecorder() {
 
     })
 
-    contact.onDestroy(() => {
+    contact.onDestroy((contact) => {
       handleStop();
       uploadBlob();
     })
@@ -170,7 +170,7 @@ function ScreenRecorder() {
   return (
     <div className="App">
       <header className="App-header">
-        <div id="ccp" style={{ width: "320px", height: "500px" }}>
+        <div id="ccp" >
           {/* CCP goes here */}
           {callConnected ? <p>call connected</p> : null}
           {contactId ? <p>{contactId}</p> : null}
