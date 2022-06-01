@@ -11,10 +11,11 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
+import ScreenRecorder from './components/ScreenRecorder.js'
 
 export const UserContext = React.createContext(null)
 
-function App() {
+/*function App() {
 
   const [user, setUser] = React.useState(null)
 
@@ -37,6 +38,13 @@ function App() {
       </UserContext.Provider>
 
     </div>
+  )
+}*/
+
+function App() {
+  return (
+    <ScreenRecorder>
+    </ScreenRecorder>
   )
 }
 
