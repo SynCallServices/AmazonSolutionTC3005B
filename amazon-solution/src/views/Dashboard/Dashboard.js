@@ -23,11 +23,15 @@ function DashBoard() {
   const [stream, setStream] = React.useState(null);
   const [blob, setBlob] = React.useState(null);
   const recorderRef = React.useRef(null);
+  const [blobVar, setBlobVar] = React.useState(null);
+  const [ranOnce, setRanOnce] = React.useState(false);
 
   const [loggedIn, setLoggedIn] = React.useState(false);
 
+  // Amazon Connect Embed
   React.useEffect(() => {
-    if (loggedIn === true) {
+    if (loggedIn === true && !ranOnce) {
+      setRanOnce(true)
 
       let instanceURL = "https://csf-test-1.my.connect.aws/ccp-v2";
       // eslint-disable-next-line no-undef
@@ -129,6 +133,14 @@ function DashBoard() {
 
   }, [loggedIn])
 
+  React.useEffect(() => {
+    if (blobVar) {
+      uploadBlob();
+    }
+  }, [blobVar])
+
+  
+
   let videoMediaConstraints = {
     video: {
       cursor: 'always',
@@ -156,7 +168,7 @@ function DashBoard() {
 
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
-      uploadBlob();
+      setBlobVar(recorderRef.current.getBlob())
       console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
@@ -170,7 +182,10 @@ function DashBoard() {
     const videoId = uuidv4()
     const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
     uploadingVideo.then((res) => console.log(res))
-    const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], "00-00-00_00:00")
+    const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], "00-00-00_00:00", "Title", 100)
+    console.log(videoId)
+    console.log(user.username.attributes["custom:connect_id"])
+    console.log("00-00-00_00:00")
     videoEntry.then((res) => console.log(res))
   }  
 
