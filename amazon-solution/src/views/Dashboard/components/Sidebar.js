@@ -15,15 +15,14 @@ function Sidebar() {
   const amazonConnect = new AWS.Connect();
 
   const {user, setUser} = React.useContext(UserContext)
-  const [role, setRole] = React.useState("...");
+  const [role, setRole] = React.useState();
 
   async function signOut() {
     try {
-      console.log('bruh')
       await Auth.signOut();
       setUser(null)
     } catch (error) {
-      console.log('error signing out: ', error);
+      console.log('error signing out: ', error); // Esto esta mal
     }
   }
 
@@ -34,7 +33,7 @@ function Sidebar() {
       UserId: user.username.attributes["custom:connect_id"]
     }, function (err, data) {
       if (err) {
-        console.log(err)
+        console.log(err) // Mal
       } else {
         const securityProfile = data.User.SecurityProfileIds[0];
         switch (securityProfile) {
@@ -47,6 +46,8 @@ function Sidebar() {
           case process.env.REACT_APP_ADMIN_ID:
             setRole("admin");
             break;
+          default: 
+            setRole("...");
         }
       }
     })
@@ -56,7 +57,6 @@ function Sidebar() {
 
   function sidebarUtil() {
     setSidebarActive(prevState => !prevState);
-    console.log('here');
   }
 
   return (

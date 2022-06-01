@@ -99,7 +99,7 @@ export async function create(videoId_, agentId_, startTime_, title_, duration_) 
             throw new Error("Video Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/videos/${videoId_}.mp4`, title: title_, duration: duration_ } } 
+            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/videos/${videoId_}`, title: title_, duration: duration_ } } 
         )) 
         return {
             status: "Succesfull",
