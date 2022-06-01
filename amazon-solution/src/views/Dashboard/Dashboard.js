@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { Outlet } from 'react-router-dom'
 import AWS from 'aws-sdk';
 import { UserContext } from '../../App.js'
+import ConnectLogIn from './components/ConnectLogIn.js'
 
 const amazonConnect = new AWS.Connect();
 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -23,105 +24,110 @@ function DashBoard() {
   const [blob, setBlob] = React.useState(null);
   const recorderRef = React.useRef(null);
 
+  const [loggedIn, setLoggedIn] = React.useState(false);
+
   React.useEffect(() => {
-    let instanceURL = "https://csf-test-1.my.connect.aws/ccp-v2";
-    // eslint-disable-next-line no-undef
-    connect.core.initCCP(document.getElementById("ccp"), {
-      ccpUrl: instanceURL,            // REQUIRED
-      loginPopup: true,               // optional, defaults to `true`
-      loginPopupAutoClose: true,      // optional, defaults to `false`
-      loginOptions: {                 // optional, if provided opens login in new window
-        autoClose: true,              // optional, defaults to `false`
-        height: 600,                  // optional, defaults to 578
-        width: 400,                   // optional, defaults to 433
-        top: 0,                       // optional, defaults to 0
-        left: 0                       // optional, defaults to 0
-      },
-      region: "us-east-1",         // REQUIRED for `CHAT`, optional otherwise
-      softphone: {                    // optional, defaults below apply if not provided
-        allowFramedSoftphone: true,   // optional, defaults to false
-        disableRingtone: false,       // optional, defaults to false
-        ringtoneUrl: "./ringtone.mp3" // optional, defaults to CCP’s default ringtone if a falsy value is set
-      },
-      pageOptions: { //optional
-        enableAudioDeviceSettings: false, //optional, defaults to 'false'
-        enablePhoneTypeSettings: true //optional, defaults to 'true' 
-      },
-      ccpAckTimeout: 5000, //optional, defaults to 3000 (ms)
-      ccpSynTimeout: 3000, //optional, defaults to 1000 (ms)
-      ccpLoadTimeout: 10000 //optional, defaults to 5000 (ms)
-    });
+    if (loggedIn === true) {
 
-    // eslint-disable-next-line no-undef
-  connect.contact((contact) => {
-    contact.onConnected((contact) => {
-      console.log(contact);
-      setCallConnected(true);
-      setContactId(contact.contactId);
-      console.log(contact.contactId);
+      let instanceURL = "https://csf-test-1.my.connect.aws/ccp-v2";
+      // eslint-disable-next-line no-undef
+      connect.core.initCCP(document.getElementById("ccp"), {
+        ccpUrl: instanceURL,            // REQUIRED
+        loginPopup: false,               // optional, defaults to `true`
+        loginPopupAutoClose: true,      // optional, defaults to `false`
+        loginOptions: {                 // optional, if provided opens login in new window
+          autoClose: true,              // optional, defaults to `false`
+          height: 600,                  // optional, defaults to 578
+          width: 400,                   // optional, defaults to 433
+          top: 0,                       // optional, defaults to 0
+          left: 0                       // optional, defaults to 0
+        },
+        region: "us-east-1",         // REQUIRED for `CHAT`, optional otherwise
+        softphone: {                    // optional, defaults below apply if not provided
+          allowFramedSoftphone: true,   // optional, defaults to false
+          disableRingtone: false,       // optional, defaults to false
+          ringtoneUrl: "./ringtone.mp3" // optional, defaults to CCP’s default ringtone if a falsy value is set
+        },
+        pageOptions: { //optional
+          enableAudioDeviceSettings: false, //optional, defaults to 'false'
+          enablePhoneTypeSettings: true //optional, defaults to 'true' 
+        },
+        ccpAckTimeout: 5000, //optional, defaults to 3000 (ms)
+        ccpSynTimeout: 3000, //optional, defaults to 1000 (ms)
+        ccpLoadTimeout: 10000 //optional, defaults to 5000 (ms)
+      });
 
-      handleRecording();
-    });
+      // eslint-disable-next-line no-undef
+    connect.contact((contact) => {
+      contact.onConnected((contact) => {
+        console.log(contact);
+        setCallConnected(true);
+        setContactId(contact.contactId);
+        console.log(contact.contactId);
 
-    contact.onEnded(async (contact) => {
-      console.log(contact.contactId);
+        handleRecording();
+      });
 
-      let body;
-      await amazonConnect.describeContact({
-          InstanceId: process.env.REACT_APP_INSTANCE_ID,
-          ContactId: contact.contactId
-      }, function(err, data) {
+      contact.onEnded(async (contact) => {
+        console.log(contact.contactId);
+
+        let body;
+        await amazonConnect.describeContact({
+            InstanceId: process.env.REACT_APP_INSTANCE_ID,
+            ContactId: contact.contactId
+        }, function(err, data) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log(data);
+                let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
+                let ContactId = data.Contact.Id;
+                let year = InitiationTimestamp.getFullYear();
+                let month = ('0' + (InitiationTimestamp.getMonth() + 1)).slice(-2);
+                let day = ('0' + InitiationTimestamp.getDate()).slice(-2);
+                body = {
+                    ContactId: ContactId,
+                    AgentId: data.Contact.AgentInfo.Id,
+                    InitiationTimestamp: InitiationTimestamp,
+                    Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getHours()).slice(-2)}:${('0' + InitiationTimestamp.getMinutes()).slice(-2)}_UTC.wav`
+                };
+            }
+        })
+        .promise();
+
+        console.log(body);
+
+        await docClient.put({
+          TableName: process.env.REACT_APP_TABLE_NAME,
+          Item: {
+              "id": uuidv4(),
+              "agentId": body.AgentId,
+              "voiceId": `${body.AgentId}_${body.ContactId}`,
+              "path": body.Path,
+              "startTime": body.InitiationTimestamp.toString(),
+              "createdAt": new Date().toString(),
+              "updatedAt": new Date().toString(),
+              "__typename": "Voice"
+          }
+      }, function (err, data) {
           if (err) {
               console.log(err);
           } else {
               console.log(data);
-              let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
-              let ContactId = data.Contact.Id;
-              let year = InitiationTimestamp.getFullYear();
-              let month = ('0' + (InitiationTimestamp.getMonth() + 1)).slice(-2);
-              let day = ('0' + InitiationTimestamp.getDate()).slice(-2);
-              body = {
-                  ContactId: ContactId,
-                  AgentId: data.Contact.AgentInfo.Id,
-                  InitiationTimestamp: InitiationTimestamp,
-                  Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getHours()).slice(-2)}:${('0' + InitiationTimestamp.getMinutes()).slice(-2)}_UTC.wav`
-              };
+              console.log("upload to dynamodb");
           }
       })
       .promise();
 
-      console.log(body);
+      })
 
-      await docClient.put({
-        TableName: process.env.REACT_APP_TABLE_NAME,
-        Item: {
-            "id": uuidv4(),
-            "agentId": body.AgentId,
-            "voiceId": `${body.AgentId}_${body.ContactId}`,
-            "path": body.Path,
-            "startTime": body.InitiationTimestamp.toString(),
-            "createdAt": new Date().toString(),
-            "updatedAt": new Date().toString(),
-            "__typename": "Voice"
-        }
-    }, function (err, data) {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log(data);
-            console.log("upload to dynamodb");
-        }
-    })
-    .promise();
+      contact.onDestroy((contact) => {
+        handleStop();
+      })
+    });
+    }
 
-    })
-
-    contact.onDestroy((contact) => {
-      handleStop();
-    })
-  });
-
-  }, [])
+  }, [loggedIn])
 
   let videoMediaConstraints = {
     video: {
@@ -168,13 +174,21 @@ function DashBoard() {
     videoEntry.then((res) => console.log(res))
   }  
 
+  const logIn = () => {
+    setLoggedIn(true)
+    window.open('https://csf-test-1.my.connect.aws', '_blank');
+  }
+
+
   return (
     <div className='main-content'>
       <Sidebar />
       <div className='dashboard--content'>
         <Outlet />
       </div>
-      <div id="ccp"></div>
+      {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn}/>}
+      
+
     </div>
   )
 }
