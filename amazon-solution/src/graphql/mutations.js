@@ -13,7 +13,6 @@ export const createVideo = /* GraphQL */ `
       startTime
       title
       duration
-      id
       createdAt
       updatedAt
     }
@@ -31,7 +30,6 @@ export const updateVideo = /* GraphQL */ `
       startTime
       title
       duration
-      id
       createdAt
       updatedAt
     }
@@ -49,7 +47,6 @@ export const deleteVideo = /* GraphQL */ `
       startTime
       title
       duration
-      id
       createdAt
       updatedAt
     }
@@ -63,7 +60,6 @@ export const createAgent = /* GraphQL */ `
     createAgent(input: $input, condition: $condition) {
       agentId
       folder
-      id
       createdAt
       updatedAt
     }
@@ -77,7 +73,6 @@ export const updateAgent = /* GraphQL */ `
     updateAgent(input: $input, condition: $condition) {
       agentId
       folder
-      id
       createdAt
       updatedAt
     }
@@ -91,7 +86,6 @@ export const deleteAgent = /* GraphQL */ `
     deleteAgent(input: $input, condition: $condition) {
       agentId
       folder
-      id
       createdAt
       updatedAt
     }
@@ -107,7 +101,6 @@ export const createVoice = /* GraphQL */ `
       agentId
       path
       startTime
-      id
       createdAt
       updatedAt
     }
@@ -123,7 +116,6 @@ export const updateVoice = /* GraphQL */ `
       agentId
       path
       startTime
-      id
       createdAt
       updatedAt
     }
@@ -139,7 +131,6 @@ export const deleteVoice = /* GraphQL */ `
       agentId
       path
       startTime
-      id
       createdAt
       updatedAt
     }
@@ -152,9 +143,7 @@ export const createRecording = /* GraphQL */ `
   ) {
     createRecording(input: $input, condition: $condition) {
       recordingId
-      agentId
       path
-      id
       createdAt
       updatedAt
     }
@@ -167,9 +156,7 @@ export const updateRecording = /* GraphQL */ `
   ) {
     updateRecording(input: $input, condition: $condition) {
       recordingId
-      agentId
       path
-      id
       createdAt
       updatedAt
     }
@@ -182,9 +169,7 @@ export const deleteRecording = /* GraphQL */ `
   ) {
     deleteRecording(input: $input, condition: $condition) {
       recordingId
-      agentId
       path
-      id
       createdAt
       updatedAt
     }

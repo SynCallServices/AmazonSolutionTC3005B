@@ -10,7 +10,6 @@ export const onCreateVideo = /* GraphQL */ `
       startTime
       title
       duration
-      id
       createdAt
       updatedAt
     }
@@ -25,7 +24,6 @@ export const onUpdateVideo = /* GraphQL */ `
       startTime
       title
       duration
-      id
       createdAt
       updatedAt
     }
@@ -40,7 +38,6 @@ export const onDeleteVideo = /* GraphQL */ `
       startTime
       title
       duration
-      id
       createdAt
       updatedAt
     }
@@ -51,7 +48,6 @@ export const onCreateAgent = /* GraphQL */ `
     onCreateAgent {
       agentId
       folder
-      id
       createdAt
       updatedAt
     }
@@ -62,7 +58,6 @@ export const onUpdateAgent = /* GraphQL */ `
     onUpdateAgent {
       agentId
       folder
-      id
       createdAt
       updatedAt
     }
@@ -73,7 +68,6 @@ export const onDeleteAgent = /* GraphQL */ `
     onDeleteAgent {
       agentId
       folder
-      id
       createdAt
       updatedAt
     }
@@ -86,7 +80,6 @@ export const onCreateVoice = /* GraphQL */ `
       agentId
       path
       startTime
-      id
       createdAt
       updatedAt
     }
@@ -99,7 +92,6 @@ export const onUpdateVoice = /* GraphQL */ `
       agentId
       path
       startTime
-      id
       createdAt
       updatedAt
     }
@@ -112,7 +104,6 @@ export const onDeleteVoice = /* GraphQL */ `
       agentId
       path
       startTime
-      id
       createdAt
       updatedAt
     }
@@ -122,9 +113,7 @@ export const onCreateRecording = /* GraphQL */ `
   subscription OnCreateRecording {
     onCreateRecording {
       recordingId
-      agentId
       path
-      id
       createdAt
       updatedAt
     }
@@ -134,9 +123,7 @@ export const onUpdateRecording = /* GraphQL */ `
   subscription OnUpdateRecording {
     onUpdateRecording {
       recordingId
-      agentId
       path
-      id
       createdAt
       updatedAt
     }
@@ -146,9 +133,7 @@ export const onDeleteRecording = /* GraphQL */ `
   subscription OnDeleteRecording {
     onDeleteRecording {
       recordingId
-      agentId
       path
-      id
       createdAt
       updatedAt
     }
