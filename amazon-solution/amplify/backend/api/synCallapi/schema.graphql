@@ -25,6 +25,5 @@ type Voice @model {
 
 type Recording @model {
   recordingId: ID!
-  agentId: String!
   path: String!
 } 
