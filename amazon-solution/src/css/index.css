@@ -38,6 +38,7 @@ body {
 
 #ccp {
   position: fixed;
+  right: 0;
   height: 100%;
 }
 
