@@ -4,8 +4,9 @@ import { Authenticator } from '@aws-amplify/ui-react';
 import { Auth } from 'aws-amplify';
 import AWS from 'aws-sdk';
 import { UserContext } from '../../../App.js'
+import '@aws-amplify/ui-react/styles.css';
 
-import '@aws-amplify/ui-react/styles.css'
+import '../../../css/login.css'
 
 function AuthenticatorEmail() {
 
@@ -57,52 +58,68 @@ function AuthenticatorEmail() {
   }
 
   return (
-    <Authenticator 
-      services={services}
-      initialState='signIn'
-      signUpAttributes={['email']}
-      formFields={{
-        signUp: {
-          email: {
-            order: 1,
-            isRequired: true
-          },
-          username: {
-              order: 2,
-              isRequired: true
-          },
-          'custom:first_name': {
-              order: 3,
-              placeholder: "First Name",
-              isRequired: true
-          },
-          'custom:last_name': {
-              order: 4,
-              placeholder: "Last Name",
-              isRequired: true
-          },
-          password: {
-            order: 5,
-            isRequired: true
-          },
-          confirm_password: {
-            order: 6,
-            isRequired: true
-          }
-        }
-      }}>
-      {({ signOut, user }) => {
+    <div className='overlay-container'>
+      <div className='overlay'>
+        <div className='overlay-left'>
+          <Authenticator 
+            services={services}
+            initialState='signIn'
+            signUpAttributes={['email']}
+            formFields={{
+              signUp: {
+                email: {
+                  order: 1,
+                  isRequired: true
+                },
+                username: {
+                    order: 2,
+                    isRequired: true
+                },
+                'custom:first_name': {
+                    order: 3,
+                    placeholder: "First Name",
+                    isRequired: true
+                },
+                'custom:last_name': {
+                    order: 4,
+                    placeholder: "Last Name",
+                    isRequired: true
+                },
+                password: {
+                  order: 5,
+                  isRequired: true
+                },
+                confirm_password: {
+                  order: 6,
+                  isRequired: true
+                }
+              }
+            }}>
 
-        setUser(prev => ({
-        ...prev,
-        username: user,
-        signOut: () => (signOut()),
-        }))
+            {({ signOut, user }) => {
 
-        return <Navigate to='dashboard' />
+              setUser(prev => ({
+              ...prev,
+              username: user,
+              signOut: () => (signOut()),
+              }))
 
-      }}
-    </Authenticator>
+              return <Navigate to='dashboard' />
+
+            }}
+          </Authenticator>
+
+        </div>    
+      
+        <div className='overlay-right'>
+          <div>
+            RIGHT
+          </div>
+
+        </div>    
+      </div>
+
+    </div>
   )
 }
 

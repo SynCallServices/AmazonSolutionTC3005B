@@ -1,0 +1,21 @@
+{
+  "name": "syncall",
+  "version": "1.0.0",
+  "description": "* [ ] Test Story",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SynCallServices/AmazonSolutionTC3005B.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SynCallServices/AmazonSolutionTC3005B/issues"
+  },
+  "homepage": "https://github.com/SynCallServices/AmazonSolutionTC3005B#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.22.2"
+  }
+}

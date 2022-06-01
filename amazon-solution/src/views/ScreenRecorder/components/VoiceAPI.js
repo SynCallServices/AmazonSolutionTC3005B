@@ -4,6 +4,33 @@ import {API, graphqlOperation} from 'aws-amplify';
 import { listVoices } from '../graphql/queries';
 import { createVoice, deleteVoice } from '../graphql/mutations';
 
+
+export async function downloadVoice(voicePath) {
+    /**
+     * Download a voice from S3.
+     * @param {String} voicePath The path in which the voice is stored
+     */
+
+    try {
+      const result = await Storage.get(voicePath)
+
+      // Fetch the voice and convert it into a blob
+      fetch(result)
+      .then((res) => {
+        return {
+            status: "Succesfull",
+            message: "Correctly downloaded the voice",
+            data: res.blob()
+        } 
+      })
+    } catch (error) {
+      return {
+          status: "Unsuccesfull",
+          data: error
+      }
+    }
+}
+
 export async function list() {
     /**
      * List all the voiceRecordings. 
@@ -64,7 +91,7 @@ export async function create(voiceId_, agentId_, startTime_) {
             throw new Error("Voice Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVoice, { input: { voiceId: voiceId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/${agentId_}_${startTime_}` } } 
+            createVoice, { input: { voiceId: voiceId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/audios/${startTime_}` } } 
         )) 
         return {
             status: "Succesfull",

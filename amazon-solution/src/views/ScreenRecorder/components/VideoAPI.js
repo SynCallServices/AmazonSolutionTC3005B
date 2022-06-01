@@ -60,7 +60,7 @@ export async function downloadVideo(videoPath) {
           data: error
       }
     }
-  }
+}
 
 // Dynamo
 
@@ -85,7 +85,7 @@ export async function list() {
     }
 }
 
-export async function create(videoId_, agentId_, startTime_) {
+export async function create(videoId_, agentId_, startTime_, title_, duration_) {
     /**
      * Given a new videoId and a agentId, create a new entry of a video in dynamoDB.
      * @param {String} videoId_ An Id for the new video.
@@ -99,7 +99,7 @@ export async function create(videoId_, agentId_, startTime_) {
             throw new Error("Video Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/videos/${videoId_}` } } 
+            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/videos/${videoId_}.mp4`, title: title_, duration: duration_ } } 
         )) 
         return {
             status: "Succesfull",
@@ -129,7 +129,8 @@ export async function get(videoId_) {
         }
         return {
             status: "Succesfull",
-            message: "Fetched a video correctly"
+            message: "Fetched a video correctly",
+            data: video
         }
     } catch (error) {
         return {
