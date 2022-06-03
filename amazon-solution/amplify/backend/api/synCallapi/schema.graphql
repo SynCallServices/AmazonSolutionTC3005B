@@ -14,7 +14,13 @@ type Video @model {
 type Agent @model {
   agentId: ID! @primaryKey(sortKeyFields: ["folder"])
   folder: String!
-  assignedVideos: [String]
+  asgnRec: [AssignedRecordings]
+}
+
+type AssignedRecordings @model {
+  videoId: ID!
+  agentId: ID!
+  expirationDate: String!
 }
 
 
