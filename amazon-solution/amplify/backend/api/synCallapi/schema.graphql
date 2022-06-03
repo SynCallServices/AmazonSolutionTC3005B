@@ -3,28 +3,35 @@
 input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
 
 type Video @model {
-  videoId: ID!
-  agentId: String!
+  videoId: ID! @primaryKey(sortKeyFields: ["agentId"]) 
+  agentId: String! 
   path: String!
   startTime: String
-  title: String!
-  duration: Int
 }
 
 type Agent @model {
-  agentId: ID!
+  agentId: ID! @primaryKey(sortKeyFields: ["folder"])
   folder: String!
+  asgnRec: [AssignedRecordings]
+}
+
+type AssignedRecordings @model {
+  videoId: ID! @primaryKey(sortKeyFields: ["agentId"])
+  agentId: ID!
+  expirationDate: String!
+
 }
 
 type Voice @model {
-  voiceId: ID!
+  voiceId: ID! @primaryKey(sortKeyFields: ["agentId"])
   agentId: String!
   path: String!
   startTime: String
 }
 
 type Recording @model {
-  recordingId: ID!
-  agentId: String!
+  recordingId: ID! @primaryKey(sortKeyFields: ["path"])
   path: String!
+  title: String! @index(name: "byTitleAndDuration", sortKeyFields: ["duration"], queryField: "videoByTitleAndDuration")
+  duration: Int
 } 
