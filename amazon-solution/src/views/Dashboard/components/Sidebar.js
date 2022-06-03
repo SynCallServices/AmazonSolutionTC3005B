@@ -6,6 +6,7 @@ import { MdSpaceDashboard } from 'react-icons/md'
 import { IoCall } from 'react-icons/io5'
 import { RiSettingsFill } from 'react-icons/ri'
 import { HiMenu } from 'react-icons/hi'
+import { FaUserAlt } from 'react-icons/fa'
 import { IoLogOut } from 'react-icons/io5'
 
 import { UserContext } from '../../../App.js'
@@ -36,6 +37,7 @@ function Sidebar() {
         console.log(err) // Mal
       } else {
         const securityProfile = data.User.SecurityProfileIds[0];
+        console.log(securityProfile)
         switch (securityProfile) {
           case process.env.REACT_APP_AGENT_ID:
             setRole("agent");
@@ -90,6 +92,20 @@ function Sidebar() {
           </Link>
           <span className='tooltip'>Call Manager</span>
         </li>
+
+        {role === 'admin' ? 
+        <li>
+          <Link className='link' to='user-management'>
+            <i>
+              <FaUserAlt />
+            </i>
+            <span className='links-name'>User Management</span>
+          </Link>
+          <span className='tooltip'>UserManagement</span>
+        </li>
+        : null
+        }
+
         <li>
           <Link className='link' to='settings'>
             <i>
@@ -99,6 +115,7 @@ function Sidebar() {
           </Link>
           <span className='tooltip'>Settings</span>
         </li>
+
       </ul>
       <div className='profile-content'>
         <div className='profile'>
