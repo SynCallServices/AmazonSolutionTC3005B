@@ -8,8 +8,6 @@ export const onCreateVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -22,8 +20,6 @@ export const onUpdateVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -36,8 +32,6 @@ export const onDeleteVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -48,6 +42,9 @@ export const onCreateAgent = /* GraphQL */ `
     onCreateAgent {
       agentId
       folder
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -58,6 +55,9 @@ export const onUpdateAgent = /* GraphQL */ `
     onUpdateAgent {
       agentId
       folder
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -68,8 +68,50 @@ export const onDeleteAgent = /* GraphQL */ `
     onDeleteAgent {
       agentId
       folder
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const onCreateAssignedRecordings = /* GraphQL */ `
+  subscription OnCreateAssignedRecordings {
+    onCreateAssignedRecordings {
+      videoId
+      agentId
+      expirationDate
+      assignId
+      createdAt
+      updatedAt
+      agentAsgnRecId
+    }
+  }
+`;
+export const onUpdateAssignedRecordings = /* GraphQL */ `
+  subscription OnUpdateAssignedRecordings {
+    onUpdateAssignedRecordings {
+      videoId
+      agentId
+      expirationDate
+      assignId
+      createdAt
+      updatedAt
+      agentAsgnRecId
+    }
+  }
+`;
+export const onDeleteAssignedRecordings = /* GraphQL */ `
+  subscription OnDeleteAssignedRecordings {
+    onDeleteAssignedRecordings {
+      videoId
+      agentId
+      expirationDate
+      assignId
+      createdAt
+      updatedAt
+      agentAsgnRecId
     }
   }
 `;
@@ -114,6 +156,8 @@ export const onCreateRecording = /* GraphQL */ `
     onCreateRecording {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }
@@ -124,6 +168,8 @@ export const onUpdateRecording = /* GraphQL */ `
     onUpdateRecording {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }
@@ -134,6 +180,8 @@ export const onDeleteRecording = /* GraphQL */ `
     onDeleteRecording {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }

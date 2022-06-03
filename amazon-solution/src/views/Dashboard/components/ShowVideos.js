@@ -1,6 +1,7 @@
 import React from 'react'
 import ShowVideoCard from './ShowVideoCard.js'
 import * as video from '../../ScreenRecorder/components/VideoAPI'
+import VideoPreview from './VideoPreview.js'
 
 function ShowVideos() {
 
@@ -25,11 +26,15 @@ function ShowVideos() {
   }, [])
 
   return (
-    <div className="showvideos">
-      <h1>Show Videos</h1>
-      <div className='videos-container'>
-        {videoCards}
+    <div className="showvideos-outer">
+      <VideoPreview />
+      <div className='showvideos-inner'>
+        <h1>Asigned Videos</h1>
+        <div className='videos-container'>
+          {videoCards}
+        </div>
       </div>
+
     </div> 
   )
 }

@@ -8,8 +8,6 @@ export const getVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -37,8 +35,6 @@ export const listVideos = /* GraphQL */ `
         agentId
         path
         startTime
-        title
-        duration
         createdAt
         updatedAt
       }
@@ -51,6 +47,9 @@ export const getAgent = /* GraphQL */ `
     getAgent(agentId: $agentId, folder: $folder) {
       agentId
       folder
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -78,6 +77,49 @@ export const listAgents = /* GraphQL */ `
         folder
         createdAt
         updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getAssignedRecordings = /* GraphQL */ `
+  query GetAssignedRecordings($assignId: ID!, $agentId: ID!) {
+    getAssignedRecordings(assignId: $assignId, agentId: $agentId) {
+      videoId
+      agentId
+      expirationDate
+      assignId
+      createdAt
+      updatedAt
+      agentAsgnRecId
+    }
+  }
+`;
+export const listAssignedRecordings = /* GraphQL */ `
+  query ListAssignedRecordings(
+    $assignId: ID
+    $agentId: ModelIDKeyConditionInput
+    $filter: ModelAssignedRecordingsFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listAssignedRecordings(
+      assignId: $assignId
+      agentId: $agentId
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        videoId
+        agentId
+        expirationDate
+        assignId
+        createdAt
+        updatedAt
+        agentAsgnRecId
       }
       nextToken
     }
@@ -129,6 +171,8 @@ export const getRecording = /* GraphQL */ `
     getRecording(recordingId: $recordingId, path: $path) {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }
@@ -154,6 +198,8 @@ export const listRecordings = /* GraphQL */ `
       items {
         recordingId
         path
+        title
+        duration
         createdAt
         updatedAt
       }
@@ -166,7 +212,7 @@ export const videoByTitleAndDuration = /* GraphQL */ `
     $title: String!
     $duration: ModelIntKeyConditionInput
     $sortDirection: ModelSortDirection
-    $filter: ModelVideoFilterInput
+    $filter: ModelRecordingFilterInput
     $limit: Int
     $nextToken: String
   ) {
@@ -179,10 +225,8 @@ export const videoByTitleAndDuration = /* GraphQL */ `
       nextToken: $nextToken
     ) {
       items {
-        videoId
-        agentId
+        recordingId
         path
-        startTime
         title
         duration
         createdAt

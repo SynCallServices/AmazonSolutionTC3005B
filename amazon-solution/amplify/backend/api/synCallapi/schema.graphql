@@ -7,20 +7,20 @@ type Video @model {
   agentId: String! 
   path: String!
   startTime: String
-  title: String! @index(name: "byTitleAndDuration", sortKeyFields: ["duration"], queryField: "videoByTitleAndDuration")
-  duration: Int
 }
 
 type Agent @model {
   agentId: ID! @primaryKey(sortKeyFields: ["folder"])
   folder: String!
-  # role: String # Admin, Agent
+  asgnRec: [AssignedRecordings] @hasMany
 }
 
-# type Admin @model {
-#   adminId: ID!
-#   agentsAss: [Agent]
-# }
+type AssignedRecordings @model {
+  videoId: ID! 
+  agentId: ID!
+  expirationDate: String!
+  assignId: ID! @primaryKey(sortKeyFields: ["agentId"])
+}
 
 type Voice @model {
   voiceId: ID! @primaryKey(sortKeyFields: ["agentId"])
@@ -32,5 +32,6 @@ type Voice @model {
 type Recording @model {
   recordingId: ID! @primaryKey(sortKeyFields: ["path"])
   path: String!
-  # agentsAss: [String] 
+  title: String! @index(name: "byTitleAndDuration", sortKeyFields: ["duration"], queryField: "videoByTitleAndDuration")
+  duration: Int
 } 
