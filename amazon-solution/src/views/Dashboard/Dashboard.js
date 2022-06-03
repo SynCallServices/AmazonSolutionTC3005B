@@ -31,10 +31,12 @@ function DashBoard() {
 
   // Amazon Connect Embed
   React.useEffect(() => {
-    if (loggedIn === true && !ranOnce) {
+    if (!ranOnce) {
       setRanOnce(true)
 
       let instanceURL = "https://csf-test-1.my.connect.aws/ccp-v2";
+
+
       // eslint-disable-next-line no-undef
       connect.core.initCCP(document.getElementById("ccp"), {
         ccpUrl: instanceURL,            // REQUIRED
@@ -62,6 +64,22 @@ function DashBoard() {
         ccpLoadTimeout: 10000 //optional, defaults to 5000 (ms)
       });
 
+    // eslint-disable-next-line no-undef
+    const eventBus = connect.core.getEventBus();
+    // eslint-disable-next-line no-undef
+    eventBus.subscribe(connect.EventType.ACKNOWLEDGE, () => {
+      console.log('Log In')
+      setLoggedIn(true)
+      console.log(loggedIn)
+      // Do stuff...
+    });
+    // eslint-disable-next-line no-undef
+    eventBus.subscribe(connect.EventType.TERMINATED, () => {
+      console.log('Logged out')
+      setLoggedIn(false)
+      // Do stuff...
+    });
+
       // eslint-disable-next-line no-undef
     connect.contact((contact) => {
       contact.onAccepted((contact) => {
@@ -72,6 +90,7 @@ function DashBoard() {
 
         handleRecording();
       });
+
 
       contact.onEnded(async (contact) => {
         console.log(contact.contactId);
@@ -132,15 +151,14 @@ function DashBoard() {
     });
     }
 
-  }, [loggedIn])
+
+  }, [])
 
   React.useEffect(() => {
     if (blobVar) {
       uploadBlob();
     }
   }, [blobVar])
-
-  
 
   let videoMediaConstraints = {
     video: {
@@ -189,7 +207,6 @@ function DashBoard() {
   }  
 
   const logIn = () => {
-    setLoggedIn(true)
     window.open('https://csf-test-1.my.connect.aws', '_blank');
   }
 
@@ -200,7 +217,10 @@ function DashBoard() {
       <div className='dashboard--content'>
         <Outlet />
       </div>
-      {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn}/>}
+
+      <div id="ccp" />
+
+      {loggedIn ? null  : <ConnectLogIn logIn={logIn}/>}
       
 
     </div>

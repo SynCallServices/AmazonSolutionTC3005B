@@ -321,6 +321,7 @@ body {
 .preview-container {
   position: fixed;
   background-color: #231433;
+  z-index: 100;
   right: 300px;
   height: 150%;
   width: 600px;
