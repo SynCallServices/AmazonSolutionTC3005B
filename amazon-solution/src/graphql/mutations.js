@@ -11,8 +11,6 @@ export const createVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -28,8 +26,6 @@ export const updateVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -45,8 +41,6 @@ export const deleteVideo = /* GraphQL */ `
       agentId
       path
       startTime
-      title
-      duration
       createdAt
       updatedAt
     }
@@ -60,7 +54,9 @@ export const createAgent = /* GraphQL */ `
     createAgent(input: $input, condition: $condition) {
       agentId
       folder
-      assignedVideos
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -74,7 +70,9 @@ export const updateAgent = /* GraphQL */ `
     updateAgent(input: $input, condition: $condition) {
       agentId
       folder
-      assignedVideos
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -88,9 +86,59 @@ export const deleteAgent = /* GraphQL */ `
     deleteAgent(input: $input, condition: $condition) {
       agentId
       folder
-      assignedVideos
+      asgnRec {
+        nextToken
+      }
       createdAt
       updatedAt
+    }
+  }
+`;
+export const createAssignedRecordings = /* GraphQL */ `
+  mutation CreateAssignedRecordings(
+    $input: CreateAssignedRecordingsInput!
+    $condition: ModelAssignedRecordingsConditionInput
+  ) {
+    createAssignedRecordings(input: $input, condition: $condition) {
+      videoId
+      agentId
+      expirationDate
+      assingId
+      createdAt
+      updatedAt
+      agentAsgnRecId
+    }
+  }
+`;
+export const updateAssignedRecordings = /* GraphQL */ `
+  mutation UpdateAssignedRecordings(
+    $input: UpdateAssignedRecordingsInput!
+    $condition: ModelAssignedRecordingsConditionInput
+  ) {
+    updateAssignedRecordings(input: $input, condition: $condition) {
+      videoId
+      agentId
+      expirationDate
+      assingId
+      createdAt
+      updatedAt
+      agentAsgnRecId
+    }
+  }
+`;
+export const deleteAssignedRecordings = /* GraphQL */ `
+  mutation DeleteAssignedRecordings(
+    $input: DeleteAssignedRecordingsInput!
+    $condition: ModelAssignedRecordingsConditionInput
+  ) {
+    deleteAssignedRecordings(input: $input, condition: $condition) {
+      videoId
+      agentId
+      expirationDate
+      assingId
+      createdAt
+      updatedAt
+      agentAsgnRecId
     }
   }
 `;
@@ -147,6 +195,8 @@ export const createRecording = /* GraphQL */ `
     createRecording(input: $input, condition: $condition) {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }
@@ -160,6 +210,8 @@ export const updateRecording = /* GraphQL */ `
     updateRecording(input: $input, condition: $condition) {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }
@@ -173,6 +225,8 @@ export const deleteRecording = /* GraphQL */ `
     deleteRecording(input: $input, condition: $condition) {
       recordingId
       path
+      title
+      duration
       createdAt
       updatedAt
     }
