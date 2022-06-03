@@ -313,6 +313,19 @@ body {
   transform: translateX(-50%);
 }
 
+.showvideos-inner {
+  padding: 15px;
+  position: relative;
+}
+
+.preview-container {
+  position: fixed;
+  background-color: #231433;
+  right: 300px;
+  height: 150%;
+  width: 600px;
+}
+
 
 
 

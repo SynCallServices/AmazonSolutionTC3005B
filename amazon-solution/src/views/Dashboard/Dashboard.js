@@ -25,6 +25,7 @@ function DashBoard() {
   const recorderRef = React.useRef(null);
   const [blobVar, setBlobVar] = React.useState(null);
   const [ranOnce, setRanOnce] = React.useState(false);
+  const [recordingStartTime, setRecordingStartTime] = React.useState(null);
 
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -63,7 +64,7 @@ function DashBoard() {
 
       // eslint-disable-next-line no-undef
     connect.contact((contact) => {
-      contact.onConnected((contact) => {
+      contact.onAccepted((contact) => {
         console.log(contact);
         setCallConnected(true);
         setContactId(contact.contactId);
@@ -160,6 +161,7 @@ function DashBoard() {
         type: "video",
       });
       recorderRef.current.startRecording();
+      setRecordingStartTime((new Date(Date.now())));
     }
   };
 
@@ -182,10 +184,7 @@ function DashBoard() {
     const videoId = uuidv4()
     const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
     uploadingVideo.then((res) => console.log(res))
-    const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], "00-00-00_00:00", "Title", 100)
-    console.log(videoId)
-    console.log(user.username.attributes["custom:connect_id"])
-    console.log("00-00-00_00:00")
+    const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], recordingStartTime.toISOString(), "Title", 100)
     videoEntry.then((res) => console.log(res))
   }  
 
