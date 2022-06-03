@@ -48,6 +48,7 @@ export const onCreateAgent = /* GraphQL */ `
     onCreateAgent {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }
@@ -58,6 +59,7 @@ export const onUpdateAgent = /* GraphQL */ `
     onUpdateAgent {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }
@@ -68,6 +70,7 @@ export const onDeleteAgent = /* GraphQL */ `
     onDeleteAgent {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }

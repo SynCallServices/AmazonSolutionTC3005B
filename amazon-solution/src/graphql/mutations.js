@@ -60,6 +60,7 @@ export const createAgent = /* GraphQL */ `
     createAgent(input: $input, condition: $condition) {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }
@@ -73,6 +74,7 @@ export const updateAgent = /* GraphQL */ `
     updateAgent(input: $input, condition: $condition) {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }
@@ -86,6 +88,7 @@ export const deleteAgent = /* GraphQL */ `
     deleteAgent(input: $input, condition: $condition) {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }

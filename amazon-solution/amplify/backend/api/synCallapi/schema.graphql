@@ -14,13 +14,9 @@ type Video @model {
 type Agent @model {
   agentId: ID! @primaryKey(sortKeyFields: ["folder"])
   folder: String!
-  # role: String # Admin, Agent
+  assignedVideos: [String]
 }
 
-# type Admin @model {
-#   adminId: ID!
-#   agentsAss: [Agent]
-# }
 
 type Voice @model {
   voiceId: ID! @primaryKey(sortKeyFields: ["agentId"])

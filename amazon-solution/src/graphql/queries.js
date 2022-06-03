@@ -51,6 +51,7 @@ export const getAgent = /* GraphQL */ `
     getAgent(agentId: $agentId, folder: $folder) {
       agentId
       folder
+      assignedVideos
       createdAt
       updatedAt
     }
@@ -76,6 +77,7 @@ export const listAgents = /* GraphQL */ `
       items {
         agentId
         folder
+        assignedVideos
         createdAt
         updatedAt
       }
