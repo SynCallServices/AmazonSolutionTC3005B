@@ -48,6 +48,15 @@ export const getAgent = /* GraphQL */ `
       agentId
       folder
       asgnRec {
+        items {
+          videoId
+          agentId
+          expirationDate
+          assignId
+          createdAt
+          updatedAt
+          agentAsgnRecId
+        }
         nextToken
       }
       createdAt
@@ -75,6 +84,9 @@ export const listAgents = /* GraphQL */ `
       items {
         agentId
         folder
+        asgnRec {
+          nextToken
+        }
         createdAt
         updatedAt
       }

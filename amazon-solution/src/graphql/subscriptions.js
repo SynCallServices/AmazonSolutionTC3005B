@@ -43,6 +43,15 @@ export const onCreateAgent = /* GraphQL */ `
       agentId
       folder
       asgnRec {
+        items {
+          videoId
+          agentId
+          expirationDate
+          assignId
+          createdAt
+          updatedAt
+          agentAsgnRecId
+        }
         nextToken
       }
       createdAt
@@ -56,6 +65,15 @@ export const onUpdateAgent = /* GraphQL */ `
       agentId
       folder
       asgnRec {
+        items {
+          videoId
+          agentId
+          expirationDate
+          assignId
+          createdAt
+          updatedAt
+          agentAsgnRecId
+        }
         nextToken
       }
       createdAt
@@ -69,6 +87,15 @@ export const onDeleteAgent = /* GraphQL */ `
       agentId
       folder
       asgnRec {
+        items {
+          videoId
+          agentId
+          expirationDate
+          assignId
+          createdAt
+          updatedAt
+          agentAsgnRecId
+        }
         nextToken
       }
       createdAt

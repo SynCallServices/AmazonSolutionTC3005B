@@ -4,10 +4,10 @@
  * Any changes to this file will be overwritten when running amplify pull. *
  **************************************************************************/
 
-export { default as Videodashb } from "./Videodashb";
-export { default as Popupnewagent } from "./Popupnewagent";
-export { default as Component1 } from "./Component1";
-export { default as SignUp } from "./SignUp";
-export { default as Login } from "./Login";
-export { default as Supervisorview } from "./Supervisorview";
-export { default as Settings } from "./Settings";
+import React from "react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { ViewProps } from "@aws-amplify/ui-react";
+export declare type VideodashbProps = React.PropsWithChildren<Partial<ViewProps> & {
+    overrides?: EscapeHatchProps | undefined | null;
+}>;
+export default function Videodashb(props: VideodashbProps): React.ReactElement;
