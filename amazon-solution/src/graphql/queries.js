@@ -83,12 +83,12 @@ export const listAgents = /* GraphQL */ `
   }
 `;
 export const getAssignedRecordings = /* GraphQL */ `
-  query GetAssignedRecordings($assingId: ID!, $agentId: ID!) {
-    getAssignedRecordings(assingId: $assingId, agentId: $agentId) {
+  query GetAssignedRecordings($assignId: ID!, $agentId: ID!) {
+    getAssignedRecordings(assignId: $assignId, agentId: $agentId) {
       videoId
       agentId
       expirationDate
-      assingId
+      assignId
       createdAt
       updatedAt
       agentAsgnRecId
@@ -97,7 +97,7 @@ export const getAssignedRecordings = /* GraphQL */ `
 `;
 export const listAssignedRecordings = /* GraphQL */ `
   query ListAssignedRecordings(
-    $assingId: ID
+    $assignId: ID
     $agentId: ModelIDKeyConditionInput
     $filter: ModelAssignedRecordingsFilterInput
     $limit: Int
@@ -105,7 +105,7 @@ export const listAssignedRecordings = /* GraphQL */ `
     $sortDirection: ModelSortDirection
   ) {
     listAssignedRecordings(
-      assingId: $assingId
+      assignId: $assignId
       agentId: $agentId
       filter: $filter
       limit: $limit
@@ -116,7 +116,7 @@ export const listAssignedRecordings = /* GraphQL */ `
         videoId
         agentId
         expirationDate
-        assingId
+        assignId
         createdAt
         updatedAt
         agentAsgnRecId

@@ -103,7 +103,7 @@ export const createAssignedRecordings = /* GraphQL */ `
       videoId
       agentId
       expirationDate
-      assingId
+      assignId
       createdAt
       updatedAt
       agentAsgnRecId
@@ -119,7 +119,7 @@ export const updateAssignedRecordings = /* GraphQL */ `
       videoId
       agentId
       expirationDate
-      assingId
+      assignId
       createdAt
       updatedAt
       agentAsgnRecId
@@ -135,7 +135,7 @@ export const deleteAssignedRecordings = /* GraphQL */ `
       videoId
       agentId
       expirationDate
-      assingId
+      assignId
       createdAt
       updatedAt
       agentAsgnRecId

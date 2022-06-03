@@ -19,7 +19,7 @@ type AssignedRecordings @model {
   videoId: ID! 
   agentId: ID!
   expirationDate: String!
-  assingId: ID! @primaryKey(sortKeyFields: ["agentId"])
+  assignId: ID! @primaryKey(sortKeyFields: ["agentId"])
 }
 
 type Voice @model {
