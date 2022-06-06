@@ -17,7 +17,7 @@ export default function Popupnewagent(props) {
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
-      backgroundColor="rgba(103,48,71,1)"
+      backgroundColor="rgba(152,187,214,1)"
       {...rest}
       {...getOverrideProps(overrides, "Popupnewagent")}
     >
@@ -34,7 +34,7 @@ export default function Popupnewagent(props) {
           },
           {
             d: "M0 37C0 16.5655 16.5655 0 37 0L1058 0C1078.43 0 1095 16.5655 1095 37L1095 860C1095 880.435 1078.43 897 1058 897L37 897C16.5654 897 0 880.435 0 860L0 37Z",
-            fill: "rgba(35,20,51,1)",
+            fill: "rgba(0,39,75,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -51,215 +51,9 @@ export default function Popupnewagent(props) {
         left="433px"
         borderRadius="55px"
         padding="0px 0px 0px 0px"
-        backgroundColor="rgba(103,48,71,1)"
+        backgroundColor="rgba(62,104,143,1)"
         {...getOverrideProps(overrides, "Rectangle 927")}
       ></View>
-      <View
-        padding="0px 0px 0px 0px"
-        width="419px"
-        height="52px"
-        position="absolute"
-        top="682px"
-        left="492px"
-        {...getOverrideProps(overrides, "Group 1856")}
-      >
-        <View
-          padding="0px 0px 0px 0px"
-          width="419px"
-          height="52px"
-          position="absolute"
-          top="0px"
-          left="0px"
-          {...getOverrideProps(overrides, "Group 313169")}
-        >
-          <View
-            width="408px"
-            height="58px"
-            position="absolute"
-            top="-3px"
-            left="14px"
-            border="3px SOLID rgba(255,255,255,0.8)"
-            padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
-            {...getOverrideProps(overrides, "Rectangle 413170")}
-          ></View>
-          <Text
-            fontFamily="Roboto"
-            fontSize="24px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="28.125px"
-            textAlign="center"
-            display="flex"
-            direction="column"
-            justifyContent="center"
-            letterSpacing="3.45px"
-            width="282px"
-            height="34px"
-            position="absolute"
-            top="9px"
-            left="0px"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Password"
-            {...getOverrideProps(overrides, "Password13171")}
-          ></Text>
-        </View>
-        <View
-          padding="0px 0px 0px 0px"
-          width="402px"
-          height="52px"
-          position="absolute"
-          top="0px"
-          left="17px"
-          {...getOverrideProps(overrides, "Group 413172")}
-        >
-          <View
-            width="408px"
-            height="58px"
-            position="absolute"
-            top="-3px"
-            left="-3px"
-            border="3px SOLID rgba(255,255,255,0.8)"
-            padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
-            {...getOverrideProps(overrides, "Rectangle 413173")}
-          ></View>
-          <Text
-            fontFamily="Roboto"
-            fontSize="22px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="25.78125px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="center"
-            letterSpacing="3.15px"
-            width="280px"
-            height="38px"
-            position="absolute"
-            top="5px"
-            left="47px"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Confirm Password"
-            {...getOverrideProps(overrides, "Confirm Password")}
-          ></Text>
-        </View>
-        <View
-          width="40.94px"
-          height="37px"
-          position="absolute"
-          top="8px"
-          left="23px"
-          padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "unlock-removebg-preview 113175")}
-        ></View>
-      </View>
-      <View
-        padding="0px 0px 0px 0px"
-        width="419px"
-        height="52px"
-        position="absolute"
-        top="599px"
-        left="494px"
-        {...getOverrideProps(overrides, "Group 1854")}
-      >
-        <View
-          padding="0px 0px 0px 0px"
-          width="419px"
-          height="52px"
-          position="absolute"
-          top="0px"
-          left="0px"
-          {...getOverrideProps(overrides, "Group 313151")}
-        >
-          <View
-            width="408px"
-            height="58px"
-            position="absolute"
-            top="-3px"
-            left="14px"
-            border="3px SOLID rgba(255,255,255,0.8)"
-            padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
-            {...getOverrideProps(overrides, "Rectangle 413152")}
-          ></View>
-          <Text
-            fontFamily="Roboto"
-            fontSize="24px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="28.125px"
-            textAlign="center"
-            display="flex"
-            direction="column"
-            justifyContent="center"
-            letterSpacing="3.45px"
-            width="282px"
-            height="34px"
-            position="absolute"
-            top="9px"
-            left="0px"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Password"
-            {...getOverrideProps(overrides, "Password13153")}
-          ></Text>
-        </View>
-        <View
-          padding="0px 0px 0px 0px"
-          width="402px"
-          height="52px"
-          position="absolute"
-          top="0px"
-          left="17px"
-          {...getOverrideProps(overrides, "Group 413154")}
-        >
-          <View
-            width="408px"
-            height="58px"
-            position="absolute"
-            top="-3px"
-            left="-3px"
-            border="3px SOLID rgba(255,255,255,0.8)"
-            padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
-            {...getOverrideProps(overrides, "Rectangle 413155")}
-          ></View>
-          <Text
-            fontFamily="Roboto"
-            fontSize="22px"
-            fontWeight="400"
-            color="rgba(255,255,255,1)"
-            lineHeight="25.78125px"
-            textAlign="left"
-            display="flex"
-            direction="column"
-            justifyContent="center"
-            letterSpacing="3.15px"
-            width="165px"
-            height="34px"
-            position="absolute"
-            top="9px"
-            left="52px"
-            padding="0px 0px 0px 0px"
-            whiteSpace="pre-wrap"
-            children="Password"
-            {...getOverrideProps(overrides, "Password13156")}
-          ></Text>
-        </View>
-        <View
-          width="40.94px"
-          height="37px"
-          position="absolute"
-          top="8px"
-          left="23px"
-          padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "unlock-removebg-preview 113157")}
-        ></View>
-      </View>
       <Text
         fontFamily="Inter"
         fontSize="30px"
@@ -324,8 +118,8 @@ export default function Popupnewagent(props) {
         width="402px"
         height="52px"
         position="absolute"
-        top="767px"
-        left="503px"
+        top="676px"
+        left="511px"
         {...getOverrideProps(overrides, "Group 7")}
       >
         <View
@@ -336,7 +130,7 @@ export default function Popupnewagent(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(202,90,86,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 41316")}
         ></View>
         <Text
@@ -430,7 +224,7 @@ export default function Popupnewagent(props) {
             left="-3px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 413119")}
           ></View>
           <Text
@@ -533,7 +327,7 @@ export default function Popupnewagent(props) {
             left="-3px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 413137")}
           ></View>
           <Text
@@ -636,7 +430,7 @@ export default function Popupnewagent(props) {
             left="-3px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 413146")}
           ></View>
           <Text
@@ -739,7 +533,7 @@ export default function Popupnewagent(props) {
             left="-3px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(35,20,51,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 413164")}
           ></View>
           <Text

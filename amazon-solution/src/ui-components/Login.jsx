@@ -17,7 +17,7 @@ export default function Login(props) {
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
-      backgroundColor="rgba(103,48,71,1)"
+      backgroundColor="rgba(152,187,214,1)"
       {...rest}
       {...getOverrideProps(overrides, "Login")}
     >
@@ -31,7 +31,7 @@ export default function Login(props) {
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
         borderRadius="16px"
         padding="0px 0px 0px 0px"
-        backgroundColor="rgba(35,20,51,1)"
+        backgroundColor="rgba(0,39,75,1)"
         {...getOverrideProps(overrides, "Rectangle 1")}
       ></View>
       <Icon
@@ -47,7 +47,7 @@ export default function Login(props) {
           },
           {
             d: "M0 15C0 6.71574 6.71573 0 15 0L479 0C487.284 0 494 6.71573 494 15L494 630C494 638.284 487.284 645 479 645L15 645C6.71574 645 0 638.284 0 630L0 15Z",
-            fill: "rgba(140,63,81,1)",
+            fill: "rgba(62,104,143,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -602,7 +602,7 @@ export default function Login(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(202,90,86,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 417222")}
         ></View>
         <View
@@ -613,7 +613,7 @@ export default function Login(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(202,90,86,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 617223")}
         ></View>
         <Text
@@ -656,7 +656,7 @@ export default function Login(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(202,90,86,1)"
+          backgroundColor="rgba(0,39,75,1)"
           {...getOverrideProps(overrides, "Rectangle 417226")}
         ></View>
         <View
@@ -667,7 +667,7 @@ export default function Login(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(103,48,71,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 617227")}
         ></View>
         <Text
@@ -706,7 +706,7 @@ export default function Login(props) {
           },
           {
             d: "M0 0L402 0L402 52L0 52L0 0Z",
-            fill: "rgba(202,90,86,1)",
+            fill: "rgba(0,39,75,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -728,7 +728,7 @@ export default function Login(props) {
           },
           {
             d: "M0 0L402 0L402 52L0 52L0 0Z",
-            fill: "rgba(202,90,86,1)",
+            fill: "rgba(0,39,75,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -763,7 +763,7 @@ export default function Login(props) {
             left="14px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(202,90,86,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 417233")}
           ></View>
           <Text
@@ -805,7 +805,7 @@ export default function Login(props) {
             left="-3px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(202,90,86,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 417236")}
           ></View>
           <Text

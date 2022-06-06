@@ -11,12 +11,10 @@ import { UserContext } from '../../App.js'
 import ConnectLogIn from './components/ConnectLogIn.js'
 
 const amazonConnect = new AWS.Connect();
-const docClient = new AWS.DynamoDB.DocumentClient();
 
 function DashBoard() {
 
   const [isRecording, setIsRecording] = React.useState(false)
-  const [containerDiv, setContainerDiv] = React.useState(null);
   const [callConnected, setCallConnected] = React.useState(false);
   const [contactId, setContactId] = React.useState('');
 

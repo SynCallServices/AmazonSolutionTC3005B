@@ -12,7 +12,7 @@ function ShowVideos() {
       console.log(value)
       setVideoCards(value.data.map(vid => (
         <ShowVideoCard 
-          videoTitle = {vid.title}
+          videoTitle = {"Test Video"}
           videoPath = {vid.path}
           vidDuration = "2.00"
           vidRating = "4.9"
