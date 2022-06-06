@@ -9,6 +9,7 @@ import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
+import CreateUser from './views/Dashboard/components/CreateUser.js'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
 
 // Route restrictions

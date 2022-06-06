@@ -389,6 +389,68 @@ body {
   background: #3E688F;
 }
 
+.create-title {
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+  margin-top: 18px;
+
+}
+
+.create-card {
+  display: flex;
+  flex-direction: column;
+  background: #00274b;
+  padding: 60px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50%;  /* position the top  edge of the element at the middle of the parent */
+  left: 50%; /* position the left edge of the element at the middle of the parent */
+
+  transform: translate(-50%, -50%);
+
+  width: 75%;
+}
+
+.create-input {
+  margin: 20px 0px;
+  color: white;
+  border: 1px solid white; 
+  background: #4078A3;
+  padding: 10px 12px;
+}
+
+.create-input::placeholder {
+  color: white;
+}
+
+.create-button {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-style: bold;
+  font-weight: 700;
+  border: 0;
+  border-radius: 12px;
+  color: white;
+  background: #00ABBA;
+  padding: 10px;
+  width: 500px;
+  margin: 35px auto;
+  cursor: pointer;
+  letter-spacing: 4px;
+  margin-bottom: 40px; 
+}
+
+.create-button:hover {
+  background-color: #3e688F;
+}
+
+.create-button:active {
+  background-color: #3E688F;
+  transform: translateY(4px);
+}
+
 
 
 
