@@ -17,7 +17,7 @@ export default function Settings(props) {
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
-      backgroundColor="rgba(103,48,71,1)"
+      backgroundColor="rgba(152,187,214,1)"
       {...rest}
       {...getOverrideProps(overrides, "Settings")}
     >
@@ -30,7 +30,7 @@ export default function Settings(props) {
         border="1px SOLID rgba(35,20,51,1)"
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
         padding="0px 0px 0px 0px"
-        backgroundColor="rgba(35,20,51,1)"
+        backgroundColor="rgba(0,39,75,1)"
         {...getOverrideProps(overrides, "Rectangle 1")}
       ></View>
       <Image
@@ -156,7 +156,7 @@ export default function Settings(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
+            backgroundColor="rgba(64,120,163,1)"
             {...getOverrideProps(overrides, "Rectangle 92416841")}
           ></View>
           <View
@@ -227,7 +227,7 @@ export default function Settings(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(103,48,71,1)"
+            backgroundColor="rgba(64,120,163,1)"
             {...getOverrideProps(overrides, "Rectangle 92416853")}
           ></View>
           <View
@@ -298,7 +298,7 @@ export default function Settings(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
+            backgroundColor="rgba(64,120,163,1)"
             {...getOverrideProps(overrides, "Rectangle 92416865")}
           ></View>
           <View
@@ -349,7 +349,7 @@ export default function Settings(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
+            backgroundColor="rgba(64,120,163,1)"
             {...getOverrideProps(overrides, "Rectangle 92416877")}
           ></View>
           <View
@@ -420,7 +420,7 @@ export default function Settings(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
+            backgroundColor="rgba(64,120,163,1)"
             {...getOverrideProps(overrides, "Rectangle 92416889")}
           ></View>
           <View

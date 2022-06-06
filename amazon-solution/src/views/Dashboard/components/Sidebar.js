@@ -63,7 +63,7 @@ function Sidebar() {
     <nav className={sidebarActive ? 'sidebar' : 'sidebar active'}>
       <div className='logo-content'>
         <div className='logo'>
-          <img src={require('../../../assets/Syncall_Logo.png')} className='logo-icon'/>
+          <img src={require('../../../assets/Syncall_logo.png')} className='logo-icon'/>
           <div className='logo-name'>SynCall</div>
         </div>
         <div className='menu-btn' onClick={sidebarUtil}>

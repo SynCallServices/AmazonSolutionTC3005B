@@ -17,7 +17,7 @@ export default function Supervisorview(props) {
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
-      backgroundColor="rgba(103,48,71,1)"
+      backgroundColor="rgba(0,39,75,1)"
       {...rest}
       {...getOverrideProps(overrides, "Supervisorview")}
     >
@@ -61,7 +61,7 @@ export default function Supervisorview(props) {
         position="absolute"
         top="0px"
         left="0px"
-        {...getOverrideProps(overrides, "Group 1852125131")}
+        {...getOverrideProps(overrides, "Group 1852")}
       >
         <View
           padding="0px 0px 0px 0px"
@@ -181,7 +181,7 @@ export default function Supervisorview(props) {
                 left="0px"
                 overflow="hidden"
                 padding="0px 0px 0px 0px"
-                backgroundColor="rgba(103,48,71,1)"
+                backgroundColor="rgba(0,39,75,1)"
                 {...getOverrideProps(overrides, "Supervisor view130293")}
               >
                 <Icon
@@ -197,7 +197,7 @@ export default function Supervisorview(props) {
                     },
                     {
                       d: "M0 37C0 16.5655 16.5655 0 37 0L1296 0C1316.43 0 1333 16.5655 1333 37L1333 884C1333 904.435 1316.43 921 1296 921L37 921C16.5655 921 0 904.435 0 884L0 37Z",
-                      fill: "rgba(35,20,51,1)",
+                      fill: "rgba(152,187,214,1)",
                       fillRule: "nonzero",
                     },
                   ]}
@@ -206,384 +206,22 @@ export default function Supervisorview(props) {
                   left="53px"
                   {...getOverrideProps(overrides, "Rectangle 1130294")}
                 ></Icon>
-                <View
+                <Icon
                   width="455px"
                   height="675px"
+                  viewBox={{ minX: 0, minY: 0, width: 455, height: 675 }}
+                  paths={[
+                    {
+                      d: "M0 9.99999C0 4.47714 4.47715 0 10 0L445 0C450.523 0 455 4.47715 455 10L455 665C455 670.523 450.523 675 445 675L10 675C4.47715 675 0 670.523 0 665L0 9.99999Z",
+                      fill: "rgba(0,39,75,1)",
+                      fillRule: "nonzero",
+                    },
+                  ]}
                   position="absolute"
                   top="164px"
                   left="769px"
-                  borderRadius="10px"
-                  padding="0px 0px 0px 0px"
-                  backgroundColor="rgba(103,48,71,1)"
                   {...getOverrideProps(overrides, "Rectangle 927130295")}
-                ></View>
-                <View
-                  padding="0px 0px 0px 0px"
-                  width="347px"
-                  height="287px"
-                  position="absolute"
-                  top="294px"
-                  left="812px"
-                  {...getOverrideProps(overrides, "Group 1852130296")}
-                >
-                  <View
-                    padding="0px 0px 0px 0px"
-                    width="347px"
-                    height="82px"
-                    position="absolute"
-                    top="0px"
-                    left="0px"
-                    {...getOverrideProps(overrides, "Group 1671130297")}
-                  >
-                    <View
-                      width="347px"
-                      height="82px"
-                      position="absolute"
-                      top="0px"
-                      left="0px"
-                      borderRadius="8px"
-                      padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
-                      {...getOverrideProps(overrides, "Rectangle 924130298")}
-                    ></View>
-                    <View
-                      padding="0px 0px 0px 0px"
-                      width="305px"
-                      height="38px"
-                      position="absolute"
-                      top="22px"
-                      left="20px"
-                      {...getOverrideProps(overrides, "Group 1670130299")}
-                    >
-                      <Text
-                        fontFamily="Inter"
-                        fontSize="14px"
-                        fontWeight="500"
-                        color="rgba(255,255,255,1)"
-                        lineHeight="16.40625px"
-                        textAlign="left"
-                        display="flex"
-                        direction="column"
-                        justifyContent="flex-start"
-                        position="absolute"
-                        top="1px"
-                        left="58px"
-                        padding="0px 0px 0px 0px"
-                        whiteSpace="pre-wrap"
-                        children="Harry Joe"
-                        {...getOverrideProps(overrides, "Harry Joe130300")}
-                      ></Text>
-                      <View
-                        padding="0px 0px 0px 0px"
-                        width="165px"
-                        height="38px"
-                        position="absolute"
-                        top="0px"
-                        left="0px"
-                        {...getOverrideProps(overrides, "Group 1847130301")}
-                      >
-                        <Image
-                          width="38px"
-                          height="38px"
-                          position="absolute"
-                          top="0px"
-                          left="0px"
-                          borderRadius="5px"
-                          padding="0px 0px 0px 0px"
-                          {...getOverrideProps(
-                            overrides,
-                            "Rectangle 923130302"
-                          )}
-                        ></Image>
-                        <Text
-                          fontFamily="Inter"
-                          fontSize="10px"
-                          fontWeight="500"
-                          color="rgba(255,255,255,1)"
-                          lineHeight="11.71875px"
-                          textAlign="left"
-                          display="flex"
-                          direction="column"
-                          justifyContent="flex-start"
-                          position="absolute"
-                          top="22px"
-                          left="58px"
-                          padding="0px 0px 0px 0px"
-                          whiteSpace="pre-wrap"
-                          children="24 Videos  I  123 Likes"
-                          {...getOverrideProps(
-                            overrides,
-                            "24 Videos I 123 Likes130303"
-                          )}
-                        ></Text>
-                      </View>
-                      <View
-                        padding="0px 0px 0px 0px"
-                        width="32px"
-                        height="32px"
-                        position="absolute"
-                        top="3px"
-                        left="273px"
-                        {...getOverrideProps(overrides, "Group 1669130304")}
-                      >
-                        <Icon
-                          width="32px"
-                          height="32px"
-                          viewBox={{ minX: 0, minY: 0, width: 32, height: 32 }}
-                          paths={[
-                            {
-                              d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                              fill: "rgba(202,90,86,1)",
-                              fillRule: "nonzero",
-                            },
-                          ]}
-                          position="absolute"
-                          top="0px"
-                          left="0px"
-                          {...getOverrideProps(overrides, "Ellipse 435130305")}
-                        ></Icon>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    padding="0px 0px 0px 0px"
-                    width="347px"
-                    height="82px"
-                    position="absolute"
-                    top="104px"
-                    left="0px"
-                    {...getOverrideProps(overrides, "Group 1847130306")}
-                  >
-                    <View
-                      width="347px"
-                      height="82px"
-                      position="absolute"
-                      top="0px"
-                      left="0px"
-                      borderRadius="8px"
-                      padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
-                      {...getOverrideProps(overrides, "Rectangle 924130307")}
-                    ></View>
-                    <View
-                      padding="0px 0px 0px 0px"
-                      width="305px"
-                      height="38px"
-                      position="absolute"
-                      top="22px"
-                      left="20px"
-                      {...getOverrideProps(overrides, "Group 1670130308")}
-                    >
-                      <Text
-                        fontFamily="Inter"
-                        fontSize="14px"
-                        fontWeight="500"
-                        color="rgba(255,255,255,1)"
-                        lineHeight="16.40625px"
-                        textAlign="left"
-                        display="flex"
-                        direction="column"
-                        justifyContent="flex-start"
-                        position="absolute"
-                        top="1px"
-                        left="58px"
-                        padding="0px 0px 0px 0px"
-                        whiteSpace="pre-wrap"
-                        children="Smith Jhon"
-                        {...getOverrideProps(overrides, "Smith Jhon130309")}
-                      ></Text>
-                      <View
-                        padding="0px 0px 0px 0px"
-                        width="165px"
-                        height="38px"
-                        position="absolute"
-                        top="0px"
-                        left="0px"
-                        {...getOverrideProps(overrides, "Group 1847130310")}
-                      >
-                        <Image
-                          width="38px"
-                          height="38px"
-                          position="absolute"
-                          top="0px"
-                          left="0px"
-                          borderRadius="5px"
-                          padding="0px 0px 0px 0px"
-                          {...getOverrideProps(
-                            overrides,
-                            "Rectangle 923130311"
-                          )}
-                        ></Image>
-                        <Text
-                          fontFamily="Inter"
-                          fontSize="10px"
-                          fontWeight="500"
-                          color="rgba(255,255,255,1)"
-                          lineHeight="11.71875px"
-                          textAlign="left"
-                          display="flex"
-                          direction="column"
-                          justifyContent="flex-start"
-                          position="absolute"
-                          top="22px"
-                          left="58px"
-                          padding="0px 0px 0px 0px"
-                          whiteSpace="pre-wrap"
-                          children="24 Videos  I  123 Likes"
-                          {...getOverrideProps(
-                            overrides,
-                            "24 Videos I 123 Likes130312"
-                          )}
-                        ></Text>
-                      </View>
-                      <View
-                        padding="0px 0px 0px 0px"
-                        width="32px"
-                        height="32px"
-                        position="absolute"
-                        top="3px"
-                        left="273px"
-                        {...getOverrideProps(overrides, "Group 1669130313")}
-                      >
-                        <Icon
-                          width="32px"
-                          height="32px"
-                          viewBox={{ minX: 0, minY: 0, width: 32, height: 32 }}
-                          paths={[
-                            {
-                              d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                              fill: "rgba(202,90,86,1)",
-                              fillRule: "nonzero",
-                            },
-                          ]}
-                          position="absolute"
-                          top="0px"
-                          left="0px"
-                          {...getOverrideProps(overrides, "Ellipse 435130314")}
-                        ></Icon>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    padding="0px 0px 0px 0px"
-                    width="347px"
-                    height="82px"
-                    position="absolute"
-                    top="205px"
-                    left="0px"
-                    {...getOverrideProps(overrides, "Group 1848130315")}
-                  >
-                    <View
-                      width="347px"
-                      height="82px"
-                      position="absolute"
-                      top="0px"
-                      left="0px"
-                      borderRadius="8px"
-                      padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
-                      {...getOverrideProps(overrides, "Rectangle 924130316")}
-                    ></View>
-                    <View
-                      padding="0px 0px 0px 0px"
-                      width="305px"
-                      height="38px"
-                      position="absolute"
-                      top="22px"
-                      left="20px"
-                      {...getOverrideProps(overrides, "Group 1670130317")}
-                    >
-                      <Text
-                        fontFamily="Inter"
-                        fontSize="14px"
-                        fontWeight="500"
-                        color="rgba(255,255,255,1)"
-                        lineHeight="16.40625px"
-                        textAlign="left"
-                        display="flex"
-                        direction="column"
-                        justifyContent="flex-start"
-                        position="absolute"
-                        top="1px"
-                        left="58px"
-                        padding="0px 0px 0px 0px"
-                        whiteSpace="pre-wrap"
-                        children="Mark Joe"
-                        {...getOverrideProps(overrides, "Mark Joe130318")}
-                      ></Text>
-                      <View
-                        padding="0px 0px 0px 0px"
-                        width="165px"
-                        height="38px"
-                        position="absolute"
-                        top="0px"
-                        left="0px"
-                        {...getOverrideProps(overrides, "Group 1847130319")}
-                      >
-                        <Image
-                          width="38px"
-                          height="38px"
-                          position="absolute"
-                          top="0px"
-                          left="0px"
-                          borderRadius="5px"
-                          padding="0px 0px 0px 0px"
-                          {...getOverrideProps(
-                            overrides,
-                            "Rectangle 923130320"
-                          )}
-                        ></Image>
-                        <Text
-                          fontFamily="Inter"
-                          fontSize="10px"
-                          fontWeight="500"
-                          color="rgba(255,255,255,1)"
-                          lineHeight="11.71875px"
-                          textAlign="left"
-                          display="flex"
-                          direction="column"
-                          justifyContent="flex-start"
-                          position="absolute"
-                          top="22px"
-                          left="58px"
-                          padding="0px 0px 0px 0px"
-                          whiteSpace="pre-wrap"
-                          children="24 Videos  I  123 Likes"
-                          {...getOverrideProps(
-                            overrides,
-                            "24 Videos I 123 Likes130321"
-                          )}
-                        ></Text>
-                      </View>
-                      <View
-                        padding="0px 0px 0px 0px"
-                        width="32px"
-                        height="32px"
-                        position="absolute"
-                        top="3px"
-                        left="273px"
-                        {...getOverrideProps(overrides, "Group 1669130322")}
-                      >
-                        <Icon
-                          width="32px"
-                          height="32px"
-                          viewBox={{ minX: 0, minY: 0, width: 32, height: 32 }}
-                          paths={[
-                            {
-                              d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                              fill: "rgba(202,90,86,1)",
-                              fillRule: "nonzero",
-                            },
-                          ]}
-                          position="absolute"
-                          top="0px"
-                          left="0px"
-                          {...getOverrideProps(overrides, "Ellipse 435130323")}
-                        ></Icon>
-                      </View>
-                    </View>
-                  </View>
-                </View>
+                ></Icon>
                 <Text
                   fontFamily="Inter"
                   fontSize="30px"
@@ -603,7 +241,6 @@ export default function Supervisorview(props) {
                   children="Assigned Agents"
                   {...getOverrideProps(overrides, "Assigned Agents130324")}
                 ></Text>
-                <View {...getOverrideProps(overrides, "Slice 1")}></View>
                 <Text
                   fontFamily="Inter"
                   fontSize="30px"
@@ -649,17 +286,6 @@ export default function Supervisorview(props) {
                   )}
                 ></Image>
                 <View
-                  width="455px"
-                  height="675px"
-                  position="absolute"
-                  top="164px"
-                  left="187px"
-                  borderRadius="10px"
-                  padding="0px 0px 0px 0px"
-                  backgroundColor="rgba(103,48,71,1)"
-                  {...getOverrideProps(overrides, "Rectangle 926130329")}
-                ></View>
-                <View
                   padding="0px 0px 0px 0px"
                   width="347px"
                   height="527px"
@@ -703,7 +329,7 @@ export default function Supervisorview(props) {
                       left="0px"
                       borderRadius="8px"
                       padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
+                      backgroundColor="rgba(152,187,214,1)"
                       {...getOverrideProps(overrides, "Rectangle 924130333")}
                     ></View>
                     <View
@@ -878,7 +504,7 @@ export default function Supervisorview(props) {
                       left="0px"
                       borderRadius="8px"
                       padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
+                      backgroundColor="rgba(152,187,214,1)"
                       {...getOverrideProps(overrides, "Rectangle 924130345")}
                     ></View>
                     <View
@@ -906,7 +532,7 @@ export default function Supervisorview(props) {
                         padding="0px 0px 0px 0px"
                         whiteSpace="pre-wrap"
                         children="Smith Jhon"
-                        {...getOverrideProps(overrides, "Smith Jhon130347")}
+                        {...getOverrideProps(overrides, "Smith Jhon")}
                       ></Text>
                       <View
                         padding="0px 0px 0px 0px"
@@ -1043,7 +669,7 @@ export default function Supervisorview(props) {
                     position="absolute"
                     top="243px"
                     left="0px"
-                    {...getOverrideProps(overrides, "Group 1848130356")}
+                    {...getOverrideProps(overrides, "Group 1848")}
                   >
                     <View
                       width="347px"
@@ -1053,7 +679,7 @@ export default function Supervisorview(props) {
                       left="0px"
                       borderRadius="8px"
                       padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
+                      backgroundColor="rgba(152,187,214,1)"
                       {...getOverrideProps(overrides, "Rectangle 924130357")}
                     ></View>
                     <View
@@ -1081,7 +707,7 @@ export default function Supervisorview(props) {
                         padding="0px 0px 0px 0px"
                         whiteSpace="pre-wrap"
                         children="Mark Joe"
-                        {...getOverrideProps(overrides, "Mark Joe130359")}
+                        {...getOverrideProps(overrides, "Mark Joe")}
                       ></Text>
                       <View
                         padding="0px 0px 0px 0px"
@@ -1218,7 +844,7 @@ export default function Supervisorview(props) {
                     position="absolute"
                     top="344px"
                     left="0px"
-                    {...getOverrideProps(overrides, "Group 1849130368")}
+                    {...getOverrideProps(overrides, "Group 1849")}
                   >
                     <View
                       width="347px"
@@ -1228,7 +854,7 @@ export default function Supervisorview(props) {
                       left="0px"
                       borderRadius="8px"
                       padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
+                      backgroundColor="rgba(152,187,214,1)"
                       {...getOverrideProps(overrides, "Rectangle 924130369")}
                     ></View>
                     <View
@@ -1256,10 +882,7 @@ export default function Supervisorview(props) {
                         padding="0px 0px 0px 0px"
                         whiteSpace="pre-wrap"
                         children="Mark petter Joe"
-                        {...getOverrideProps(
-                          overrides,
-                          "Mark petter Joe130371"
-                        )}
+                        {...getOverrideProps(overrides, "Mark petter Joe")}
                       ></Text>
                       <View
                         padding="0px 0px 0px 0px"
@@ -1396,7 +1019,7 @@ export default function Supervisorview(props) {
                     position="absolute"
                     top="445px"
                     left="0px"
-                    {...getOverrideProps(overrides, "Group 1850130380")}
+                    {...getOverrideProps(overrides, "Group 1850")}
                   >
                     <View
                       width="347px"
@@ -1406,7 +1029,7 @@ export default function Supervisorview(props) {
                       left="0px"
                       borderRadius="8px"
                       padding="0px 0px 0px 0px"
-                      backgroundColor="rgba(140,63,81,1)"
+                      backgroundColor="rgba(152,187,214,1)"
                       {...getOverrideProps(overrides, "Rectangle 924130381")}
                     ></View>
                     <View
@@ -1434,10 +1057,7 @@ export default function Supervisorview(props) {
                         padding="0px 0px 0px 0px"
                         whiteSpace="pre-wrap"
                         children="Willimas petter "
-                        {...getOverrideProps(
-                          overrides,
-                          "Willimas petter130383"
-                        )}
+                        {...getOverrideProps(overrides, "Willimas petter")}
                       ></Text>
                       <View
                         padding="0px 0px 0px 0px"
@@ -1633,232 +1253,26 @@ export default function Supervisorview(props) {
             </View>
           </View>
         </View>
-        <View
-          padding="0px 0px 0px 0px"
-          width="347px"
-          height="82px"
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="500"
+          color="rgba(255,255,255,1)"
+          lineHeight="23.4375px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          width="36px"
+          height="20px"
           position="absolute"
-          top="398px"
-          left="812px"
-          {...getOverrideProps(overrides, "Group 1847125145")}
-        >
-          <View
-            width="347px"
-            height="82px"
-            position="absolute"
-            top="0px"
-            left="0px"
-            borderRadius="8px"
-            padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
-            {...getOverrideProps(overrides, "Rectangle 924125146")}
-          ></View>
-          <View
-            padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
-            position="absolute"
-            top="22px"
-            left="20px"
-            {...getOverrideProps(overrides, "Group 1670125147")}
-          >
-            <Text
-              fontFamily="Inter"
-              fontSize="14px"
-              fontWeight="500"
-              color="rgba(255,255,255,1)"
-              lineHeight="16.40625px"
-              textAlign="left"
-              display="flex"
-              direction="column"
-              justifyContent="flex-start"
-              position="absolute"
-              top="1px"
-              left="58px"
-              padding="0px 0px 0px 0px"
-              whiteSpace="pre-wrap"
-              children="Smith Jhon"
-              {...getOverrideProps(overrides, "Smith Jhon125148")}
-            ></Text>
-            <View
-              padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
-              position="absolute"
-              top="0px"
-              left="0px"
-              {...getOverrideProps(overrides, "Group 1847125149")}
-            >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 923125150")}
-              ></Image>
-              <Text
-                fontFamily="Inter"
-                fontSize="10px"
-                fontWeight="500"
-                color="rgba(255,255,255,1)"
-                lineHeight="11.71875px"
-                textAlign="left"
-                display="flex"
-                direction="column"
-                justifyContent="flex-start"
-                position="absolute"
-                top="22px"
-                left="58px"
-                padding="0px 0px 0px 0px"
-                whiteSpace="pre-wrap"
-                children="24 Videos  I  123 Likes"
-                {...getOverrideProps(overrides, "24 Videos I 123 Likes125151")}
-              ></Text>
-            </View>
-            <View
-              padding="0px 0px 0px 0px"
-              width="32px"
-              height="32px"
-              position="absolute"
-              top="3px"
-              left="273px"
-              {...getOverrideProps(overrides, "Group 1669125152")}
-            >
-              <Icon
-                width="32px"
-                height="32px"
-                viewBox={{ minX: 0, minY: 0, width: 32, height: 32 }}
-                paths={[
-                  {
-                    d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(202,90,86,1)",
-                    fillRule: "nonzero",
-                  },
-                ]}
-                position="absolute"
-                top="0px"
-                left="0px"
-                {...getOverrideProps(overrides, "Ellipse 435125153")}
-              ></Icon>
-            </View>
-          </View>
-        </View>
-        <View
+          top="28px"
+          left="302px"
           padding="0px 0px 0px 0px"
-          width="347px"
-          height="82px"
-          position="absolute"
-          top="499px"
-          left="812px"
-          {...getOverrideProps(overrides, "Group 1848125157")}
-        >
-          <View
-            width="347px"
-            height="82px"
-            position="absolute"
-            top="0px"
-            left="0px"
-            borderRadius="8px"
-            padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
-            {...getOverrideProps(overrides, "Rectangle 924125158")}
-          ></View>
-          <View
-            padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
-            position="absolute"
-            top="22px"
-            left="20px"
-            {...getOverrideProps(overrides, "Group 1670125159")}
-          >
-            <Text
-              fontFamily="Inter"
-              fontSize="14px"
-              fontWeight="500"
-              color="rgba(255,255,255,1)"
-              lineHeight="16.40625px"
-              textAlign="left"
-              display="flex"
-              direction="column"
-              justifyContent="flex-start"
-              position="absolute"
-              top="1px"
-              left="58px"
-              padding="0px 0px 0px 0px"
-              whiteSpace="pre-wrap"
-              children="Mark Joe"
-              {...getOverrideProps(overrides, "Mark Joe125160")}
-            ></Text>
-            <View
-              padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
-              position="absolute"
-              top="0px"
-              left="0px"
-              {...getOverrideProps(overrides, "Group 1847125161")}
-            >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 923125162")}
-              ></Image>
-              <Text
-                fontFamily="Inter"
-                fontSize="10px"
-                fontWeight="500"
-                color="rgba(255,255,255,1)"
-                lineHeight="11.71875px"
-                textAlign="left"
-                display="flex"
-                direction="column"
-                justifyContent="flex-start"
-                position="absolute"
-                top="22px"
-                left="58px"
-                padding="0px 0px 0px 0px"
-                whiteSpace="pre-wrap"
-                children="24 Videos  I  123 Likes"
-                {...getOverrideProps(overrides, "24 Videos I 123 Likes125163")}
-              ></Text>
-            </View>
-            <View
-              padding="0px 0px 0px 0px"
-              width="32px"
-              height="32px"
-              position="absolute"
-              top="3px"
-              left="273px"
-              {...getOverrideProps(overrides, "Group 1669125164")}
-            >
-              <Icon
-                width="32px"
-                height="32px"
-                viewBox={{ minX: 0, minY: 0, width: 32, height: 32 }}
-                paths={[
-                  {
-                    d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(202,90,86,1)",
-                    fillRule: "nonzero",
-                  },
-                ]}
-                position="absolute"
-                top="0px"
-                left="0px"
-                {...getOverrideProps(overrides, "Ellipse 435125165")}
-              ></Icon>
-            </View>
-          </View>
-        </View>
+          whiteSpace="pre-wrap"
+          children="+"
+          {...getOverrideProps(overrides, "+21449")}
+        ></Text>
       </View>
       <Text
         fontFamily="Inter"
@@ -1919,14 +1333,14 @@ export default function Supervisorview(props) {
       ></Image>
       <View
         width="455px"
-        height="675px"
+        height="687px"
         position="absolute"
         top="164px"
-        left="187px"
+        left="183px"
         borderRadius="10px"
         padding="0px 0px 0px 0px"
-        backgroundColor="rgba(103,48,71,1)"
-        {...getOverrideProps(overrides, "Rectangle 926125126")}
+        backgroundColor="rgba(0,39,75,1)"
+        {...getOverrideProps(overrides, "Rectangle 926")}
       ></View>
       <View
         padding="0px 0px 0px 0px"
@@ -1945,15 +1359,15 @@ export default function Supervisorview(props) {
           left="0px"
           borderRadius="8px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(140,63,81,1)"
+          backgroundColor="rgba(46,71,90,1)"
           {...getOverrideProps(overrides, "Rectangle 924130404")}
         ></View>
         <View
           padding="0px 0px 0px 0px"
-          width="247.1px"
-          height="20px"
+          width="191.2px"
+          height="14.26px"
           position="absolute"
-          top="10px"
+          top="14.26px"
           left="77.9px"
           {...getOverrideProps(overrides, "Group 1670130405")}
         >
@@ -1970,65 +1384,19 @@ export default function Supervisorview(props) {
             width="191.2px"
             height="14.26px"
             position="absolute"
-            top="4.26px"
+            top="0px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children="Click here to add agent"
             {...getOverrideProps(overrides, "Click here to add agent")}
           ></Text>
-          <View
-            padding="0px 0px 0px 0px"
-            width="25px"
-            height="20px"
-            position="absolute"
-            top="0px"
-            left="222.1px"
-            {...getOverrideProps(overrides, "Group 1669130410")}
-          >
-            <Icon
-              width="25px"
-              height="20px"
-              viewBox={{ minX: 0, minY: 0, width: 25, height: 20 }}
-              paths={[
-                {
-                  d: "M25 10C25 15.5228 19.4036 20 12.5 20C5.59644 20 0 15.5228 0 10C0 4.47715 5.59644 0 12.5 0C19.4036 0 25 4.47715 25 10Z",
-                  fill: "rgba(202,90,86,1)",
-                  fillRule: "nonzero",
-                },
-              ]}
-              position="absolute"
-              top="0px"
-              left="0px"
-              {...getOverrideProps(overrides, "Ellipse 435130411")}
-            ></Icon>
-          </View>
         </View>
-        <Text
-          fontFamily="Inter"
-          fontSize="14px"
-          fontWeight="500"
-          color="rgba(255,255,255,1)"
-          lineHeight="16.40625px"
-          textAlign="left"
-          display="flex"
-          direction="column"
-          justifyContent="flex-start"
-          width="27px"
-          height="12px"
-          position="absolute"
-          top="10px"
-          left="308px"
-          padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="+"
-          {...getOverrideProps(overrides, "+130416")}
-        ></Text>
       </View>
       <View
         padding="0px 0px 0px 0px"
         width="347px"
-        height="489px"
+        height="82px"
         position="absolute"
         top="293px"
         left="236px"
@@ -2051,16 +1419,16 @@ export default function Supervisorview(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
+            backgroundColor="rgba(64,120,163,1)"
             {...getOverrideProps(overrides, "Rectangle 92412567")}
           ></View>
           <View
             padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
+            width="247px"
+            height="34px"
             position="absolute"
-            top="22px"
-            left="20px"
+            top="23px"
+            left="78px"
             {...getOverrideProps(overrides, "Group 167012568")}
           >
             <Text
@@ -2074,8 +1442,8 @@ export default function Supervisorview(props) {
               direction="column"
               justifyContent="flex-start"
               position="absolute"
-              top="1px"
-              left="58px"
+              top="0px"
+              left="0px"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
               children="Harry Joe"
@@ -2083,23 +1451,13 @@ export default function Supervisorview(props) {
             ></Text>
             <View
               padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
+              width="107px"
+              height="12px"
               position="absolute"
-              top="0px"
+              top="21px"
               left="0px"
               {...getOverrideProps(overrides, "Group 184712570")}
             >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 92312571")}
-              ></Image>
               <Text
                 fontFamily="Inter"
                 fontSize="10px"
@@ -2111,8 +1469,8 @@ export default function Supervisorview(props) {
                 direction="column"
                 justifyContent="flex-start"
                 position="absolute"
-                top="22px"
-                left="58px"
+                top="0px"
+                left="0px"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
                 children="24 Videos  I  123 Likes"
@@ -2124,8 +1482,8 @@ export default function Supervisorview(props) {
               width="32px"
               height="32px"
               position="absolute"
-              top="3px"
-              left="273px"
+              top="2px"
+              left="215px"
               {...getOverrideProps(overrides, "Group 166912573")}
             >
               <Icon
@@ -2135,7 +1493,7 @@ export default function Supervisorview(props) {
                 paths={[
                   {
                     d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(190,160,158,1)",
+                    fill: "rgba(0,171,186,1)",
                     fillRule: "nonzero",
                   },
                 ]}
@@ -2144,73 +1502,47 @@ export default function Supervisorview(props) {
                 left="0px"
                 {...getOverrideProps(overrides, "Ellipse 43512574")}
               ></Icon>
-              <View
-                padding="0px 0px 0px 0px"
-                width="10px"
-                height="7.86px"
-                position="absolute"
-                top="13px"
-                left="11px"
-                {...getOverrideProps(overrides, "Group 166812575")}
-              >
-                <Icon
-                  width="10px"
-                  height="7.857147216796875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 10,
-                    height: 7.857147216796875,
-                  }}
-                  paths={[
-                    {
-                      d: "M0.714286 0.714286L0.714286 6.42857C0.714286 6.61801 0.789541 6.79969 0.923495 6.93365C1.05745 7.0676 1.23913 7.14286 1.42857 7.14286L8.57143 7.14286C8.76087 7.14286 8.94255 7.0676 9.0765 6.93365C9.21046 6.79969 9.28571 6.61801 9.28571 6.42857L9.28571 0.714286L0.714286 0.714286ZM0.714286 0L9.28571 0C9.47515 3.17207e-16 9.65684 0.0752549 9.79079 0.209209C9.92475 0.343164 10 0.524845 10 0.714286L10 6.42857C10 6.80745 9.84949 7.17081 9.58158 7.43872C9.31367 7.70663 8.95031 7.85714 8.57143 7.85714L1.42857 7.85714C1.04969 7.85714 0.686328 7.70663 0.418419 7.43872C0.15051 7.17081 1.58603e-16 6.80745 0 6.42857L0 0.714286C-7.93016e-17 0.524845 0.0752549 0.343164 0.209209 0.209209C0.343164 0.0752549 0.524845 3.17207e-16 0.714286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="0%"
-                  bottom="0%"
-                  left="0%"
-                  right="0%"
-                  {...getOverrideProps(overrides, "Vector12576")}
-                ></Icon>
-                <Icon
-                  width="8.75px"
-                  height="3.889129638671875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 8.75,
-                    height: 3.889129638671875,
-                  }}
-                  paths={[
-                    {
-                      d: "M8.75 0L5.98786 3.15714C5.78673 3.38707 5.53877 3.57133 5.2606 3.69758C4.98243 3.82383 4.68048 3.88914 4.375 3.88914C4.06952 3.88914 3.76757 3.82383 3.4894 3.69758C3.21123 3.57133 2.96327 3.38707 2.76214 3.15714L0 0L8.75 0ZM0.949286 0L3.29929 2.68643C3.43337 2.83975 3.59869 2.96263 3.78416 3.04682C3.96963 3.13101 4.17096 3.17456 4.37464 3.17456C4.57833 3.17456 4.77965 3.13101 4.96512 3.04682C5.15059 2.96263 5.31591 2.83975 5.45 2.68643L7.80071 0L0.949286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="9.09%"
-                  bottom="41.41%"
-                  left="6.25%"
-                  right="6.25%"
-                  {...getOverrideProps(overrides, "Vector12577")}
-                ></Icon>
-              </View>
             </View>
           </View>
         </View>
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="500"
+          color="rgba(255,255,255,1)"
+          lineHeight="23.4375px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          width="36px"
+          height="20px"
+          position="absolute"
+          top="28px"
+          left="302px"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="+"
+          {...getOverrideProps(overrides, "+21445")}
+        ></Text>
+      </View>
+      <View
+        padding="0px 0px 0px 0px"
+        width="347px"
+        height="82px"
+        position="absolute"
+        top="409px"
+        left="237px"
+        {...getOverrideProps(overrides, "Group 1856")}
+      >
         <View
           padding="0px 0px 0px 0px"
           width="347px"
           height="82px"
           position="absolute"
-          top="104px"
+          top="0px"
           left="0px"
-          {...getOverrideProps(overrides, "Group 184712578")}
+          {...getOverrideProps(overrides, "Group 167121489")}
         >
           <View
             width="347px"
@@ -2220,17 +1552,17 @@ export default function Supervisorview(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
-            {...getOverrideProps(overrides, "Rectangle 92412579")}
+            backgroundColor="rgba(64,120,163,1)"
+            {...getOverrideProps(overrides, "Rectangle 92421490")}
           ></View>
           <View
             padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
+            width="247px"
+            height="34px"
             position="absolute"
-            top="22px"
-            left="20px"
-            {...getOverrideProps(overrides, "Group 167012580")}
+            top="23px"
+            left="78px"
+            {...getOverrideProps(overrides, "Group 167021491")}
           >
             <Text
               fontFamily="Inter"
@@ -2243,32 +1575,22 @@ export default function Supervisorview(props) {
               direction="column"
               justifyContent="flex-start"
               position="absolute"
-              top="1px"
-              left="58px"
+              top="0px"
+              left="0px"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Smith John"
-              {...getOverrideProps(overrides, "Smith John")}
+              children="Caro"
+              {...getOverrideProps(overrides, "Caro")}
             ></Text>
             <View
               padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
+              width="107px"
+              height="12px"
               position="absolute"
-              top="0px"
+              top="21px"
               left="0px"
-              {...getOverrideProps(overrides, "Group 184712582")}
+              {...getOverrideProps(overrides, "Group 184721493")}
             >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 92312583")}
-              ></Image>
               <Text
                 fontFamily="Inter"
                 fontSize="10px"
@@ -2280,12 +1602,12 @@ export default function Supervisorview(props) {
                 direction="column"
                 justifyContent="flex-start"
                 position="absolute"
-                top="22px"
-                left="58px"
+                top="0px"
+                left="0px"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
                 children="24 Videos  I  123 Likes"
-                {...getOverrideProps(overrides, "24 Videos I 123 Likes12584")}
+                {...getOverrideProps(overrides, "24 Videos I 123 Likes21494")}
               ></Text>
             </View>
             <View
@@ -2293,9 +1615,9 @@ export default function Supervisorview(props) {
               width="32px"
               height="32px"
               position="absolute"
-              top="3px"
-              left="273px"
-              {...getOverrideProps(overrides, "Group 166912585")}
+              top="2px"
+              left="215px"
+              {...getOverrideProps(overrides, "Group 166921495")}
             >
               <Icon
                 width="32px"
@@ -2304,82 +1626,56 @@ export default function Supervisorview(props) {
                 paths={[
                   {
                     d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(202,90,86,1)",
+                    fill: "rgba(0,171,186,1)",
                     fillRule: "nonzero",
                   },
                 ]}
                 position="absolute"
                 top="0px"
                 left="0px"
-                {...getOverrideProps(overrides, "Ellipse 43512586")}
+                {...getOverrideProps(overrides, "Ellipse 43521496")}
               ></Icon>
-              <View
-                padding="0px 0px 0px 0px"
-                width="10px"
-                height="7.86px"
-                position="absolute"
-                top="12px"
-                left="11px"
-                {...getOverrideProps(overrides, "Group 166812587")}
-              >
-                <Icon
-                  width="10px"
-                  height="7.857147216796875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 10,
-                    height: 7.857147216796875,
-                  }}
-                  paths={[
-                    {
-                      d: "M0.714286 0.714286L0.714286 6.42857C0.714286 6.61801 0.789541 6.79969 0.923495 6.93365C1.05745 7.0676 1.23913 7.14286 1.42857 7.14286L8.57143 7.14286C8.76087 7.14286 8.94255 7.0676 9.0765 6.93365C9.21046 6.79969 9.28571 6.61801 9.28571 6.42857L9.28571 0.714286L0.714286 0.714286ZM0.714286 0L9.28571 0C9.47515 3.17207e-16 9.65684 0.0752549 9.79079 0.209209C9.92475 0.343164 10 0.524845 10 0.714286L10 6.42857C10 6.80745 9.84949 7.17081 9.58158 7.43872C9.31367 7.70663 8.95031 7.85714 8.57143 7.85714L1.42857 7.85714C1.04969 7.85714 0.686328 7.70663 0.418419 7.43872C0.15051 7.17081 1.58603e-16 6.80745 0 6.42857L0 0.714286C-7.93016e-17 0.524845 0.0752549 0.343164 0.209209 0.209209C0.343164 0.0752549 0.524845 3.17207e-16 0.714286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="0%"
-                  bottom="0%"
-                  left="0%"
-                  right="0%"
-                  {...getOverrideProps(overrides, "Vector12588")}
-                ></Icon>
-                <Icon
-                  width="8.75px"
-                  height="3.889129638671875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 8.75,
-                    height: 3.889129638671875,
-                  }}
-                  paths={[
-                    {
-                      d: "M8.75 0L5.98786 3.15714C5.78673 3.38707 5.53877 3.57133 5.2606 3.69758C4.98243 3.82383 4.68048 3.88914 4.375 3.88914C4.06952 3.88914 3.76757 3.82383 3.4894 3.69758C3.21123 3.57133 2.96327 3.38707 2.76214 3.15714L0 0L8.75 0ZM0.949286 0L3.29929 2.68643C3.43337 2.83975 3.59869 2.96263 3.78416 3.04682C3.96963 3.13101 4.17096 3.17456 4.37464 3.17456C4.57833 3.17456 4.77965 3.13101 4.96512 3.04682C5.15059 2.96263 5.31591 2.83975 5.45 2.68643L7.80071 0L0.949286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="9.09%"
-                  bottom="41.41%"
-                  left="6.25%"
-                  right="6.25%"
-                  {...getOverrideProps(overrides, "Vector12589")}
-                ></Icon>
-              </View>
             </View>
           </View>
         </View>
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="500"
+          color="rgba(255,255,255,1)"
+          lineHeight="23.4375px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          width="36px"
+          height="20px"
+          position="absolute"
+          top="28px"
+          left="302px"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="+"
+          {...getOverrideProps(overrides, "+21497")}
+        ></Text>
+      </View>
+      <View
+        padding="0px 0px 0px 0px"
+        width="347px"
+        height="82px"
+        position="absolute"
+        top="292px"
+        left="812px"
+        {...getOverrideProps(overrides, "Group 1853")}
+      >
         <View
           padding="0px 0px 0px 0px"
           width="347px"
           height="82px"
           position="absolute"
-          top="205px"
+          top="0px"
           left="0px"
-          {...getOverrideProps(overrides, "Group 184812590")}
+          {...getOverrideProps(overrides, "Group 167121451")}
         >
           <View
             width="347px"
@@ -2389,17 +1685,17 @@ export default function Supervisorview(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
-            {...getOverrideProps(overrides, "Rectangle 92412591")}
+            backgroundColor="rgba(64,120,163,1)"
+            {...getOverrideProps(overrides, "Rectangle 92421452")}
           ></View>
           <View
             padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
+            width="247px"
+            height="34px"
             position="absolute"
-            top="22px"
-            left="20px"
-            {...getOverrideProps(overrides, "Group 167012592")}
+            top="23px"
+            left="78px"
+            {...getOverrideProps(overrides, "Group 167021453")}
           >
             <Text
               fontFamily="Inter"
@@ -2412,32 +1708,22 @@ export default function Supervisorview(props) {
               direction="column"
               justifyContent="flex-start"
               position="absolute"
-              top="1px"
-              left="58px"
+              top="0px"
+              left="0px"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Mark Joe"
-              {...getOverrideProps(overrides, "Mark Joe12593")}
+              children="Harry Joe"
+              {...getOverrideProps(overrides, "Harry Joe21454")}
             ></Text>
             <View
               padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
+              width="107px"
+              height="12px"
               position="absolute"
-              top="0px"
+              top="21px"
               left="0px"
-              {...getOverrideProps(overrides, "Group 184712594")}
+              {...getOverrideProps(overrides, "Group 184721455")}
             >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 92312595")}
-              ></Image>
               <Text
                 fontFamily="Inter"
                 fontSize="10px"
@@ -2449,12 +1735,12 @@ export default function Supervisorview(props) {
                 direction="column"
                 justifyContent="flex-start"
                 position="absolute"
-                top="22px"
-                left="58px"
+                top="0px"
+                left="0px"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
                 children="24 Videos  I  123 Likes"
-                {...getOverrideProps(overrides, "24 Videos I 123 Likes12596")}
+                {...getOverrideProps(overrides, "24 Videos I 123 Likes21456")}
               ></Text>
             </View>
             <View
@@ -2462,9 +1748,9 @@ export default function Supervisorview(props) {
               width="32px"
               height="32px"
               position="absolute"
-              top="3px"
-              left="273px"
-              {...getOverrideProps(overrides, "Group 166912597")}
+              top="2px"
+              left="215px"
+              {...getOverrideProps(overrides, "Group 166921457")}
             >
               <Icon
                 width="32px"
@@ -2473,82 +1759,56 @@ export default function Supervisorview(props) {
                 paths={[
                   {
                     d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(202,90,86,1)",
+                    fill: "rgba(0,171,186,1)",
                     fillRule: "nonzero",
                   },
                 ]}
                 position="absolute"
                 top="0px"
                 left="0px"
-                {...getOverrideProps(overrides, "Ellipse 43512598")}
+                {...getOverrideProps(overrides, "Ellipse 43521458")}
               ></Icon>
-              <View
-                padding="0px 0px 0px 0px"
-                width="10px"
-                height="7.86px"
-                position="absolute"
-                top="12px"
-                left="11px"
-                {...getOverrideProps(overrides, "Group 166812599")}
-              >
-                <Icon
-                  width="10px"
-                  height="7.85711669921875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 10,
-                    height: 7.85711669921875,
-                  }}
-                  paths={[
-                    {
-                      d: "M0.714286 0.714286L0.714286 6.42857C0.714286 6.61801 0.789541 6.79969 0.923495 6.93365C1.05745 7.0676 1.23913 7.14286 1.42857 7.14286L8.57143 7.14286C8.76087 7.14286 8.94255 7.0676 9.0765 6.93365C9.21046 6.79969 9.28571 6.61801 9.28571 6.42857L9.28571 0.714286L0.714286 0.714286ZM0.714286 0L9.28571 0C9.47515 3.17207e-16 9.65684 0.0752549 9.79079 0.209209C9.92475 0.343164 10 0.524845 10 0.714286L10 6.42857C10 6.80745 9.84949 7.17081 9.58158 7.43872C9.31367 7.70663 8.95031 7.85714 8.57143 7.85714L1.42857 7.85714C1.04969 7.85714 0.686328 7.70663 0.418419 7.43872C0.15051 7.17081 1.58603e-16 6.80745 0 6.42857L0 0.714286C-7.93016e-17 0.524845 0.0752549 0.343164 0.209209 0.209209C0.343164 0.0752549 0.524845 3.17207e-16 0.714286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="0%"
-                  bottom="0%"
-                  left="0%"
-                  right="0%"
-                  {...getOverrideProps(overrides, "Vector125100")}
-                ></Icon>
-                <Icon
-                  width="8.75px"
-                  height="3.88916015625px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 8.75,
-                    height: 3.88916015625,
-                  }}
-                  paths={[
-                    {
-                      d: "M8.75 0L5.98786 3.15714C5.78673 3.38707 5.53877 3.57133 5.2606 3.69758C4.98243 3.82383 4.68048 3.88914 4.375 3.88914C4.06952 3.88914 3.76757 3.82383 3.4894 3.69758C3.21123 3.57133 2.96327 3.38707 2.76214 3.15714L0 0L8.75 0ZM0.949286 0L3.29929 2.68643C3.43337 2.83975 3.59869 2.96263 3.78416 3.04682C3.96963 3.13101 4.17096 3.17456 4.37464 3.17456C4.57833 3.17456 4.77965 3.13101 4.96512 3.04682C5.15059 2.96263 5.31591 2.83975 5.45 2.68643L7.80071 0L0.949286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="9.09%"
-                  bottom="41.41%"
-                  left="6.25%"
-                  right="6.25%"
-                  {...getOverrideProps(overrides, "Vector125101")}
-                ></Icon>
-              </View>
             </View>
           </View>
         </View>
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="500"
+          color="rgba(255,255,255,1)"
+          lineHeight="23.4375px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          width="36px"
+          height="20px"
+          position="absolute"
+          top="28px"
+          left="302px"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="+"
+          {...getOverrideProps(overrides, "+21459")}
+        ></Text>
+      </View>
+      <View
+        padding="0px 0px 0px 0px"
+        width="347px"
+        height="82px"
+        position="absolute"
+        top="292px"
+        left="812px"
+        {...getOverrideProps(overrides, "Group 1854")}
+      >
         <View
           padding="0px 0px 0px 0px"
           width="347px"
           height="82px"
           position="absolute"
-          top="306px"
+          top="0px"
           left="0px"
-          {...getOverrideProps(overrides, "Group 1849125102")}
+          {...getOverrideProps(overrides, "Group 167121461")}
         >
           <View
             width="347px"
@@ -2558,17 +1818,17 @@ export default function Supervisorview(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
-            {...getOverrideProps(overrides, "Rectangle 924125103")}
+            backgroundColor="rgba(64,120,163,1)"
+            {...getOverrideProps(overrides, "Rectangle 92421462")}
           ></View>
           <View
             padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
+            width="247px"
+            height="34px"
             position="absolute"
-            top="22px"
-            left="20px"
-            {...getOverrideProps(overrides, "Group 1670125104")}
+            top="23px"
+            left="78px"
+            {...getOverrideProps(overrides, "Group 167021463")}
           >
             <Text
               fontFamily="Inter"
@@ -2581,32 +1841,22 @@ export default function Supervisorview(props) {
               direction="column"
               justifyContent="flex-start"
               position="absolute"
-              top="1px"
-              left="58px"
+              top="0px"
+              left="0px"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Mark petter Joe"
-              {...getOverrideProps(overrides, "Mark petter Joe125105")}
+              children="Harry Joe"
+              {...getOverrideProps(overrides, "Harry Joe21464")}
             ></Text>
             <View
               padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
+              width="107px"
+              height="12px"
               position="absolute"
-              top="0px"
+              top="21px"
               left="0px"
-              {...getOverrideProps(overrides, "Group 1847125106")}
+              {...getOverrideProps(overrides, "Group 184721465")}
             >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 923125107")}
-              ></Image>
               <Text
                 fontFamily="Inter"
                 fontSize="10px"
@@ -2618,12 +1868,12 @@ export default function Supervisorview(props) {
                 direction="column"
                 justifyContent="flex-start"
                 position="absolute"
-                top="22px"
-                left="58px"
+                top="0px"
+                left="0px"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
                 children="24 Videos  I  123 Likes"
-                {...getOverrideProps(overrides, "24 Videos I 123 Likes125108")}
+                {...getOverrideProps(overrides, "24 Videos I 123 Likes21466")}
               ></Text>
             </View>
             <View
@@ -2631,9 +1881,9 @@ export default function Supervisorview(props) {
               width="32px"
               height="32px"
               position="absolute"
-              top="3px"
-              left="273px"
-              {...getOverrideProps(overrides, "Group 1669125109")}
+              top="2px"
+              left="215px"
+              {...getOverrideProps(overrides, "Group 166921467")}
             >
               <Icon
                 width="32px"
@@ -2642,82 +1892,56 @@ export default function Supervisorview(props) {
                 paths={[
                   {
                     d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(202,90,86,1)",
+                    fill: "rgba(0,171,186,1)",
                     fillRule: "nonzero",
                   },
                 ]}
                 position="absolute"
                 top="0px"
                 left="0px"
-                {...getOverrideProps(overrides, "Ellipse 435125110")}
+                {...getOverrideProps(overrides, "Ellipse 43521468")}
               ></Icon>
-              <View
-                padding="0px 0px 0px 0px"
-                width="10px"
-                height="7.86px"
-                position="absolute"
-                top="12px"
-                left="11px"
-                {...getOverrideProps(overrides, "Group 1668125111")}
-              >
-                <Icon
-                  width="10px"
-                  height="7.85711669921875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 10,
-                    height: 7.85711669921875,
-                  }}
-                  paths={[
-                    {
-                      d: "M0.714286 0.714286L0.714286 6.42857C0.714286 6.61801 0.789541 6.79969 0.923495 6.93365C1.05745 7.0676 1.23913 7.14286 1.42857 7.14286L8.57143 7.14286C8.76087 7.14286 8.94255 7.0676 9.0765 6.93365C9.21046 6.79969 9.28571 6.61801 9.28571 6.42857L9.28571 0.714286L0.714286 0.714286ZM0.714286 0L9.28571 0C9.47515 3.17207e-16 9.65684 0.0752549 9.79079 0.209209C9.92475 0.343164 10 0.524845 10 0.714286L10 6.42857C10 6.80745 9.84949 7.17081 9.58158 7.43872C9.31367 7.70663 8.95031 7.85714 8.57143 7.85714L1.42857 7.85714C1.04969 7.85714 0.686328 7.70663 0.418419 7.43872C0.15051 7.17081 1.58603e-16 6.80745 0 6.42857L0 0.714286C-7.93016e-17 0.524845 0.0752549 0.343164 0.209209 0.209209C0.343164 0.0752549 0.524845 3.17207e-16 0.714286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="0%"
-                  bottom="0%"
-                  left="0%"
-                  right="0%"
-                  {...getOverrideProps(overrides, "Vector125112")}
-                ></Icon>
-                <Icon
-                  width="8.75px"
-                  height="3.88916015625px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 8.75,
-                    height: 3.88916015625,
-                  }}
-                  paths={[
-                    {
-                      d: "M8.75 0L5.98786 3.15714C5.78673 3.38707 5.53877 3.57133 5.2606 3.69758C4.98243 3.82383 4.68048 3.88914 4.375 3.88914C4.06952 3.88914 3.76757 3.82383 3.4894 3.69758C3.21123 3.57133 2.96327 3.38707 2.76214 3.15714L0 0L8.75 0ZM0.949286 0L3.29929 2.68643C3.43337 2.83975 3.59869 2.96263 3.78416 3.04682C3.96963 3.13101 4.17096 3.17456 4.37464 3.17456C4.57833 3.17456 4.77965 3.13101 4.96512 3.04682C5.15059 2.96263 5.31591 2.83975 5.45 2.68643L7.80071 0L0.949286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="9.09%"
-                  bottom="41.41%"
-                  left="6.25%"
-                  right="6.25%"
-                  {...getOverrideProps(overrides, "Vector125113")}
-                ></Icon>
-              </View>
             </View>
           </View>
         </View>
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="500"
+          color="rgba(255,255,255,1)"
+          lineHeight="23.4375px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          width="36px"
+          height="20px"
+          position="absolute"
+          top="28px"
+          left="302px"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="+"
+          {...getOverrideProps(overrides, "+21469")}
+        ></Text>
+      </View>
+      <View
+        padding="0px 0px 0px 0px"
+        width="347px"
+        height="82px"
+        position="absolute"
+        top="410px"
+        left="816px"
+        {...getOverrideProps(overrides, "Group 1855")}
+      >
         <View
           padding="0px 0px 0px 0px"
           width="347px"
           height="82px"
           position="absolute"
-          top="407px"
+          top="0px"
           left="0px"
-          {...getOverrideProps(overrides, "Group 1850125114")}
+          {...getOverrideProps(overrides, "Group 167121479")}
         >
           <View
             width="347px"
@@ -2727,17 +1951,17 @@ export default function Supervisorview(props) {
             left="0px"
             borderRadius="8px"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(140,63,81,1)"
-            {...getOverrideProps(overrides, "Rectangle 924125115")}
+            backgroundColor="rgba(64,120,163,1)"
+            {...getOverrideProps(overrides, "Rectangle 92421480")}
           ></View>
           <View
             padding="0px 0px 0px 0px"
-            width="305px"
-            height="38px"
+            width="247px"
+            height="42px"
             position="absolute"
-            top="22px"
-            left="20px"
-            {...getOverrideProps(overrides, "Group 1670125116")}
+            top="23px"
+            left="78px"
+            {...getOverrideProps(overrides, "Group 167021481")}
           >
             <Text
               fontFamily="Inter"
@@ -2750,32 +1974,22 @@ export default function Supervisorview(props) {
               direction="column"
               justifyContent="flex-start"
               position="absolute"
-              top="1px"
-              left="58px"
+              top="0px"
+              left="0px"
               padding="0px 0px 0px 0px"
               whiteSpace="pre-wrap"
-              children="Willimas petter "
-              {...getOverrideProps(overrides, "Willimas petter125117")}
+              children="Mary&#xA;"
+              {...getOverrideProps(overrides, "Mary")}
             ></Text>
             <View
               padding="0px 0px 0px 0px"
-              width="165px"
-              height="38px"
+              width="107px"
+              height="12px"
               position="absolute"
-              top="0px"
+              top="21px"
               left="0px"
-              {...getOverrideProps(overrides, "Group 1847125118")}
+              {...getOverrideProps(overrides, "Group 184721483")}
             >
-              <Image
-                width="38px"
-                height="38px"
-                position="absolute"
-                top="0px"
-                left="0px"
-                borderRadius="5px"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Rectangle 923125119")}
-              ></Image>
               <Text
                 fontFamily="Inter"
                 fontSize="10px"
@@ -2787,12 +2001,12 @@ export default function Supervisorview(props) {
                 direction="column"
                 justifyContent="flex-start"
                 position="absolute"
-                top="22px"
-                left="58px"
+                top="0px"
+                left="0px"
                 padding="0px 0px 0px 0px"
                 whiteSpace="pre-wrap"
                 children="24 Videos  I  123 Likes"
-                {...getOverrideProps(overrides, "24 Videos I 123 Likes125120")}
+                {...getOverrideProps(overrides, "24 Videos I 123 Likes21484")}
               ></Text>
             </View>
             <View
@@ -2800,9 +2014,9 @@ export default function Supervisorview(props) {
               width="32px"
               height="32px"
               position="absolute"
-              top="3px"
-              left="273px"
-              {...getOverrideProps(overrides, "Group 1669125121")}
+              top="2px"
+              left="215px"
+              {...getOverrideProps(overrides, "Group 166921485")}
             >
               <Icon
                 width="32px"
@@ -2811,74 +2025,38 @@ export default function Supervisorview(props) {
                 paths={[
                   {
                     d: "M32 16C32 24.8366 24.8366 32 16 32C7.16344 32 0 24.8366 0 16C0 7.16344 7.16344 0 16 0C24.8366 0 32 7.16344 32 16Z",
-                    fill: "rgba(202,90,86,1)",
+                    fill: "rgba(0,171,186,1)",
                     fillRule: "nonzero",
                   },
                 ]}
                 position="absolute"
                 top="0px"
                 left="0px"
-                {...getOverrideProps(overrides, "Ellipse 435125122")}
+                {...getOverrideProps(overrides, "Ellipse 43521486")}
               ></Icon>
-              <View
-                padding="0px 0px 0px 0px"
-                width="10px"
-                height="7.86px"
-                position="absolute"
-                top="12px"
-                left="11px"
-                {...getOverrideProps(overrides, "Group 1668125123")}
-              >
-                <Icon
-                  width="10px"
-                  height="7.85711669921875px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 10,
-                    height: 7.85711669921875,
-                  }}
-                  paths={[
-                    {
-                      d: "M0.714286 0.714286L0.714286 6.42857C0.714286 6.61801 0.789541 6.79969 0.923495 6.93365C1.05745 7.0676 1.23913 7.14286 1.42857 7.14286L8.57143 7.14286C8.76087 7.14286 8.94255 7.0676 9.0765 6.93365C9.21046 6.79969 9.28571 6.61801 9.28571 6.42857L9.28571 0.714286L0.714286 0.714286ZM0.714286 0L9.28571 0C9.47515 3.17207e-16 9.65684 0.0752549 9.79079 0.209209C9.92475 0.343164 10 0.524845 10 0.714286L10 6.42857C10 6.80745 9.84949 7.17081 9.58158 7.43872C9.31367 7.70663 8.95031 7.85714 8.57143 7.85714L1.42857 7.85714C1.04969 7.85714 0.686328 7.70663 0.418419 7.43872C0.15051 7.17081 1.58603e-16 6.80745 0 6.42857L0 0.714286C-7.93016e-17 0.524845 0.0752549 0.343164 0.209209 0.209209C0.343164 0.0752549 0.524845 3.17207e-16 0.714286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="0%"
-                  bottom="0%"
-                  left="0%"
-                  right="0%"
-                  {...getOverrideProps(overrides, "Vector125124")}
-                ></Icon>
-                <Icon
-                  width="8.75px"
-                  height="3.88916015625px"
-                  viewBox={{
-                    minX: 0,
-                    minY: 0,
-                    width: 8.75,
-                    height: 3.88916015625,
-                  }}
-                  paths={[
-                    {
-                      d: "M8.75 0L5.98786 3.15714C5.78673 3.38707 5.53877 3.57133 5.2606 3.69758C4.98243 3.82383 4.68048 3.88914 4.375 3.88914C4.06952 3.88914 3.76757 3.82383 3.4894 3.69758C3.21123 3.57133 2.96327 3.38707 2.76214 3.15714L0 0L8.75 0ZM0.949286 0L3.29929 2.68643C3.43337 2.83975 3.59869 2.96263 3.78416 3.04682C3.96963 3.13101 4.17096 3.17456 4.37464 3.17456C4.57833 3.17456 4.77965 3.13101 4.96512 3.04682C5.15059 2.96263 5.31591 2.83975 5.45 2.68643L7.80071 0L0.949286 0Z",
-                      fill: "rgba(255,255,255,1)",
-                      fillRule: "nonzero",
-                    },
-                  ]}
-                  position="absolute"
-                  top="9.09%"
-                  bottom="41.41%"
-                  left="6.25%"
-                  right="6.25%"
-                  {...getOverrideProps(overrides, "Vector125125")}
-                ></Icon>
-              </View>
             </View>
           </View>
         </View>
+        <Text
+          fontFamily="Inter"
+          fontSize="20px"
+          fontWeight="500"
+          color="rgba(255,255,255,1)"
+          lineHeight="23.4375px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          width="36px"
+          height="20px"
+          position="absolute"
+          top="28px"
+          left="302px"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="+"
+          {...getOverrideProps(overrides, "+21487")}
+        ></Text>
       </View>
       <Text
         fontFamily="Inter"

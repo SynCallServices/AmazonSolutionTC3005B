@@ -26,23 +26,23 @@
     }
   },
   "api": {
-    "synCallapi": {
+    "syncallapi": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
+      "dependsOn": [],
       "output": {
         "authConfig": {
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-05-22T05:36:52.399Z",
-              "description": "syncallapi"
+              "apiKeyExpirationDate": "2023-06-03T23:40:01.492Z",
+              "description": "api for syncall api"
             }
           },
           "additionalAuthenticationProviders": []
         }
-      },
-      "dependsOn": []
+      }
     }
   },
   "storage": {

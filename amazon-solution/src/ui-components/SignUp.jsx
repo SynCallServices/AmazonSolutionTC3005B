@@ -17,21 +17,21 @@ export default function SignUp(props) {
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
-      backgroundColor="rgba(103,48,71,1)"
+      backgroundColor="rgba(152,187,214,1)"
       {...rest}
       {...getOverrideProps(overrides, "SignUp")}
     >
       <View
-        width="496px"
-        height="647px"
+        width="494px"
+        height="645px"
         position="absolute"
-        top="188px"
-        left="225px"
-        border="1px SOLID rgba(140,63,81,1)"
+        top="189px"
+        left="226px"
+        border="0px SOLID rgba(255,255,255,1)"
         boxShadow="0px 4px 4px rgba(0, 0, 0, 0.25)"
-        borderRadius="16px"
+        borderRadius="15px"
         padding="0px 0px 0px 0px"
-        backgroundColor="rgba(140,63,81,1)"
+        backgroundColor="rgba(62,104,143,1)"
         {...getOverrideProps(overrides, "Rectangle 1")}
       ></View>
       <Icon
@@ -47,7 +47,7 @@ export default function SignUp(props) {
           },
           {
             d: "M0 15C0 6.71574 6.71573 0 15 0L479 0C487.284 0 494 6.71573 494 15L494 630C494 638.284 487.284 645 479 645L15 645C6.71574 645 0 638.284 0 630L0 15Z",
-            fill: "rgba(35,20,51,1)",
+            fill: "rgba(0,39,75,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -575,7 +575,7 @@ export default function SignUp(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(202,90,86,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 417281")}
         ></View>
         <View
@@ -586,7 +586,7 @@ export default function SignUp(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(202,90,86,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 617282")}
         ></View>
         <Text
@@ -640,7 +640,7 @@ export default function SignUp(props) {
           left="0px"
           borderRadius="15px"
           padding="0px 0px 0px 0px"
-          backgroundColor="rgba(103,48,71,1)"
+          backgroundColor="rgba(0,171,186,1)"
           {...getOverrideProps(overrides, "Rectangle 617286")}
         ></View>
         <Text
@@ -679,7 +679,7 @@ export default function SignUp(props) {
           },
           {
             d: "M0 0L402 0L402 52L0 52L0 0Z",
-            fill: "rgba(202,90,86,1)",
+            fill: "rgba(0,39,75,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -701,7 +701,7 @@ export default function SignUp(props) {
           },
           {
             d: "M0 0L402 0L402 52L0 52L0 0Z",
-            fill: "rgba(202,90,86,1)",
+            fill: "rgba(0,39,75,1)",
             fillRule: "nonzero",
           },
         ]}
@@ -778,7 +778,7 @@ export default function SignUp(props) {
             left="-3px"
             border="3px SOLID rgba(255,255,255,0.8)"
             padding="0px 0px 0px 0px"
-            backgroundColor="rgba(202,90,86,1)"
+            backgroundColor="rgba(0,39,75,1)"
             {...getOverrideProps(overrides, "Rectangle 417295")}
           ></View>
           <Text
