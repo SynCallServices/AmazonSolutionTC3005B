@@ -3,6 +3,7 @@ import 'amazon-connect-streams'
 import Sidebar from './components/Sidebar'
 import RecordRTC  from "recordrtc";
 import * as video from "../ScreenRecorder/components/VideoAPI.js"
+import * as voice from "../ScreenRecorder/components/VoiceAPI.js"
 import { v4 as uuidv4 } from 'uuid'
 import { Outlet } from 'react-router-dom'
 import AWS from 'aws-sdk';
@@ -28,6 +29,15 @@ function DashBoard() {
   const [recordingStartTime, setRecordingStartTime] = React.useState(null);
 
   const [loggedIn, setLoggedIn] = React.useState(false);
+
+  function CreateVoice(contactId_, agentId_, startTime_, path_) {
+    const response = voice.create(contactId_, agentId_, startTime_, path_);
+    response.then((res) => {
+      if (res.status === "Unsuccesful") {
+        console.log(res.data)
+      }
+      })
+    }
 
   // Amazon Connect Embed
   React.useEffect(() => {
@@ -119,29 +129,7 @@ function DashBoard() {
         })
         .promise();
 
-        console.log(body);
-
-        await docClient.put({
-          TableName: process.env.REACT_APP_TABLE_NAME,
-          Item: {
-              "id": uuidv4(),
-              "agentId": body.AgentId,
-              "voiceId": `${body.AgentId}_${body.ContactId}`,
-              "path": body.Path,
-              "startTime": body.InitiationTimestamp.toString(),
-              "createdAt": new Date().toString(),
-              "updatedAt": new Date().toString(),
-              "__typename": "Voice"
-          }
-      }, function (err, data) {
-          if (err) {
-              console.log(err);
-          } else {
-              console.log(data);
-              console.log("upload to dynamodb");
-          }
-      })
-      .promise();
+      CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path)
 
       })
 
