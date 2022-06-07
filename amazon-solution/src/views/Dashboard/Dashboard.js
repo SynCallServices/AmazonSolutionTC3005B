@@ -103,14 +103,14 @@ function DashBoard() {
         console.log(contact);
         setCallConnected(true);
         setContactId(contact.contactId);
-        console.log(contact.contactId);
+        // console.log(contact.contactId);
 
         handleRecording();
       });
 
 
       contact.onEnded(async (contact) => {
-        console.log(contact.getInitialContactId());
+        // console.log(contact.getInitialContactId());
 
         let body;
         await amazonConnect.describeContact({
@@ -119,7 +119,7 @@ function DashBoard() {
         })
         .promise()
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
           let ContactId = data.Contact.Id;
           let year = InitiationTimestamp.getFullYear();
@@ -136,7 +136,7 @@ function DashBoard() {
           console.log(error);
         })
 
-        console.log(body);
+        // console.log(body);
         setVoicePath(body.Path);
         CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path);
       })
@@ -185,7 +185,7 @@ function DashBoard() {
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
       setBlobVar(recorderRef.current.getBlob())
-      console.log(res)
+      // console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
     
@@ -201,9 +201,9 @@ function DashBoard() {
     const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], recordingStartTime.toISOString())
     videoEntry.then(async (res) => {
       const videoPath = res.data.data.createVideo.path;
-      console.log(voicePath);
-      console.log(videoPath);
-      console.log(res);
+      // console.log(voicePath);
+      // console.log(videoPath);
+      // console.log(res);
 
       await lambda.invoke({
         FunctionName: process.env.REACT_APP_LAMBDA_MERGE,
