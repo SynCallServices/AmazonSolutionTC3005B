@@ -25,20 +25,23 @@ function ShowVideos() {
   }, [])
 
   React.useEffect(() => {
-    video.listRecordings(assingedRecordings).then(value => {
-      // console.log(value)
-      setVideoCards(value.data.map(vid => (
-        <ShowVideoCard 
-          videoTitle = {"Test Video"}
-          videoPath = {vid.path}
-          vidDuration = "2.00"
-          vidRating = "4.9"
-          key = {vid.videoId}
-        />
-      )))
-    }).catch(err => {
-        console.log(err)
-    })
+    async function effect() {
+      await video.listRecordings(assingedRecordings).then(value => {
+        console.log(value.data)
+        setVideoCards(value.data.map(vid => (
+          <ShowVideoCard 
+            videoTitle = {"Test Video"}
+            videoPath = {vid.path}
+            vidDuration = "2.00"
+            vidRating = "4.9"
+            key = {vid.videoId}
+          />
+        )))
+      }).catch(err => {
+          console.log(err)
+      })
+    }
+    effect();
   }, [assingedRecordings])
 
   return (
