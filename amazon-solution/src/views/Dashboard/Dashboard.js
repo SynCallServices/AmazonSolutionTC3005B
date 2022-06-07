@@ -10,7 +10,18 @@ import AWS from 'aws-sdk';
 import { UserContext } from '../../App.js'
 import ConnectLogIn from './components/ConnectLogIn.js'
 
-const amazonConnect = new AWS.Connect();
+const amazonConnect = new AWS.Connect({
+  apiVersion: 'latest',
+  region: process.env.REACT_APP_REGION,
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
+});
+const lambda = new AWS.Lambda({
+  apiVersion: 'latest',
+  region: process.env.REACT_APP_REGION,
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
+});
 
 function DashBoard() {
 
@@ -25,6 +36,7 @@ function DashBoard() {
   const [blobVar, setBlobVar] = React.useState(null);
   const [ranOnce, setRanOnce] = React.useState(false);
   const [recordingStartTime, setRecordingStartTime] = React.useState(null);
+  const [voicePath, setVoicePath] = React.useState('');
 
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -101,34 +113,35 @@ function DashBoard() {
 
 
       contact.onEnded(async (contact) => {
-        console.log(contact.contactId);
+        console.log(contact.getInitialContactId());
 
         let body;
         await amazonConnect.describeContact({
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             ContactId: contact.contactId
-        }, function(err, data) {
-            if (err) {
-                console.log(err);
-            } else {
-                console.log(data);
-                let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
-                let ContactId = data.Contact.Id;
-                let year = InitiationTimestamp.getFullYear();
-                let month = ('0' + (InitiationTimestamp.getMonth() + 1)).slice(-2);
-                let day = ('0' + InitiationTimestamp.getDate()).slice(-2);
-                body = {
-                    ContactId: ContactId,
-                    AgentId: data.Contact.AgentInfo.Id,
-                    InitiationTimestamp: InitiationTimestamp,
-                    Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getHours()).slice(-2)}:${('0' + InitiationTimestamp.getMinutes()).slice(-2)}_UTC.wav`
-                };
-            }
         })
-        .promise();
+        .promise()
+        .then((data) => {
+          console.log(data);
+          let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
+          let ContactId = data.Contact.Id;
+          let year = InitiationTimestamp.getFullYear();
+          let month = ('0' + (InitiationTimestamp.getUTCMonth() + 1)).slice(-2);
+          let day = ('0' + InitiationTimestamp.getUTCDate()).slice(-2);
+          body = {
+              ContactId: ContactId,
+              AgentId: data.Contact.AgentInfo.Id,
+              InitiationTimestamp: InitiationTimestamp,
+              Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getUTCHours()).slice(-2)}:${('0' + InitiationTimestamp.getUTCMinutes()).slice(-2)}_UTC.wav`
+          };
+        })
+        .catch((error) => {
+          console.log(error);
+        })
 
-      CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path)
-
+        console.log(body);
+        setVoicePath(body.Path);
+        CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path);
       })
 
       contact.onDestroy((contact) => {
@@ -189,7 +202,29 @@ function DashBoard() {
     const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
     uploadingVideo.then((res) => console.log(res))
     const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], recordingStartTime.toISOString())
-    videoEntry.then((res) => console.log(res))
+    videoEntry.then(async (res) => {
+      const videoPath = res.data.data.createVideo.path;
+      console.log(voicePath);
+      console.log(videoPath);
+      console.log(res);
+
+      await lambda.invoke({
+        FunctionName: process.env.REACT_APP_LAMBDA_MERGE,
+        InvocationType: "RequestResponse",
+        LogType: "Tail",
+        Payload: JSON.stringify({
+          audioPath: voicePath,
+          videoPath: videoPath
+        })
+      })
+      .promise()
+      .then((data) => {
+        console.log("finished merging!");
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    })
   }  
 
   const logIn = () => {
