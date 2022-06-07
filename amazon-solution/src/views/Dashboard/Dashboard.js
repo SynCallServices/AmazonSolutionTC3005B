@@ -88,15 +88,12 @@ function DashBoard() {
     const eventBus = connect.core.getEventBus();
     // eslint-disable-next-line no-undef
     eventBus.subscribe(connect.EventType.ACKNOWLEDGE, () => {
-      console.log('Log In')
-      setLoggedIn(true)
-      console.log(loggedIn)
+      if (!loggedIn) setLoggedIn(true)
       // Do stuff...
     });
     // eslint-disable-next-line no-undef
     eventBus.subscribe(connect.EventType.TERMINATED, () => {
-      console.log('Logged out')
-      setLoggedIn(false)
+      if (loggedIn) setLoggedIn(false)
       // Do stuff...
     });
 
