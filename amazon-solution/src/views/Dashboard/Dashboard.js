@@ -195,11 +195,11 @@ function DashBoard() {
   };
 
   // Change hard coded values
-  const uploadBlob = () => {
+  async function uploadBlob () {
     
     console.log("UPLOAD BLOBL")
     const videoId = uuidv4()
-    const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
+    const uploadingVideo = await video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
     uploadingVideo.then((res) => console.log(res))
     const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], recordingStartTime.toISOString())
     videoEntry.then(async (res) => {
