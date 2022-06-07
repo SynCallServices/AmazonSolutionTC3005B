@@ -30,7 +30,7 @@ function Sidebar() {
   React.useEffect(() => {
     amazonConnect.describeUser({
       InstanceId: process.env.REACT_APP_INSTANCE_ID,
-      UserId: user.username.attributes["custom:connect_id"]
+      UserId: user.userAttributes["custom:connect_id"]
     }, function (err, data) {
       if (err) {
         console.log(err)
@@ -63,7 +63,7 @@ function Sidebar() {
     <nav className={sidebarActive ? 'sidebar' : 'sidebar active'}>
       <div className='logo-content'>
         <div className='logo'>
-          <img src={require('../../../assets/Syncall_Logo.png')} alt="synCallLogo" className='logo-icon'/>
+          <img src={require('../../../assets/Syncall_logo.png')} className='logo-icon'/>
           <div className='logo-name'>SynCall</div>
         </div>
         <div className='menu-btn' onClick={sidebarUtil}>
@@ -118,7 +118,7 @@ function Sidebar() {
       <div className='profile-content'>
         <div className='profile'>
           <div className='profile-details'>
-            <div className="profile-name">{user.username.username}</div>
+            <div className="profile-name">{user.username}</div>
             <div className="profile-role">{role}</div>
           </div>
           <div className='log-out' onClick={() => signOut()}>
