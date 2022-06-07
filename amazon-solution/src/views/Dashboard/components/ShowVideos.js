@@ -20,7 +20,7 @@ function ShowVideos({ agentId }) {
         setAssingedRecordings(res.data.asgnRec);      }
     })
 
-  }, [])
+  })
 
   React.useEffect(() => {
     function effect() {
