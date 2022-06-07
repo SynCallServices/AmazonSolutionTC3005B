@@ -23,21 +23,19 @@ function Sidebar() {
       await Auth.signOut();
       setUser(null)
     } catch (error) {
-      console.log('error signing out: ', error); // Esto esta mal
+      console.log('error signing out: ', error);
     }
   }
 
   React.useEffect(() => {
-    // example of how to obtain the security profile of a user
     amazonConnect.describeUser({
       InstanceId: process.env.REACT_APP_INSTANCE_ID,
       UserId: user.username.attributes["custom:connect_id"]
     }, function (err, data) {
       if (err) {
-        console.log(err) // Mal
+        console.log(err)
       } else {
         const securityProfile = data.User.SecurityProfileIds[0];
-        console.log(securityProfile)
         switch (securityProfile) {
           case process.env.REACT_APP_AGENT_ID:
             setRole("agent");
@@ -65,7 +63,7 @@ function Sidebar() {
     <nav className={sidebarActive ? 'sidebar' : 'sidebar active'}>
       <div className='logo-content'>
         <div className='logo'>
-          <img src={require('../../../assets/Syncall_Logo.png')} className='logo-icon'/>
+          <img src={require('../../../assets/Syncall_Logo.png')} alt="synCallLogo" className='logo-icon'/>
           <div className='logo-name'>SynCall</div>
         </div>
         <div className='menu-btn' onClick={sidebarUtil}>
