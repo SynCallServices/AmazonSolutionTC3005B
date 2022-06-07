@@ -1,9 +1,8 @@
 // AWS
 import {API, graphqlOperation, Storage } from 'aws-amplify';
 
-import { listVideos, getRecording, getAgent, listRecordings } from '../../../graphql/queries';
+import { listVideos, listRecordings } from '../../../graphql/queries';
 import { deleteVideo, createVideo } from '../../../graphql/mutations';
-import * as agent from "./AgentAPI";
 
 
 // S3
