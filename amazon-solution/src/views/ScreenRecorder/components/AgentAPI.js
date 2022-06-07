@@ -1,14 +1,14 @@
 // AWS
 import {API, graphqlOperation} from 'aws-amplify';
 
-import { listAgents } from '../graphql/queries';
-import { createAgent, deleteAgent } from '../graphql/mutations'
-import { listRecordings } from '../graphql/queries';
+import { listAgents, getAgent } from '../../../graphql/queries';
+import { createAgent, deleteAgent } from '../../../graphql/mutations'
+import { listRecordings } from '../../../graphql/queries';
 
 export async function list() {
     /**
      * List all the agents.
-     */
+    */
     try {
         const agentsData = await API.graphql(graphqlOperation(listAgents));
         const agentsList = agentsData.data.listAgents.items;
@@ -19,7 +19,7 @@ export async function list() {
         }
     } catch (error) { 
         return {
-            status: "Failed",
+            status: "Unsuccesfull",
             data: error
         }
     }
@@ -45,7 +45,7 @@ export async function get(agentId_) {
         }
     } catch (error) {
         return {
-            status: "Failed",
+            status: "Unsuccesfull",
             data: error
         }
     }
@@ -73,7 +73,7 @@ export async function create(agentId_) {
         }
     } catch (error) {
         return {
-            status: "Failed",
+            status: "Unsuccesfull",
             data: error
         }
     }
@@ -96,7 +96,7 @@ export async function getRecordings(agentId_) {
         }
     } catch (error) {
         return {
-            status: "Failed",
+            status: "Unsuccesfull",
             data: error
         }
     }
@@ -128,7 +128,7 @@ export async function del(agentId_) {
         }
     } catch (error) {
         return {
-            status: "Failed",
+            status: "Unsuccesfull",
             data: error
         }
     }

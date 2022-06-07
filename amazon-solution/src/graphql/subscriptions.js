@@ -42,18 +42,7 @@ export const onCreateAgent = /* GraphQL */ `
     onCreateAgent {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -64,18 +53,7 @@ export const onUpdateAgent = /* GraphQL */ `
     onUpdateAgent {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -86,18 +64,7 @@ export const onDeleteAgent = /* GraphQL */ `
     onDeleteAgent {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -106,39 +73,36 @@ export const onDeleteAgent = /* GraphQL */ `
 export const onCreateAssignedRecordings = /* GraphQL */ `
   subscription OnCreateAssignedRecordings {
     onCreateAssignedRecordings {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;
 export const onUpdateAssignedRecordings = /* GraphQL */ `
   subscription OnUpdateAssignedRecordings {
     onUpdateAssignedRecordings {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;
 export const onDeleteAssignedRecordings = /* GraphQL */ `
   subscription OnDeleteAssignedRecordings {
     onDeleteAssignedRecordings {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;

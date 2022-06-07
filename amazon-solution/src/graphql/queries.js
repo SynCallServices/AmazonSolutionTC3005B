@@ -47,18 +47,7 @@ export const getAgent = /* GraphQL */ `
     getAgent(agentId: $agentId, folder: $folder) {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -84,9 +73,7 @@ export const listAgents = /* GraphQL */ `
       items {
         agentId
         folder
-        asgnRec {
-          nextToken
-        }
+        asgnRec
         createdAt
         updatedAt
       }
@@ -97,13 +84,12 @@ export const listAgents = /* GraphQL */ `
 export const getAssignedRecordings = /* GraphQL */ `
   query GetAssignedRecordings($assignId: ID!, $agentId: ID!) {
     getAssignedRecordings(assignId: $assignId, agentId: $agentId) {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;
@@ -125,13 +111,12 @@ export const listAssignedRecordings = /* GraphQL */ `
       sortDirection: $sortDirection
     ) {
       items {
-        videoId
+        recordingId
         agentId
         expirationDate
         assignId
         createdAt
         updatedAt
-        agentAsgnRecId
       }
       nextToken
     }
