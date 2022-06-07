@@ -9,6 +9,7 @@ import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
+import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
 
@@ -25,7 +26,7 @@ function App() {
     <div>
       <UserContext.Provider value={{user, setUser}}>
         <Routes>
-          <Route path='/' element={<LogIn />} />
+          <Route path='/' element={<AssignVideos />} />
             <Route exact path='dashboard' element={
               <ProtectedRoute user={user}>
                 <DashBoard />
