@@ -4,7 +4,7 @@ import * as video from '../../ScreenRecorder/components/VideoAPI'
 import * as agent from "../../ScreenRecorder/components/AgentAPI"
 import VideoPreview from './VideoPreview.js'
 
-function ShowVideos() {
+function ShowVideos({ agentId }) {
 
   const [videoCards, setVideoCards] = React.useState()
   const [assingedRecordings, setAssingedRecordings] = React.useState([]);
@@ -12,22 +12,19 @@ function ShowVideos() {
 
   React.useEffect(() => {
 
-    const agentData = agent.get("001");
+    const agentData = agent.get(agentId);
     agentData.then((res) => {
       if (res.status === "Unsuccesfull") {
         throw new Error("Agent does not exist")
       } else {
-        setAssingedRecordings(res.data.asgnRec);
-        console.log(res.data.asgnRec)
-      }
+        setAssingedRecordings(res.data.asgnRec);      }
     })
 
   }, [])
 
   React.useEffect(() => {
-    async function effect() {
-      await video.listRecordings(assingedRecordings).then(value => {
-        console.log(value.data)
+    function effect() {
+       video.listRecording(assingedRecordings).then(value => {
         setVideoCards(value.data.map(vid => (
           <ShowVideoCard 
             videoTitle = {"Test Video"}

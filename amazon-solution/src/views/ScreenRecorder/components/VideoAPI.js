@@ -1,7 +1,7 @@
 // AWS
 import {API, graphqlOperation, Storage } from 'aws-amplify';
 
-import { listVideos, getRecording, getAgent } from '../../../graphql/queries';
+import { listVideos, getRecording, getAgent, listRecordings } from '../../../graphql/queries';
 import { deleteVideo, createVideo } from '../../../graphql/mutations';
 import * as agent from "./AgentAPI";
 
@@ -87,26 +87,21 @@ export async function list() {
     }
 }
 
-export async function listRecordings(assingedRecordings) {
+export async function listRecording(assingedRecordings) {
     /**
      * List all the recordings that a certain user has. 
     */
     
     let recordings = [];
-    console.log("entered listRecordings")
-    console.log(assingedRecordings, "inside")
     try {
         // Retrieves list
         for (let i = 0; i < assingedRecordings.length; i++) {
-            const recId = assingedRecordings[i];
             const recordingData = await API.graphql(graphqlOperation(
-                listRecordings, { filter: { recordingId: { eq: recId} } }
+                listRecordings, { filter: {recordingId: {eq: assingedRecordings[i]}} }
             ))
-            console.log(recId, "id")
             console.log(recordingData, "data")
-            recordings.push(recordingData.data.listRecordings.items[0])
+            recordings.push(recordingData.data.listRecordings.items[0])   
         }
-        console.log(recordings, "hello")
         return {
             status: "Succesfull",
             message: "Fetched video recordings correctly",
