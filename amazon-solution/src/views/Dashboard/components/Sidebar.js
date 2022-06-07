@@ -31,7 +31,7 @@ function Sidebar() {
     // example of how to obtain the security profile of a user
     amazonConnect.describeUser({
       InstanceId: process.env.REACT_APP_INSTANCE_ID,
-      UserId: user.username.attributes["custom:connect_id"]
+      UserId: user.userAttributes["custom:connect_id"]
     }, function (err, data) {
       if (err) {
         console.log(err)
@@ -103,7 +103,7 @@ function Sidebar() {
       <div className='profile-content'>
         <div className='profile'>
           <div className='profile-details'>
-            <div className="profile-name">{user.username.username}</div>
+            <div className="profile-name">{user.username}</div>
             <div className="profile-role">{role}</div>
           </div>
           <div className='log-out' onClick={() => signOut()}>
