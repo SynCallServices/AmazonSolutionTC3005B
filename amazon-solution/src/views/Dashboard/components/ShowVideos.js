@@ -1,15 +1,32 @@
 import React from 'react'
 import ShowVideoCard from './ShowVideoCard.js'
 import * as video from '../../ScreenRecorder/components/VideoAPI'
+import * as agent from "../../ScreenRecorder/components/AgentAPI"
 import VideoPreview from './VideoPreview.js'
 
 function ShowVideos() {
 
   const [videoCards, setVideoCards] = React.useState()
+  const [assingedRecordings, setAssingedRecordings] = React.useState([]);
+
 
   React.useEffect(() => {
-    video.list().then(value => {
-      console.log(value)
+
+    const agentData = agent.get("001");
+    agentData.then((res) => {
+      if (res.status === "Unsuccesfull") {
+        throw new Error("Agent does not exist")
+      } else {
+        setAssingedRecordings(res.data.asgnRec);
+        console.log(res.data.asgnRec)
+      }
+    })
+
+  }, [])
+
+  React.useEffect(() => {
+    video.listRecordings(assingedRecordings).then(value => {
+      // console.log(value)
       setVideoCards(value.data.map(vid => (
         <ShowVideoCard 
           videoTitle = {"Test Video"}
@@ -22,8 +39,7 @@ function ShowVideos() {
     }).catch(err => {
         console.log(err)
     })
-
-  }, [])
+  }, [assingedRecordings])
 
   return (
     <div className="showvideos-outer">

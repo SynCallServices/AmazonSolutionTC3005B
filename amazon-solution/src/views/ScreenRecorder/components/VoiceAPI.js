@@ -1,8 +1,8 @@
 // AWS
 import {API, graphqlOperation} from 'aws-amplify';
 
-import { listVoices } from '../graphql/queries';
-import { createVoice, deleteVoice } from '../graphql/mutations';
+import { listVoices } from '../../../graphql/queries';
+import { createVoice, deleteVoice } from '../../../graphql/mutations';
 
 
 export async function downloadVoice(voicePath) {

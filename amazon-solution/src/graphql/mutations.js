@@ -54,18 +54,7 @@ export const createAgent = /* GraphQL */ `
     createAgent(input: $input, condition: $condition) {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -79,18 +68,7 @@ export const updateAgent = /* GraphQL */ `
     updateAgent(input: $input, condition: $condition) {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -104,18 +82,7 @@ export const deleteAgent = /* GraphQL */ `
     deleteAgent(input: $input, condition: $condition) {
       agentId
       folder
-      asgnRec {
-        items {
-          videoId
-          agentId
-          expirationDate
-          assignId
-          createdAt
-          updatedAt
-          agentAsgnRecId
-        }
-        nextToken
-      }
+      asgnRec
       createdAt
       updatedAt
     }
@@ -127,13 +94,12 @@ export const createAssignedRecordings = /* GraphQL */ `
     $condition: ModelAssignedRecordingsConditionInput
   ) {
     createAssignedRecordings(input: $input, condition: $condition) {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;
@@ -143,13 +109,12 @@ export const updateAssignedRecordings = /* GraphQL */ `
     $condition: ModelAssignedRecordingsConditionInput
   ) {
     updateAssignedRecordings(input: $input, condition: $condition) {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;
@@ -159,13 +124,12 @@ export const deleteAssignedRecordings = /* GraphQL */ `
     $condition: ModelAssignedRecordingsConditionInput
   ) {
     deleteAssignedRecordings(input: $input, condition: $condition) {
-      videoId
+      recordingId
       agentId
       expirationDate
       assignId
       createdAt
       updatedAt
-      agentAsgnRecId
     }
   }
 `;
