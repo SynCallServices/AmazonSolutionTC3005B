@@ -51,7 +51,7 @@ function Sidebar() {
         }
       }
     })
-  })
+  }, [])
 
   const [sidebarActive, setSidebarActive] = React.useState(false);
 
