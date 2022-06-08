@@ -31,7 +31,16 @@ function CreateUser() {
     for (let i = 0; i < 11; i++) {
         password += chars[Math.floor(Math.random() * chars.length)];
     }
+    // guarantee the following:
+    // lowercase
+    password += chars.slice(0,26)[Math.floor(Math.random() * chars.slice(0,26).length)];
+    // uppercase
+    password += chars.slice(26,52)[Math.floor(Math.random() * chars.slice(26,52).length)];
+    // numbers
+    password += chars.slice(52,62)[Math.floor(Math.random() * chars.slice(52,62).length)];
+    // special
     password += chars.slice(-7)[Math.floor(Math.random() * chars.slice(-7).length)];
+    console.log(password);
     await connect.createUser({
         InstanceId: process.env.REACT_APP_INSTANCE_ID,
         PhoneConfig: {
