@@ -491,6 +491,23 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.show-pop-up {
+  background: #00274b;
+  position: absolute;
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  height: 600px;
+  width: 750px;
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+  border-radius: 12px;
+
+  transform: translate(-50%, -50%);
+}
+
 .assign-container {
   background: #4078a3;
   padding: 20px;

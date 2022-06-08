@@ -86,19 +86,23 @@ const handleFilteredData = (event) => {
   }
 };
 
+// const handleClickVideo = (event){
+
+// }
+
   
 
  
 
   return (
-    <div className='assign-pop-up'>
+    <div className='show-pop-up'>
       
       
     <button className="assign-close">
       
     </button>
     <div className='assign-container'>
-      <div className="assign-list-title">All Agents</div>
+      <div className="assign-list-title">All Videos</div>
       <div className='search'>
         {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
         <div className="searchInputs">

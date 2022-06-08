@@ -161,9 +161,7 @@ const handleFilteredData = (event) => {
     <div className='assign-pop-up'>
       
       
-        <button className="assign-close">
-          <RiCloseLine className='assign-close-icon'/>
-        </button>
+       
         <div className='assign-container'>
           <div className="assign-list-title">All Agents</div>
           <div className='search'>
