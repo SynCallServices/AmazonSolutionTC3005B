@@ -1,0 +1,38 @@
+# This "input" configures a global authorization rule to enable public access to
+# all models in this schema. Learn more about authorization rules here: https://docs.amplify.aws/cli/graphql/authorization-rules
+input AMPLIFY { globalAuthRule: AuthRule = { allow: public } } # FOR TESTING ONLY!
+
+type Video @model {
+  videoId: ID! @primaryKey(sortKeyFields: ["agentId"]) 
+  agentId: String! 
+  path: String!
+  startTime: String
+}
+
+type Agent @model{
+  agentId: ID! @primaryKey(sortKeyFields: ["folder"]) 
+  folder: String!
+  asgnRec: [String]
+}
+
+type AssignedRecordings @model {
+  recordingId: ID! 
+  agentId: ID!
+  expirationDate: String!
+  assignId: ID! @primaryKey(sortKeyFields: ["agentId"])
+}
+
+type Voice @model {
+  voiceId: ID! @primaryKey(sortKeyFields: ["agentId"])
+  agentId: String!
+  path: String!
+  startTime: String
+}
+
+# Video and Voice merged
+type Recording @model {
+  recordingId: ID! @primaryKey(sortKeyFields: ["path"])
+  path: String!
+  title: String! @index(name: "byTitleAndDuration", sortKeyFields: ["duration"], queryField: "videoByTitleAndDuration")
+  duration: Int
+} 
