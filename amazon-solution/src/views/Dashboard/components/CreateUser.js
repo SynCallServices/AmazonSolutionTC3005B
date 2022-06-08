@@ -88,7 +88,7 @@ function CreateUser() {
             await cognito.adminSetUserPassword({
                 UserPoolId: process.env.REACT_APP_USER_POOL_ID,
                 Username: data.User.Username,
-                Password: password, // RANDOM PASSWORD
+                Password: "TestPW123*", // RANDOM PASSWORD
                 Permanent: true
             })
             .promise()

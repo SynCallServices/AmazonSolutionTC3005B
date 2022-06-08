@@ -13,8 +13,9 @@ function ShowVideos() {
 
 
   React.useEffect(() => {
+    console.log(user.userAttributes)
 
-    const agentData = agent.get(user.userAttributes);
+    const agentData = agent.get(user.userAttributes["custom:connect_id"]);
     agentData.then((res) => {
       if (res.status === "Unsuccesfull") {
         throw new Error("Agent does not exist")

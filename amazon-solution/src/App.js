@@ -13,6 +13,7 @@ import UserManagement from './views/Dashboard/components/UserManagement.js'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
+import AuthenticatorEmail from './views/LogIn/components/AuthenticatorEmail.js';
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
