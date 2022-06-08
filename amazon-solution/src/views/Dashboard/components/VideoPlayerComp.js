@@ -12,7 +12,7 @@ function VideoPlayerComp(props) {
         </button>
         <VideoPlayer 
           className='video-player'
-          src={`https://d1msutvtlsu91z.cloudfront.net/public/aa73f0a3-df6b-4380-9c20-2522a72e436c/videos/d5013dcf-e222-410c-8ad0-ca0acc1c490d.mp4`}
+          src={`https://d1msutvtlsu91z.cloudfront.net/public/recordings/b8bb02c6-00b2-4589-9f8a-10e7d0ee0026.mp4`}
         />
       </div>
     </div>

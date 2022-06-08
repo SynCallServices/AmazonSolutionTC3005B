@@ -11,6 +11,7 @@ function LogIn() {
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
 
+
   const {user, setUser} = React.useContext(UserContext)
 
   const [inputState, setInputState] = React.useState(false)
@@ -94,7 +95,7 @@ function LogIn() {
         })
 
         setUser(data)
-        console.log(data)
+        localStorage.setItem('user', JSON.stringify(data))
         navigate("/dashboard")
       })
       .catch((error) => {
@@ -107,9 +108,13 @@ function LogIn() {
   }
 
   React.useEffect(() => {
-    console.log(user)
-    if (user) {
-      navigate("/dashboard")
+    console.log(localStorage.user)
+    if (localStorage.user) {
+      setUser(JSON.parse(localStorage.getItem('user')))
+      navigate('/dashboard')
+
+      console.log(user)
+      console.log(JSON.parse(localStorage.getItem('user')))
     }
   }, [])
 

@@ -22,6 +22,7 @@ function Sidebar() {
     try {
       await Auth.signOut();
       setUser(null)
+      localStorage.removeItem('user')
     } catch (error) {
       console.log('error signing out: ', error);
     }
@@ -92,6 +93,19 @@ function Sidebar() {
         </li>
 
         {role === 'admin' ? 
+        <li>
+          <Link className='link' to='user-management'>
+            <i>
+              <FaUserAlt />
+            </i>
+            <span className='links-name'>User Management</span>
+          </Link>
+          <span className='tooltip'>UserManagement</span>
+        </li>
+        : null
+        }
+
+        {role === 'supervisor' || role === 'supervisor' ? 
         <li>
           <Link className='link' to='user-management'>
             <i>
