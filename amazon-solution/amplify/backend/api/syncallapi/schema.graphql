@@ -9,14 +9,14 @@ type Video @model {
   startTime: String
 }
 
-type Agent @model {
-  agentId: ID! @primaryKey(sortKeyFields: ["folder"])
+type Agent @model{
+  agentId: ID! @primaryKey(sortKeyFields: ["folder"]) 
   folder: String!
-  asgnRec: [AssignedRecordings] @hasMany
+  asgnRec: [String]
 }
 
 type AssignedRecordings @model {
-  videoId: ID! 
+  recordingId: ID! 
   agentId: ID!
   expirationDate: String!
   assignId: ID! @primaryKey(sortKeyFields: ["agentId"])
@@ -29,6 +29,7 @@ type Voice @model {
   startTime: String
 }
 
+# Video and Voice merged
 type Recording @model {
   recordingId: ID! @primaryKey(sortKeyFields: ["path"])
   path: String!

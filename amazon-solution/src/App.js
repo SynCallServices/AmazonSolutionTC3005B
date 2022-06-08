@@ -15,6 +15,7 @@ import { AmplifyProvider } from '@aws-amplify/ui-react'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
+import Sidebar from './views/Dashboard/components/Sidebar.js'
 
 export const UserContext = React.createContext(null)
 
@@ -26,7 +27,7 @@ function App() {
     <div>
       <UserContext.Provider value={{user, setUser}}>
         <Routes>
-          <Route path='/' element={<AssignVideos />} />
+          <Route path='/' element={<LogIn/>} />
             <Route exact path='dashboard' element={
               <ProtectedRoute user={user}>
                 <DashBoard />

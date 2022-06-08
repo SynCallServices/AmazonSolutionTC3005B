@@ -12,7 +12,7 @@ export default function Login(props) {
   const { overrides, ...rest } = props;
   return (
     <View
-      width="100%"
+      width="1440px"
       height="1024px"
       overflow="hidden"
       position="relative"
