@@ -30,6 +30,7 @@
   max-width: 250;
   max-height: 500;
 }
+
 .video-info {
   display: flex;
   align-items: center;
@@ -90,9 +91,9 @@
 }
 
 .video-inner .close-btn {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border: 0px solid #000;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 0;
   right: 0;
@@ -103,4 +104,8 @@
   width: 35px;
   height: 35px;
   cursor: pointer;
+}
+
+.video-card {
+  background-color: #00abba;
 }
