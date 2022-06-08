@@ -9,6 +9,7 @@ import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
+import ConnectLogIn from './views/Dashboard/components/ConnectLogIn'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
@@ -25,20 +26,20 @@ function App() {
 
   return (
     <div>
-      <UserContext.Provider value={{user, setUser}}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Routes>
-          <Route path='/' element={<ShowVideos/>} />
-            <Route exact path='dashboard' element={
-              <ProtectedRoute user={user}>
-                <DashBoard />
-              </ProtectedRoute>
-            }>
-              <Route path='callmanager' element={<CallManager />}/>
-              <Route path='videoform' element={<VideoForm/>}/>
-              <Route path='videodashboard' element={<ShowVideos/>}/>
-              <Route path='settings' element={<Settings/>}/>
-              <Route path='screenrecorder' element={<ScreenRecorder/>}/>
-            </Route>
+          <Route path='/' element={<ConnectLogIn />} />
+          <Route exact path='dashboard' element={
+            <ProtectedRoute user={user}>
+              <DashBoard />
+            </ProtectedRoute>
+          }>
+            <Route path='callmanager' element={<CallManager />} />
+            <Route path='videoform' element={<VideoForm />} />
+            <Route path='videodashboard' element={<ShowVideos />} />
+            <Route path='settings' element={<Settings />} />
+            <Route path='screenrecorder' element={<ScreenRecorder />} />
+          </Route>
         </Routes>
       </UserContext.Provider>
     </div>
