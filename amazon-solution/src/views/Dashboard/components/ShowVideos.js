@@ -20,16 +20,20 @@ function ShowVideos({ agentId }) {
         setAssingedRecordings(res.data.asgnRec);      }
     })
 
-  })
+    // const popo = agent.assignVideo("001");
+    // popo.then((res) => console.log(res, "test"))
+
+  }, [])
 
   React.useEffect(() => {
     function effect() {
        video.listRecording(assingedRecordings).then(value => {
+        console.log(value)
         setVideoCards(value.data.map(vid => (
           <ShowVideoCard 
-            videoTitle = {"Test Video"}
+            videoTitle = {vid.title}
             videoPath = {vid.path}
-            vidDuration = "2.00"
+            vidDuration = {vid.duration}
             vidRating = "4.9"
             key = {vid.videoId}
           />

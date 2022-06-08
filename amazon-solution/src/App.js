@@ -36,7 +36,7 @@ function App() {
             }>
               <Route path='callmanager' element={<CallManager />}/>
               <Route path='videoform' element={<VideoForm/>}/>
-              <Route path='videodashboard' element={<ShowVideos/>}/>
+              <Route path='videodashboard' element={<ShowVideos agentId={user.attributes["custom::connect_id"]}/>}/>
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
               <Route path='user-management' element={<CreateUser />}/>
