@@ -477,6 +477,24 @@ body {
   border-radius: 12px;
 }
 
+.assign-sub-container{
+  overflow: hidden;
+    /* esto es lo que hace que la lista de resultados sea scrollable verticalmente */
+    overflow-y: auto;
+    height: 400px;
+    margin-top: 12px;
+    
+
+     
+    
+    
+}
+
+.assign-sub-container::-webkit-scrollbar {
+  display: none;
+  background-color: red;
+}
+
 .assign-close  {
   position: absolute;
   right: -10px;
@@ -523,6 +541,10 @@ body {
   align-items: center;
   padding: 10px;
   justify-content: space-between;
+  padding-bottom: 2px;
+  justify-content: space-between;
+    flex-direction: column;
+
 }
 
 .assign-card-username {
