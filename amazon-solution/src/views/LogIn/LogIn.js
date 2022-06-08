@@ -39,7 +39,6 @@ function LogIn() {
   async function login() {
     let successfulLogIn
 
-
     let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
       Username: logInData.username,
       Pool: new AmazonCognitoIdentity.CognitoUserPool({
@@ -127,9 +126,9 @@ function LogIn() {
                   <h1 className='login-title'>Log In</h1>
                   <p className='login-subtitle'>or create your account.</p>
                   <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input'/> 
-                  <input onChange={handleChange} name='password' type='text' placeholder='Password' className='login-input'/> 
+                  <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input'/> 
             
-                  <button onClick={logInClick}   className="login-button">Log In</button>
+                  <button onClick={logInClick} className="login-button">Log In</button>
               </div>
               <div class="overlay-right">
                   <h1>Hello Compa!</h1>

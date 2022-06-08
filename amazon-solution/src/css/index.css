@@ -273,8 +273,13 @@ body {
   position: absolute;
   height: 100%;
   left: 78px;
-  width: calc(100% - 78px);
+  right: 250px; 
+  width: calc(100% - 78px - 250px);
   transition: all 0.5s ease;
+}
+
+.dashboard--container {
+  position: relative;
 }
 
 .sidebar.active ~ .dashboard--content {
@@ -418,12 +423,6 @@ body {
   background: #00274b;
   padding: 60px;
   border-radius: 20px;
-  position: absolute;
-  top: 50%;  /* position the top  edge of the element at the middle of the parent */
-  left: 50%; /* position the left edge of the element at the middle of the parent */
-
-  transform: translate(-50%, -50%);
-
   width: 75%;
 }
 

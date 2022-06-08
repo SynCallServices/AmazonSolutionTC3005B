@@ -233,7 +233,9 @@ function DashBoard() {
     <div className='main-content'>
       <Sidebar />
       <div className='dashboard--content'>
-        <Outlet />
+        <div className='dashboard--container'>
+          <Outlet />
+        </div>
       </div>
 
       <div id="ccp" />
