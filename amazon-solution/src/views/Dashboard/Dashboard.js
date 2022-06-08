@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import 'amazon-connect-streams'
 import Sidebar from './components/Sidebar'
 import RecordRTC  from "recordrtc";
@@ -27,6 +27,11 @@ function DashBoard() {
   const [ranOnce, setRanOnce] = React.useState(false);
 
   const [loggedIn, setLoggedIn] = React.useState(false);
+
+  const [closed, setClosed] = useState(false);
+  const closeOpen = () => {
+          setClosed(!closed);
+        };
 
   // Amazon Connect Embed
   React.useEffect(() => {
@@ -202,7 +207,20 @@ function DashBoard() {
         <Outlet />
       </div>
       {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn}/>}
-      
+      <>
+      {closed ?
+        <button onClick={closeOpen}>
+          Closed it should open
+        </button>
+        :
+          <div className='UploadSuccessful-card'>
+              <p>&#127881; Upload Successful</p>
+              <button onClick={closeOpen} className='closingButton'>
+                  x
+              </button>
+          </div>
+          } 
+      </>
 
     </div>
   )
