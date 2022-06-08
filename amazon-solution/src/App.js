@@ -41,6 +41,7 @@ function App() {
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
               <Route path='user-management' element={<CreateUser />}/>
+              <Route path='assign-videos' element={<AssignVideos/>}/>
             </Route>
         </Routes>
       </UserContext.Provider>

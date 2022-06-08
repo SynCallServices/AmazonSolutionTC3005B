@@ -233,13 +233,9 @@ function DashBoard() {
     <div className='main-content'>
       <Sidebar />
       <div className='dashboard--content'>
-        <div className='dashboard--container'>
-          <Outlet />
-        </div>
+        <Outlet />
       </div>
-
       <div id="ccp" />
-
       {loggedIn ? null  : <ConnectLogIn logIn={logIn}/>}
       
 

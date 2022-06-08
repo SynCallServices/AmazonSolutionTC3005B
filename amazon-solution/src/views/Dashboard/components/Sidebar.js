@@ -5,6 +5,7 @@ import { Auth } from 'aws-amplify';
 import { MdSpaceDashboard } from 'react-icons/md'
 import { IoCall } from 'react-icons/io5'
 import { RiSettingsFill } from 'react-icons/ri'
+import { CgAssign } from 'react-icons/cg'
 import { HiMenu } from 'react-icons/hi'
 import { FaUserAlt } from 'react-icons/fa'
 import { IoLogOut } from 'react-icons/io5'
@@ -105,15 +106,15 @@ function Sidebar() {
         : null
         }
 
-        {role === 'supervisor' || role === 'supervisor' ? 
+        {role === 'admin' || role === 'supervisor' ? 
         <li>
-          <Link className='link' to='user-management'>
+          <Link className='link' to='assign-videos'>
             <i>
-              <FaUserAlt />
+              <CgAssign />
             </i>
-            <span className='links-name'>User Management</span>
+            <span className='links-name'>Assign Videos</span>
           </Link>
-          <span className='tooltip'>UserManagement</span>
+          <span className='tooltip'>Assign Videos</span>
         </li>
         : null
         }

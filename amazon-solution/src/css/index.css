@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Karla:wght@400;700&display=swap');
 
 * {
-  margin: 0;  
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Inter; 
+  font-family: Inter;
 }
 
 body {
@@ -12,6 +12,7 @@ body {
   color: white;
   position: relative;
   min-height: 100vh;
+  height: 100%;
   width: 100%;
   overflow: hidden;
 }
@@ -39,7 +40,8 @@ body {
 #ccp {
   position: fixed;
   right: 0;
-  height: 100%;
+  height: 100vh;
+  min-height: 100vh;
 }
 
 .sidebar .logo-content .logo {
@@ -209,7 +211,7 @@ body {
   width: 100%;
 }
 
-.sidebar .profile-content .profile { 
+.sidebar .profile-content .profile {
   position: relative;
   padding: 10px 6px;
   height: 60px;
@@ -224,19 +226,19 @@ body {
   transition: all 0.5s ease;
 }
 
-.profile-details{
+.profile-details {
   padding-left: 5px;
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease;
 }
 
-.profile .profile-content .profile-name { 
+.profile .profile-content .profile-name {
   align-items: center;
   font-size: 15px;
- }
+}
 
-.profile-role { 
+.profile-role {
   font-size: 12px;
 }
 
@@ -270,22 +272,18 @@ body {
 }
 
 .dashboard--content {
-  position: absolute;
-  height: 100%;
+  position: fixed;
+  min-height: 100vh;
   left: 78px;
-  right: 250px; 
-  width: calc(100% - 78px - 250px);
+  right: 250px;
+  width: calc(100% - 78px - 300px);
   transition: all 0.5s ease;
 }
 
-.dashboard--container {
-  position: relative;
-}
-
-.sidebar.active ~ .dashboard--content {
-  width: calc(100% - 240px);
+.sidebar.active~.dashboard--content {
+  width: calc(100% - 240px - 300px);
+  right: 300px;
   left: 240px;
-
 }
 
 .videos-container {
@@ -318,20 +316,6 @@ body {
   transform: translateX(-50%);
 }
 
-.showvideos-inner {
-  padding: 15px;
-  position: relative;
-}
-
-.preview-container {
-  position: fixed;
-  background-color: #231433;
-  z-index: 100;
-  right: 300px;
-  height: 150%;
-  width: 600px;
-}
-
 .login-header {
   display: flex;
   margin: 20px;
@@ -343,8 +327,10 @@ body {
 
 .overlay-container {
   position: absolute;
-  top: 50%;  /* position the top  edge of the element at the middle of the parent */
-  left: 50%; /* position the left edge of the element at the middle of the parent */
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
 
   transform: translate(-50%, -50%);
 }
@@ -358,7 +344,8 @@ body {
   font-size: 12px;
 }
 
-.overlay-left, .overlay-right {
+.overlay-left,
+.overlay-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -374,7 +361,7 @@ body {
 .login-input {
   margin: 10px 0px;
   color: white;
-  border: 1px solid white; 
+  border: 1px solid white;
   background: #00274b;
   padding: 5px 12px;
 
@@ -408,6 +395,20 @@ body {
   background: #3E688F;
 }
 
+.wrong-password {
+  background: #cb5f5f;
+  letter-spacing: 2px;
+  font-size: 10px;
+  position: absolute;
+  bottom: 130px;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 100px;
+  margin-left: 75px;
+  padding: 5px;
+  cursor: pointer;
+}
+
 .create-title {
   font-size: 30px;
   font-weight: 400;
@@ -423,13 +424,22 @@ body {
   background: #00274b;
   padding: 60px;
   border-radius: 20px;
+  position: absolute;
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+
+  transform: translate(-50%, -50%);
+
   width: 75%;
 }
 
 .create-input {
+  border-radius: 12px;
   margin: 20px 0px;
   color: white;
-  border: 1px solid white; 
+  border: 1px solid white;
   background: #4078A3;
   padding: 10px 12px;
 }
@@ -452,7 +462,7 @@ body {
   margin: 35px auto;
   cursor: pointer;
   letter-spacing: 4px;
-  margin-bottom: 40px; 
+  margin-bottom: 40px;
 }
 
 .create-button:hover {
@@ -467,13 +477,15 @@ body {
 .assign-pop-up {
   background: #00274b;
   position: absolute;
-  display: flex;  
+  display: flex;
   padding: 50px;
   justify-content: space-between;
   height: 600px;
   width: 750px;
-  top: 50%;  /* position the top  edge of the element at the middle of the parent */
-  left: 50%; /* position the left edge of the element at the middle of the parent */
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
   border-radius: 12px;
 
   transform: translate(-50%, -50%);
@@ -490,7 +502,30 @@ body {
   border-radius: 12px;
 }
 
-.assign-close  {
+.assign-sub-container {
+  overflow: hidden;
+  /* esto es lo que hace que la lista de resultados sea scrollable verticalmente */
+  overflow-y: auto;
+  height: 330px;
+  margin-top: 50px;
+}
+
+.assign-sub-container::-webkit-scrollbar-track-piece {
+  display: block;
+  background-color: #00ABBA;
+  width: 5px;
+  border-radius: 5px;
+  overflow-y: auto;
+  height: 30px;
+  background-clip: content-box;
+  margin-left: 30px;
+}
+
+.assign-sub-container::-webkit-scrollbar-thumb {
+  scrollbar-color: #00ABBA;
+}
+
+.assign-close {
   position: absolute;
   right: -10px;
   top: -10px;
@@ -516,8 +551,10 @@ body {
 
 .assign-close-icon {
   position: absolute;
-  top: 50%;  /* position the top  edge of the element at the middle of the parent */
-  left: 50%; /* position the left edge of the element at the middle of the parent */
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
 
   transform: translate(-50%, -50%);
 }
@@ -534,8 +571,14 @@ body {
   border-radius: 12px;
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
   justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 15px;
+  
+  justify-content: space-between;
+  
+
 }
 
 .assign-card-username {
@@ -556,6 +599,7 @@ body {
   width: 30px;
   cursor: pointer;
   border-radius: 50%;
+  margin-bottom: 5px;
 }
 
 .assign-button:hover {
@@ -566,14 +610,3 @@ body {
   background-color: #3E688F;
   transform: translateY(4px);
 }
-
-
-
-
-
-
-
-
-
-
-
