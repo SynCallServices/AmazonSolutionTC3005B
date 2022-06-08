@@ -12,6 +12,7 @@
     "amazon-connect-streams": "^2.1.1",
     "aws-amplify": "^4.3.20",
     "aws-sdk": "^2.1127.0",
+    "bootstrap": "^5.1.3",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
