@@ -10,16 +10,16 @@ Original project forked from: Louis3797/awesome-readme-template
   
 <!-- Badges -->
 <p>
-  <a href="https://github.com/PrimeBIue/mini-AmazonSolution/graphs/contributors">
+  <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/graphs/contributors">
     <img src="https://img.shields.io/github/contributors/PrimeBIue/mini-AmazonSolution" alt="contributors" />
   </a>
-  <a href="">
+  <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/commits/main">
     <img src="https://img.shields.io/github/last-commit/PrimeBIue/mini-AmazonSolution" alt="last update" />
   </a>
-  <a href="https://github.com/PrimeBIue/mini-AmazonSolution/stargazers">
+  <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/stargazers">
     <img src="https://img.shields.io/github/stars/PrimeBIue/mini-AmazonSolution" alt="stars" />
   </a>
-  <a href="https://github.com/PrimeBIue/mini-AmazonSolution/issues/">
+  <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/issues">
     <img src="https://img.shields.io/github/issues/PrimeBIue/mini-AmazonSolution" alt="open issues" />
   </a>
   <!-- <a href="https://github.com/Louis3797/awesome-readme-template/blob/master/LICENSE.txt">
