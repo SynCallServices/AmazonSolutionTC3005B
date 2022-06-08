@@ -3,16 +3,18 @@ import ShowVideoCard from './ShowVideoCard.js'
 import * as video from '../../ScreenRecorder/components/VideoAPI'
 import * as agent from "../../ScreenRecorder/components/AgentAPI"
 import VideoPreview from './VideoPreview.js'
+import { UserContext } from '../../../App.js'
 
-function ShowVideos({ agentId }) {
+function ShowVideos() {
 
   const [videoCards, setVideoCards] = React.useState()
   const [assingedRecordings, setAssingedRecordings] = React.useState([]);
+  const {user, setUser} = React.useContext(UserContext)
 
 
   React.useEffect(() => {
 
-    const agentData = agent.get(agentId);
+    const agentData = agent.get(user.userAttributes);
     agentData.then((res) => {
       if (res.status === "Unsuccesfull") {
         throw new Error("Agent does not exist")

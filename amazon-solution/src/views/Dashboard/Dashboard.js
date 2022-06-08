@@ -196,9 +196,9 @@ function DashBoard() {
     
     console.log("UPLOAD BLOBL")
     const videoId = uuidv4()
-    const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
+    const uploadingVideo = video.uploadVideo(blob, user.userAttributes["custom:connect_id"], videoId)
     await uploadingVideo.then((res) => console.log(res))
-    const videoEntry = video.create(videoId, user.username.attributes["custom:connect_id"], recordingStartTime.toISOString())
+    const videoEntry = video.create(videoId, user.userAttributes["custom:connect_id"], recordingStartTime.toISOString())
     videoEntry.then(async (res) => {
       const videoPath = res.data.data.createVideo.path;
       // console.log(voicePath);

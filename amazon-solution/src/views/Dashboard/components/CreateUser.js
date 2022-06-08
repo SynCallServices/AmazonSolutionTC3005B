@@ -47,7 +47,7 @@ function CreateUser() {
             FirstName: createData.firstName,
             LastName: createData.lastName
         },
-        Password: password // RANDOM PASSWORD
+        Password: "TestPW123*"// RANDOM PASSWORD
     })
     .promise()
     .then(async (data) => {
