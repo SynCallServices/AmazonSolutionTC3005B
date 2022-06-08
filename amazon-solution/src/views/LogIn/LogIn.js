@@ -11,7 +11,7 @@ function LogIn() {
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
 
-  const {user, setUser} = React.useContext(UserContext)
+  const { user, setUser } = React.useContext(UserContext)
 
   const [inputState, setInputState] = React.useState(false)
 
@@ -22,7 +22,7 @@ function LogIn() {
 
 
   function handleChange(event) {
-    const { name, value} = event.target
+    const { name, value } = event.target
     setLogInData(prevValue => ({
       ...prevValue,
       [name]: value
@@ -53,12 +53,12 @@ function LogIn() {
       Password: logInData.password,
     }), {
       onSuccess: function (response) {
-          // LOG IN MADE
-          successfulLogIn = true
+        // LOG IN MADE
+        successfulLogIn = true
       },
       onFailure: function (response) {
-          successfulLogIn = false
-          setInputState(false)
+        successfulLogIn = false
+        setInputState(false)
       }
     });
 
@@ -76,35 +76,35 @@ function LogIn() {
       UserPoolId: process.env.REACT_APP_USER_POOL_ID,
       Username: username,
     })
-    .promise()
-    .then(async (data) => {
-      const ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id").Value
-      await connect.describeUser({
-        InstanceId: process.env.REACT_APP_INSTANCE_ID,
-        UserId: ConnectId,
-      })
       .promise()
-      .then((response) => {
-        data.ConnectData = response
-        data.username = data.Username
-        delete (data.Username)
-
-        data.userAttributes = {};
-        data.UserAttributes.forEach((attribute) => {
-            data.userAttributes[attribute.Name] = attribute.Value;
+      .then(async (data) => {
+        const ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id").Value
+        await connect.describeUser({
+          InstanceId: process.env.REACT_APP_INSTANCE_ID,
+          UserId: ConnectId,
         })
+          .promise()
+          .then((response) => {
+            data.ConnectData = response
+            data.username = data.Username
+            delete (data.Username)
 
-        setUser(data)
-        console.log(data)
-        navigate("/dashboard")
+            data.userAttributes = {};
+            data.UserAttributes.forEach((attribute) => {
+              data.userAttributes[attribute.Name] = attribute.Value;
+            })
+
+            setUser(data)
+            console.log(data)
+            navigate("/dashboard")
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       })
       .catch((error) => {
         console.log(error)
       })
-    })
-    .catch((error) => {
-      console.log(error)
-    })
   }
 
   React.useEffect(() => {
@@ -117,26 +117,29 @@ function LogIn() {
   return (
     <div>
       <div className='login-header' >
-        <img src={require('../../assets/Syncall_logo.png')} className='login-logo'/>
+        <img src={require('../../assets/Syncall_logo.png')} className='login-logo' />
         <h1 className='login-header-title'>Syncall</h1>
       </div>
 
       <div class="overlay-container">
-          <div class="overlay">
-              <div class="overlay-left">
-                  <h1 className='login-title'>Log In</h1>
-                  <p className='login-subtitle'>or create your account.</p>
-                  <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input'/> 
-                  <input onChange={handleChange} name='password' type='text' placeholder='Password' className='login-input'/> 
-            
-                  <button onClick={logInClick}   className="login-button">Log In</button>
-              </div>
-              <div class="overlay-right">
-                  <h1>Hello Compa!</h1>
-                  <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
+        <div class="overlay">
+          <div class="overlay-left">
+            <h1 className='login-title'>Log In</h1>
+            <p className='login-subtitle'>or create your account.</p>
+            <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input' />
+            <input onChange={handleChange} name='password' type='text' placeholder='Password' className='login-input' />
 
-              </div>
+            <button onClick={logInClick} className="login-button">Log In</button>
           </div>
+          <div class="overlay-right">
+            <h1>Hello Compa!</h1>
+            <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
+          </div>
+
+          <div class="wrong-password">
+            <p className='login-wrong-password'>Invalid username or password</p>
+          </div>
+        </div>
       </div>
     </div>
   )

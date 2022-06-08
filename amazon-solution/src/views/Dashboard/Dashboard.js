@@ -1,13 +1,14 @@
-import React from 'react'
+
 import 'amazon-connect-streams'
 import Sidebar from './components/Sidebar'
-import RecordRTC  from "recordrtc";
+import RecordRTC from "recordrtc";
 import * as video from "../ScreenRecorder/components/VideoAPI.js"
 import { v4 as uuidv4 } from 'uuid'
 import { Outlet } from 'react-router-dom'
 import AWS from 'aws-sdk';
 import { UserContext } from '../../App.js'
 import ConnectLogIn from './components/ConnectLogIn.js'
+import React, { useState } from "react";
 
 const amazonConnect = new AWS.Connect();
 const docClient = new AWS.DynamoDB.DocumentClient();
@@ -19,14 +20,22 @@ function DashBoard() {
   const [callConnected, setCallConnected] = React.useState(false);
   const [contactId, setContactId] = React.useState('');
 
-  const {user, setUser} = React.useContext(UserContext)
+  const { user, setUser } = React.useContext(UserContext)
   const [stream, setStream] = React.useState(null);
   const [blob, setBlob] = React.useState(null);
   const recorderRef = React.useRef(null);
   const [blobVar, setBlobVar] = React.useState(null);
   const [ranOnce, setRanOnce] = React.useState(false);
 
+
   const [loggedIn, setLoggedIn] = React.useState(false);
+
+  //UploadSuccessful hooks
+  const [closed, setClosed] = useState(false);
+
+  const closeOpen = () => {
+    setClosed(!closed);
+  };
 
   // Amazon Connect Embed
   React.useEffect(() => {
@@ -62,48 +71,48 @@ function DashBoard() {
       });
 
       // eslint-disable-next-line no-undef
-    connect.contact((contact) => {
-      contact.onConnected((contact) => {
-        console.log(contact);
-        setCallConnected(true);
-        setContactId(contact.contactId);
-        console.log(contact.contactId);
+      connect.contact((contact) => {
+        contact.onConnected((contact) => {
+          console.log(contact);
+          setCallConnected(true);
+          setContactId(contact.contactId);
+          console.log(contact.contactId);
 
-        handleRecording();
-      });
+          handleRecording();
+        });
 
-      contact.onEnded(async (contact) => {
-        console.log(contact.contactId);
+        contact.onEnded(async (contact) => {
+          console.log(contact.contactId);
 
-        let body;
-        await amazonConnect.describeContact({
+          let body;
+          await amazonConnect.describeContact({
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             ContactId: contact.contactId
-        }, function(err, data) {
+          }, function (err, data) {
             if (err) {
-                console.log(err);
+              console.log(err);
             } else {
-                console.log(data);
-                let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
-                let ContactId = data.Contact.Id;
-                let year = InitiationTimestamp.getFullYear();
-                let month = ('0' + (InitiationTimestamp.getMonth() + 1)).slice(-2);
-                let day = ('0' + InitiationTimestamp.getDate()).slice(-2);
-                body = {
-                    ContactId: ContactId,
-                    AgentId: data.Contact.AgentInfo.Id,
-                    InitiationTimestamp: InitiationTimestamp,
-                    Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getHours()).slice(-2)}:${('0' + InitiationTimestamp.getMinutes()).slice(-2)}_UTC.wav`
-                };
+              console.log(data);
+              let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
+              let ContactId = data.Contact.Id;
+              let year = InitiationTimestamp.getFullYear();
+              let month = ('0' + (InitiationTimestamp.getMonth() + 1)).slice(-2);
+              let day = ('0' + InitiationTimestamp.getDate()).slice(-2);
+              body = {
+                ContactId: ContactId,
+                AgentId: data.Contact.AgentInfo.Id,
+                InitiationTimestamp: InitiationTimestamp,
+                Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getHours()).slice(-2)}:${('0' + InitiationTimestamp.getMinutes()).slice(-2)}_UTC.wav`
+              };
             }
-        })
-        .promise();
+          })
+            .promise();
 
-        console.log(body);
+          console.log(body);
 
-        await docClient.put({
-          TableName: process.env.REACT_APP_TABLE_NAME,
-          Item: {
+          await docClient.put({
+            TableName: process.env.REACT_APP_TABLE_NAME,
+            Item: {
               "id": uuidv4(),
               "agentId": body.AgentId,
               "voiceId": `${body.AgentId}_${body.ContactId}`,
@@ -112,23 +121,23 @@ function DashBoard() {
               "createdAt": new Date().toString(),
               "updatedAt": new Date().toString(),
               "__typename": "Voice"
-          }
-      }, function (err, data) {
-          if (err) {
+            }
+          }, function (err, data) {
+            if (err) {
               console.log(err);
-          } else {
+            } else {
               console.log(data);
               console.log("upload to dynamodb");
-          }
-      })
-      .promise();
+            }
+          })
+            .promise();
 
-      })
+        })
 
-      contact.onDestroy((contact) => {
-        handleStop();
-      })
-    });
+        contact.onDestroy((contact) => {
+          handleStop();
+        })
+      });
     }
 
   }, [loggedIn])
@@ -139,7 +148,7 @@ function DashBoard() {
     }
   }, [blobVar])
 
-  
+
 
   let videoMediaConstraints = {
     video: {
@@ -171,13 +180,13 @@ function DashBoard() {
       setBlobVar(recorderRef.current.getBlob())
       console.log(res)
     });
-    stream.getTracks().forEach( track => track.stop() );
-    
+    stream.getTracks().forEach(track => track.stop());
+
   };
 
   // Change hard coded values
   const uploadBlob = () => {
-    
+
     console.log("UPLOAD BLOBL")
     const videoId = uuidv4()
     const uploadingVideo = video.uploadVideo(blob, user.userAttributes["custom:connect_id"], videoId)
@@ -187,7 +196,11 @@ function DashBoard() {
     console.log(user.userAttributes["custom:connect_id"])
     console.log("00-00-00_00:00")
     videoEntry.then((res) => console.log(res))
-  }  
+
+
+  }
+
+
 
   const logIn = () => {
     setLoggedIn(true)
@@ -201,9 +214,22 @@ function DashBoard() {
       <div className='dashboard--content'>
         <Outlet />
       </div>
-      {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn}/>}
-      
+      {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn} />}
 
+      <>
+        {closed ?
+          <button onClick={closeOpen}>
+            Closed it should open
+          </button>
+          :
+          <div className='UploadSuccessful-card'>
+            <p>&#127881; Upload Successful</p>
+            <button onClick={closeOpen} className='closingButton'>
+              x
+            </button>
+          </div>
+        }
+      </>
     </div>
   )
 }
