@@ -150,6 +150,7 @@ function ScreenRecorder() {
 
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
+      console.log(typeof recorderRef.current.getBlob(),recorderRef.current.getBlob() instanceof Blob );
       console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
