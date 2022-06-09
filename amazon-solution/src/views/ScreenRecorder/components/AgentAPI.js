@@ -2,7 +2,7 @@
 import {API, graphqlOperation} from 'aws-amplify';
 
 import { listAgents, getAgent } from '../../../graphql/queries';
-import { createAgent, deleteAgent } from '../../../graphql/mutations'
+import { createAgent, deleteAgent, updateAgent } from '../../../graphql/mutations'
 import { listRecordings } from '../../../graphql/queries';
 
 
@@ -31,7 +31,20 @@ export async function assignVideo(agentId_, videoId) {
         const agentData = await API.graphql(graphqlOperation(
             getAgent, { input: { agentId: agentId_, folder: `public/${agentId_}` } }
         ))
-        console.log(agentData)
+
+        let assingedRecordings = agentData.data.asgnRec;
+        assingedRecordings.push(videoId);
+
+        const agentUpdateData = await API.graphql(graphqlOperation(
+            updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: assingedRecordings } }
+        ))
+
+        return {
+            status: "Succesfull",
+            message: "Assigned recording correctly",
+            data: agentUpdateData
+        }
+
     } catch (error) {
         return {
             status: "Unsuccesfull",

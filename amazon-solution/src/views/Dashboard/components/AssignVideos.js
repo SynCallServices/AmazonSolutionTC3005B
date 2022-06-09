@@ -7,50 +7,78 @@ const AWS = require("aws-sdk");
 const cognito = new AWS.CognitoIdentityServiceProvider();
 const connect = new AWS.Connect();
 
-function AssignVideos({ recordingId }) {
+function AssignVideos() {
 
   const [agentList, setAgentList] = useState([]);
-  const [assignedRecordingsList, setassignedRecordingsList] = useState([])
+  const [agents, setAgents] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+
+  const recordingId = "f2502ca6-325c-4a1d-a14c-6fddd15f7b2d"; // recordingId to check if the function works
 
   React.useEffect(() => {
+
     let agentsInfo = [];
-    console.log("get unass agents");
-    
-    for (let i = 0; i < assignedRecordingsList.length; i++) {
-      const l = assignedRecordingsList[i];
-      console.log(l, "l");
-      let addAgent = true;
-      for (let j = 0; j < l.asgnRec.length; j++) {
-        console.log(l.asgnRec)
-        const videoId = l.asgnRec[j];
-        if (recordingId === videoId) {
-          addAgent = false;
-          console.log("here")
-        }
-      }
-      if (addAgent) {
-        agentsInfo.push(l)
-        }
-      }
-      console.log(agentsInfo)
-  }, [assignedRecordingsList])
 
-  React.useEffect(() => {
-    console.log("get ass vidoes")
-    let agents = agentList;
-    let ass = [];
-    if (agents.length !== 0) {
-      for (let i = 0; i < agents.length; i++) {
-        const id = agents[i];
+    if (agentList.length !== 0) {
+
+      for (let i = 0; i < agentList.length; i++) {
+
+        const id = agentList[i].agentId;
+
+        if (i === 0) {
+          const agentAsgnData = agent.assignVideo(id, recordingId);
+          agentAsgnData.then((res) => {
+            console.log(res);
+          })
+        }
+
         const agentData = agent.get(id);
         agentData.then((res) => {
-          ass.push(res.data)
-          console.log(res)
+
+          if (res.status === "Succesfull") {
+
+            let agent = res.data;
+            let agentAsgnRec = agent.asgnRec;
+            let addAgent = true;
+
+            if (agentAsgnRec) {
+              for (let j = 0; j < agentAsgnRec.length; j++) {
+                const recId = agentAsgnRec[j];
+
+                if (recId === recordingId) {
+                  addAgent = !addAgent;
+                  break;
+                }
+
+              }
+
+              if (addAgent) {
+                agentsInfo.push({
+                  agentId: agent.agentId, 
+                  username: agentList[i].username, 
+                  firstName: agentList[i].firstName, 
+                  role: agentList[i].role, 
+                  email: agentList[i].email,
+                  folder: agent.folder
+                });
+              }
+
+            } else {
+              agentsInfo.push({
+                agentId: agent.agentId, 
+                username: agentList[i].username, 
+                firstName: agentList[i].firstName, 
+                role: agentList[i].role, 
+                email: agentList[i].email,
+                folder: agent.folder
+              });
+            }
+          }
+          console.log(agentsInfo);
+          setAgents(agentsInfo);
         })
       }
-      setassignedRecordingsList(ass);
     }
-  console.log(ass)
   }, [agentList])
 
   React.useEffect(() => {
@@ -110,95 +138,72 @@ function AssignVideos({ recordingId }) {
               })
               tmp.push(tmpObj);
           }
-          // console.log(tmp); // FINAL RESULT
           let agentIdList = [];
           for (let i = 0; i < tmp.length; i++) {
             const element = tmp[i];
-            agentIdList.push(element.agentId) 
+            agentIdList.push(element) 
           }
-  
           setAgentList(agentIdList)
       })
       .catch((error) => {
           console.log(error);
       })
     }
-  
     listCognitoUsers();
   }, [])
 
+  //el evento es lo que el usuario vaya escribiendo
+  const handleFilteredData = (event) => {
+    //debes acceder al valor del evento que estara guardado dentro de esta constante
+    const searchWord = event.target.value;
+    //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
+    const newFilter = agents.filter((item) => {
+        return item.username.toLowerCase().includes(searchWord.toLowerCase());
+      }
+    )
 
-
-
-//esto sera el estado del componente, ambos son arrays
-// const [filteredData, setFilteredData] = useState();
-
-//el evento es lo que el usuario vaya escribiendo
-// const handleFilteredData = (event) => {
-//   //debes acceder al valor del evento que estara guardado dentro de esta constante
-//   const searchWord = event.target.value;
-//   //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
-//   const newFilter = data.filter((item) => {
-//     return item.username.toLowerCase().includes(searchWord.toLowerCase());
-//   });
-
-//   //se cambiara el estado del componente con el nuevo array filtrado
-//   if (searchWord === "") {
-//     //si searchword esta vacia entonces no habra ningun estado
-//     setFilteredData(data);
-//   } else {
-//     setFilteredData(newFilter);
-//   }
-// };
+    //se cambiara el estado del componente con el nuevo array filtrado
+    if (searchWord === "") {
+      //si searchword esta vacia entonces no habra ningun estado
+      setFilteredData(agents);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
 
   return (
-    <div>
-      <h1>Hello Bitches</h1>
+
+    <div className='assign-pop-up'>
+      <button className="assign-close">
+        <RiCloseLine className='assign-close-icon'/>
+      </button>
+      <div className='assign-container'>
+        <div className="assign-list-title">All Agents</div>
+        <div className='search'>
+          {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
+          <div className="searchInputs">
+          <input type="text"      
+            //se llamara cada vez que se escriba un nuevo caracter en la barra
+            onChange={handleFilteredData}
+          />
+          </div>
+        </div>
+      </div>
+      { filteredData.length !== 0 && (
+        <div className='assign-sub-container'>
+            {filteredData.map((value, key) => {
+              return (
+                <AssignVideoCard key ={value.username} username={value.username} firstName={value.firstName} lastName={value.lastName} role={value.role}/>
+              );
+            }
+            )}
+          </div>
+        )
+      }
+      <div className='assign-container'>
+        <div className="assign-list-title">Assigned Agents</div>
+      </div>
     </div>
-    // <div className='assign-pop-up'>
-      
-      
-    //     <button className="assign-close">
-    //       <RiCloseLine className='assign-close-icon'/>
-    //     </button>
-    //     <div className='assign-container'>
-    //       <div className="assign-list-title">All Agents</div>
-    //       <div className='search'>
-    //         {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
-    //         <div className="searchInputs">
-    //           <input
-    //             type="text"
-                
-    //             //se llamara cada vez que se escriba un nuevo caracter en la barra
-    //             // onChange={handleFilteredData}
-
-    //           />
-              
-
-
-    //   </div>
-
-    // </div>
-    //       {
-    //       filteredData.length !== 0 && (
-    //         <div className='assign-sub-container'>
-    //           {filteredData.map((value, key) => {
-    //             return (
-    //               <AssignVideoCard key ={value.username} username={value.username} firstName={value.firstName} lastName={value.lastName} role={value.role}/>
-    //             );
-    //           })}
-    //         </div>
-    //       )
-    //     }
-             
-    //     </div>
-
-    //     <div className='assign-container'>
-    //       <div className="assign-list-title">Assigned Agents</div>
-    //     </div>
-
-        
-    // </div>
   )
 }
 
