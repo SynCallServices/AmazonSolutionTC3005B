@@ -15,13 +15,6 @@ AWS.config.update({
   secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
 });
 
-AWS.config.update({
-  apiVersion: 'latest',
-    region: process.env.REACT_APP_REGION,
-      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
-        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
-});
-
 function AssignVideos() {
 
   //el evento es lo que el usuario vaya escribiendo
@@ -45,6 +38,7 @@ function AssignVideos() {
   const [agentList, setAgentList] = useState([]);
   const [agents, setAgents] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [searchForm, setSearchForm] = useState('');
 
   const recordingId = "648517bb-6d02-4643-ad87-964b90cf7874"; // recordingId to check if the function works
 
@@ -187,13 +181,26 @@ function AssignVideos() {
 
   React.useEffect(() => {
 
-    handleFilteredData({target: { value: ''}});
+    if (searchForm === '') {
+      handleFilteredData({target: { value: ''}});
+    }
 
   }, [filteredData])
 
+  function handleChange(event) {
+    setSearchForm(event.target.value)
+    handleFilteredData(event)
+  }
 
-
-
+  function handleAdd(agentId, videoId) {
+    agent.assignVideo(agentId, videoId)
+    .then((result) => {
+        if (result.status === 'Succesfull') {
+          console.log('Assigned')
+          console.log(result)
+        }
+      })
+  }
 
   return (
     <div className='assign-pop-up'>
@@ -209,9 +216,10 @@ function AssignVideos() {
             <div className="searchInputs">
               <input
                 type="text"
+
                 
                 //se llamara cada vez que se escriba un nuevo caracter en la barra
-                onChange={handleFilteredData}
+                onChange={handleChange}
 
               />
               
@@ -232,6 +240,8 @@ function AssignVideos() {
                   lastName={value.lastName}
                   role={value.role}
                   agentId={value.agentId}
+                  videoId={recordingId}
+                  handleAdd={handleAdd}
                   />
                 );
               })}

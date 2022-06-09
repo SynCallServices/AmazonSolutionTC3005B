@@ -1,7 +1,8 @@
 import { AiFillPlusCircle } from 'react-icons/ai'
+import * as agent from '../../ScreenRecorder/components/AgentAPI.js'
 
 function AssignVideoCard(props) {
-  console.log(props.agentId)
+
   return (
     <div className="assign-card-container">
       <div className="card-column">
@@ -10,7 +11,7 @@ function AssignVideoCard(props) {
           {props.role} | {props.firstName} {props.lastName}
         </div>
       </div>
-      <AiFillPlusCircle className='assign-button' />
+      <AiFillPlusCircle className='assign-button' onClick={() => props.handleAdd(props.agentId, props.videoId)}/>
     </div>
   )
 }

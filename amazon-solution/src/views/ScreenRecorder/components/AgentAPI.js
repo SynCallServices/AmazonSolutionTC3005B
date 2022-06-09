@@ -29,7 +29,6 @@ export async function list() {
 
 export async function assignVideo(agentId_, videoId) {
     try {
-        console.log(agentId_)
         const agentData = await API.graphql(graphqlOperation(
             getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
         ))
