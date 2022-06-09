@@ -4,23 +4,29 @@ import React, { useState } from 'react';
 import * as agent from '../../ScreenRecorder/components/AgentAPI'
 
 const AWS = require("aws-sdk");
-const cognito = new AWS.CognitoIdentityServiceProvider();
-const connect = new AWS.Connect();
-
-AWS.config.update({
+const cognito = new AWS.CognitoIdentityServiceProvider({
+  apiVersion: 'latest',
+  region: process.env.REACT_APP_REGION,
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
+});
+const connect = new AWS.Connect({
   apiVersion: 'latest',
   region: process.env.REACT_APP_REGION,
   accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
   secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
 });
 
+
 function AssignVideos() {
+
+  const responseAss = agent.assignVideo()
 
   const [agentList, setAgentList] = useState([]);
   const [agents, setAgents] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  const recordingId = "f2502ca6-325c-4a1d-a14c-6fddd15f7b2d"; // recordingId to check if the function works
+  const recordingId = "648517bb-6d02-4643-ad87-964b90cf7874"; // recordingId to check if the function works
 
   React.useEffect(() => {
 
@@ -33,6 +39,7 @@ function AssignVideos() {
         const id = agentList[i].agentId;
 
         const agentData = agent.get(id);
+        console.log(agentData)
         agentData.then((res) => {
 
           if (res.status === "Succesfull") {
@@ -74,7 +81,6 @@ function AssignVideos() {
               });
             }
           }
-          console.log(agentsInfo);
           setAgents(agentsInfo);
         })
       }
