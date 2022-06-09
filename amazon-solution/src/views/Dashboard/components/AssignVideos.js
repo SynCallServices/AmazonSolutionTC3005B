@@ -237,7 +237,7 @@ function AssignVideos() {
               <input
                 type="text"
 
-                
+                placeholder="Search..."
                 //se llamara cada vez que se escriba un nuevo caracter en la barra
                 onChange={handleChange}
 
@@ -293,6 +293,23 @@ function AssignVideos() {
             </div>
           )
         }
+          <div className='search'>
+            {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
+            <div className="searchInputs">
+              <input
+                type="text"
+
+                
+                //se llamara cada vez que se escriba un nuevo caracter en la barra
+                onChange={handleChange}
+                placeholder="Search..."
+              />
+              
+
+
+      </div>
+
+    </div>
         </div>
 
         
