@@ -169,6 +169,32 @@ export async function get(videoId_) {
     }
 }
 
+export async function getListRecording(recordingId_) {
+    /**
+     * Given a videoId, return the information of a video.
+     * @param {String} videoId_ A videoId of an existing entry.
+     */
+    try {
+        const videoData = await API.graphql(graphqlOperation(
+            listRecordings, { filter: { videoId: { eq: recordingId_ } } }
+        ))
+        const video = videoData.data.listVideos.items[0]
+        if (!video) {
+            throw new Error("Video does not exist")
+        }
+        return {
+            status: "Succesfull",
+            message: "Fetched a video correctly",
+            data: video
+        }
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
+}
+
 export async function del(videoId_) {
     /**
      * Given a videoId, deletes a video entry in DynamoDB.
