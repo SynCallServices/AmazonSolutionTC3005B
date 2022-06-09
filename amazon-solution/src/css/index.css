@@ -491,6 +491,60 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.manage-container {
+  background: #00274b;
+  height: 80vh;
+  width: 120vh;
+  position: absolute;
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+  border-radius: 12px;
+
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+
+}
+
+.manage-card-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #4078a3;
+  height: 68vh;
+  width: 100vh;
+  top: 53%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+  border-radius: 12px;
+
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  max-height: 68vh;
+  overflow: hidden;
+}
+
+.usercard {
+  padding: 20px 25px;
+  display: flex;
+  background: #00274b;
+  width: 95vh;
+  height: 10vh;
+  text-align: left;
+  align-items: center;
+  gap: 40px;
+  border-radius: 12px;
+  justify-content: space-between;
+}
+
+.usercard-names-real {
+  display: flex;
+}
+
 .assign-container {
   background: #4078a3;
   padding: 20px;
@@ -611,3 +665,30 @@ body {
   background-color: #3E688F;
   transform: translateY(4px);
 }
+
+.connect-login {
+  background-color: #00274b;
+}
+
+.clickhere {
+  color: white;
+  font-size: x-small;
+  font-weight: bold;
+  margin-top: 220px;
+  margin-left: 60px;
+}
+
+.amazon-connect {
+  color: white;
+  position: absolute;
+  background-color: #00ABBA;
+  border-radius: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 100px;
+  font-size: 15px;
+  border-color: #00274b;
+}
+

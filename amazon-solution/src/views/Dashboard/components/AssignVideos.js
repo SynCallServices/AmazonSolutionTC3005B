@@ -5,15 +5,20 @@ import SearchBar from './SearchBar.js';
 import * as agent from '../../ScreenRecorder/components/AgentAPI'
 
 const AWS = require("aws-sdk");
-const cognito = new AWS.CognitoIdentityServiceProvider();
-const connect = new AWS.Connect();
-
-AWS.config.update({
+const cognito = new AWS.CognitoIdentityServiceProvider({
   apiVersion: 'latest',
   region: process.env.REACT_APP_REGION,
   accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
   secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
 });
+
+const connect = new AWS.Connect({
+  apiVersion: 'latest',
+  region: process.env.REACT_APP_REGION,
+  accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+  secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
+});
+
 
 function AssignVideos() {
 
@@ -37,6 +42,8 @@ function AssignVideos() {
 
   const [agentList, setAgentList] = useState([]);
   const [agents, setAgents] = useState([]);
+  const [assAgents, setAssAgents] = useState([]);
+
   const [filteredData, setFilteredData] = useState([]);
   const [searchForm, setSearchForm] = useState('');
 
@@ -47,6 +54,7 @@ function AssignVideos() {
     async function meh() {
 
       let agentsInfo = [];
+      let assAgentsInfo = [];
 
       if (agentList.length !== 0) {
 
@@ -70,7 +78,7 @@ function AssignVideos() {
                   if (recId === recordingId) {
                     addAgent = !addAgent;
                     break;
-                  }
+                  } 
 
                 }
 
@@ -83,6 +91,16 @@ function AssignVideos() {
                     email: agentList[i].email,
                     folder: agent.folder
                   });
+                } else {
+                  assAgentsInfo.push({
+                    agentId: agent.agentId, 
+                    username: agentList[i].username, 
+                    firstName: agentList[i].firstName, 
+                    role: agentList[i].role, 
+                    email: agentList[i].email,
+                    folder: agent.folder
+                  })
+
                 }
 
               } else {
@@ -101,6 +119,7 @@ function AssignVideos() {
 
     }
         setAgents(agentsInfo);
+        setAssAgents(assAgentsInfo);
         setFilteredData(agentsInfo)
         handleFilteredData({target: {value: ""}})
       }
@@ -200,6 +219,7 @@ function AssignVideos() {
           console.log(result)
         }
       })
+    window.location.reload(true)
   }
 
   return (
@@ -253,6 +273,26 @@ function AssignVideos() {
 
         <div className='assign-container'>
           <div className="assign-list-title">Assigned Agents</div>
+          {
+          assAgents.length !== 0 && (
+            <div className='assign-sub-container'>
+              {assAgents.map((value, key) => {
+                return (
+                  <AssignVideoCard
+                  key ={value.username}
+                  username={value.username}
+                  firstName={value.firstName}
+                  lastName={value.lastName}
+                  role={value.role}
+                  agentId={value.agentId}
+                  videoId={recordingId}
+                  handleAdd={handleAdd}
+                  />
+                );
+              })}
+            </div>
+          )
+        }
         </div>
 
         
