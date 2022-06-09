@@ -20,11 +20,9 @@ function ShowVideos() {
       if (res.status === "Unsuccesfull") {
         throw new Error("Agent does not exist")
       } else {
-        setAssingedRecordings(res.data.asgnRec);      }
+        let assingedRecordingsAgent = new Set(res.data.asgnRec);
+        setAssingedRecordings(assingedRecordingsAgent);      }
     })
-
-    // const popo = agent.assignVideo("001");
-    // popo.then((res) => console.log(res, "test"))
 
   }, [])
 

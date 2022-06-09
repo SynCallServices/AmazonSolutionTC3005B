@@ -4,6 +4,7 @@ import {API, graphqlOperation} from 'aws-amplify';
 import { listAgents, getAgent } from '../../../graphql/queries';
 import { createAgent, deleteAgent, updateAgent } from '../../../graphql/mutations'
 import { listRecordings } from '../../../graphql/queries';
+import Settings from '../../Dashboard/components/Settings';
 
 
 export async function list() {
@@ -39,6 +40,9 @@ export async function assignVideo(agentId_, videoId) {
         } else {
             assingedRecordings = [videoId];
         }
+
+        assingedRecordings = new Set(assingedRecordings);
+        assingedRecordings = new Array(assingedRecordings);
 
         const agentUpdateData = await API.graphql(graphqlOperation(
             updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: assingedRecordings } }
