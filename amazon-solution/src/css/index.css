@@ -585,21 +585,7 @@ body {
 
 }
 
-.video-card {
 
-  background: #00274b;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  justify-content: space-between;
-  margin-top: 12px;
-  margin-bottom: 15px;
-
-  justify-content: space-between;
-  cursor: pointer;
-
-}
 
 .assign-card-container {
   background: #00274b;

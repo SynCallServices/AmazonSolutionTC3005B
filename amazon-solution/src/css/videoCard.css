@@ -46,7 +46,7 @@
   top: 25%;
   width: 40px;
   height: 40px;
-  color: #CA5A56;
+  color: #00abba;
 }
 
 .video-text {
@@ -56,7 +56,7 @@
   overflow: hidden;
   white-space: nowrap;
   margin-top: 5px;
-  margin-left: 5px;
+  
 }
 
 .video-rating {
@@ -74,8 +74,7 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   display: flex;
-  justify-content: center;
-  align-items: center;
+  
 }
 
 .video-rating .rating-number {
@@ -88,6 +87,22 @@
   width: 700px;
   height: auto;
   aspect-ratio: 16 / 9;
+}
+
+.video-card {
+
+  background: #00274b;
+  border-radius: 12px;
+  display: flex;
+ 
+  padding: 20px;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 15px;
+
+  justify-content: space-between;
+  cursor: pointer;
+
 }
 
 .video-inner .close-btn {
