@@ -95,13 +95,26 @@ function Sidebar() {
 
         {role === 'admin' ? 
         <li>
+          <Link className='link' to='create-user'>
+            <i>
+              <FaUserAlt />
+            </i>
+            <span className='links-name'>Create User</span>
+          </Link>
+          <span className='tooltip'>Create User</span>
+        </li>
+        : null
+        }
+
+        {role === 'admin' ? 
+        <li>
           <Link className='link' to='user-management'>
             <i>
               <FaUserAlt />
             </i>
             <span className='links-name'>User Management</span>
           </Link>
-          <span className='tooltip'>UserManagement</span>
+          <span className='tooltip'>User Management</span>
         </li>
         : null
         }

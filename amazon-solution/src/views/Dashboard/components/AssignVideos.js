@@ -20,46 +20,88 @@ const connect = new AWS.Connect({
 
 function AssignVideos() {
 
-  const responseAss = agent.assignVideo()
+  //el evento es lo que el usuario vaya escribiendo
+  const handleFilteredData = (event) => {
+    //debes acceder al valor del evento que estara guardado dentro de esta constante
+    const searchWord = event.target.value;
+    //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
+    const newFilter = agents.filter((item) => {
+      return item.username.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    //se cambiara el estado del componente con el nuevo array filtrado
+    if (searchWord === "") {
+      //si searchword esta vacia entonces no habra ningun estado
+      setFilteredData(agents);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
 
   const [agentList, setAgentList] = useState([]);
   const [agents, setAgents] = useState([]);
+  const [assAgents, setAssAgents] = useState([]);
+
   const [filteredData, setFilteredData] = useState([]);
+  const [searchForm, setSearchForm] = useState('');
 
   const recordingId = "648517bb-6d02-4643-ad87-964b90cf7874"; // recordingId to check if the function works
 
   React.useEffect(() => {
 
-    let agentsInfo = [];
+    async function meh() {
 
-    if (agentList.length !== 0) {
+      let agentsInfo = [];
+      let assAgentsInfo = [];
 
-      for (let i = 0; i < agentList.length; i++) {
+      if (agentList.length !== 0) {
 
-        const id = agentList[i].agentId;
+        for (let i = 0; i < agentList.length; i++) {
 
-        const agentData = agent.get(id);
-        console.log(agentData)
-        agentData.then((res) => {
+          const id = agentList[i].agentId;
 
-          if (res.status === "Succesfull") {
+          const agentData = agent.get(id);
+          await agentData.then((res) => {
 
-            let agent = res.data;
-            let agentAsgnRec = agent.asgnRec;
-            let addAgent = true;
+            if (res.status === "Succesfull") {
 
-            if (agentAsgnRec) {
-              for (let j = 0; j < agentAsgnRec.length; j++) {
-                const recId = agentAsgnRec[j];
+              let agent = res.data;
+              let agentAsgnRec = agent.asgnRec;
+              let addAgent = true;
 
-                if (recId === recordingId) {
-                  addAgent = !addAgent;
-                  break;
+              if (agentAsgnRec) {
+                for (let j = 0; j < agentAsgnRec.length; j++) {
+                  const recId = agentAsgnRec[j];
+
+                  if (recId === recordingId) {
+                    addAgent = !addAgent;
+                    break;
+                  } 
+
                 }
 
-              }
+                if (addAgent) {
+                  agentsInfo.push({
+                    agentId: agent.agentId, 
+                    username: agentList[i].username, 
+                    firstName: agentList[i].firstName, 
+                    role: agentList[i].role, 
+                    email: agentList[i].email,
+                    folder: agent.folder
+                  });
+                } else {
+                  assAgentsInfo.push({
+                    agentId: agent.agentId, 
+                    username: agentList[i].username, 
+                    firstName: agentList[i].firstName, 
+                    role: agentList[i].role, 
+                    email: agentList[i].email,
+                    folder: agent.folder
+                  })
 
-              if (addAgent) {
+                }
+
+              } else {
                 agentsInfo.push({
                   agentId: agent.agentId, 
                   username: agentList[i].username, 
@@ -69,22 +111,18 @@ function AssignVideos() {
                   folder: agent.folder
                 });
               }
-
-            } else {
-              agentsInfo.push({
-                agentId: agent.agentId, 
-                username: agentList[i].username, 
-                firstName: agentList[i].firstName, 
-                role: agentList[i].role, 
-                email: agentList[i].email,
-                folder: agent.folder
-              });
             }
-          }
-          setAgents(agentsInfo);
-        })
+            console.log(agentsInfo);
+          })
+
+    }
+        setAgents(agentsInfo);
+        setAssAgents(assAgentsInfo);
+        setFilteredData(agentsInfo)
+        handleFilteredData({target: {value: ""}})
       }
     }
+    meh()
   }, [agentList])
 
   React.useEffect(() => {
@@ -158,57 +196,121 @@ function AssignVideos() {
     listCognitoUsers();
   }, [])
 
-  //el evento es lo que el usuario vaya escribiendo
-  const handleFilteredData = (event) => {
-    //debes acceder al valor del evento que estara guardado dentro de esta constante
-    const searchWord = event.target.value;
-    //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
-    const newFilter = agents.filter((item) => {
-        return item.username.toLowerCase().includes(searchWord.toLowerCase());
-      }
-    )
+  React.useEffect(() => {
 
-    //se cambiara el estado del componente con el nuevo array filtrado
-    if (searchWord === "") {
-      //si searchword esta vacia entonces no habra ningun estado
-      setFilteredData(agents);
-    } else {
-      setFilteredData(newFilter);
+    if (searchForm === '') {
+      handleFilteredData({target: { value: ''}});
     }
-  };
+
+  }, [filteredData])
+
+  function handleChange(event) {
+    setSearchForm(event.target.value)
+    handleFilteredData(event)
+  }
+
+  function handleAdd(agentId, videoId) {
+    agent.assignVideo(agentId, videoId)
+    .then((result) => {
+        if (result.status === 'Succesfull') {
+          console.log('Assigned')
+          console.log(result)
+        }
+      })
+    window.location.reload(true)
+  }
 
   return (
-
     <div className='assign-pop-up'>
-      <button className="assign-close">
-        <RiCloseLine className='assign-close-icon'/>
-      </button>
-      <div className='assign-container'>
-        <div className="assign-list-title">All Agents</div>
-        <div className='search'>
-          {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
-          <div className="searchInputs">
-          <input type="text"      
-            //se llamara cada vez que se escriba un nuevo caracter en la barra
-            onChange={handleFilteredData}
-          />
-          </div>
+      
+      
+        <button className="assign-close">
+          <RiCloseLine className='assign-close-icon'/>
+        </button>
+        <div className='assign-container'>
+          <div className="assign-list-title">All Agents</div>
+          <div className='search'>
+            {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
+            <div className="searchInputs">
+              <input
+                type="text"
+
+                placeholder="Search..."
+                //se llamara cada vez que se escriba un nuevo caracter en la barra
+                onChange={handleChange}
+
+              />
+              
+
+
+      </div>
+
+    </div>
+          {
+          filteredData.length !== 0 && (
+            <div className='assign-sub-container'>
+              {filteredData.map((value, key) => {
+                return (
+                  <AssignVideoCard
+                  key ={value.username}
+                  username={value.username}
+                  firstName={value.firstName}
+                  lastName={value.lastName}
+                  role={value.role}
+                  agentId={value.agentId}
+                  videoId={recordingId}
+                  handleAdd={handleAdd}
+                  />
+                );
+              })}
+            </div>
+          )
+        }
+             
         </div>
+
+        <div className='assign-container'>
+          <div className="assign-list-title">Assigned Agents</div>
+          {
+          assAgents.length !== 0 && (
+            <div className='assign-sub-container'>
+              {assAgents.map((value, key) => {
+                return (
+                  <AssignVideoCard
+                  key ={value.username}
+                  username={value.username}
+                  firstName={value.firstName}
+                  lastName={value.lastName}
+                  role={value.role}
+                  agentId={value.agentId}
+                  videoId={recordingId}
+                  handleAdd={handleAdd}
+                  />
+                );
+              })}
+            </div>
+          )
+        }
+          <div className='search'>
+            {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
+            <div className="searchInputs">
+              <input
+                type="text"
+
+                
+                //se llamara cada vez que se escriba un nuevo caracter en la barra
+                onChange={handleChange}
+                placeholder="Search..."
+              />
+              
+
+
       </div>
-      { filteredData.length !== 0 && (
-        <div className='assign-sub-container'>
-            {filteredData.map((value, key) => {
-              return (
-                <AssignVideoCard key ={value.username} username={value.username} firstName={value.firstName} lastName={value.lastName} role={value.role}/>
-              );
-            }
-            )}
-          </div>
-        )
-      }
-      <div className='assign-container'>
-        <div className="assign-list-title">Assigned Agents</div>
-      </div>
+
+    </div>
+        </div>
+
+        
     </div>
   )
 }
