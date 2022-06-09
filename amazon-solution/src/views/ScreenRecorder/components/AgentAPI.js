@@ -28,12 +28,17 @@ export async function list() {
 
 export async function assignVideo(agentId_, videoId) {
     try {
+        console.log(agentId_)
         const agentData = await API.graphql(graphqlOperation(
-            getAgent, { input: { agentId: agentId_, folder: `public/${agentId_}` } }
+            getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
         ))
-
-        let assingedRecordings = agentData.data.asgnRec;
-        assingedRecordings.push(videoId);
+        
+        let assingedRecordings = agentData.data.getAgent.asgnRec;
+        if (assingedRecordings) {
+            assingedRecordings.push(videoId);
+        } else {
+            assingedRecordings = [videoId];
+        }
 
         const agentUpdateData = await API.graphql(graphqlOperation(
             updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: assingedRecordings } }
