@@ -11,16 +11,16 @@ Original project forked from: Louis3797/awesome-readme-template
 <!-- Badges -->
 <p>
   <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/PrimeBIue/mini-AmazonSolution" alt="contributors" />
+    <img src="https://img.shields.io/github/contributors/SynCallServices/AmazonSolutionTC3005B" alt="contributors" />
   </a>
-  <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/commits/main">
-    <img src="https://img.shields.io/github/last-commit/PrimeBIue/mini-AmazonSolution" alt="last update" />
+  <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/SynCallServices/AmazonSolutionTC3005B?color=lightgrey" alt="license" />
   </a>
   <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/stargazers">
-    <img src="https://img.shields.io/github/stars/PrimeBIue/mini-AmazonSolution" alt="stars" />
+    <img src="https://img.shields.io/github/stars/SynCallServices/AmazonSolutionTC3005B" alt="stars" />
   </a>
   <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/issues">
-    <img src="https://img.shields.io/github/issues/PrimeBIue/mini-AmazonSolution" alt="open issues" />
+    <img src="https://img.shields.io/github/issues/SynCallServices/AmazonSolutionTC3005B" alt="open issues" />
   </a>
   <!-- <a href="https://github.com/Louis3797/awesome-readme-template/blob/master/LICENSE.txt">
     <img src="https://img.shields.io/github/license/PrimeBIue/mini-AmazonSolution" alt="license" />
@@ -30,11 +30,11 @@ Original project forked from: Louis3797/awesome-readme-template
 <h4>
     <!-- <a href="https://github.com/Louis3797/awesome-readme-template/">View Demo</a>
   <span> · </span> -->
-    <a href="https://github.com/PrimeBIue/mini-AmazonSolution/wiki">Documentation</a>
+    <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/wiki">Documentation</a>
   <span> · </span>
-    <a href="https://github.com/PrimeBIue/mini-AmazonSolution/issues/">Report Bug</a>
+    <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/issues">Report Bug</a>
   <span> · </span>
-    <a href="https://github.com/PrimeBIue/mini-AmazonSolution/issues/">Request Feature</a>
+    <a href="https://github.com/SynCallServices/AmazonSolutionTC3005B/issues">Request Feature</a>
   </h4>
 </div>
 
@@ -124,127 +124,28 @@ Original project forked from: Louis3797/awesome-readme-template
 | Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
 | Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
 
-
-<!-- Env Variables -->
-### :key: Environment Variables
-
-To run this project, you will need to add the following environment variables to your .env file
-
-**`TBD`**
-
-<!-- Getting Started -->
-## 	:toolbox: Getting Started
-
-<!-- Prerequisites -->
-### :bangbang: Prerequisites
-
-Have Node.Js installed.
-
-- [Node.Js](https://nodejs.org/en/)
-
 <!-- Installation -->
-### :gear: Installation
+## :gear: Installation
 
 **Our poject cannot yet be installed using a package manager**
    
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  yarn test test
-```
-
-<!-- Run Locally -->
-### :running: Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/PrimeBIue/mini-AmazonSolution/
-```
-
-Go to the project directory
-
-```bash
-  cd save-recordings
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm start
-```
-
-
-<!-- Deployment -->
-### :triangular_flag_on_post: Deployment
-
-To deploy this project run
-
-```bash
-  amplify push
-  amplify publish
-```
-
-
-<!-- Usage -->
-## :eyes: Usage
-
-Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
-
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
-```
-
-<!-- Roadmap -->
-## :compass: Roadmap
-
-* [x] Todo 1
-* [ ] Todo 2
-
-
-<!-- Contributing -->
-## :wave: Contributing
-
-- [Xime](https://github.com/Ximena-gonzalez)  
-- [Junqui](https://github.com/SebastianJuncosL)
-- [Matt](https://github.com/mateoglzc)
-
-<!-- <a href="https://github.com/PrimeBIue/mini-AmazonSolution/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=PrimeBIue/mini-AmazonSolution" />
-</a> -->
 
 <!-- License -->
 ## :warning: License
 
-Distributed under the [MIT](https://choosealicense.com/licenses/mit/) License. See LICENSE.txt for more information.
+Distributed under the [MIT License](https://choosealicense.com/licenses/mit/).
 
 <!-- Contact -->
 ## :handshake: Contact
 
-Open a discussion: [
-  mini-AmazonSolution/discussions](https://github.com/PrimeBIue/mini-AmazonSolution/discussions)
+<!-- Open a discussion: [
+  mini-AmazonSolution/discussions](https://github.com/PrimeBIue/mini-AmazonSolution/discussions) can't open discussions for the repo 🥴 -->
 
-Project Link: [mini-AmazonSolution](https://github.com/PrimeBIue/mini-AmazonSolution)
+Project Link: [mini-AmazonSolution](https://github.com/SynCallServices/AmazonSolutionTC3005B)
 
 
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements
-
-Use this section to mention useful resources and libraries that you have used in your projects.
 
  - [Shields.io](https://shields.io/)
  - [Readme Template](https://github.com/matiassingers/awesome-readme)
