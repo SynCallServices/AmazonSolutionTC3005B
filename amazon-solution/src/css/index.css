@@ -523,8 +523,10 @@ body {
   overflow: hidden;
   /* esto es lo que hace que la lista de resultados sea scrollable verticalmente */
   overflow-y: auto;
-  height: 330px;
-  margin-top: 50px;
+  height: 320px;
+  margin-top: 20px;
+
+  
 }
 
 .assign-sub-container::-webkit-scrollbar-track-piece {

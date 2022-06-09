@@ -169,7 +169,7 @@ const handleFilteredData = (event) => {
             <div className="searchInputs">
               <input
                 type="text"
-                
+                placeholder='Search...'
                 //se llamara cada vez que se escriba un nuevo caracter en la barra
                 onChange={handleFilteredData}
 
