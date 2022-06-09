@@ -21,6 +21,8 @@ function ShowVideos() {
         throw new Error("Agent does not exist")
       } else {
         let assingedRecordingsAgent = new Set(res.data.asgnRec);
+        assingedRecordingsAgent = Array.from(assingedRecordingsAgent);
+        console.log(assingedRecordingsAgent)
         setAssingedRecordings(assingedRecordingsAgent);      }
     })
 

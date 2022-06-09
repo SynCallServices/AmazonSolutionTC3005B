@@ -42,7 +42,7 @@ export async function assignVideo(agentId_, videoId) {
         }
 
         assingedRecordings = new Set(assingedRecordings);
-        assingedRecordings = new Array(assingedRecordings);
+        assingedRecordings = Array.from(assingedRecordings);
 
         const agentUpdateData = await API.graphql(graphqlOperation(
             updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: assingedRecordings } }
