@@ -669,3 +669,31 @@ body {
   font-size: 15px;
   border-color: #00274b;
 }
+
+
+
+.menu {
+  display: flex;
+  background-color: red;
+}
+
+.account,
+.information,
+.sound,
+.help,
+.terms {
+  background-color: #4078A3;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.a_title,
+.i_title,
+.s_title,
+.h_title,
+.t_title {
+  color: white;
+  font-size: 32;
+  font-weight: bold;
+  margin-left: 10px;
+}
