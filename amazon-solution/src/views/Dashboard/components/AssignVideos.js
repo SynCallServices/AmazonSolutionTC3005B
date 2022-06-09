@@ -1,6 +1,7 @@
 import { RiCloseLine } from 'react-icons/ri'
 import AssignVideoCard from './AssignVideoCard.js'
 import React, { useState } from 'react';
+import SearchBar from './SearchBar.js';
 import * as agent from '../../ScreenRecorder/components/AgentAPI'
 
 const AWS = require("aws-sdk");
@@ -14,45 +15,83 @@ AWS.config.update({
   secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
 });
 
+AWS.config.update({
+  apiVersion: 'latest',
+    region: process.env.REACT_APP_REGION,
+      accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
+        secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
+});
+
 function AssignVideos() {
+
+  //el evento es lo que el usuario vaya escribiendo
+  const handleFilteredData = (event) => {
+    //debes acceder al valor del evento que estara guardado dentro de esta constante
+    const searchWord = event.target.value;
+    //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
+    const newFilter = agents.filter((item) => {
+      return item.username.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    //se cambiara el estado del componente con el nuevo array filtrado
+    if (searchWord === "") {
+      //si searchword esta vacia entonces no habra ningun estado
+      setFilteredData(agents);
+    } else {
+      setFilteredData(newFilter);
+    }
+  };
 
   const [agentList, setAgentList] = useState([]);
   const [agents, setAgents] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
 
-  const recordingId = "f2502ca6-325c-4a1d-a14c-6fddd15f7b2d"; // recordingId to check if the function works
+  const recordingId = "648517bb-6d02-4643-ad87-964b90cf7874"; // recordingId to check if the function works
 
   React.useEffect(() => {
 
-    let agentsInfo = [];
+    async function meh() {
 
-    if (agentList.length !== 0) {
+      let agentsInfo = [];
 
-      for (let i = 0; i < agentList.length; i++) {
+      if (agentList.length !== 0) {
 
-        const id = agentList[i].agentId;
+        for (let i = 0; i < agentList.length; i++) {
 
-        const agentData = agent.get(id);
-        agentData.then((res) => {
+          const id = agentList[i].agentId;
 
-          if (res.status === "Succesfull") {
+          const agentData = agent.get(id);
+          await agentData.then((res) => {
 
-            let agent = res.data;
-            let agentAsgnRec = agent.asgnRec;
-            let addAgent = true;
+            if (res.status === "Succesfull") {
 
-            if (agentAsgnRec) {
-              for (let j = 0; j < agentAsgnRec.length; j++) {
-                const recId = agentAsgnRec[j];
+              let agent = res.data;
+              let agentAsgnRec = agent.asgnRec;
+              let addAgent = true;
 
-                if (recId === recordingId) {
-                  addAgent = !addAgent;
-                  break;
+              if (agentAsgnRec) {
+                for (let j = 0; j < agentAsgnRec.length; j++) {
+                  const recId = agentAsgnRec[j];
+
+                  if (recId === recordingId) {
+                    addAgent = !addAgent;
+                    break;
+                  }
+
                 }
 
-              }
+                if (addAgent) {
+                  agentsInfo.push({
+                    agentId: agent.agentId, 
+                    username: agentList[i].username, 
+                    firstName: agentList[i].firstName, 
+                    role: agentList[i].role, 
+                    email: agentList[i].email,
+                    folder: agent.folder
+                  });
+                }
 
-              if (addAgent) {
+              } else {
                 agentsInfo.push({
                   agentId: agent.agentId, 
                   username: agentList[i].username, 
@@ -62,23 +101,17 @@ function AssignVideos() {
                   folder: agent.folder
                 });
               }
-
-            } else {
-              agentsInfo.push({
-                agentId: agent.agentId, 
-                username: agentList[i].username, 
-                firstName: agentList[i].firstName, 
-                role: agentList[i].role, 
-                email: agentList[i].email,
-                folder: agent.folder
-              });
             }
-          }
-          console.log(agentsInfo);
-          setAgents(agentsInfo);
-        })
+            console.log(agentsInfo);
+          })
+
+    }
+        setAgents(agentsInfo);
+        setFilteredData(agentsInfo)
+        handleFilteredData({target: {value: ""}})
       }
     }
+    meh()
   }, [agentList])
 
   React.useEffect(() => {
@@ -152,57 +185,67 @@ function AssignVideos() {
     listCognitoUsers();
   }, [])
 
-  //el evento es lo que el usuario vaya escribiendo
-  const handleFilteredData = (event) => {
-    //debes acceder al valor del evento que estara guardado dentro de esta constante
-    const searchWord = event.target.value;
-    //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
-    const newFilter = agents.filter((item) => {
-        return item.username.toLowerCase().includes(searchWord.toLowerCase());
-      }
-    )
+  React.useEffect(() => {
 
-    //se cambiara el estado del componente con el nuevo array filtrado
-    if (searchWord === "") {
-      //si searchword esta vacia entonces no habra ningun estado
-      setFilteredData(agents);
-    } else {
-      setFilteredData(newFilter);
-    }
-  };
+    handleFilteredData({target: { value: ''}});
+
+  }, [filteredData])
+
+
+
+
 
   return (
-
     <div className='assign-pop-up'>
-      <button className="assign-close">
-        <RiCloseLine className='assign-close-icon'/>
-      </button>
-      <div className='assign-container'>
-        <div className="assign-list-title">All Agents</div>
-        <div className='search'>
-          {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
-          <div className="searchInputs">
-          <input type="text"      
-            //se llamara cada vez que se escriba un nuevo caracter en la barra
-            onChange={handleFilteredData}
-          />
-          </div>
+      
+      
+        <button className="assign-close">
+          <RiCloseLine className='assign-close-icon'/>
+        </button>
+        <div className='assign-container'>
+          <div className="assign-list-title">All Agents</div>
+          <div className='search'>
+            {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
+            <div className="searchInputs">
+              <input
+                type="text"
+                
+                //se llamara cada vez que se escriba un nuevo caracter en la barra
+                onChange={handleFilteredData}
+
+              />
+              
+
+
+      </div>
+
+    </div>
+          {
+          filteredData.length !== 0 && (
+            <div className='assign-sub-container'>
+              {filteredData.map((value, key) => {
+                return (
+                  <AssignVideoCard
+                  key ={value.username}
+                  username={value.username}
+                  firstName={value.firstName}
+                  lastName={value.lastName}
+                  role={value.role}
+                  agentId={value.agentId}
+                  />
+                );
+              })}
+            </div>
+          )
+        }
+             
         </div>
-      </div>
-      { filteredData.length !== 0 && (
-        <div className='assign-sub-container'>
-            {filteredData.map((value, key) => {
-              return (
-                <AssignVideoCard key ={value.username} username={value.username} firstName={value.firstName} lastName={value.lastName} role={value.role}/>
-              );
-            }
-            )}
-          </div>
-        )
-      }
-      <div className='assign-container'>
-        <div className="assign-list-title">Assigned Agents</div>
-      </div>
+
+        <div className='assign-container'>
+          <div className="assign-list-title">Assigned Agents</div>
+        </div>
+
+        
     </div>
   )
 }

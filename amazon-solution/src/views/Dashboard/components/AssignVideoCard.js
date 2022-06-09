@@ -1,6 +1,7 @@
 import { AiFillPlusCircle } from 'react-icons/ai'
 
 function AssignVideoCard(props) {
+  console.log(props.agentId)
   return (
     <div className="assign-card-container">
       <div className="card-column">
