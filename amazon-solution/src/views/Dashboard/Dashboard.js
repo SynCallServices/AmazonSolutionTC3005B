@@ -36,6 +36,7 @@ function DashBoard() {
   const [blobVar, setBlobVar] = React.useState(null);
   const [ranOnce, setRanOnce] = React.useState(false);
   const [recordingStartTime, setRecordingStartTime] = React.useState(null);
+  const [recordingEndTime, setRecordingEndTime] = React.useState(null);
   const [voicePath, setVoicePath] = React.useState('');
 
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -188,7 +189,7 @@ function DashBoard() {
       // console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
-    
+    setRecordingEndTime((new Date(Date.now())));    
   };
 
   // Change hard coded values
@@ -198,7 +199,7 @@ function DashBoard() {
     const videoId = uuidv4()
     const uploadingVideo = video.uploadVideo(blob, user.userAttributes["custom:connect_id"], videoId)
     await uploadingVideo.then((res) => console.log(res))
-    const videoEntry = video.create(videoId, user.userAttributes["custom:connect_id"], recordingStartTime.toISOString())
+    const videoEntry = video.create(videoId, user.userAttributes["custom:connect_id"], recordingStartTime.toISOString(), recordingEndTime.toISOString())
     videoEntry.then(async (res) => {
       const videoPath = res.data.data.createVideo.path;
       // console.log(voicePath);

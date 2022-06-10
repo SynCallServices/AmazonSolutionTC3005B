@@ -8,6 +8,7 @@ export const getVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      endTime
       createdAt
       updatedAt
     }
@@ -35,6 +36,7 @@ export const listVideos = /* GraphQL */ `
         agentId
         path
         startTime
+        endTime
         createdAt
         updatedAt
       }
