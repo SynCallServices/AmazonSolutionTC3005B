@@ -59,7 +59,38 @@ export async function assignVideo(agentId_, videoId) {
             data: error
         }
     }
-    
+}
+
+export async function UnAssignVideo(agentId_, videoId) {
+    try {
+        const agentData = await API.graphql(graphqlOperation(
+            getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
+        ))
+        
+        let assingedRecordings = agentData.data.getAgent.asgnRec;
+
+        assingedRecordings = new Set(assingedRecordings);
+        assingedRecordings = Array.from(assingedRecordings);
+
+        let newArr = assingedRecordings.filter(word => word === videoId);
+                
+
+        const agentUpdateData = await API.graphql(graphqlOperation(
+            updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: newArr } }
+        ))
+
+        return {
+            status: "Succesfull",
+            message: "Assigned recording correctly",
+            data: agentUpdateData
+        }
+
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
 }
 
 export async function get(agentId_) {
