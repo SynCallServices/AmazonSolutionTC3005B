@@ -96,8 +96,9 @@ function UserManagement() {
       <div className="manage-card-container">
         {agents.map(agent => {
           return (
-
             <UserManagementCard
+              agentList={agents}
+              setAgentList={setAgents}
               username={agent.username}
               firstName={agent.firstName}
               lastName={agent.lastName}

@@ -709,3 +709,56 @@ body {
   border-color: #00274b;
 }
 
+.confirm-container {
+  width: 300px;
+  height: 150px;
+  background-color: #00274b;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.confirm-button1 {
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #00ABBA;
+  border: 0;
+  border-radius: 14px;
+  color: white;
+  width: 100px;
+}
+
+.confirm-button2 {
+  width: 100px;
+  color: white;
+  border-radius: 14px;
+  border: 0;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #00ABBA;
+  cursor: pointer;
+}
+
+.confirm-button1:hover {
+  background-color: #3e688F;
+}
+
+.confirm-button1:active {
+  background-color: #3E688F;
+  transform: translateY(4px);
+}
+
+.confirm-button2:hover {
+  background-color: #3e688F;
+}
+
+.confirm-button2:active {
+  background-color: #3E688F;
+  transform: translateY(4px);
+}
