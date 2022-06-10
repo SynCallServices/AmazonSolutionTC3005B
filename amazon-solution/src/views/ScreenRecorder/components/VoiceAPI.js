@@ -77,7 +77,7 @@ export async function get(voiceId_) {
     }
 }
 
-export async function create(voiceId_, agentId_, startTime_, path_, queueId_) {
+export async function create(voiceId_, agentId_, startTime_, path_, queueId_, recordedBy_) {
     /**
      * Given a new voiceoId and a agentId, create a new entry of a voice recording in dynamoDB.
      * @param {String} voiceId_ An Id for the new voice recording.
@@ -91,7 +91,7 @@ export async function create(voiceId_, agentId_, startTime_, path_, queueId_) {
             throw new Error("Voice Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVoice, { input: { voiceId: voiceId_, agentId: agentId_, startTime: startTime_, path: path_, queueId: queueId_} } 
+            createVoice, { input: { voiceId: voiceId_, agentId: agentId_, startTime: startTime_, path: path_, queueId: queueId_, recordedBy: recordedBy_} } 
         )) 
         return {
             status: "Succesfull",
