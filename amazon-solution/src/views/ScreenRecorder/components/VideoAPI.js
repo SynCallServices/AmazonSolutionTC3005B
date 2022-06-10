@@ -86,6 +86,27 @@ export async function list() {
     }
 }
 
+export async function listRec() {
+    /**
+     * List all the merged recordings. 
+     */
+    try {
+        const videoData = await API.graphql(graphqlOperation(listRecordings))
+        const videoList = videoData.data.listRecordings.items
+        
+        return {
+            status: "Succesfull",
+            message: "Fetched video recordings correctly",
+            data: videoList
+        }
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
+}
+
 export async function listRecording(assingedRecordings) {
     /**
      * List all the recordings that a certain user has. 

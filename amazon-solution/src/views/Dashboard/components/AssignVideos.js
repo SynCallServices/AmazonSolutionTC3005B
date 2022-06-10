@@ -1,7 +1,6 @@
 import { RiCloseLine } from 'react-icons/ri'
 import AssignVideoCard from './AssignVideoCard.js'
 import React, { useState } from 'react';
-import SearchBar from './SearchBar.js';
 import * as agent from '../../ScreenRecorder/components/AgentAPI'
 
 const AWS = require("aws-sdk");
@@ -11,7 +10,6 @@ const cognito = new AWS.CognitoIdentityServiceProvider({
   accessKeyId: process.env.REACT_APP_ACCESS_KEY_ID,
   secretAccessKey: process.env.REACT_APP_SECRET_ACCESS_KEY
 });
-
 const connect = new AWS.Connect({
   apiVersion: 'latest',
   region: process.env.REACT_APP_REGION,
