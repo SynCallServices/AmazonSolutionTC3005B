@@ -1,6 +1,6 @@
 import React from 'react'
 import AWS from "aws-sdk";
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from 'aws-amplify';
 import { MdSpaceDashboard } from 'react-icons/md'
 import { IoCall } from 'react-icons/io5'
@@ -14,8 +14,9 @@ function Sidebar() {
 
   const amazonConnect = new AWS.Connect();
 
-  const {user, setUser} = React.useContext(UserContext)
+  const { user, setUser } = React.useContext(UserContext)
   const [role, setRole] = React.useState("...");
+  const navigate = useNavigate();
 
   async function signOut() {
     try {
@@ -62,15 +63,17 @@ function Sidebar() {
   return (
     <nav className={sidebarActive ? 'sidebar' : 'sidebar active'}>
       <div className='logo-content'>
-        <div className='logo'>
-          <img src={require('../../../assets/Syncall_logo.png')} className='logo-icon'/>
-          <div className='logo-name'>SynCall</div>
-        </div>
+        <Link className='link' to='home'>
+          <div className='logo' >
+            <img src={require('../../../assets/Syncall_logo.png')} className='logo-icon' />
+            <div className='logo-name'>SynCall</div>
+          </div>
+        </Link>
         <div className='menu-btn' onClick={sidebarUtil}>
           <HiMenu />
         </div>
       </div>
-      <hr className='sidebar-separator'/>
+      <hr className='sidebar-separator' />
       <ul className='nav_list'>
         <li>
           <Link className='link' to='videodashboard'>
