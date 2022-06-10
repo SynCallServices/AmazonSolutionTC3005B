@@ -217,7 +217,6 @@ function AssignVideos() {
           console.log(result)
         }
       })
-    window.location.reload(true)
   }
 
   return (
