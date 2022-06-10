@@ -271,6 +271,21 @@ function AssignVideos() {
 
         <div className='assign-container'>
           <div className="assign-list-title">Assigned Agents</div>
+          <div className='search'>
+            {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
+            <div className="searchInputs">
+              <input
+                className='search-input'
+                type="text"
+
+                
+                //se llamara cada vez que se escriba un nuevo caracter en la barra
+                onChange={handleChange}
+                placeholder="Search..."
+              />
+      </div>
+
+    </div>
           {
           assAgents.length !== 0 && (
             <div className='assign-sub-container'>
@@ -291,23 +306,6 @@ function AssignVideos() {
             </div>
           )
         }
-          <div className='search'>
-            {/* /* on change: siempre que haya más letras esta función automáticamente va buscando resultados con eso  */}
-            <div className="searchInputs">
-              <input
-                type="text"
-
-                
-                //se llamara cada vez que se escriba un nuevo caracter en la barra
-                onChange={handleChange}
-                placeholder="Search..."
-              />
-              
-
-
-      </div>
-
-    </div>
         </div>
 
         
