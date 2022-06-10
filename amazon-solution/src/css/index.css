@@ -508,6 +508,15 @@ body {
 
 }
 
+.delete-user {
+  cursor: pointer;
+}
+
+.delete-user:hover {
+  cursor: pointer;
+  color: #00ABBA;
+}
+
 .manage-card-container {
   position: absolute;
   display: flex;
@@ -534,7 +543,7 @@ body {
   background: #00274b;
   width: 95vh;
   height: 10vh;
-  text-align: left;
+  text-align: left;  
   align-items: center;
   gap: 40px;
   border-radius: 12px;
@@ -543,6 +552,14 @@ body {
 
 .usercard-names-real {
   display: flex;
+}
+
+.usercard-id {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 80px;
+  max-height: 20px;
 }
 
 .assign-container {
