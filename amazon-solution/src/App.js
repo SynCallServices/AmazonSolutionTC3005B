@@ -29,7 +29,7 @@ function App() {
     <div>
       <UserContext.Provider value={{user, setUser}}>
         <Routes>
-          <Route path='/' element={<LogIn/>} />
+          <Route path='/' element={<UserManagement/>} />
             <Route exact path='dashboard' element={
               <ProtectedRoute user={user}>
                 <DashBoard />
