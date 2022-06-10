@@ -131,6 +131,7 @@ export const getVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
       createdAt
       updatedAt
     }
@@ -158,6 +159,7 @@ export const listVoices = /* GraphQL */ `
         agentId
         path
         startTime
+        queueId
         createdAt
         updatedAt
       }

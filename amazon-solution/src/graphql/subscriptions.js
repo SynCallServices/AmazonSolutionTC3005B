@@ -116,6 +116,7 @@ export const onCreateVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
       createdAt
       updatedAt
     }
@@ -128,6 +129,7 @@ export const onUpdateVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
       createdAt
       updatedAt
     }
@@ -140,6 +142,7 @@ export const onDeleteVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
       createdAt
       updatedAt
     }
