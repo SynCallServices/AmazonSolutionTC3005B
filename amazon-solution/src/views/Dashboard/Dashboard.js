@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import 'amazon-connect-streams'
 import Sidebar from './components/Sidebar'
+import Home from './components/Home'
 import RecordRTC from "recordrtc";
 import * as video from "../ScreenRecorder/components/VideoAPI.js"
 import { v4 as uuidv4 } from 'uuid'
@@ -31,8 +32,8 @@ function DashBoard() {
 
   const [closed, setClosed] = useState(false);
   const closeOpen = () => {
-          setClosed(!closed);
-        };
+    setClosed(!closed);
+  };
 
   // Amazon Connect Embed
   React.useEffect(() => {
@@ -208,23 +209,24 @@ function DashBoard() {
   return (
     <div className='main-content'>
       <Sidebar />
+
       <div className='dashboard--content'>
         <Outlet />
       </div>
-      {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn}/>}
+      {loggedIn ? <div id="ccp" /> : <ConnectLogIn logIn={logIn} />}
       <>
-      {closed ?
-        <button onClick={closeOpen}>
-          Closed it should open
-        </button>
-        :
+        {closed ?
+          <button onClick={closeOpen}>
+            Closed it should open
+          </button>
+          :
           <div className='UploadSuccessful-card'>
-              <p>&#127881; Upload Successful</p>
-              <button onClick={closeOpen} className='closingButton'>
-                  x
-              </button>
+            <p>&#127881; Upload Successful</p>
+            <button onClick={closeOpen} className='closingButton'>
+              x
+            </button>
           </div>
-          } 
+        }
       </>
 
     </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LogIn from './views/LogIn/LogIn.js'
+import Home from './views/Dashboard/components/Home.js'
 import DashBoard from './views/Dashboard/Dashboard.js'
 import DashBoardAdmin from './views/DashboardAdmin/DashboardAdmin.js'
 import CallManager from './views/Dashboard/components/CallManager.js'
@@ -28,13 +29,14 @@ function App() {
     <div>
       <UserContext.Provider value={{ user, setUser }}>
         <Routes>
-          <Route path='/' element={<ShowVideos />} />
+          <Route path='/' element={<LogIn />} />
           <Route exact path='dashboard' element={
             <ProtectedRoute user={user}>
               <DashBoard />
             </ProtectedRoute>
           }>
             <Route path='callmanager' element={<CallManager />} />
+            <Route path='home' element={<Home />} />
             <Route path='videoform' element={<VideoForm />} />
             <Route path='videodashboard' element={<ShowVideos />} />
             <Route path='settings' element={<Settings />} />
