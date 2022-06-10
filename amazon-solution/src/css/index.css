@@ -673,28 +673,30 @@ body {
 .information,
 .sound,
 .help,
-.terms {
+.terms .s-account {
   background-color: #00274B;
   display: flex;
   border-radius: 10px;
   padding: 5px;
-  margin-right: 500px;
-  margin-left: 350px;
+  margin-right: 900px;
+  margin-left: 150px;
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 60px;
+  cursor: pointer;
 }
 
 .account:hover,
 .information:hover,
 .help:hover,
-.terms:hover{
+.terms:hover {
   background-color: #00ABBA;
 }
 
 .a_title,
 .i_title,
 .h_title,
-.t_title {
+.t_title,
+.account-info {
   color: white;
   font-size: 32;
   font-weight: bold;
@@ -704,11 +706,27 @@ body {
 .a_logo,
 .i_logo,
 .h_logo,
-.t_logo{
+.t_logo {
   color: white;
   margin: 10px;
 
 }
+
+
+.acc-card {
+  background-color: #00274B;
+  width: 300px;
+  height: 400px;
+  justify-content: center;
+  display: flex;
+  border-radius: 10px;
+  padding: 5px;
+  margin-right: 900px;
+  margin-left: 450px;
+  margin-bottom: 40px;
+  margin-top: 60px;
+}
+
 
 
 .home-page {

@@ -13,6 +13,7 @@ import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
 import ConnectLogIn from './views/Dashboard/components/ConnectLogIn'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
+import Account from './views/Dashboard/components/Account.js'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
 
 // Route restrictions
@@ -29,7 +30,7 @@ function App() {
     <div>
       <UserContext.Provider value={{ user, setUser }}>
         <Routes>
-          <Route path='/' element={<LogIn />} />
+          <Route path='/' element={<Account />} />
           <Route exact path='dashboard' element={
             <ProtectedRoute user={user}>
               <DashBoard />
