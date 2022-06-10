@@ -13,19 +13,35 @@ function ShowVideos() {
 
 
   React.useEffect(() => {
-    console.log(user.userAttributes)
 
-    const agentData = agent.get(user.userAttributes["custom:connect_id"]);
-    agentData.then((res) => {
-      if (res.status === "Unsuccesfull") {
-        throw new Error("Agent does not exist")
-      } else {
-        setAssingedRecordings(res.data.asgnRec);      }
-    })
-
-    // const popo = agent.assignVideo("001");
-    // popo.then((res) => console.log(res, "test"))
-
+    if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_AGENT_ID){
+      const agentData = agent.get(user.userAttributes["custom:connect_id"]);
+      agentData.then((res) => {
+        if (res.status === "Unsuccesfull") {
+          throw new Error("Agent does not exist")
+        } else {
+          let assingedRecordingsAgent = new Set(res.data.asgnRec);
+          assingedRecordingsAgent = Array.from(assingedRecordingsAgent);
+          console.log(assingedRecordingsAgent)
+          setAssingedRecordings(assingedRecordingsAgent);      }
+      })
+    } else {
+      console.log("Admin view");
+      const videoData = video.listRec();
+      videoData.then((res) => {
+        setVideoCards(res.data.map(vid => {
+          console.log(vid)
+          return (
+          <ShowVideoCard
+            videoTitle = {vid.title}
+            videoPath = {vid.path}
+            vidDuration = {vid.duration}
+            vidRating = "4.9"
+            key = {vid.videoId}
+          />
+        )}))
+      })
+    }
   }, [])
 
   React.useEffect(() => {
@@ -45,7 +61,11 @@ function ShowVideos() {
           console.log(err)
       })
     }
-    effect();
+
+    if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_AGENT_ID){
+      effect();
+    }
+
   }, [assingedRecordings])
 
   return (

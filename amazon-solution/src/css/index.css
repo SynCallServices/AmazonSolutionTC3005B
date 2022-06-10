@@ -491,6 +491,77 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.manage-container {
+  background: #00274b;
+  height: 80vh;
+  width: 120vh;
+  position: absolute;
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+  border-radius: 12px;
+
+  transform: translate(-50%, -50%);
+  text-align: center;
+  padding: 20px;
+
+}
+
+.delete-user {
+  cursor: pointer;
+}
+
+.delete-user:hover {
+  cursor: pointer;
+  color: #00ABBA;
+}
+
+.manage-card-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: #4078a3;
+  height: 68vh;
+  width: 100vh;
+  top: 53%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+  border-radius: 12px;
+
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  max-height: 68vh;
+  overflow: hidden;
+}
+
+.usercard {
+  padding: 20px 25px;
+  display: flex;
+  background: #00274b;
+  width: 95vh;
+  height: 10vh;
+  text-align: left;  
+  align-items: center;
+  gap: 40px;
+  border-radius: 12px;
+  justify-content: space-between;
+}
+
+.usercard-names-real {
+  display: flex;
+}
+
+.usercard-id {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 80px;
+  max-height: 20px;
+}
+
 .assign-container {
   background: #4078a3;
   padding: 20px;
@@ -512,6 +583,7 @@ body {
 
 .assign-sub-container::-webkit-scrollbar-track-piece {
   display: block;
+  opacity: 0;
   background-color: #00ABBA;
   width: 5px;
   border-radius: 5px;
@@ -583,13 +655,13 @@ body {
 
 .assign-card-username {
   font-size: 18px;
-  margin-left: -71px;
+  margin-left: 0vh;
 }
 
 .agent-info {
   font-size: 10px;
   border-radius: 50%;
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 .assign-button {
@@ -607,6 +679,86 @@ body {
 }
 
 .assign-button:active {
+  background-color: #3E688F;
+  transform: translateY(4px);
+}
+
+.connect-login {
+  background-color: #00274b;
+}
+
+.clickhere {
+  color: white;
+  font-size: x-small;
+  font-weight: bold;
+  margin-top: 220px;
+  margin-left: 60px;
+}
+
+.amazon-connect {
+  color: white;
+  position: absolute;
+  background-color: #00ABBA;
+  border-radius: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 100px;
+  font-size: 15px;
+  border-color: #00274b;
+}
+
+.confirm-container {
+  width: 300px;
+  height: 150px;
+  background-color: #00274b;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.confirm-button1 {
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: #00ABBA;
+  border: 0;
+  border-radius: 14px;
+  color: white;
+  width: 100px;
+}
+
+.confirm-button2 {
+  width: 100px;
+  color: white;
+  border-radius: 14px;
+  border: 0;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: #00ABBA;
+  cursor: pointer;
+}
+
+.confirm-button1:hover {
+  background-color: #3e688F;
+}
+
+.confirm-button1:active {
+  background-color: #3E688F;
+  transform: translateY(4px);
+}
+
+.confirm-button2:hover {
+  background-color: #3e688F;
+}
+
+.confirm-button2:active {
   background-color: #3E688F;
   transform: translateY(4px);
 }

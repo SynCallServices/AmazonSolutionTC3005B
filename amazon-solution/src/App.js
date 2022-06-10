@@ -40,7 +40,8 @@ function App() {
               <Route path='videodashboard' element={<ShowVideos />}/>
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
-              <Route path='user-management' element={<CreateUser />}/>
+              <Route path='create-user' element={<CreateUser />}/>
+              <Route path='user-management' element={<UserManagement />}/>
               <Route path='assign-videos' element={<AssignVideos/>}/>
             </Route>
         </Routes>

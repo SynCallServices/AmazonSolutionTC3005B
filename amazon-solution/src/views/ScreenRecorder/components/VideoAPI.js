@@ -86,6 +86,27 @@ export async function list() {
     }
 }
 
+export async function listRec() {
+    /**
+     * List all the merged recordings. 
+     */
+    try {
+        const videoData = await API.graphql(graphqlOperation(listRecordings))
+        const videoList = videoData.data.listRecordings.items
+        
+        return {
+            status: "Succesfull",
+            message: "Fetched video recordings correctly",
+            data: videoList
+        }
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
+}
+
 export async function listRecording(assingedRecordings) {
     /**
      * List all the recordings that a certain user has. 
@@ -114,7 +135,7 @@ export async function listRecording(assingedRecordings) {
     }
 }
 
-export async function create(videoId_, agentId_, startTime_) {
+export async function create(videoId_, agentId_, startTime_, endTime_) {
     /**
      * Given a new videoId and a agentId, create a new entry of a video in dynamoDB.
      * @param {String} videoId_ An Id for the new video.
@@ -128,7 +149,7 @@ export async function create(videoId_, agentId_, startTime_) {
             throw new Error("Video Recording already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, path: `public/${agentId_}/videos/${videoId_}`} } 
+            createVideo, { input: { videoId: videoId_, agentId: agentId_, startTime: startTime_, endTime: endTime_, path: `public/${agentId_}/videos/${videoId_}`} } 
         )) 
         return {
             status: "Succesfull",

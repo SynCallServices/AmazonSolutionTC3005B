@@ -4,6 +4,7 @@ import {API, graphqlOperation} from 'aws-amplify';
 import { listAgents, getAgent } from '../../../graphql/queries';
 import { createAgent, deleteAgent, updateAgent } from '../../../graphql/mutations'
 import { listRecordings } from '../../../graphql/queries';
+import Settings from '../../Dashboard/components/Settings';
 
 
 export async function list() {
@@ -28,7 +29,6 @@ export async function list() {
 
 export async function assignVideo(agentId_, videoId) {
     try {
-        console.log(agentId_)
         const agentData = await API.graphql(graphqlOperation(
             getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
         ))
@@ -39,6 +39,9 @@ export async function assignVideo(agentId_, videoId) {
         } else {
             assingedRecordings = [videoId];
         }
+
+        assingedRecordings = new Set(assingedRecordings);
+        assingedRecordings = Array.from(assingedRecordings);
 
         const agentUpdateData = await API.graphql(graphqlOperation(
             updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: assingedRecordings } }
@@ -56,7 +59,38 @@ export async function assignVideo(agentId_, videoId) {
             data: error
         }
     }
-    
+}
+
+export async function UnAssignVideo(agentId_, videoId) {
+    try {
+        const agentData = await API.graphql(graphqlOperation(
+            getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
+        ))
+        
+        let assingedRecordings = agentData.data.getAgent.asgnRec;
+
+        assingedRecordings = new Set(assingedRecordings);
+        assingedRecordings = Array.from(assingedRecordings);
+
+        let newArr = assingedRecordings.filter(word => word === videoId);
+                
+
+        const agentUpdateData = await API.graphql(graphqlOperation(
+            updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: newArr } }
+        ))
+
+        return {
+            status: "Succesfull",
+            message: "Assigned recording correctly",
+            data: agentUpdateData
+        }
+
+    } catch (error) {
+        return {
+            status: "Unsuccesfull",
+            data: error
+        }
+    }
 }
 
 export async function get(agentId_) {
