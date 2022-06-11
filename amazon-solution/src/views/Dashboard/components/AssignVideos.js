@@ -250,6 +250,7 @@ function AssignVideos() {
           console.log('Assigned')
           console.log(result)
         }
+
     })
     console.log(agentObj)
     async function updateArrays() {

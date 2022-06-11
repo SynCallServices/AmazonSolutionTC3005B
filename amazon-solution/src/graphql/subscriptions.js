@@ -8,6 +8,7 @@ export const onCreateVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      endTime
       createdAt
       updatedAt
     }
@@ -20,6 +21,7 @@ export const onUpdateVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      endTime
       createdAt
       updatedAt
     }
@@ -32,6 +34,7 @@ export const onDeleteVideo = /* GraphQL */ `
       agentId
       path
       startTime
+      endTime
       createdAt
       updatedAt
     }
@@ -113,6 +116,8 @@ export const onCreateVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
+      recordedBy
       createdAt
       updatedAt
     }
@@ -125,6 +130,8 @@ export const onUpdateVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
+      recordedBy
       createdAt
       updatedAt
     }
@@ -137,6 +144,8 @@ export const onDeleteVoice = /* GraphQL */ `
       agentId
       path
       startTime
+      queueId
+      recordedBy
       createdAt
       updatedAt
     }
