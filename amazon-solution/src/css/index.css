@@ -753,11 +753,11 @@ body {
   cursor: pointer;
 }
 
-/*.dateTime:hover{
+.dateTime:hover {
   background: #00abba;
   box-shadow: 0 0 30px #00abba;
   cursor: pointer;
-}*/
+}
 
 .date {
   font-size: medium;

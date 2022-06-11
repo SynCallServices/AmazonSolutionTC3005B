@@ -56,7 +56,7 @@
   overflow: hidden;
   white-space: nowrap;
   margin-top: 5px;
-  
+
 }
 
 .video-rating {
@@ -74,7 +74,9 @@
   background-color: rgba(0, 0, 0, 0.5);
 
   display: flex;
-  
+  justify-content: center;
+  align-items: center;
+
 }
 
 .video-rating .rating-number {
@@ -94,7 +96,7 @@
   background: #00274b;
   border-radius: 12px;
   display: flex;
- 
+
   padding: 20px;
   justify-content: space-between;
   margin-top: 12px;

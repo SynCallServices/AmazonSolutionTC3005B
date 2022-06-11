@@ -74,7 +74,7 @@ function LogIn() {
   async function getUser(username) {
     await cognito.adminGetUser({
       UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-      Username: username,
+      Username: username, 
     })
       .promise()
       .then(async (data) => {

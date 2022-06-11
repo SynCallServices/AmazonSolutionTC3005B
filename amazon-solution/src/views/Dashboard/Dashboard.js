@@ -209,7 +209,6 @@ function DashBoard() {
   return (
     <div className='main-content'>
       <Sidebar />
-
       <div className='dashboard--content'>
         <Outlet />
       </div>
