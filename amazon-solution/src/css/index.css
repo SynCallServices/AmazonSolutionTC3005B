@@ -491,6 +491,21 @@ body {
   transform: translate(-50%, -50%);
 }
 
+.manage-title{
+  position: relative;
+  /* margin-left: 30px ; */
+  /* padding-left: 10px; */
+  margin-left: 6%;
+  font-size: 25px;
+}
+
+.manage-search-container{
+ 
+  position: relative;
+  margin-left: 56%;
+  margin-top: -3.5%;
+}
+
 .manage-container {
   background: #00274b;
   height: 80vh;
@@ -503,7 +518,7 @@ body {
   border-radius: 12px;
 
   transform: translate(-50%, -50%);
-  text-align: center;
+  
   padding: 20px;
 
 }
@@ -515,6 +530,19 @@ body {
 .delete-user:hover {
   cursor: pointer;
   color: #00ABBA;
+}
+
+.manage-search-input input {
+  background-color: white;
+  border: 0;
+  border-radius: 50px;
+
+ 
+  font-size: 18px;
+  padding: 15px;
+  height: 30px;
+  width: 300px;
+  background-color:rgba(255, 255, 255, 0.8) ;
 }
 
 .manage-card-container {
@@ -535,10 +563,44 @@ body {
   padding: 20px;
   max-height: 68vh;
   overflow: hidden;
+  overflow-y: auto;
+}
+
+.manage-card-container::-webkit-scrollbar { 
+  opacity: 0;
+}
+
+.manage-card-container::-webkit-scrollbar-track-piece {
+  background-color: #00ABBA;
+  width: 5px;
+  border-radius: 5px;
+  overflow-y: auto;
+  height: 30px;
+  background-clip: content-box;
+  margin-left: 30px;
+}
+
+.manage-card-container::-webkit-scrollbar-thumb {
+  background-color: #00ABBA;
+
+}
+
+.manage-card-container::-webkit-scrollbar-thumb:vertical {
+background-color: #00ABBA;
+border: 1px solid white;
+-webkit-border-radius: 6px;
+}
+
+.manage-sub-container {
+  overflow: hidden;
+  /* esto es lo que hace que la lista de resultados sea scrollable verticalmente */
+  overflow-y: auto;
+  height: 330px;
+  margin-top: 10px;
 }
 
 .usercard {
-  padding: 20px 25px;
+  padding: 20px 20px;
   display: flex;
   background: #00274b;
   width: 95vh;
@@ -548,6 +610,8 @@ body {
   gap: 40px;
   border-radius: 12px;
   justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 15px;
 }
 
 .usercard-names-real {
@@ -579,11 +643,14 @@ body {
   overflow-y: auto;
   height: 330px;
   margin-top: 50px;
+  padding: 3px;
+}
+
+.assign-sub-container::-webkit-scrollbar {
+  opacity: 0;
 }
 
 .assign-sub-container::-webkit-scrollbar-track-piece {
-  display: block;
-  opacity: 0;
   background-color: #00ABBA;
   width: 5px;
   border-radius: 5px;
@@ -593,8 +660,14 @@ body {
   margin-left: 30px;
 }
 
+.assign-sub-container::-webkit-scrollbar-thumb:vertical {
+  background-color: #00ABBA;
+  border: 1px solid white;
+  -webkit-border-radius: 6px;
+}
+
 .assign-sub-container::-webkit-scrollbar-thumb {
-  scrollbar-color: #00ABBA;
+  background-color: #00ABBA;
 }
 
 .assign-close {
@@ -762,3 +835,5 @@ body {
   background-color: #3E688F;
   transform: translateY(4px);
 }
+
+

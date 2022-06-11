@@ -38,12 +38,32 @@ function AssignVideos() {
     }
   };
 
+  const handleFilteredData2 = (event) => {
+    //debes acceder al valor del evento que estara guardado dentro de esta constante
+    const searchWord = event.target.value;
+    //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
+    const newFilter = assAgents.filter((item) => {
+      return item.username.toLowerCase().includes(searchWord.toLowerCase());
+    });
+
+    //se cambiara el estado del componente con el nuevo array filtrado
+    if (searchWord === "") {
+      //si searchword esta vacia entonces no habra ningun estado
+      setFilteredData2(assAgents);
+    } else {
+      setFilteredData2(newFilter);
+    }
+  };
+
   const [agentList, setAgentList] = useState([]);
   const [agents, setAgents] = useState([]);
   const [assAgents, setAssAgents] = useState([]);
 
   const [filteredData, setFilteredData] = useState([]);
+  const [filteredData2, setFilteredData2] = useState([]);
   const [searchForm, setSearchForm] = useState('');
+  let agentsInfo = [];
+  let assAgentsInfo = [];
 
   const recordingId = "648517bb-6d02-4643-ad87-964b90cf7874"; // recordingId to check if the function works
 
@@ -51,8 +71,6 @@ function AssignVideos() {
 
     async function meh() {
 
-      let agentsInfo = [];
-      let assAgentsInfo = [];
 
       if (agentList.length !== 0) {
 
@@ -118,8 +136,10 @@ function AssignVideos() {
     }
         setAgents(agentsInfo);
         setAssAgents(assAgentsInfo);
+        setFilteredData2(assAgentsInfo)
         setFilteredData(agentsInfo)
         handleFilteredData({target: {value: ""}})
+        handleFilteredData2({target: {value: ""}})
       }
     }
     meh()
@@ -204,20 +224,64 @@ function AssignVideos() {
 
   }, [filteredData])
 
+  React.useEffect(() => {
+
+    if (searchForm === '') {
+      handleFilteredData2({target: { value: ''}});
+    }
+
+  }, [filteredData2])
+
   function handleChange(event) {
     setSearchForm(event.target.value)
     handleFilteredData(event)
   }
 
-  function handleAdd(agentId, videoId) {
+  function handleChange2(event) {
+    setSearchForm(event.target.value)
+    handleFilteredData2(event)
+  }
+
+  function handleAdd(agentId, videoId, agentObj) {
+    console.log(videoId)
     agent.assignVideo(agentId, videoId)
     .then((result) => {
         if (result.status === 'Succesfull') {
           console.log('Assigned')
           console.log(result)
         }
-      })
-    window.location.reload(true)
+    })
+    console.log(agentObj)
+    async function updateArrays() {
+      let newList = agents.filter(agent => agent.agentId != agentObj.agentId)
+      await setAgents(newList)
+      await setFilteredData(newList)
+      await setAssAgents(prevData => prevData.push(agentObj))
+      await setFilteredData2(assAgents)
+      console.log(agents, 'bruh')
+    }
+    updateArrays()
+  }
+
+  function handleDelete(agentId, videoId, agentObj) {
+    console.log(agent)
+    agent.unAssignVideo(agentId, videoId)
+    .then((result) => {
+        if (result.status === 'Succesfull') {
+          console.log('Assigned')
+          console.log(result)
+        }
+    })
+    console.log(agentObj)
+    async function updateArrays() {
+      let newList = assAgents.filter(agent => agent.agentId != agentObj.agentId)
+      await setAssAgents(newList)
+      await setFilteredData2(newList)
+      await setAgents(prevData => prevData.push(agentObj))
+      await setFilteredData(agents)
+      console.log(assAgents, 'bruh')
+    }
+    updateArrays()
   }
 
   return (
@@ -240,14 +304,11 @@ function AssignVideos() {
                 onChange={handleChange}
 
               />
-              
-
-
       </div>
 
     </div>
           {
-          filteredData.length !== 0 && (
+          filteredData.length !== 0 && Array.isArray(filteredData) && (
             <div className='assign-sub-container'>
               {filteredData.map((value, key) => {
                 return (
@@ -259,7 +320,8 @@ function AssignVideos() {
                   role={value.role}
                   agentId={value.agentId}
                   videoId={recordingId}
-                  handleAdd={handleAdd}
+                  handle={handleAdd}
+                  agent={value}
                   />
                 );
               })}
@@ -280,16 +342,16 @@ function AssignVideos() {
 
                 
                 //se llamara cada vez que se escriba un nuevo caracter en la barra
-                onChange={handleChange}
+                onChange={handleChange2}
                 placeholder="Search..."
               />
       </div>
 
     </div>
           {
-          assAgents.length !== 0 && (
+          filteredData2.length !== 0 && Array.isArray(filteredData2) && (
             <div className='assign-sub-container'>
-              {assAgents.map((value, key) => {
+              {filteredData2.map((value, key) => {
                 return (
                   <AssignVideoCard
                   key ={value.username}
@@ -299,7 +361,9 @@ function AssignVideos() {
                   role={value.role}
                   agentId={value.agentId}
                   videoId={recordingId}
-                  handleAdd={handleAdd}
+                  handle={handleDelete}
+                  isDelete={true}
+                  agent={value}
                   />
                 );
               })}

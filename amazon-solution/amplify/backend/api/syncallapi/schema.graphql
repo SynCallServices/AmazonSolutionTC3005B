@@ -7,6 +7,7 @@ type Video @model {
   agentId: String! 
   path: String!
   startTime: String
+  endTime: String
 }
 
 type Agent @model{
@@ -27,6 +28,8 @@ type Voice @model {
   agentId: String!
   path: String!
   startTime: String
+  queueId: String
+  recordedBy: String
 }
 
 # Video and Voice merged
