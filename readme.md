@@ -44,22 +44,13 @@ Original project forked from: Louis3797/awesome-readme-template
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#about-the-project)
-  * [Screenshots](#screenshots)
-  * [Tech Stack](#tech-stack)
-  * [Features](#features)
+  * [Screenshots](#screenshots) ADD
   * [Color Reference](#color-reference)
-  * [Environment Variables](#environment-variables)
 - [Getting Started](#getting-started)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-  * [Running Tests](#running-tests)
   * [Run Locally](#run-locally)
   * [Deployment](#deployment)
-- [Usage](#usage)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-  * [Code of Conduct](#code-of-conduct)
-- [FAQ](#faq)
 - [License](#license)
 - [Contact](#contact)
 - [Acknowledgements](#acknowledgements)
@@ -107,28 +98,97 @@ Original project forked from: Louis3797/awesome-readme-template
   </ul>
 </details>
 
-<!-- Features -->
-### :dart: Features
-
-- Feature 1
-- Feature 2
-- Feature 3
-
 <!-- Color Reference -->
 ### :art: Color Reference
 
-| Color             | Hex                                                                |
-| ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#222831](https://via.placeholder.com/10/222831?text=+) #222831 |
-| Secondary Color | ![#393E46](https://via.placeholder.com/10/393E46?text=+) #393E46 |
-| Accent Color | ![#00ADB5](https://via.placeholder.com/10/00ADB5?text=+) #00ADB5 |
-| Text Color | ![#EEEEEE](https://via.placeholder.com/10/EEEEEE?text=+) #EEEEEE |
+| Element             | Color   |
+|---------------------|---------|
+| Buttons             | #00abba |
+| Icons               | #00abba |
+| Card                | #4078a3 |
+| Search Bar          | #ffffff |
+| Main Background     | #6084a0 |
+| Side Bar Background | #00274b |
+| Other               | #3e688f |
+| Text                | #ffffff |
+| Hover               | #00abba |
+
+<!-- Getting Started -->
+## 	:toolbox: Getting Started
+
+<!-- Prerequisites -->
+### :bangbang: Prerequisites
+
+Have Node.Js installed.
+
+- [Node.Js](https://nodejs.org/en/)
 
 <!-- Installation -->
-## :gear: Installation
+### :gear: Installation
 
 **Our poject cannot yet be installed using a package manager**
    
+<!-- Running Tests -->
+### :test_tube: Running Tests
+
+To run tests, run the following command
+
+```bash
+  yarn test test
+```
+
+<!-- Run Locally -->
+### :running: Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/PrimeBIue/mini-AmazonSolution/
+```
+
+Go to the project directory
+
+```bash
+  cd save-recordings
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm start
+```
+
+
+<!-- Deployment -->
+### :triangular_flag_on_post: Deployment
+
+To deploy this project run
+
+```bash
+  amplify push
+  amplify publish
+```
+
+
+<!-- Usage -->
+## :eyes: Usage
+
+Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
+
+
+```javascript
+import Component from 'my-project'
+
+function App() {
+  return <Component />
+}
+```
 
 <!-- License -->
 ## :warning: License
@@ -138,10 +198,9 @@ Distributed under the [MIT License](https://choosealicense.com/licenses/mit/).
 <!-- Contact -->
 ## :handshake: Contact
 
-<!-- Open a discussion: [
-  mini-AmazonSolution/discussions](https://github.com/PrimeBIue/mini-AmazonSolution/discussions) can't open discussions for the repo 🥴 -->
+[Open a discussion](https://github.com/SynCallServices/AmazonSolutionTC3005B/discussions)
 
-Project Link: [mini-AmazonSolution](https://github.com/SynCallServices/AmazonSolutionTC3005B)
+[Project Link](https://github.com/SynCallServices/AmazonSolutionTC3005B)
 
 
 <!-- Acknowledgments -->
@@ -149,5 +208,4 @@ Project Link: [mini-AmazonSolution](https://github.com/SynCallServices/AmazonSol
 
  - [Shields.io](https://shields.io/)
  - [Readme Template](https://github.com/matiassingers/awesome-readme)
- - [Contib.rocks](https://contrib.rocks/preview)
  

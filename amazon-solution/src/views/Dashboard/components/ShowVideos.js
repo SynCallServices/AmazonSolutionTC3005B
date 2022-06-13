@@ -28,6 +28,7 @@ function ShowVideos() {
       console.log("Admin view");
       const videoData = video.listRec();
       videoData.then((res) => {
+        console.log(res)
         setVideoCards(res.data.map(vid => {
           console.log(vid)
           return (

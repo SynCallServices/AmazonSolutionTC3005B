@@ -5,6 +5,7 @@ import AWS from 'aws-sdk'
 function CreateUser() {
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
+  //const ses = new AWS.SES();
 
   const [createData, setCreateData] = React.useState({
     email: "",
@@ -68,6 +69,7 @@ function CreateUser() {
         await cognito.adminCreateUser({
             UserPoolId: process.env.REACT_APP_USER_POOL_ID,
             Username: createData.username,
+            TemporaryPassword: password,
             UserAttributes: [
                 {
                     Name: "email",
@@ -102,43 +104,7 @@ function CreateUser() {
             })
             .promise()
             .then((data) => {
-                // WIP TO SEND EMAIL
-                // await ses.sendEmail({
-                //     Destination: {
-                //         CcAddresses: [
-                //         ],
-                //         ToAddresses: [
-                //             "test5@email.com"
-                //         ]
-                //     },
-                //     Message: {
-                //         Body: {
-                //             Html: {
-                //                 Charset: "UTF-8",
-                //                 Data: "HTML_FORMAT_BODY"
-                //             },
-                //             Text: {
-                //                 Charset: "UTF-8",
-                //                 Data: "TEXT_FORMAT_BODY"
-                //             }
-                //         },
-                //         Subject: {
-                //             Charset: 'UTF-8',
-                //             Data: 'Test email'
-                //         }
-                //     },
-                //     Source: 'SENDER_EMAIL_ADDRESS',
-                //     ReplyToAddresses: [
-                //         'EMAIL_ADDRESS',
-                //     ],
-                // })
-                // .promise()
-                // .then((data) => {
-                //     console.log(data); // FINAL RESULT
-                // })
-                // .catch((error) => {
-                //     console.log(error);
-                // })
+                console.log(data);
             })
             .catch((error) => {
                 console.log(error);
