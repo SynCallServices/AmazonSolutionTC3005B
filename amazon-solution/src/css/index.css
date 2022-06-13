@@ -292,14 +292,6 @@ body {
   gap: 15px;
 }
 
-.connect-login {
-  position: fixed;
-  background: #f2f2f2;
-  right: 0;
-  height: 100%;
-  width: 300px;
-
-}
 
 .test {
   background-color: #00abba;
@@ -632,16 +624,41 @@ body {
   transform: translateY(4px);
 }
 
-.connect-login {
+.title-connect {
   background-color: #00274b;
+  width: 400px;
+  margin-top: 20px;
+}
+
+.connect-login {
+  position: absolute;
+  /* background: radial-gradient(circle, rgba(0,39,75,1) 0%, rgba(62,104,143,1) 35%, rgba(0,171,186,1) 100%); */
+  background: radial-gradient(circle, rgba(0, 39, 75, 1) 0%, rgba(62, 104, 143, 1) 35%, rgba(64, 120, 163, 1) 100%);
+  top: 50%;
+  /* position the top  edge of the element at the middle of the parent */
+  left: 50%;
+  /* position the left edge of the element at the middle of the parent */
+
+  transform: translate(-50%, -50%);
+
+  width: 400px;
+  margin-top: 300px;
+  height: 300px;
+  border-radius: 30%;
+  -webkit-box-reflect: below 1px linear-gradient(transparent, rgba(255, 255, 255, 0.1));
+
 }
 
 .clickhere {
   color: white;
-  font-size: x-small;
+  font-size: 40px;
   font-weight: bold;
-  margin-top: 220px;
-  margin-left: 60px;
+  margin-top: 20px;
+  margin-left: 100px;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+
 }
 
 .amazon-connect {

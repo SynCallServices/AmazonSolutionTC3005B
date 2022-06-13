@@ -2,12 +2,15 @@ function CallManager(props) {
 
 
   return (
-    <div className="connect-login">
-      <h1 className="clickhere">Click below to log into your account</h1>
-      <button className='amazon-connect' onClick={props.logIn}>Amazon Connect Log In</button>
-      {/* if amazon connect is not showing please re4fresh the page */}
+    <div className ="title-connect">
+      <h1 className="clickhere">Call Manager</h1>
+      <div className="connect-login">
+        <button className='amazon-connect' onClick={props.logIn}>Amazon Connect Log In</button>
+        {/* if amazon connect is not showing please re4fresh the page */}
+      </div>
 
     </div>
+    
   )
 }
 
