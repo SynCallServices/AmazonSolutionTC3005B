@@ -25,9 +25,9 @@ function AssignVideos() {
     //debes acceder al valor del evento que estara guardado dentro de esta constante
     const searchWord = event.target.value;
     //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
-    const newFilter = agents.filter((item) => {
+    const newFilter = Array.isArray(agents) ? agents.filter((item) => {
       return item.username.toLowerCase().includes(searchWord.toLowerCase());
-    });
+    }) : [];
 
     //se cambiara el estado del componente con el nuevo array filtrado
     if (searchWord === "") {
@@ -42,9 +42,9 @@ function AssignVideos() {
     //debes acceder al valor del evento que estara guardado dentro de esta constante
     const searchWord = event.target.value;
     //este es un array que filtrara cada item de data, solo si este incluye ya search word en su title
-    const newFilter = assAgents.filter((item) => {
+    const newFilter = Array.isArray(assAgents) ? assAgents.filter((item) => {
       return item.username.toLowerCase().includes(searchWord.toLowerCase());
-    });
+    }) : []
 
     //se cambiara el estado del componente con el nuevo array filtrado
     if (searchWord === "") {
@@ -253,15 +253,12 @@ function AssignVideos() {
 
     })
     console.log(agentObj)
-    async function updateArrays() {
-      let newList = agents.filter(agent => agent.agentId != agentObj.agentId)
-      await setAgents(newList)
-      await setFilteredData(newList)
-      await setAssAgents(prevData => prevData.push(agentObj))
-      await setFilteredData2(assAgents)
+      let newList = Array.isArray(agents) ? agents.filter(agent => agent.agentId !== agentObj.agentId) : []
+      setAgents(Array.isArray(newList) ? newList : [agents])
+      setAssAgents(prev => [...prev, agentObj])
       console.log(agents, 'bruh')
-    }
-    updateArrays()
+    console.log(filteredData, 'agents')
+    console.log(filteredData2, 'assAgents')
   }
 
   function handleDelete(agentId, videoId, agentObj) {
@@ -274,16 +271,21 @@ function AssignVideos() {
         }
     })
     console.log(agentObj)
-    async function updateArrays() {
-      let newList = assAgents.filter(agent => agent.agentId != agentObj.agentId)
-      await setAssAgents(newList)
-      await setFilteredData2(newList)
-      await setAgents(prevData => prevData.push(agentObj))
-      await setFilteredData(agents)
+      let newList = Array.isArray(assAgents) ? assAgents.filter(agent => agent.agentId !== agentObj.agentId) : []
+      setAssAgents(Array.isArray(newList) ? newList : [assAgents])
+      setAgents(prev => [...prev, agentObj])
       console.log(assAgents, 'bruh')
-    }
-    updateArrays()
+    console.log(filteredData, 'agents')
+    console.log(filteredData2, 'assAgents')
   }
+
+  React.useEffect(() => {
+    setFilteredData(agents)
+  }, [agents])
+
+  React.useEffect(() => {
+    setFilteredData2(assAgents)
+  }, [assAgents])
 
   return (
     <div className='assign-pop-up'>
