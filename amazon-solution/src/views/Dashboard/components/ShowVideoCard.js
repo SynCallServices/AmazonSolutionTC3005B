@@ -8,7 +8,7 @@ function ShowVideoCard(props) {
   const [playPopUp , setPlayPopUp] = React.useState(false);
 
   return (
-    <div className="card">
+    <div className="video-card">
       <div className="video-container">
         <div className="video-text">{props.videoTitle}</div>
         <div className='video-info'>

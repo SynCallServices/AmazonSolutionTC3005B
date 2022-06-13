@@ -11,7 +11,6 @@ function ShowVideos() {
   const [assingedRecordings, setAssingedRecordings] = React.useState([]);
   const {user, setUser} = React.useContext(UserContext)
 
-
   React.useEffect(() => {
 
     if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_AGENT_ID){
@@ -68,17 +67,35 @@ function ShowVideos() {
 
   }, [assingedRecordings])
 
+  const handleFilteredData = (event) => {
+    const searchWord = event.target.value
+
+    const newFilter = assingedRecordings.filter((item) => {
+      return item.title.toLowerCase().includes(searchWord.toLowerCase())
+    })
+
+    if (searchWord === '') {
+      setVideoCards(assingedRecordings)
+    } else {
+      setVideoCards(newFilter)
+    }
+  }
+
   return (
-    <div className="showvideos-outer">
-      <VideoPreview />
-      <div className='showvideos-inner'>
-        <h1>Asigned Videos</h1>
-        <div className='videos-container'>
-          {videoCards}
+    <div className='show-pop-up'>
+      <button className='assign-close'></button>
+      <div className='assign-container'>
+        <div className='assign-list-title'>All Videos</div>
+        <div className='search'>
+          <div className='searchInputs'>
+            <input type='text' onChange={handleFilteredData} />
+          </div>
+        </div>
+          <div className='assign-sub-container'>
+            {videoCards}
         </div>
       </div>
-
-    </div> 
+    </div>
   )
 }
 
