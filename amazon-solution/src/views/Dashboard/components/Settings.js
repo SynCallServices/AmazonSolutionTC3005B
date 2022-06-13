@@ -1,4 +1,5 @@
 //import { RiAccountCircleLine, HiOutlineInformationCircle,BsVolumeUp,BiHelpCircle,HiOutlineLockClosed} from 'react-icons/ai'
+import { Link } from '@aws-amplify/ui-react'
 import { RiAccountCircleLine } from 'react-icons/ri'
 import { HiOutlineInformationCircle } from 'react-icons/hi'
 import { BsVolumeUp } from 'react-icons/bs'
@@ -8,14 +9,13 @@ import { HiOutlineLockClosed } from 'react-icons/hi'
 function Settings() {
   return (
     <div className='menu'>
-
       <div className='account'>
         <div className='a_logo'>
           {<RiAccountCircleLine size={50} />}
         </div>
-        <div className='a_title'>
+        <Link to="account" className='a_title'>
           <h1>Account</h1>
-        </div>
+        </Link>
       </div>
 
       <div className='information'>
@@ -26,11 +26,11 @@ function Settings() {
           <h1>Information</h1>
         </div>
       </div>
-      
+
 
       <div className='help'>
         <div className='h_logo'>
-          {<BiHelpCircle size={50}/>}
+          {<BiHelpCircle size={50} />}
         </div>
         <div className='h_title'>
           <h1>Help</h1>
@@ -39,7 +39,7 @@ function Settings() {
 
       <div className='terms'>
         <div className='t_logo'>
-           {<HiOutlineLockClosed size={50}/>}
+          {<HiOutlineLockClosed size={50} />}
         </div>
         <div className='t_title'>
           <h1>Terms and Conditions</h1>

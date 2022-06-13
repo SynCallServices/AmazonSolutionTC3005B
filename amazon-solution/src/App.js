@@ -8,12 +8,14 @@ import CallManager from './views/Dashboard/components/CallManager.js'
 import VideoForm from './views/Dashboard/components/VideoForm.js'
 import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
+import Account from './views/Dashboard/components/Account.js'
+import Terms from './views/Dashboard/components/Terms.js'
+import Help from './views/Dashboard/components/Help.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
 import ConnectLogIn from './views/Dashboard/components/ConnectLogIn'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
-import Account from './views/Dashboard/components/Account.js'
 import { AmplifyProvider } from '@aws-amplify/ui-react'
 
 // Route restrictions
@@ -40,7 +42,11 @@ function App() {
             <Route path='home' element={<Home />} />
             <Route path='videoform' element={<VideoForm />} />
             <Route path='videodashboard' element={<ShowVideos />} />
-            <Route path='settings' element={<Settings />} />
+            <Route path='settings' element={<Settings />} > 
+              <Route path='account' element={<Account />}/>
+              <Route path='terms' element={<Terms />}/>
+              <Route path='help' element={<Help />}/>
+            </Route>
             <Route path='screenrecorder' element={<ScreenRecorder />} />
           </Route>
         </Routes>
