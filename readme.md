@@ -222,6 +222,7 @@ function App() {
 - [Xime](https://github.com/Ximena-gonzalez)  
 - [Junqui](https://github.com/SebastianJuncosL)
 - [Matt](https://github.com/mateoglzc)
+- [Caro](https://github.com/caroortegab)
 
 <!-- <a href="https://github.com/PrimeBIue/mini-AmazonSolution/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=PrimeBIue/mini-AmazonSolution" />
