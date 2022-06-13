@@ -41,8 +41,8 @@ function DashBoard() {
 
   const [loggedIn, setLoggedIn] = React.useState(false);
 
-  function CreateVoice(contactId_, agentId_, startTime_, path_) {
-    const response = voice.create(contactId_, agentId_, startTime_, path_);
+  function CreateVoice(contactId_, agentId_, startTime_, path_, queueId_, recordedBy_) {
+    const response = voice.create(contactId_, agentId_, startTime_, path_, queueId_, recordedBy_);
     response.then((res) => {
       if (res.status === "Unsuccesful") {
         console.log(res.data)
@@ -119,18 +119,25 @@ function DashBoard() {
             ContactId: contact.contactId
         })
         .promise()
-        .then((data) => {
+        .then(async (data) => {
           // console.log(data);
           let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
           let ContactId = data.Contact.Id;
           let year = InitiationTimestamp.getFullYear();
           let month = ('0' + (InitiationTimestamp.getUTCMonth() + 1)).slice(-2);
           let day = ('0' + InitiationTimestamp.getUTCDate()).slice(-2);
+          const user = await amazonConnect.describeUser({
+            InstanceId: process.env.REACT_APP_INSTANCE_ID,
+            UserId: data.Contact.AgentInfo.Id
+          })
+          .promise();
           body = {
               ContactId: ContactId,
               AgentId: data.Contact.AgentInfo.Id,
+              RecordedBy: user.User.Username,
               InitiationTimestamp: InitiationTimestamp,
-              Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getUTCHours()).slice(-2)}:${('0' + InitiationTimestamp.getUTCMinutes()).slice(-2)}_UTC.wav`
+              Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getUTCHours()).slice(-2)}:${('0' + InitiationTimestamp.getUTCMinutes()).slice(-2)}_UTC.wav`,
+              QueueId: data.Contact.QueueInfo.Id
           };
         })
         .catch((error) => {
@@ -139,7 +146,7 @@ function DashBoard() {
 
         // console.log(body);
         setVoicePath(body.Path);
-        CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path);
+        CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path, body.QueueId, body.RecordedBy);
       })
 
       contact.onDestroy((contact) => {
@@ -182,6 +189,7 @@ function DashBoard() {
 
   const handleStop = () => {
     setIsRecording(false)
+    setRecordingEndTime((new Date(Date.now())));
 
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
@@ -189,7 +197,6 @@ function DashBoard() {
       // console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
-    setRecordingEndTime((new Date(Date.now())));    
   };
 
   // Change hard coded values
