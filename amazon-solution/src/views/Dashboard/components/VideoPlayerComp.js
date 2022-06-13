@@ -3,7 +3,6 @@ import VideoPlayer from 'react-video-js-player'
 import '../../../css/videoCard.css'
 
 function VideoPlayerComp(props) {
-  console.log(props.videoPath)
   return (props.trigger) ? (
     <div className='video-outer' >
       <div className='video-inner' >

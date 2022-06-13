@@ -26,9 +26,11 @@
 }
 
 .video-outer {
+  z-index: 100;
   max-width: 250;
   max-height: 500;
 }
+
 .video-info {
   display: flex;
   align-items: center;
@@ -44,7 +46,7 @@
   top: 25%;
   width: 40px;
   height: 40px;
-  color: #CA5A56;
+  color: #00abba;
 }
 
 .video-text {
@@ -54,7 +56,7 @@
   overflow: hidden;
   white-space: nowrap;
   margin-top: 5px;
-  margin-left: 5px;
+
 }
 
 .video-rating {
@@ -70,11 +72,11 @@
   width: 100%;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 
 .video-rating .rating-number {
@@ -89,10 +91,26 @@
   aspect-ratio: 16 / 9;
 }
 
+.video-card {
+
+  background: #00274b;
+  border-radius: 12px;
+  display: flex;
+
+  padding: 20px;
+  justify-content: space-between;
+  margin-top: 12px;
+  margin-bottom: 15px;
+
+  justify-content: space-between;
+  cursor: pointer;
+
+}
+
 .video-inner .close-btn {
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   border: 0px solid #000;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   position: absolute;
   top: 0;
   right: 0;
@@ -105,3 +123,6 @@
   cursor: pointer;
 }
 
+.video-card {
+  background-color: #00abba;
+}

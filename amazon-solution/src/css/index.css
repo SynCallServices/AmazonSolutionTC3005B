@@ -641,8 +641,8 @@ border: 1px solid white;
   overflow: hidden;
   /* esto es lo que hace que la lista de resultados sea scrollable verticalmente */
   overflow-y: auto;
-  height: 330px;
-  margin-top: 50px;
+  height: 625px;
+  margin-top: 20px;
   padding: 3px;
 }
 
@@ -842,8 +842,8 @@ border: 1px solid white;
   display: flex;
   padding: 50px;
   justify-content: space-between;
-  height: 600px;
-  width: 750px;
+  height: 800px;
+  width: 950px;
   top: 50%;
   left: 50%;
   border-radius: 12px;

@@ -13,10 +13,6 @@ function ShowVideoCard(props) {
         <div className="video-text">{props.videoTitle}</div>
         <div className='video-info'>
           <div className="video-time">{props.vidDuration}</div>
-          <div className="video-rating">
-            <AiFillStar className='video-star'/>
-            <span className='rating-number'>{props.vidRating}</span>
-          </div>
         </div>
           <AiFillPlayCircle className='play-button' onClick={() => setPlayPopUp(true)}/>
       </div>
