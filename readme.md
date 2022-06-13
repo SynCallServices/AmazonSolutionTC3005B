@@ -165,7 +165,7 @@ Clone the project
   git clone https://github.com/PrimeBIue/mini-AmazonSolution/
 ```
 
-Go to the project directory
+Go to the project directory:
 
 ```bash
   cd save-recordings
