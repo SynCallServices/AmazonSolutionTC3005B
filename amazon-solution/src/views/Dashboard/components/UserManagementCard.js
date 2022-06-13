@@ -2,6 +2,7 @@ import { BsFillTrashFill } from 'react-icons/bs'
 import React from 'react'
 import AWS from 'aws-sdk'
 import ConfirmPopUp from './ConfirmPopUp.js'
+import * as agent from '../../ScreenRecorder/components/AgentAPI'
 
 const cognito = new AWS.CognitoIdentityServiceProvider({
   apiVersion: 'latest',
@@ -61,7 +62,7 @@ export default function UserManagementCard(props) {
     })
     .promise()
     .then(async (data) => {
-        const ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id").Value;
+        const ConnectId = data.UserAttributes.find((item) => item.Name === "custom:connect_id").Value;
         await connect.describeUser({
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             UserId: ConnectId
@@ -81,6 +82,10 @@ export default function UserManagementCard(props) {
                 .promise()
                 .then((response) => {
                     console.log(response); // FINAL RESULT
+                    const delAgent = agent.del(ConnectId);
+                    delAgent.then((res) => {
+                      console.log(res);
+                    })
                 })
                 .catch((error) => {
                     console.log(error);
