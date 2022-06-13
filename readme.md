@@ -6,7 +6,7 @@ Original project forked from: Louis3797/awesome-readme-template
   <img src="./amazon-solution/src/assets/Syncall_logo.png" alt="logo" width="auto" height="auto" />
   <h1>SynCall</h1>
   
-  
+   hola
   
 <!-- Badges -->
 <p>
