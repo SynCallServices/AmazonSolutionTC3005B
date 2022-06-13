@@ -640,7 +640,6 @@ body {
   /* position the left edge of the element at the middle of the parent */
 
   transform: translate(-50%, -50%);
-
   width: 400px;
   margin-top: 300px;
   height: 300px;
@@ -664,7 +663,7 @@ body {
 .amazon-connect {
   color: white;
   position: absolute;
-  background-color: #00ABBA;
+  background-color: #00274b;
   border-radius: 50px;
   top: 50%;
   left: 50%;
@@ -673,6 +672,16 @@ body {
   height: 100px;
   font-size: 15px;
   border-color: #00274b;
+  cursor: pointer;
+}
+
+.amazon-connect:hover {
+  background-color: #00abba;
+}
+
+.amazon-connect:active {
+  background-color: #00abba;
+  transform: translateY(4px);
 }
 
 
