@@ -836,4 +836,18 @@ border: 1px solid white;
   transform: translateY(4px);
 }
 
+.show-pop-up {
+  background: #00274b;
+  position: absolute;
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  height: 600px;
+  width: 750px;
+  top: 50%;
+  left: 50%;
+  border-radius: 12px;
+  transform: translate(-50%, -50%)
+}
+
 
