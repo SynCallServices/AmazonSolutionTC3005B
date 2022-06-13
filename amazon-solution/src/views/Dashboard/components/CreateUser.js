@@ -27,7 +27,7 @@ function CreateUser() {
   }
 
   async function createUser () {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!#$%^&*";
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$*";
     let password = "";
     for (let i = 0; i < 11; i++) {
         password += chars[Math.floor(Math.random() * chars.length)];
@@ -40,7 +40,7 @@ function CreateUser() {
     // numbers
     password += chars.slice(52,62)[Math.floor(Math.random() * chars.slice(52,62).length)];
     // special
-    password += chars.slice(-7)[Math.floor(Math.random() * chars.slice(-7).length)];
+    password += chars.slice(-3)[Math.floor(Math.random() * chars.slice(-3).length)];
     console.log(password);
     await connect.createUser({
         InstanceId: process.env.REACT_APP_INSTANCE_ID,
