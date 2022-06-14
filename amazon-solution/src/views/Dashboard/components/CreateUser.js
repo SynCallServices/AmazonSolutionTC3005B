@@ -14,19 +14,7 @@ function CreateUser() {
     lastName: "",
   })
 
-  function handleChange(event) {
-    const {name, value} = event.target
-    setCreateData(prevValue => ({
-      ...prevValue,
-      [name]: value
-    }))
-  }
-
-  function create() {
-    createUser()
-  }
-
-  async function createUser () {
+  async function sendCredentials () {
     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$*";
     let password = "";
     for (let i = 0; i < 11; i++) {
@@ -42,83 +30,49 @@ function CreateUser() {
     // special
     password += chars.slice(-3)[Math.floor(Math.random() * chars.slice(-3).length)];
     console.log(password);
-    await connect.createUser({
-        InstanceId: process.env.REACT_APP_INSTANCE_ID,
-        PhoneConfig: {
-            PhoneType: "SOFT_PHONE"
-        },
-        RoutingProfileId: process.env.REACT_APP_GENERAL_ROUTING_PROFILE_ID,
-        SecurityProfileIds: [
-            process.env.REACT_APP_AGENT_ID
-        ],
+    await cognito.adminCreateUser({
+        UserPoolId: process.env.REACT_APP_USER_POOL_ID,
         Username: createData.username,
-        IdentityInfo: {
-            Email: createData.email, 
-            FirstName: createData.firstName,
-            LastName: createData.lastName
-        },
-        Password: password // RANDOM PASSWORD
+        TemporaryPassword: password,
+        UserAttributes: [
+            {
+                Name: "email",
+                Value: createData.email
+            },
+            {
+                Name: "custom:first_name",
+                Value: createData.firstName
+            },
+            {
+                Name: "custom:last_name",
+                Value: createData.lastName
+            },
+            {
+                Name: "email_verified",
+                Value: "true"
+            }
+        ]
     })
     .promise()
-    .then(async (data) => {
-        const agentCreate = agent.create(data.UserId)
-        .then((response) => {
-          console.log(response)
-        })
+    .then((data) => {
         console.log(data);
-        await cognito.adminCreateUser({
-            UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-            Username: createData.username,
-            TemporaryPassword: password,
-            UserAttributes: [
-                {
-                    Name: "email",
-                    Value: createData.email
-                },
-                {
-                    Name: "custom:connect_id",
-                    Value: data.UserId
-                },
-                {
-                    Name: "custom:first_name",
-                    Value: createData.firstName
-                },
-                {
-                    Name: "custom:last_name",
-                    Value: createData.lastName
-                },
-                {
-                    Name: 'email_verified',
-                    Value: 'true'
-                }
-            ]
-        })
-        .promise()
-        .then(async (data) => {
-            console.log(data);
-            await cognito.adminSetUserPassword({
-                UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-                Username: data.User.Username,
-                Password: password, // RANDOM PASSWORD
-                Permanent: true
-            })
-            .promise()
-            .then((data) => {
-                console.log(data);
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-        })
-        .catch((error) => {
-            console.log(error);
-        })
     })
     .catch((error) => {
         console.log(error);
     })
-}
+  }
 
+  function handleChange(event) {
+    const {name, value} = event.target
+    setCreateData(prevValue => ({
+      ...prevValue,
+      [name]: value
+    }))
+  }
+
+  function create() {
+    sendCredentials()
+  }
 
   return (
     <div>

@@ -11,8 +11,8 @@ function LogIn() {
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
 
-
   const {user, setUser} = React.useContext(UserContext)
+  const [changePW, setChangePW] = React.useState(true)
 
   const [inputState, setInputState] = React.useState(false)
 
@@ -21,10 +21,22 @@ function LogIn() {
     password: "",
   })
 
+  const [newPassData, setNewPassData] = React.useState({
+    newPassword: "",
+    confirmNewPassword: "",
+  })
 
   function handleChange(event) {
     const { name, value} = event.target
     setLogInData(prevValue => ({
+      ...prevValue,
+      [name]: value
+    }))
+  }
+
+  function handleChangePW(event) {
+    const { name, value} = event.target
+    setNewPassData(prevValue => ({
       ...prevValue,
       [name]: value
     }))
@@ -39,6 +51,7 @@ function LogIn() {
 
   async function login() {
     let successfulLogIn
+    let isChange;
 
     let cognitoUser = new AmazonCognitoIdentity.CognitoUser({
       Username: logInData.username,
@@ -61,8 +74,9 @@ function LogIn() {
           setInputState(false)
       },
       newPasswordRequired: function (response) {
-          console.log('New Passwrd')
-        }
+          successfulLogIn = true
+          isChange = true
+      }
     });
 
     while (successfulLogIn === undefined) {
@@ -70,23 +84,25 @@ function LogIn() {
     }
 
     if (successfulLogIn) {
-      await getUser(logInData.username)
+      await getUser(logInData.username, isChange)
     }
   }
 
-  async function getUser(username) {
+  async function getUser(username, isChange) {
     await cognito.adminGetUser({
       UserPoolId: process.env.REACT_APP_USER_POOL_ID,
       Username: username,
     })
     .promise()
     .then(async (data) => {
-      const ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id").Value
-      await connect.describeUser({
-        InstanceId: process.env.REACT_APP_INSTANCE_ID,
-        UserId: ConnectId,
-      })
-      .promise()
+      let ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id")
+          ConnectId = (ConnectId) ? ConnectId.Value : undefined;
+          if (ConnectId) {
+        await connect.describeUser({
+          InstanceId: process.env.REACT_APP_INSTANCE_ID,
+          UserId: ConnectId,
+        })
+        .promise()
       .then((response) => {
         data.ConnectData = response
         data.username = data.Username
@@ -97,72 +113,33 @@ function LogIn() {
             data.userAttributes[attribute.Name] = attribute.Value;
         })
 
+        console.log("bruh")
         setUser(data)
         localStorage.setItem('user', JSON.stringify(data))
-        navigate("/dashboard/home")
+        if (changePW === true) {
+          navigate("/dashboard/home")
+        }
+        if (isChange) {
+            setChangePW(false)
+        }
       })
       .catch((error) => {
         console.log(error)
       })
+
+        }
     })
     .catch((error) => {
       console.log(error)
     })
   }
 
-  async function sendCredentials () {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$*";
-    let password = "";
-    for (let i = 0; i < 11; i++) {
-        password += chars[Math.floor(Math.random() * chars.length)];
-    }
-    // guarantee the following:
-    // lowercase
-    password += chars.slice(0,26)[Math.floor(Math.random() * chars.slice(0,26).length)];
-    // uppercase
-    password += chars.slice(26,52)[Math.floor(Math.random() * chars.slice(26,52).length)];
-    // numbers
-    password += chars.slice(52,62)[Math.floor(Math.random() * chars.slice(52,62).length)];
-    // special
-    password += chars.slice(-3)[Math.floor(Math.random() * chars.slice(-3).length)];
-    console.log(password);
-    await cognito.adminCreateUser({
-        UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-        Username: "TestAgent12345",
-        TemporaryPassword: password,
-        UserAttributes: [
-            {
-                Name: "email",
-                Value: "diegomejiasuarez@gmail.com"
-            },
-            {
-                Name: "custom:first_name",
-                Value: "Joe"
-            },
-            {
-                Name: "custom:last_name",
-                Value: "Doe"
-            },
-            {
-                Name: "email_verified",
-                Value: "true"
-            }
-        ]
-    })
-    .promise()
-    .then((data) => {
-        console.log(data);
-    })
-    .catch((error) => {
-        console.log(error);
-    })
-  }
-
   async function setUserPassword () {
+    await getUser()
     await cognito.adminSetUserPassword({
         UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-        Username: "TestAgent12345",
-        Password: "TestPW123*", // RANDOM PASSWORD
+        Username: user.username,
+        Password: newPassData.newPassword, // RANDOM PASSWORD
         Permanent: true
     })
     .promise()
@@ -176,13 +153,13 @@ function LogIn() {
             SecurityProfileIds: [
                 process.env.REACT_APP_AGENT_ID
             ],
-            Username: "testagent12345", // MODIFY
+            Username: user.username, // MODIFY
             IdentityInfo: {
-                Email: "diegomejiasuarez@gmail.com", // MODIFY
-                FirstName: "John", // MODIFY
-                LastName: "Doe" // MODIFY
+                Email: user.email, // MODIFY
+                FirstName: user.firstName,// MODIFY
+                LastName: user.lastName // MODIFY
             },
-            Password: "TestPW123*" // RANDOM PASSWORD
+            Password: newPassData.newPassword // RANDOM PASSWORD
         })
         .promise()
         .then((data) => {
@@ -191,6 +168,7 @@ function LogIn() {
         .catch((error) => {
             console.log(error);
         })
+        navigate("/dashboard/home")
     })
     .catch((error) => {
         console.log(error);
@@ -201,12 +179,16 @@ function LogIn() {
     console.log(localStorage.user)
     if (localStorage.user) {
       setUser(JSON.parse(localStorage.getItem('user')))
-      navigate('/dashboard')
+      navigate('/dashboard/home')
 
       console.log(user)
       console.log(JSON.parse(localStorage.getItem('user')))
     }
   }, [])
+
+  function commitPW() {
+    setUserPassword();
+  }
 
   return (
     <div>
@@ -219,14 +201,24 @@ function LogIn() {
           <div class="overlay">
 
 
-              <div class="overlay-left">
-                  <h1 className='login-title'>Log In</h1>
-                  <p className='login-subtitle'>or create your account.</p>
-                  <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input'/> 
-                  <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input'/> 
-            
-                  <button onClick={logInClick} className="login-button">Log In</button>
-              </div>
+              {changePW ? 
+                <div class="overlay-left">
+                    <h1 className='login-title'>Log In</h1>
+                    <p className='login-subtitle'>or create your account.</p>
+                    <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input'/> 
+                    <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input'/> 
+              
+                    <button onClick={logInClick} className="login-button">Log In</button>
+                </div>
+                :
+                <div class="overlay-left">
+                    <h1 className='login-title'>Change Password</h1>
+                    <input onChange={handleChangePW} name='newPassword' type='text' placeholder='New Password' className='login-input'/> 
+                    <input onChange={handleChangePW} name='confirmNewPassword' type='password' placeholder='Confirm' className='login-input'/> 
+              
+                    <button onClick={commitPW} className="login-button">Change</button>
+                </div>
+              }
 
 
               <div class="overlay-right">
