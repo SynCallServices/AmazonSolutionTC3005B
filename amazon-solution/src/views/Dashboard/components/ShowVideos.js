@@ -19,7 +19,7 @@ function ShowVideos() {
   React.useEffect(() => {
 
     async function getData() {
-      if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID){
+      if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID && user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID){
         await video.listRec().then((result) => {
           console.log(result)
           if (result.status === 'Succesfull') {
@@ -39,7 +39,7 @@ function ShowVideos() {
         })
 
         await video.listRecording(currAgentId).then((result) => {
-          if (result.status === 'Succesfulll') {
+          if (result.status === 'Succesfull') {
             setRecList(result.data)
           }
         })
@@ -47,7 +47,7 @@ function ShowVideos() {
     }
 
     getData()
-    console.log(recList)
+    console.log(recList, "LIST")
 
   }, [])
 
