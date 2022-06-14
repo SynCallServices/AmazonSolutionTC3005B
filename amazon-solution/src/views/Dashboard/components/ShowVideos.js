@@ -5,7 +5,7 @@ import * as agent from "../../ScreenRecorder/components/AgentAPI"
 import VideoPreview from './VideoPreview.js'
 import { UserContext } from '../../../App.js'
 import VideoPlayerComp from './VideoPlayerComp.js'
-import VideoPlayer from 'react-video-js-player'
+import ReactPlayer from 'react-player'
 
 function ShowVideos() {
 
@@ -112,10 +112,12 @@ function ShowVideos() {
         <div className='assign-sub-container'>
             {videoCards}
         </div>
+        <h1 className='vid-container-title'>{selVideo.title}</h1>
         <div className='vid-container'>
-          <VideoPlayer
+          <ReactPlayer
             className='new-video-player'
-            src={`https://d1msutvtlsu91z.cloudfront.net/${selVideo.path}`} 
+            url={`https://d1msutvtlsu91z.cloudfront.net/${selVideo.path}`} 
+            controls={true}
           />
         </div>
 

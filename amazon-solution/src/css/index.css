@@ -854,17 +854,36 @@ border: 1px solid white;
 .vid-container {
   position: absolute;
   margin-top: 200px;
+  transform: translate(-50%, -50%);
   top: 100%;
   left: 110%;
-  transform: translate(-50%, -50%);
-  background: red;
-  height: 200px;
   top: 0;
   right: 0;
+  background: red;
+  height: 200px;
   align-items: center;
   text-align: center;
 }
 
 .new-video-player {
-  max-width: 450px;
+  max-width: 440px;
+  max-height: 250px;
+}
+
+.vid-container-title {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 166%;
+  top: 7%;
+  height: 100px;
+  width: 455px;
+  overflow: hidden;
+  white-space: wrap;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  display: inline-block;
+  vertical-align: middle;
 }
