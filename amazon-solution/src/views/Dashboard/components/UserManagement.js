@@ -78,7 +78,7 @@ function UserManagement() {
               })
               tmp.push(tmpObj);
           }
-          console.log(tmp); // FINAL RESULT
+          // console.log(tmp); // FINAL RESULT
           setAgents(tmp)
           setFilteredData(tmp)
       })

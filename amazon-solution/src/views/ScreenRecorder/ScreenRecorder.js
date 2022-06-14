@@ -54,16 +54,16 @@ function ScreenRecorder() {
     // eslint-disable-next-line no-undef
   connect.contact((contact) => {
     contact.onConnected((contact) => {
-      console.log(contact);
+      // console.log(contact);
       setCallConnected(true);
       setContactId(contact.contactId);
-      console.log(contact.contactId);
+      // console.log(contact.contactId);
 
       handleRecording();
     });
 
     contact.onEnded(async (contact) => {
-      console.log(contact.contactId);
+      // console.log(contact.contactId);
 
       let body;
       await amazonConnect.describeContact({
@@ -73,7 +73,7 @@ function ScreenRecorder() {
           if (err) {
               console.log(err);
           } else {
-              console.log(data);
+              // console.log(data);
               let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
               let ContactId = data.Contact.Id;
               let year = InitiationTimestamp.getFullYear();
@@ -89,7 +89,7 @@ function ScreenRecorder() {
       })
       .promise();
 
-      console.log(body);
+      // console.log(body);
 
       await docClient.put({
         TableName: process.env.REACT_APP_TABLE_NAME,
@@ -107,8 +107,8 @@ function ScreenRecorder() {
         if (err) {
             console.log(err);
         } else {
-            console.log(data);
-            console.log("upload to dynamodb");
+            // console.log(data);
+            // console.log("upload to dynamodb");
         }
     })
     .promise();
@@ -134,7 +134,7 @@ function ScreenRecorder() {
   async function handleRecording() {
 
     if (!isRecording) {
-      console.log('START RECORDING')
+      // console.log('START RECORDING')
       setIsRecording(true)
       const screenStream = await navigator.mediaDevices.getDisplayMedia(videoMediaConstraints);
       setStream(screenStream);
@@ -150,8 +150,6 @@ function ScreenRecorder() {
 
     recorderRef.current.stopRecording((res) => {
       setBlob(recorderRef.current.getBlob());
-      console.log(typeof recorderRef.current.getBlob(),recorderRef.current.getBlob() instanceof Blob );
-      console.log(res)
     });
     stream.getTracks().forEach( track => track.stop() );
     
@@ -160,7 +158,6 @@ function ScreenRecorder() {
   // Change hard coded values
   const uploadBlob = () => {
     
-    console.log("UPLOAD BLOBL")
     const videoId = uuidv4()
     const uploadingVideo = video.uploadVideo(blob, user.username.attributes["custom:connect_id"], videoId)
     uploadingVideo.then((res) => console.log(res))
@@ -172,7 +169,6 @@ function ScreenRecorder() {
     <div className="App">
       <header className="App-header">
         <div id="ccp" >
-          {/* CCP goes here */}
           {callConnected ? <p>call connected</p> : null}
           {contactId ? <p>{contactId}</p> : null}
         </div>
