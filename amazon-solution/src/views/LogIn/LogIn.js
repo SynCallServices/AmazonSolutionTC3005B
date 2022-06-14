@@ -59,7 +59,10 @@ function LogIn() {
       onFailure: function (response) {
           successfulLogIn = false
           setInputState(false)
-      }
+      },
+      newPasswordRequired: function (response) {
+          console.log('New Passwrd')
+        }
     });
 
     while (successfulLogIn === undefined) {
@@ -107,6 +110,93 @@ function LogIn() {
     })
   }
 
+  async function sendCredentials () {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!$*";
+    let password = "";
+    for (let i = 0; i < 11; i++) {
+        password += chars[Math.floor(Math.random() * chars.length)];
+    }
+    // guarantee the following:
+    // lowercase
+    password += chars.slice(0,26)[Math.floor(Math.random() * chars.slice(0,26).length)];
+    // uppercase
+    password += chars.slice(26,52)[Math.floor(Math.random() * chars.slice(26,52).length)];
+    // numbers
+    password += chars.slice(52,62)[Math.floor(Math.random() * chars.slice(52,62).length)];
+    // special
+    password += chars.slice(-3)[Math.floor(Math.random() * chars.slice(-3).length)];
+    console.log(password);
+    await cognito.adminCreateUser({
+        UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+        Username: "TestAgent12345",
+        TemporaryPassword: password,
+        UserAttributes: [
+            {
+                Name: "email",
+                Value: "diegomejiasuarez@gmail.com"
+            },
+            {
+                Name: "custom:first_name",
+                Value: "Joe"
+            },
+            {
+                Name: "custom:last_name",
+                Value: "Doe"
+            },
+            {
+                Name: "email_verified",
+                Value: "true"
+            }
+        ]
+    })
+    .promise()
+    .then((data) => {
+        console.log(data);
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+  }
+
+  async function setUserPassword () {
+    await cognito.adminSetUserPassword({
+        UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+        Username: "TestAgent12345",
+        Password: "TestPW123*", // RANDOM PASSWORD
+        Permanent: true
+    })
+    .promise()
+    .then(async (data) => {
+        await connect.createUser({
+            InstanceId: process.env.REACT_APP_INSTANCE_ID,
+            PhoneConfig: {
+                PhoneType: "SOFT_PHONE"
+            },
+            RoutingProfileId: process.env.REACT_APP_GENERAL_ROUTING_PROFILE_ID,
+            SecurityProfileIds: [
+                process.env.REACT_APP_AGENT_ID
+            ],
+            Username: "testagent12345", // MODIFY
+            IdentityInfo: {
+                Email: "diegomejiasuarez@gmail.com", // MODIFY
+                FirstName: "John", // MODIFY
+                LastName: "Doe" // MODIFY
+            },
+            Password: "TestPW123*" // RANDOM PASSWORD
+        })
+        .promise()
+        .then((data) => {
+            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+    })
+    .catch((error) => {
+        console.log(error);
+    })
+  }
+
   React.useEffect(() => {
     console.log(localStorage.user)
     if (localStorage.user) {
@@ -127,6 +217,8 @@ function LogIn() {
 
       <div class="overlay-container">
           <div class="overlay">
+
+
               <div class="overlay-left">
                   <h1 className='login-title'>Log In</h1>
                   <p className='login-subtitle'>or create your account.</p>
@@ -135,6 +227,8 @@ function LogIn() {
             
                   <button onClick={logInClick} className="login-button">Log In</button>
               </div>
+
+
               <div class="overlay-right">
                   <h1>Hello Compa!</h1>
                   <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
