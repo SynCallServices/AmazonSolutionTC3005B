@@ -22,7 +22,6 @@ function Sidebar() {
 
   async function signOut() {
     try {
-      console.log('bruh')
       await Auth.signOut();
       setUser(null)
       localStorage.removeItem('user')
@@ -51,6 +50,8 @@ function Sidebar() {
           case process.env.REACT_APP_ADMIN_ID:
             setRole("admin");
             break;
+          default:
+            // only for good practice
         }
       }
     })
@@ -60,7 +61,6 @@ function Sidebar() {
 
   function sidebarUtil() {
     setSidebarActive(prevState => !prevState);
-    console.log('here');
   }
 
   return (
@@ -86,15 +86,6 @@ function Sidebar() {
             <span className='links-name'>Dashboard</span>
           </Link>
           <span className='tooltip'>Dashboard</span>
-        </li>
-        <li>
-          <Link className='link' to='callmanager'>
-            <i>
-              <IoCall />
-            </i>
-            <span className='links-name'>Call Manager</span>
-          </Link>
-          <span className='tooltip'>Call Manager</span>
         </li>
 
         {role === 'admin' ? 

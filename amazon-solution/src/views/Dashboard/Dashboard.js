@@ -57,7 +57,6 @@ function DashBoard() {
 
       let instanceURL = "https://csf-test-1.my.connect.aws/ccp-v2";
 
-
       // eslint-disable-next-line no-undef
       connect.core.initCCP(document.getElementById("ccp"), {
         ccpUrl: instanceURL,            // REQUIRED

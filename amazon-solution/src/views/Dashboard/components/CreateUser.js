@@ -55,7 +55,7 @@ function CreateUser() {
     })
     .promise()
     .then((data) => {
-        console.log(data);
+        // console.log(data);
     })
     .catch((error) => {
         console.log(error);

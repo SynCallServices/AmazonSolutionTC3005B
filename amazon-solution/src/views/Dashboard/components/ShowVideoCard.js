@@ -4,7 +4,7 @@ import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import '../../../css/videoCard.css'
 
 function ShowVideoCard(props) {
-  console.log(props.thisVid)
+  // console.log(props.thisVid)
   const totalSeconds = props.vidDuration;
 
 
@@ -24,7 +24,6 @@ function ShowVideoCard(props) {
   return (
     <div className="video-card" onClick={() => {
       props.setSelVideo(props.thisVid)
-      console.log('BRUH')
     }}>
       <div className="video-container">
         <div className="video-text" title={props.videoTitle}>{props.videoTitle}</div>
