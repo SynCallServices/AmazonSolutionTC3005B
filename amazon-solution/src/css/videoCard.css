@@ -9,7 +9,7 @@
 .video-container {
   position: relative;
   color: white;
-  width: 250px;
+  width: 100vw;
   height: 80px;
   background-color: rgba(35, 20, 51, 0.9);
   border-radius: 12px;
@@ -101,6 +101,7 @@
   justify-content: space-between;
   margin-top: 12px;
   margin-bottom: 15px;
+  width: 310px;
 
   justify-content: space-between;
   cursor: pointer;

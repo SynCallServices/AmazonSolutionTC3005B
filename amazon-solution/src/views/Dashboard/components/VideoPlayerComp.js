@@ -3,7 +3,8 @@ import VideoPlayer from 'react-video-js-player'
 import '../../../css/videoCard.css'
 
 function VideoPlayerComp(props) {
-  return (props.trigger) ? (
+  console.log(props.videoPath)
+  return (
     <div className='video-outer' >
       <div className='video-inner' >
         <button className='close-btn' >
@@ -15,7 +16,7 @@ function VideoPlayerComp(props) {
         />
       </div>
     </div>
-  ) : "";
+  ) 
 }
 
 export default VideoPlayerComp

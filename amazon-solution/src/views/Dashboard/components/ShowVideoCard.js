@@ -5,18 +5,17 @@ import '../../../css/videoCard.css'
 
 function ShowVideoCard(props) {
 
-  const [playPopUp , setPlayPopUp] = React.useState(false);
-
   return (
-    <div className="video-card">
+    <div className="video-card" onClick={() => {
+      props.setSelVideo(props.thisVid)
+      console.log('BRUH')
+    }}>
       <div className="video-container">
-        <div className="video-text">{props.videoTitle}</div>
+        <div className="video-text" title={props.videoTitle}>{props.videoTitle}</div>
         <div className='video-info'>
           <div className="video-time">{props.vidDuration}</div>
         </div>
-          <AiFillPlayCircle className='play-button' onClick={() => setPlayPopUp(true)}/>
       </div>
-      <VideoPlayerComp trigger={playPopUp} setTrigger={setPlayPopUp} videoPath={props.videoPath}/>
     </div>
   )
 }

@@ -4,12 +4,15 @@ import * as video from '../../ScreenRecorder/components/VideoAPI'
 import * as agent from "../../ScreenRecorder/components/AgentAPI"
 import VideoPreview from './VideoPreview.js'
 import { UserContext } from '../../../App.js'
+import VideoPlayerComp from './VideoPlayerComp.js'
+import VideoPlayer from 'react-video-js-player'
 
 function ShowVideos() {
 
   const [videoCards, setVideoCards] = React.useState()
   const [recList, setRecList] = React.useState([]);
   const {user, setUser} = React.useContext(UserContext)
+  const [selVideo, setSelVideo] = React.useState({path: 'public/recordings/2f1bbd69-1b64-4adb-869e-8c321355a115.mp4'});
 
   React.useEffect(() => {
 
@@ -19,6 +22,9 @@ function ShowVideos() {
           console.log(result)
           if (result.status === 'Succesfull') {
             setRecList(result.data)
+            if (!selVideo) {
+              setSelVideo(result.data[0])
+            }
           } 
         })
       } else {
@@ -48,11 +54,18 @@ function ShowVideos() {
       <ShowVideoCard
         videoTitle={vid.title}
         vidDuration={vid.duration}
-        videoPath={vid.videoPath}
+        videoPath={vid.path}
+        thisVid={vid}
+        setSelVideo={setSelVideo}
       />
     )))
 
-  }, [])
+  }, [recList])
+
+  React.useEffect(() => {
+    console.log(selVideo)
+
+  }, [selVideo])
 
 
   const handleFilteredData = (event) => {
@@ -67,7 +80,9 @@ function ShowVideos() {
         <ShowVideoCard
           videoTitle={vid.title}
           vidDuration={vid.duration}
-          videoPath={vid.videoPath}
+          videoPath={vid.path}
+          thisVid={vid}
+          setSelVideo={setSelVideo}
         />
       )))
     } else {
@@ -75,7 +90,9 @@ function ShowVideos() {
         <ShowVideoCard
           videoTitle={vid.title}
           vidDuration={vid.duration}
-          videoPath={vid.videoPath}
+          videoPath={vid.path}
+          thisVid={vid}
+          setSelVideo={setSelVideo}
         />
       )))
     }
@@ -92,9 +109,16 @@ function ShowVideos() {
           </div>
 
         </div>
-          <div className='assign-sub-container'>
+        <div className='assign-sub-container'>
             {videoCards}
         </div>
+        <div className='vid-container'>
+          <VideoPlayer
+            className='new-video-player'
+            src={`https://d1msutvtlsu91z.cloudfront.net/${selVideo.path}`} 
+          />
+        </div>
+
       </div>
     </div>
   )
