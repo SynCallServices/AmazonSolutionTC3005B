@@ -783,8 +783,30 @@ body {
 
 .home-title {
   font-weight: bolder;
-  font-size: 70px;
+  font-size: 60px;
   font-style: normal;
+  left: 10%;
+}
+
+.home_logo{
+  display: flex;
+
+  font-weight: bolder;
+  font-size: 130px;
+  font-style: normal;
+  align-items: center;
+  
+
+  position: relative;
+  left: 10%;
+  margin-top: 10%;
+  animation: fadeIn 5s;
+  
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
 .dateTime {

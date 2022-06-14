@@ -96,6 +96,7 @@ function LogIn() {
 
             setUser(data)
             console.log(data)
+            //aqui va a donde se dirige si se autentifico matias
             navigate("/dashboard")
           })
           .catch((error) => {
@@ -110,6 +111,7 @@ function LogIn() {
   React.useEffect(() => {
     console.log(user)
     if (user) {
+      //aqui cambie a home matias
       navigate("/dashboard")
     }
   }, [])
@@ -128,7 +130,7 @@ function LogIn() {
             <p className='login-subtitle'>or create your account.</p>
             <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input' />
             <input onChange={handleChange} name='password' type='text' placeholder='Password' className='login-input' />
-
+            {/* creo que aqui iria lo de login y route aqui me quede matias*/}
             <button onClick={logInClick} className="login-button">Log In</button>
           </div>
           <div class="overlay-right">
