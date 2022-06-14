@@ -907,3 +907,36 @@ border: 1px solid white;
   padding: 5px;
   border-radius: 12px;
 }
+
+.home-page {
+  padding-left: 22%;
+  margin-top: 10vh;
+}
+
+.home-title {
+  font-weight: bolder;
+  font-size: 60px;
+  font-style: normal;
+  left: 10%;
+}
+
+.home_logo{
+  display: flex;
+
+  font-weight: bolder;
+  font-size: 130px;
+  font-style: normal;
+  align-items: center;
+  
+
+  position: relative;
+  left: 10%;
+  margin-top: 10%;
+  animation: fadeIn 5s;
+  
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}

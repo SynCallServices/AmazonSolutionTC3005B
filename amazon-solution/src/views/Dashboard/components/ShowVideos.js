@@ -19,7 +19,7 @@ function ShowVideos() {
   React.useEffect(() => {
 
     async function getData() {
-      if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID && user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID){
+      if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID){
         await video.listRec().then((result) => {
           console.log(result)
           if (result.status === 'Succesfull') {

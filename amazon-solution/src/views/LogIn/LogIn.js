@@ -96,7 +96,7 @@ function LogIn() {
 
         setUser(data)
         localStorage.setItem('user', JSON.stringify(data))
-        navigate("/dashboard")
+        navigate("/dashboard/home")
       })
       .catch((error) => {
         console.log(error)
