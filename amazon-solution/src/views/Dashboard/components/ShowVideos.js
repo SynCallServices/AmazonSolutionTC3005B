@@ -1,4 +1,5 @@
 import React from 'react'
+import AssignVideos from './AssignVideos.js'
 import ShowVideoCard from './ShowVideoCard.js'
 import * as video from '../../ScreenRecorder/components/VideoAPI'
 import * as agent from "../../ScreenRecorder/components/AgentAPI"
@@ -13,6 +14,7 @@ function ShowVideos() {
   const [recList, setRecList] = React.useState([]);
   const {user, setUser} = React.useContext(UserContext)
   const [selVideo, setSelVideo] = React.useState({path: 'public/recordings/2f1bbd69-1b64-4adb-869e-8c321355a115.mp4'});
+  const [assignPopUp, setAssignPopUp] = React.useState(false)
 
   React.useEffect(() => {
 
@@ -100,7 +102,6 @@ function ShowVideos() {
 
   return (
     <div className='show-pop-up'>
-      <button className='assign-close'></button>
       <div className='assign-container'>
         <div className='assign-list-title'>All Videos</div>
         <div className='search'>
@@ -120,8 +121,10 @@ function ShowVideos() {
             controls={true}
           />
         </div>
+        <button className='vid-assign-btn' onClick={() => setAssignPopUp(true)}>Assign Agents to video</button>
 
       </div>
+      <AssignVideos videoId={selVideo.recordingId} trigger={assignPopUp} setTrigger={setAssignPopUp}/> 
     </div>
   )
 }

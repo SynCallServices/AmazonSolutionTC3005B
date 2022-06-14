@@ -18,7 +18,10 @@ const connect = new AWS.Connect({
 });
 
 
-function AssignVideos() {
+function AssignVideos(props) {
+
+  const recordingId = props.videoId // recordingId to check if the function works
+  console.log(recordingId, "TEST")
 
   //el evento es lo que el usuario vaya escribiendo
   const handleFilteredData = (event) => {
@@ -65,7 +68,6 @@ function AssignVideos() {
   let agentsInfo = [];
   let assAgentsInfo = [];
 
-  const recordingId = "648517bb-6d02-4643-ad87-964b90cf7874"; // recordingId to check if the function works
 
   React.useEffect(() => {
 
@@ -143,7 +145,7 @@ function AssignVideos() {
       }
     }
     meh()
-  }, [agentList])
+  }, [agentList, props.trigger])
 
   React.useEffect(() => {
     async function listCognitoUsers () {
@@ -287,11 +289,12 @@ function AssignVideos() {
     setFilteredData2(assAgents)
   }, [assAgents])
 
-  return (
+  return (props.trigger) ? (
+    <div className='assign-pop-up-shadow'>
     <div className='assign-pop-up'>
       
       
-        <button className="assign-close">
+        <button className="assign-close" onClick={() => props.setTrigger(false)}>
           <RiCloseLine className='assign-close-icon'/>
         </button>
         <div className='assign-container'>
@@ -377,7 +380,9 @@ function AssignVideos() {
 
         
     </div>
-  )
+
+    </div>
+  ) : ""
 }
 
 export default AssignVideos

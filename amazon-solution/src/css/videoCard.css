@@ -20,10 +20,12 @@
 .video-time {
   font-size: 12px;
   align-items: center;
+  text-align: center;
   padding: 1px 5px 2px 5px;
-  margin-top: 3px;
-  margin-left: 3px;
+  margin: auto;
+  margin-top: 5px;
 }
+
 
 .video-outer {
   z-index: 100;
@@ -51,7 +53,7 @@
 
 .video-text {
   font-size: 18px;
-  max-width: 150px;
+  max-width: 20vw;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -101,7 +103,7 @@
   justify-content: space-between;
   margin-top: 12px;
   margin-bottom: 15px;
-  width: 310px;
+  width: 24vw;
 
   justify-content: space-between;
   cursor: pointer;

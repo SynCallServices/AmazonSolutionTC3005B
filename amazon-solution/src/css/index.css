@@ -491,6 +491,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
+
 .manage-title{
   position: relative;
   /* margin-left: 30px ; */
@@ -642,7 +643,7 @@ border: 1px solid white;
   overflow: hidden;
   /* esto es lo que hace que la lista de resultados sea scrollable verticalmente */
   overflow-y: auto;
-  height: 580px;
+  height: 73vh;
   margin-top: 20px;
   padding: 3px;
 }
@@ -843,8 +844,8 @@ border: 1px solid white;
   display: flex;
   padding: 50px;
   justify-content: space-between;
-  height: 800px;
-  width: 950px;
+  height: 930px;
+  width: 1300px;
   top: 50%;
   left: 50%;
   border-radius: 12px;
@@ -866,16 +867,19 @@ border: 1px solid white;
 }
 
 .new-video-player {
-  max-width: 440px;
-  max-height: 250px;
+  max-width: 630px;
+  max-height: 500px;
 }
 
 .vid-container-title {
+  background-color: #4078a3;
   position: absolute;
+  border-radius: 12px;
+  padding: 10px;
   transform: translate(-50%, -50%);
   left: 166%;
-  top: 7%;
-  height: 100px;
+  top: 4%;
+  height: 120px;
   width: 455px;
   overflow: hidden;
   white-space: wrap;
@@ -886,4 +890,20 @@ border: 1px solid white;
   margin: auto;
   display: inline-block;
   vertical-align: middle;
+}
+
+.vid-assign-btn {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 166%;
+  top: 60%;
+  width: 400px;
+  background: #00ABBA;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-style: bold;
+  border: 0;
+  color: white;
+  padding: 5px;
+  border-radius: 12px;
 }
