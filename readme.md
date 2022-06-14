@@ -44,10 +44,8 @@ Original project forked from: Louis3797/awesome-readme-template
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#about-the-project)
-  * [Screenshots](#screenshots) ADD
   * [Color Reference](#color-reference)
 - [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
   * [Installation](#installation)
   * [Run Locally](#run-locally)
   * [Deployment](#deployment)
@@ -58,12 +56,9 @@ Original project forked from: Louis3797/awesome-readme-template
 
 <!-- About the Project -->
 ## :star2: About the Project
-
-
-<!-- Screenshots -->
-### :camera: Screenshots
-
-
+This project was made by students of Tecnologico de Monterrey Campus Santa Fe.
+The purpose of it is to make a platform for call centers that use Amazon Connect and hosting everything using Amazon Web Services: Amplify, S3, DyanamoDB, Cognito CloudFront, API Gateway, and Lambda.
+By using these technologies, our project can have both: administrators and agents. Where agents can record their calls through Amazon Connect, and their screens using RTC. And administrators can review their recordings and assign these recordings to other agents in order to train them by watching how to correctly solve client issues.
 
 <!-- TechStack -->
 ### :space_invader: Tech Stack
@@ -72,7 +67,6 @@ Original project forked from: Louis3797/awesome-readme-template
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactjs.org/">React.js</a></li>
-    <li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
   </ul>
 </details>
 
@@ -81,6 +75,7 @@ Original project forked from: Louis3797/awesome-readme-template
   <ul>
     <li><a href="https://nodejs.org/en/">Node.js</a></li>
     <li><a href="https://graphql.org/">GraphQL</a></li>
+    <li><a href="https://aws.amazon.com/amplify/">Amazon Amplify</a></li>
   </ul>
 </details>
 
@@ -123,47 +118,41 @@ Have Node.Js installed.
 
 - [Node.Js](https://nodejs.org/en/)
 
+Use npm for installing the amplify cli
+
+```bash
+  npm install -g @aws-amplify/cli
+```
+
 <!-- Installation -->
 ### :gear: Installation
 
 **Our poject cannot yet be installed using a package manager**
-   
-<!-- Running Tests -->
-### :test_tube: Running Tests
 
-To run tests, run the following command
+After installing Amplify Cli, get on the proyect folder where your frontend is created. 
 
-```bash
-  yarn test test
+```bash 
+amplify init
 ```
+
+Amplify will guide you through the process, then you will need to add other AWS to the amplify project, these are:
+
+```bash 
+amplify add api
+amplify add auth
+amplify add storage 
+```
+
+For adding the api, you'll need to select GraphQl and use our schema (located in amazon-solution/amplify/backend/api/syncallapi/)
 
 <!-- Run Locally -->
 ### :running: Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/PrimeBIue/mini-AmazonSolution/
-```
-
-Go to the project directory
-
-```bash
-  cd save-recordings
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
 
 Start the server
 
 ```bash
   npm start
 ```
-
 
 <!-- Deployment -->
 ### :triangular_flag_on_post: Deployment
@@ -173,21 +162,6 @@ To deploy this project run
 ```bash
   amplify push
   amplify publish
-```
-
-
-<!-- Usage -->
-## :eyes: Usage
-
-Use this space to tell a little more about your project and how it can be used. Show additional screenshots, code samples, demos or link to other resources.
-
-
-```javascript
-import Component from 'my-project'
-
-function App() {
-  return <Component />
-}
 ```
 
 <!-- License -->
