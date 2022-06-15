@@ -43,10 +43,11 @@ function App() {
             <Route path='videoform' element={<VideoForm />} />
             <Route path='videodashboard' element={<ShowVideos />} />
             <Route path='settings' element={<Settings />} > 
-              <Route path='account' element={<Account />}/>
-              <Route path='terms' element={<Terms />}/>
-              <Route path='help' element={<Help />}/>
-            </Route>
+              <Route path='account-settings' element={<Account />}/>
+              {/* <Route path='terms' element={<Terms />}/>
+              <Route path='help' element={<Help />}/>  */}
+            </Route> 
+            <Route path='account' element={<Settings/>}/>
             <Route path='screenrecorder' element={<ScreenRecorder />} />
           </Route>
         </Routes>
