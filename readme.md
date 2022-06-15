@@ -244,7 +244,7 @@ Project Link: [mini-AmazonSolution](https://github.com/PrimeBIue/mini-AmazonSolu
 <!-- Acknowledgments -->
 ## :gem: Acknowledgements
 
-Use this section to mention useful resources and libraries that you have used in your projects.
+Use this section to mention useful resources and libraries that you have used in your projects:
 
  - [Shields.io](https://shields.io/)
  - [Readme Template](https://github.com/matiassingers/awesome-readme)
