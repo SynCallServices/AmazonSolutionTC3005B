@@ -32,6 +32,7 @@ function Sidebar() {
   }
 
   React.useEffect(() => {
+    console.log(user)
     // example of how to obtain the security profile of a user
     amazonConnect.describeUser({
       InstanceId: process.env.REACT_APP_INSTANCE_ID,

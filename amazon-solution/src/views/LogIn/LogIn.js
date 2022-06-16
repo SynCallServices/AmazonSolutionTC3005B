@@ -95,6 +95,7 @@ function LogIn() {
     })
     .promise()
     .then(async (data) => {
+      console.log(data, 'DATA')
       let ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id")
           ConnectId = (ConnectId) ? ConnectId.Value : undefined;
           if (ConnectId) {
@@ -105,6 +106,11 @@ function LogIn() {
         .promise()
       .then((response) => {
         data.ConnectData = response
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      }
         data.username = data.Username
         delete (data.Username)
 
@@ -116,17 +122,11 @@ function LogIn() {
         console.log("bruh")
         setUser(data)
         localStorage.setItem('user', JSON.stringify(data))
-        if (changePW === true) {
+        if (changePW === true && !isChange) {
           navigate("/dashboard/home")
         }
         if (isChange) {
             setChangePW(false)
-        }
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-
         }
     })
     .catch((error) => {
@@ -135,7 +135,8 @@ function LogIn() {
   }
 
   async function setUserPassword () {
-    await getUser()
+    console.log(user, "Booh")
+    console.log(newPassData, "Booh")
     await cognito.adminSetUserPassword({
         UserPoolId: process.env.REACT_APP_USER_POOL_ID,
         Username: user.username,
@@ -156,18 +157,36 @@ function LogIn() {
             Username: user.username, // MODIFY
             IdentityInfo: {
                 Email: user.email, // MODIFY
-                FirstName: user.firstName,// MODIFY
-                LastName: user.lastName // MODIFY
+                FirstName: user.userAttributes["custom:first_name"],// MODIFY
+                LastName: user.userAttributes["custom:last_name"]// MODIFY
             },
             Password: newPassData.newPassword // RANDOM PASSWORD
         })
         .promise()
-        .then((data) => {
+        .then(async (data) => {
+        await cognito.adminUpdateUserAttributes({
+                UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+                Username: user.username,
+                UserAttributes: [
+                    {
+                        Name: "custom:connect_id",
+                        Value: data.UserId
+                    }
+                ]
+            })
+            .promise()
+            .then((data) => {
+                console.log(data);
+            })
+            .catch((error) => {
+                console.log(error);
+            })
             console.log(data);
         })
         .catch((error) => {
             console.log(error);
         })
+        await getUser(logInData.username)
         navigate("/dashboard/home")
     })
     .catch((error) => {

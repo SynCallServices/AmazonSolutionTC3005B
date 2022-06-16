@@ -22,6 +22,11 @@ function UserManagement() {
 
     const [agents, setAgents] = React.useState([])
 
+    React.useEffect(() => {
+      console.log('render')   
+      handleChange({target: {value: ""}})
+    }, [agents])
+
     async function listUsers () {
       await cognito.listUsers({
           UserPoolId: process.env.REACT_APP_USER_POOL_ID
