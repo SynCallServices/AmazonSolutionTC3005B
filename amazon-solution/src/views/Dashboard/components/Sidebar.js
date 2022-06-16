@@ -114,19 +114,6 @@ function Sidebar() {
         : null
         }
 
-        {role === 'admin' || role === 'supervisor' ? 
-        <li>
-          <Link className='link' to='assign-videos'>
-            <i>
-              <CgAssign />
-            </i>
-            <span className='links-name'>Assign Videos</span>
-          </Link>
-          <span className='tooltip'>Assign Videos</span>
-        </li>
-        : null
-        }
-
         <li>
           <Link className='link' to='settings'>
             <i>
