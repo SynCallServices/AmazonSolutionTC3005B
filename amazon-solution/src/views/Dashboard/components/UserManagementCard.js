@@ -41,8 +41,7 @@ export default function UserManagementCard(props) {
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             UserId: ConnectId,
             SecurityProfileIds: [role]
-        })
-        .promise()
+        }) .promise()
         .then((data) => {
             // console.log(data);
         })
@@ -102,6 +101,7 @@ export default function UserManagementCard(props) {
     .catch((error) => {
         console.log(error);
     })
+
   }
 
   function trashClick() {

@@ -23,10 +23,24 @@ export default function ConfirmPopUp(props) {
   function confirm() {
 
     deleteUser()
-    console.log(props.agentList)
-    props.setAgentList(props.agentList.filter(agent => agent.username != props.username));
-    console.log(props.agentList)
-    props.setTrigger(false)
+    console.log(props.agentList, 'ERASE')
+    console.log(props.agentList, 'ERASE')
+    console.log(props.username, 'ERASE')
+    let temp = props.agentList.filter(agent => agent.username !== props.username)
+    console.log(temp, 'ERASE')
+
+    async function erase() {
+      await props.setAgentList(() => {
+
+        return temp
+      }
+      );
+      console.log(props.agentList)
+
+    }
+     props.setTrigger(false)
+    erase()
+
   }
 
   async function deleteUser () {
@@ -64,6 +78,7 @@ export default function ConfirmPopUp(props) {
             .catch((error) => {
                 console.log(error);
             })
+
         })
         .catch((error) => {
             console.log(error);

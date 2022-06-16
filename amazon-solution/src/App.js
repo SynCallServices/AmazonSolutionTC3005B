@@ -9,6 +9,7 @@ import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
 import UserManagement from './views/Dashboard/components/UserManagement.js'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
+import CreatedUser from './views/Dashboard/components/CreatedUser.js'
 import Home from './views/Dashboard/components/Home.js'
 
 // Route restrictions
@@ -35,10 +36,17 @@ function App() {
               <Route path='videodashboard' element={<ShowVideos />}/>
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
-              <Route path='create-user' element={<CreateUser />}/>
+              {/* <Route path='create-user' element={<CreateUser />}>
+                <Route path='created-user' element={<CreatedUser />}/>
+              </Route>
+              JORGE, NO SE REGRESA LA VISTA DE CREATE USER DESDE CREATED USER
+              */}
+              <Route path='create-user' element={<CreateUser />}></Route>
+              <Route path='created-user' element={<CreatedUser />}/>
               <Route path='user-management' element={<UserManagement />}/>
               <Route path='assign-videos' element={<AssignVideos/>}/>
               <Route path='home' element={<Home />}/>
+              
 
             </Route>
         </Routes>
