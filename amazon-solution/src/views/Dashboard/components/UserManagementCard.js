@@ -36,14 +36,14 @@ export default function UserManagementCard(props) {
     })
     .promise()
     .then(async (data) => {
-        const ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id").Value;
+        const ConnectId = data.UserAttributes.find((item) => item.Name === "custom:connect_id").Value;
         await connect.updateUserSecurityProfiles({
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             UserId: ConnectId,
             SecurityProfileIds: [role]
         }) .promise()
         .then((data) => {
-            console.log(data);
+            // console.log(data);
         })
         .catch((error) => {
             console.log(error);
@@ -80,10 +80,10 @@ export default function UserManagementCard(props) {
                 })
                 .promise()
                 .then((response) => {
-                    console.log(response); // FINAL RESULT
+                    // console.log(response); // FINAL RESULT
                     const delAgent = agent.del(ConnectId);
                     delAgent.then((res) => {
-                      console.log(res);
+                      // console.log(res);
                     })
                 })
                 .catch((error) => {
@@ -105,7 +105,7 @@ export default function UserManagementCard(props) {
   }
 
   function trashClick() {
-    console.log('clock')
+    // console.log('clock')
     setPlayPopUp(true)    
   }
 

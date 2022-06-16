@@ -2,19 +2,15 @@ import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import LogIn from './views/LogIn/LogIn.js'
 import DashBoard from './views/Dashboard/Dashboard.js'
-import DashBoardAdmin from './views/DashboardAdmin/DashboardAdmin.js'
-import CallManager from './views/Dashboard/components/CallManager.js'
 import VideoForm from './views/Dashboard/components/VideoForm.js'
-import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
 import UserManagement from './views/Dashboard/components/UserManagement.js'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
+import CreatedUser from './views/Dashboard/components/CreatedUser.js'
 import Home from './views/Dashboard/components/Home.js'
-import { AmplifyProvider } from '@aws-amplify/ui-react'
-import AuthenticatorEmail from './views/LogIn/components/AuthenticatorEmail.js';
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
@@ -36,15 +32,21 @@ function App() {
                 <DashBoard />
               </ProtectedRoute>
             }>
-              <Route path='callmanager' element={<CallManager />}/>
               <Route path='videoform' element={<VideoForm/>}/>
               <Route path='videodashboard' element={<ShowVideos />}/>
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
-              <Route path='create-user' element={<CreateUser />}/>
+              {/* <Route path='create-user' element={<CreateUser />}>
+                <Route path='created-user' element={<CreatedUser />}/>
+              </Route>
+              JORGE, NO SE REGRESA LA VISTA DE CREATE USER DESDE CREATED USER
+              */}
+              <Route path='create-user' element={<CreateUser />}></Route>
+              <Route path='created-user' element={<CreatedUser />}/>
               <Route path='user-management' element={<UserManagement />}/>
               <Route path='assign-videos' element={<AssignVideos/>}/>
               <Route path='home' element={<Home />}/>
+              
 
             </Route>
         </Routes>

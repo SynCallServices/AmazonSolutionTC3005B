@@ -1,8 +1,10 @@
 import React from 'react'
 import * as agent from "../../ScreenRecorder/components/AgentAPI.js"
 import AWS from 'aws-sdk'
+import CreatedUser from "./CreatedUser"
 
 function CreateUser() {
+  const [alert, setAlert] = React.useState(true)
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
   //const ses = new AWS.SES();
@@ -55,7 +57,7 @@ function CreateUser() {
     })
     .promise()
     .then((data) => {
-        console.log(data);
+        // console.log(data);
     })
     .catch((error) => {
         console.log(error);
@@ -77,6 +79,9 @@ function CreateUser() {
   return (
     <div>
       <div className="create-card">
+
+        {alert ? 
+        <div>
         <div className="create-title">Create account</div>
 
         <input onChange={handleChange} className="create-input" name="email" placeholder="Email"/>
@@ -85,8 +90,15 @@ function CreateUser() {
         <input onChange={handleChange} className="create-input" name="lastName" placeholder="Last Name"/>
 
         <button onClick={create} className="create-button">Create Account</button>
+        </div>
+         :
 
-      </div> 
+        <CreatedUser setTrigger={setAlert}/>
+
+      }
+        
+      </div>
+
     </div>
   )
 }

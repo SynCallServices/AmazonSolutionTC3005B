@@ -21,7 +21,6 @@ const connect = new AWS.Connect({
 function AssignVideos(props) {
 
   const recordingId = props.videoId // recordingId to check if the function works
-  console.log(recordingId, "TEST")
 
   //el evento es lo que el usuario vaya escribiendo
   const handleFilteredData = (event) => {
@@ -132,7 +131,6 @@ function AssignVideos(props) {
                 });
               }
             }
-            console.log(agentsInfo);
           })
 
     }
@@ -250,7 +248,6 @@ function AssignVideos(props) {
     .then((result) => {
         if (result.status === 'Succesfull') {
           console.log('Assigned')
-          console.log(result)
         }
 
     })
@@ -258,9 +255,6 @@ function AssignVideos(props) {
       let newList = Array.isArray(agents) ? agents.filter(agent => agent.agentId !== agentObj.agentId) : []
       setAgents(Array.isArray(newList) ? newList : [agents])
       setAssAgents(prev => [...prev, agentObj])
-      console.log(agents, 'bruh')
-    console.log(filteredData, 'agents')
-    console.log(filteredData2, 'assAgents')
   }
 
   function handleDelete(agentId, videoId, agentObj) {
@@ -269,16 +263,12 @@ function AssignVideos(props) {
     .then((result) => {
         if (result.status === 'Succesfull') {
           console.log('Assigned')
-          console.log(result)
         }
     })
-    console.log(agentObj)
+
       let newList = Array.isArray(assAgents) ? assAgents.filter(agent => agent.agentId !== agentObj.agentId) : []
       setAssAgents(Array.isArray(newList) ? newList : [assAgents])
       setAgents(prev => [...prev, agentObj])
-      console.log(assAgents, 'bruh')
-    console.log(filteredData, 'agents')
-    console.log(filteredData2, 'assAgents')
   }
 
   React.useEffect(() => {

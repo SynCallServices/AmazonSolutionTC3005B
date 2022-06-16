@@ -21,7 +21,7 @@ function ShowVideos() {
     async function getData() {
       if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID){
         await video.listRec().then((result) => {
-          console.log(result)
+          // console.log(result)
           if (result.status === 'Succesfull') {
             setRecList(result.data)
             if (!selVideo) {
@@ -47,8 +47,6 @@ function ShowVideos() {
     }
 
     getData()
-    console.log(recList, "LIST")
-
   }, [])
 
   React.useEffect(() => {
@@ -64,10 +62,9 @@ function ShowVideos() {
 
   }, [recList])
 
-  React.useEffect(() => {
-    console.log(selVideo)
-
-  }, [selVideo])
+  // React.useEffect(() => {
+  //   console.log(selVideo)
+  // }, [selVideo])
 
 
   const handleFilteredData = (event) => {

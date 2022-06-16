@@ -69,7 +69,7 @@ export default function ConfirmPopUp(props) {
                 })
                 .promise()
                 .then((response) => {
-                    console.log(response); // FINAL RESULT
+                  // FINAL RESULT
                 })
                 .catch((error) => {
                     console.log(error);
