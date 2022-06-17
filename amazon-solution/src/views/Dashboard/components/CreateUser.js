@@ -62,7 +62,7 @@ function CreateUser() {
         // console.log(data);
     })
     .catch((error) => {
-t 
+
         console.log(error);
     })
   }
