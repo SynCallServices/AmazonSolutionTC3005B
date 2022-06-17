@@ -31,6 +31,7 @@ body {
   left: 0;
   padding: 6px 15px;
   transition: all 0.5s ease;
+  border-right: black 2px solid;
 }
 
 .sidebar.active {
@@ -297,13 +298,12 @@ body {
   right: 0;
   height: 100%;
   width: 300px;
-
+  border-top: black 2px solid;
 }
 
 .test {
   background-color: #00abba;
   color: white;
-  border-radius: 24px;
   position: absolute;
   top: 40%;
   bottom: 50%;
@@ -314,6 +314,7 @@ body {
   margin: auto;
   left: 50%;
   transform: translateX(-50%);
+  font-size: 20px;
 }
 
 .login-header {
@@ -434,7 +435,7 @@ body {
   /* position the top  edge of the element at the middle of the parent */
   left: 50%;
   /* position the left edge of the element at the middle of the parent */
-
+  border: black 2px solid;
   transform: translate(-50%, -50%);
 
   width: 75%;
@@ -522,7 +523,7 @@ body {
   left: 50%;
   /* position the left edge of the element at the middle of the parent */
   border-radius: 12px;
-
+  border: black 2px solid;
   transform: translate(-50%, -50%);
 
   padding: 20px;
@@ -549,6 +550,7 @@ body {
   height: 30px;
   width: 300px;
   background-color: rgba(255, 255, 255, 0.8);
+  border: black 2px solid;
 }
 
 .manage-card-container {
@@ -564,7 +566,7 @@ body {
   left: 50%;
   /* position the left edge of the element at the middle of the parent */
   border-radius: 12px;
-
+  border: black 2px solid;
   transform: translate(-50%, -50%);
   padding: 20px;
   max-height: 68vh;
@@ -618,6 +620,7 @@ body {
   justify-content: space-between;
   margin-top: 12px;
   margin-bottom: 15px;
+  border: black 2px solid;
 }
 
 .usercard-names-real {
@@ -645,6 +648,7 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 150px;
+  font-size: 15px;
 }
 
 .usercard-email {
@@ -693,6 +697,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   height: 100%;
+  border: black 2px solid;
 }
 
 .assign-sub-container {
@@ -915,6 +920,7 @@ body {
   left: 50%;
   border-radius: 12px;
   transform: translate(-50%, -50%);
+  border: black 2px solid;
 }
 
 .vid-container {
@@ -942,6 +948,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: black 2px solid;
 }
 
 .vid-sub-container-title {
@@ -960,6 +967,7 @@ body {
   color: white;
   padding: 2%;
   border-radius: 12px;
+  border: black 2px solid;
 }
 
 .home-page {
