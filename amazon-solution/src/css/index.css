@@ -316,6 +316,8 @@ body {
   left: 50%;
   transform: translateX(-50%);
   font-size: 20px;
+  border-radius: 20px;
+  cursor: pointer;
 }
 
 .login-header {
