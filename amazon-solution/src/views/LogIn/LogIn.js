@@ -213,6 +213,11 @@ function LogIn() {
     setUserPassword();
   }
 
+  function onFormSubmit(e) {
+    e.preventDefault();
+    logInClick();
+  }
+
   return (
     <div>
       <div className='login-header' >
@@ -229,8 +234,11 @@ function LogIn() {
               <h1 className='login-title'>Log In</h1>
               <p className='login-subtitle'>or create your account.</p>
               {loginError ? <p className='login-error'>{loginError.toString().split(': ')[1]}</p> : null}
-              <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input' />
-              <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input' />
+              <form onSubmit={(e) => onFormSubmit(e)}>
+                <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input' />
+                <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input' />
+                <input type="submit" hidden />
+              </form>
               {loading ?
                 <div>
                   <ReactLoading
