@@ -16,7 +16,6 @@ function ShowVideos() {
   const [assignPopUp, setAssignPopUp] = React.useState(false)
 
   React.useEffect(() => {
-
     async function getData() {
       if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID) {
         await video.listRec().then((result) => {
@@ -30,7 +29,7 @@ function ShowVideos() {
       } else {
         let currAgentId;
 
-        await agent.get(user.agentId).then((result) => {
+        await agent.get(user.userAttributes['custom:connect_id']).then((result) => {
           if (result.status === 'Succesfull') {
             currAgentId = result.data.asgnRec
           }
