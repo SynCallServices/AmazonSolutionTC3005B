@@ -648,6 +648,13 @@ body {
   display: flex;
 }
 
+.usercard-complete-name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
 .usercard-id {
   overflow: hidden;
   white-space: nowrap;

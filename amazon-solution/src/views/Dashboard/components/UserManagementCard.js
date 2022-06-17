@@ -128,8 +128,7 @@ export default function UserManagementCard(props) {
     <div className="usercard">
         <div className="usecard-names usercard-item">
           <div className="usercard-names-real">
-            <h3 className="usercard-firstname">{props.firstName} &nbsp;</h3>
-            <h3 className="usercard-lastname">{props.lastName}</h3>
+            <h3 className="usercard-complete-name" title={`${props.firstName} ${props.lastName}`}>{props.firstName} {props.lastName}</h3>
           </div>
           <h2 className="usercard-username" title={props.username}>{props.username}</h2>
       </div>
