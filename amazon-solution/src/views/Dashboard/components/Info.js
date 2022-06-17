@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom'
+
 function Info() {
+  const navigate = useNavigate()
     return (
         <div className="info">
             <div className="info-title">
@@ -23,6 +26,10 @@ function Info() {
 
                 </a>
             </div>
+          <button onClick={() => {
+        navigate('/dashboard/settings')
+
+      }} className='a_button_info'>Back</button>
         </div>
     )
 }
