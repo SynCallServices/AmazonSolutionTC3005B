@@ -134,7 +134,7 @@ export async function create(agentId_) {
             throw new Error("Agent already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createAgent, { input: { agentId: agentId_, folder: `public/${agentId_}` } }
+            createAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: [] } }
         ))
         return {
             status: "Succesfull",
