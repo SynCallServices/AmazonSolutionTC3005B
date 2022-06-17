@@ -631,12 +631,16 @@ border: 1px solid white;
   position: relative;
   background: #4078a3;
   padding: 20px;
-  width: 45%;
+  /* width: 45%; */
   text-align: center;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 2px;
   border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .assign-sub-container {
@@ -670,6 +674,15 @@ border: 1px solid white;
 
 .assign-sub-container::-webkit-scrollbar-thumb {
   background-color: #00ABBA;
+}
+
+.video-card-player-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 45%;
 }
 
 .assign-close {
@@ -853,17 +866,11 @@ border: 1px solid white;
 }
 
 .vid-container {
-  position: absolute;
-  margin-top: 200px;
-  transform: translate(-50%, -50%);
-  top: 100%;
-  left: 110%;
-  top: 0;
-  right: 0;
-  background: red;
-  height: 200px;
+  height: auto;
   align-items: center;
   text-align: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .new-video-player {
@@ -873,38 +880,33 @@ border: 1px solid white;
 
 .vid-container-title {
   background-color: #4078a3;
-  position: absolute;
   border-radius: 12px;
   padding: 10px;
-  transform: translate(-50%, -50%);
   left: 166%;
   top: 4%;
   height: 120px;
   width: 455px;
-  overflow: hidden;
-  white-space: wrap;
   text-overflow: ellipsis;
-  font-size: 20px;
+  display: flex;
   align-items: center;
-  text-align: center;
-  margin: auto;
-  display: inline-block;
-  vertical-align: middle;
+  justify-content: center;
+}
+
+.vid-sub-container-title {
+  font-size: 100%;
+  white-space: wrap;
 }
 
 .vid-assign-btn {
-  position: absolute;
-  transform: translate(-50%, -50%);
   left: 166%;
-  top: 60%;
   width: 400px;
+  font-size: 24px;
   background: #00ABBA;
-  text-transform: uppercase;
   cursor: pointer;
   font-style: bold;
   border: 0;
   color: white;
-  padding: 5px;
+  padding: 2%;
   border-radius: 12px;
 }
 

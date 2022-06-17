@@ -1,5 +1,4 @@
 import { AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai'
-import * as agent from '../../ScreenRecorder/components/AgentAPI.js'
 
 function AssignVideoCard(props) {
 

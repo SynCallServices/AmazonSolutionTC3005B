@@ -98,19 +98,24 @@ function ShowVideos() {
   }
 
   return (
-    <div className='show-pop-up'>
+    <div className='show-pop-up'> 
       <div className='assign-container'>
-        <div className='assign-list-title'>All Videos</div>
-        <div className='search'>
-          <div className='searchInputs'>
-            <input type='text' onChange={handleFilteredData} />
+        <div>
+          <div className='assign-list-title'>All Videos</div>
+          <div className='search'>
+            <div className='searchInputs'>
+              <input type='text' onChange={handleFilteredData} />
+            </div>
           </div>
-
+          <div className='assign-sub-container'>
+              {videoCards}
+          </div>
         </div>
-        <div className='assign-sub-container'>
-            {videoCards}
+      </div>
+      <div className='video-card-player-title'>
+        <div className='vid-container-title'>
+          <h1 className='vid-sub-container-title'>{selVideo.title}</h1>
         </div>
-        <h1 className='vid-container-title'>{selVideo.title}</h1>
         <div className='vid-container'>
           <ReactPlayer
             className='new-video-player'
@@ -119,7 +124,6 @@ function ShowVideos() {
           />
         </div>
         <button className='vid-assign-btn' onClick={() => setAssignPopUp(true)}>Assign Agents to video</button>
-
       </div>
       <AssignVideos videoId={selVideo.recordingId} trigger={assignPopUp} setTrigger={setAssignPopUp}/> 
     </div>
