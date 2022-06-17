@@ -51,10 +51,49 @@ function DashBoard() {
     })
   }
 
+  React.useEffect(() => {
+    // example of how to obtain the security profile of a user
+    amazonConnect.describeUser({
+      InstanceId: process.env.REACT_APP_INSTANCE_ID,
+      UserId: user.userAttributes["custom:connect_id"]
+    }, function (err, data) {
+      if (err) {
+        console.log(err)
+      } else {
+        const securityProfile = data.User.SecurityProfileIds[0];
+        switch (securityProfile) {
+          case process.env.REACT_APP_AGENT_ID:
+            setRole("agent");
+            break;
+          case process.env.REACT_APP_SUPERVISOR_ID:
+            setRole("supervisor");
+            break;
+          case process.env.REACT_APP_ADMIN_ID:
+            setRole("admin");
+            break;
+          default:
+          // only for good practice
+        }
+      }
+    });
+    if (role === 'supervisor' || role === 'admin') {
+      let ccp = document.getElementById('ccp');
+      // eslint-disable-next-line no-undef
+      connect.core.terminate();
+      try {
+        ccp.removeChild(ccp.firstElementChild);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }, [role])
+
+
   // Amazon Connect Embed
   React.useEffect(() => {
+
     if (!ranOnce) {
-      setRanOnce(true)
+      setRanOnce(true);
 
       let instanceURL = "https://csf-test-1.my.connect.aws/ccp-v2";
 
@@ -154,31 +193,6 @@ function DashBoard() {
         })
       });
     }
-
-    // example of how to obtain the security profile of a user
-    amazonConnect.describeUser({
-      InstanceId: process.env.REACT_APP_INSTANCE_ID,
-      UserId: user.userAttributes["custom:connect_id"]
-    }, function (err, data) {
-      if (err) {
-        console.log(err)
-      } else {
-        const securityProfile = data.User.SecurityProfileIds[0];
-        switch (securityProfile) {
-          case process.env.REACT_APP_AGENT_ID:
-            setRole("agent");
-            break;
-          case process.env.REACT_APP_SUPERVISOR_ID:
-            setRole("supervisor");
-            break;
-          case process.env.REACT_APP_ADMIN_ID:
-            setRole("admin");
-            break;
-          default:
-          // only for good practice
-        }
-      }
-    })
 
 
   }, [])
