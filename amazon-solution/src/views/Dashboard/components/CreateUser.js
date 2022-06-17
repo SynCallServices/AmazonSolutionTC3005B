@@ -57,6 +57,8 @@ function CreateUser() {
     })
     .promise()
     .then((data) => {
+      console.log("DONE ALERT")
+        setAlert(false)
         // console.log(data);
     })
     .catch((error) => {
