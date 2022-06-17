@@ -72,7 +72,6 @@ function AssignVideos(props) {
 
     async function meh() {
 
-
       if (agentList.length !== 0) {
 
         for (let i = 0; i < agentList.length; i++) {
@@ -258,7 +257,6 @@ function AssignVideos(props) {
   }
 
   function handleDelete(agentId, videoId, agentObj) {
-    console.log(agent)
     agent.unAssignVideo(agentId, videoId)
     .then((result) => {
         if (result.status === 'Succesfull') {
@@ -281,9 +279,7 @@ function AssignVideos(props) {
 
   return (props.trigger) ? (
     <div className='assign-pop-up-shadow'>
-    <div className='assign-pop-up'>
-      
-      
+      <div className='assign-pop-up'>
         <button className="assign-close" onClick={() => props.setTrigger(false)}>
           <RiCloseLine className='assign-close-icon'/>
         </button>
@@ -294,17 +290,13 @@ function AssignVideos(props) {
             <div className="searchInputs">
               <input
                 type="text"
-
                 placeholder="Search..."
                 //se llamara cada vez que se escriba un nuevo caracter en la barra
                 onChange={handleChange}
-
               />
-      </div>
-
-    </div>
-          {
-          filteredData.length !== 0 && Array.isArray(filteredData) && (
+            </div>
+          </div>
+          {filteredData.length !== 0 && Array.isArray(filteredData) && (
             <div className='assign-sub-container'>
               {filteredData.map((value, key) => {
                 return (
@@ -322,11 +314,8 @@ function AssignVideos(props) {
                 );
               })}
             </div>
-          )
-        }
-             
+          )}     
         </div>
-
         <div className='assign-container'>
           <div className="assign-list-title">Assigned Agents</div>
           <div className='search'>
@@ -335,17 +324,13 @@ function AssignVideos(props) {
               <input
                 className='search-input'
                 type="text"
-
-                
                 //se llamara cada vez que se escriba un nuevo caracter en la barra
                 onChange={handleChange2}
                 placeholder="Search..."
               />
-      </div>
-
-    </div>
-          {
-          filteredData2.length !== 0 && Array.isArray(filteredData2) && (
+            </div>
+          </div>
+          {filteredData2.length !== 0 && Array.isArray(filteredData2) && (
             <div className='assign-sub-container'>
               {filteredData2.map((value, key) => {
                 return (
@@ -364,13 +349,9 @@ function AssignVideos(props) {
                 );
               })}
             </div>
-          )
-        }
-        </div>
-
-        
-    </div>
-
+          )}
+        </div>  
+      </div>
     </div>
   ) : ""
 }
