@@ -22,6 +22,7 @@ const connect = new AWS.Connect({
 function AssignVideos(props) {
 
   const recordingId = props.videoId // recordingId to check if the function works
+  console.log(recordingId, "VIDEO")
 
   //el evento es lo que el usuario vaya escribiendo
   const handleFilteredData = (event) => {
@@ -141,7 +142,7 @@ function AssignVideos(props) {
       }
     }
     meh()
-  }, [agentList, props.trigger])
+  }, [agentList])
 
   React.useEffect(() => {
     setLoadingAgents(true);
@@ -195,7 +196,7 @@ function AssignVideos(props) {
       })
     }
     listCognitoUsers();
-  }, [])
+  }, [props.videoId])
 
   React.useEffect(() => {
     if (searchForm === '') {
