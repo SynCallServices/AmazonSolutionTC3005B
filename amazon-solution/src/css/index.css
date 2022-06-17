@@ -628,8 +628,54 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  max-width: 80px;
+  max-width: 300px;
   max-height: 20px;
+}
+
+.usercard-names {
+  max-width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+}
+
+.usercard-username {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px;
+}
+
+.usercard-email {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  margin-right: 20px;
+}
+
+.usercard select {
+  background-color: #4078a3;
+  border: #ffffff 1px solid;
+  border-radius: 6px;
+  margin: 0;
+  width: 140px;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
+}
+
+.usercard-item {
+  flex: 1;
+}
+
+.delete-user {
+  width: 20px;
+  max-width: 20px;
 }
 
 .assign-container {
@@ -748,7 +794,6 @@ body {
 }
 
 .assign-card-username {
-  font-size: 18px;
   margin-left: 0vh;
 }
 

@@ -111,22 +111,21 @@ export default function UserManagementCard(props) {
 
   return (
     <div className="usercard">
-        <div className="usecard-names">
-          <h2 className="usercard-username">{props.username}</h2>
-
+        <div className="usecard-names usercard-item">
           <div className="usercard-names-real">
-          <h3 className="usercard-firstname">{props.firstName} &nbsp;</h3>
-          <h3 className="usercard-lastname">{props.lastName}</h3>
-        </div>
+            <h3 className="usercard-firstname">{props.firstName} &nbsp;</h3>
+            <h3 className="usercard-lastname">{props.lastName}</h3>
+          </div>
+          <h2 className="usercard-username" title={props.username}>{props.username}</h2>
       </div>
-      <p className="usercard-email" title={props.email}>{props.email}</p>
-      <p className="usercard-id" title={props.agentId}>{props.agentId}</p>
-      <select value={selectedRole} onChange={handleChange} name="cars" id="cars">
+      <p className="usercard-email usercard-item" title={props.email}>{props.email}</p>
+      <p className="usercard-id usercard-item" title={props.agentId}>{props.agentId}</p>
+      <select classname="usercard-role usercard-item" value={selectedRole} onChange={handleChange} name="cars" id="cars">
         <option value="agent">Agent</option>
         <option value="supervisor">Supervisor</option>
         <option value="admin">Admin</option>
       </select>
-      <BsFillTrashFill className='delete-user' onClick={trashClick}/>
+      <BsFillTrashFill className='delete-user usercard-item' onClick={trashClick}/>
       <ConfirmPopUp agentList={props.agentList} setAgentList={props.setAgentList} trigger={playPopUp} setTrigger={setPlayPopUp} username={props.username}/>
     </div>
   )
