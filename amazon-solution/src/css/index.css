@@ -38,6 +38,10 @@ body {
   width: 240px;
 }
 
+.nav_list li a{
+  margin: 20px;
+}
+
 #ccp {
   position: fixed;
   right: 0;
@@ -424,12 +428,15 @@ body {
 }
 
 .create-title {
-  font-size: 30px;
+  font-size: 35px;
   font-weight: 400;
   letter-spacing: 2px;
   margin-bottom: 5px;
-  margin-top: 18px;
-
+  /* margin-top: 18px; */
+  background-color: rgba(0, 0, 0, 0.500);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 .create-card {
@@ -501,7 +508,7 @@ body {
   left: 50%;
   /* position the left edge of the element at the middle of the parent */
   border-radius: 12px;
-
+  border: black 2px solid;
   transform: translate(-50%, -50%);
 }
 
@@ -510,14 +517,14 @@ body {
   position: relative;
   /* margin-left: 30px ; */
   /* padding-left: 10px; */
-  margin-left: 6%;
+  margin-left: 7%;
   font-size: 25px;
 }
 
 .manage-search-container {
 
   position: relative;
-  margin-left: 56%;
+  margin-left: 65%;
   margin-top: -3.5%;
 }
 
@@ -787,8 +794,10 @@ body {
 .assign-list-title {
 
   font-weight: 700;
-  margin-bottom: 10px;
-
+  /* margin-bottom: 10px; */
+  font-size: 25px;
+  padding: 8px 0;
+  border-radius: 15px;
 }
 
 .assign-card-container {

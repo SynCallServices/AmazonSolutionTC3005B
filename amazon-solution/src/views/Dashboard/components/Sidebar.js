@@ -5,7 +5,7 @@ import { Auth } from 'aws-amplify';
 import { MdSpaceDashboard } from 'react-icons/md'
 import { RiSettingsFill } from 'react-icons/ri'
 import { HiMenu } from 'react-icons/hi'
-import { FaUserAlt } from 'react-icons/fa'
+import { FaUserEdit, FaUserPlus } from 'react-icons/fa'
 import { IoLogOut } from 'react-icons/io5'
 
 import { UserContext } from '../../../App.js'
@@ -90,7 +90,7 @@ function Sidebar() {
         <li>
           <Link className='link' to='create-user'>
             <i>
-              <FaUserAlt />
+              <FaUserPlus />
             </i>
             <span className='links-name'>Create User</span>
           </Link>
@@ -103,7 +103,7 @@ function Sidebar() {
         <li>
           <Link className='link' to='user-management'>
             <i>
-              <FaUserAlt />
+              <FaUserEdit />
             </i>
             <span className='links-name'>User Management</span>
           </Link>
