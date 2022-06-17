@@ -1,6 +1,7 @@
 import UserManagementCard from './UserManagementCard.js'
 import AWS from 'aws-sdk'
 import React from 'react'
+import LoadingWheel from './LoadingWheel.js';
 
 
 const cognito = new AWS.CognitoIdentityServiceProvider({
@@ -119,7 +120,7 @@ function UserManagement() {
      
 
       <div className="manage-card-container">
-        {filteredData.map(agent => {
+        {filteredData.length !== 0 ? filteredData.map(agent => {
           return (
             <UserManagementCard
               agentList={agents}
@@ -132,7 +133,7 @@ function UserManagement() {
               role={agent.role}
             />
           )
-        }) }
+        }) : <LoadingWheel witdh={200} height={200} className="loading-wheel-2"/>}
 
       </div>
     </div>

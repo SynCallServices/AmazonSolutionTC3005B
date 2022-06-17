@@ -5,6 +5,7 @@ import * as video from '../../ScreenRecorder/components/VideoAPI'
 import * as agent from "../../ScreenRecorder/components/AgentAPI"
 import { UserContext } from '../../../App.js'
 import ReactPlayer from 'react-player'
+import LoadingWheel from './LoadingWheel.js';
 
 function ShowVideos() {
 
@@ -104,7 +105,10 @@ function ShowVideos() {
             </div>
           </div>
           <div className='assign-sub-container'>
-              {videoCards}
+            {videoCards ? (
+              videoCards
+            ) : <LoadingWheel witdh={200} height={200} className="loading-wheel-2"/>}
+              
           </div>
         </div>
       </div>

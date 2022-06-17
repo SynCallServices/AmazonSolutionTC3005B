@@ -400,6 +400,12 @@ body {
   margin-top: 15%;
 }
 
+.loading-wheel-2 {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+}
+
 .login-button:hover {
   background-color: #3e688F;
 }
