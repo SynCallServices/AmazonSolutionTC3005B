@@ -15,6 +15,7 @@ function LogIn() {
   const [changePW, setChangePW] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
   const [loginError, setLoginError] = React.useState(null);
+  const [newPassError, setNewPassError] = React.useState(null);
 
   const [, setInputState] = React.useState(false)
 
@@ -139,8 +140,6 @@ function LogIn() {
   }
 
   async function setUserPassword() {
-    console.log(user, "Booh")
-    console.log(newPassData, "Booh")
     await cognito.adminSetUserPassword({
       UserPoolId: process.env.REACT_APP_USER_POOL_ID,
       Username: user.username,
@@ -194,6 +193,7 @@ function LogIn() {
         navigate("/dashboard/home")
       })
       .catch((error) => {
+        setNewPassError(error.toString().split(': ')[2]);
         console.log(error);
       })
   }
@@ -210,7 +210,11 @@ function LogIn() {
   }, [])
 
   function commitPW() {
-    setUserPassword();
+    if (newPassData.newPassword === newPassData.confirmNewPassword)
+      setUserPassword();
+    else {
+      setNewPassError('Passwords must match');
+    }
   }
 
   function onFormSubmit(e) {
@@ -256,15 +260,25 @@ function LogIn() {
             :
             <div class="overlay-left">
               <h1 className='login-title'>Change Password</h1>
-              <input onChange={handleChangePW} name='newPassword' type='text' placeholder='New Password' className='login-input' />
+              {newPassError ? <p className='login-error'>{newPassError}</p> : null}
+              <input onChange={handleChangePW} name='newPassword' type='password' placeholder='New Password' className='login-input' />
               <input onChange={handleChangePW} name='confirmNewPassword' type='password' placeholder='Confirm' className='login-input' />
 
               <button onClick={commitPW} className="login-button">Change</button>
+
             </div>
           }
           <div class="overlay-right">
             <h1>Hello Compa!</h1>
             <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
+            <p style={{ 'text-align': 'left' }}>Make sure your password contains at least one of the following:
+              <ul>
+                <li>number</li>
+                <li>special character</li>
+                <li>uppercase letter</li>
+                <li>lowercase letter</li>
+              </ul>
+            </p>
           </div>
 
         </div>
