@@ -48,7 +48,6 @@ function AssignVideos(props) {
     const newFilter = Array.isArray(assAgents) ? assAgents.filter((item) => {
       return item.username.toLowerCase().includes(searchWord.toLowerCase());
     }) : []
-
     //se cambiara el estado del componente con el nuevo array filtrado
     if (searchWord === "") {
       //si searchword esta vacia entonces no habra ningun estado
@@ -62,7 +61,6 @@ function AssignVideos(props) {
   const [agents, setAgents] = useState([]);
   const [assAgents, setAssAgents] = useState([]);
   const [loadingAgents, setLoadingAgents] = useState(false);
-  const [loadingAssAgents, setLoadingAssAgents] = useState(false);
 
   const [filteredData, setFilteredData] = useState([]);
   const [filteredData2, setFilteredData2] = useState([]);
@@ -132,12 +130,12 @@ function AssignVideos(props) {
               }
             }
           })
-
-    }
+        }
         setAgents(agentsInfo);
         setAssAgents(assAgentsInfo);
-        setFilteredData2(assAgentsInfo)
-        setFilteredData(agentsInfo)
+        setFilteredData2(assAgentsInfo);
+        setFilteredData(agentsInfo);
+        setLoadingAgents(false);
         handleFilteredData({target: {value: ""}})
         handleFilteredData2({target: {value: ""}})
       }
@@ -146,8 +144,8 @@ function AssignVideos(props) {
   }, [agentList, props.trigger])
 
   React.useEffect(() => {
-    setLoadingAgents(true)
-    setLoadingAssAgents(true)
+    setLoadingAgents(true);
+    console.log("started loading")
     async function listCognitoUsers () {
       await cognito.listUsers({
         UserPoolId: process.env.REACT_APP_USER_POOL_ID
@@ -156,10 +154,10 @@ function AssignVideos(props) {
       .then(async (data) => {
         let tmp = [];
         for await (let user of data.Users) {
-          let ConnectId = user.Attributes.find((item) => item.Name == "custom:connect_id");
+          let ConnectId = user.Attributes.find((item) => item.Name === "custom:connect_id");
           if (!ConnectId) continue;
           else ConnectId = ConnectId.Value;
-          let hasRole = user.Attributes.find((item) => item.Name == "custom:role");
+          let hasRole = user.Attributes.find((item) => item.Name === "custom:role");
           if (!hasRole) continue;
           let tmpObj = {
             username: user.Username,
@@ -190,7 +188,6 @@ function AssignVideos(props) {
           const element = tmp[i];
           agentIdList.push(element) 
         }
-        console.log(agentIdList)
         setAgentList(agentIdList)
       })
       .catch((error) => {
@@ -208,11 +205,9 @@ function AssignVideos(props) {
   }, [filteredData])
 
   React.useEffect(() => {
-
     if (searchForm === '') {
       handleFilteredData2({target: { value: ''}});
     }
-
   }, [filteredData2])
 
   function handleChange(event) {
@@ -223,13 +218,14 @@ function AssignVideos(props) {
   function handleChange2(event) {
     setSearchForm(event.target.value)
     handleFilteredData2(event)
+    console.log("handleChange2")
   }
 
   function handleAdd(agentId, videoId, agentObj) {
     agent.assignVideo(agentId, videoId)
     .then((result) => {
-      if (result.status === 'Succesfull') {
-        //console.log('Assigned')
+      if (result.status === 'Unsuccesfull') {
+        console.log(result)
       }
     })
     let newList = Array.isArray(agents) ? agents.filter(agent => agent.agentId !== agentObj.agentId) : []
@@ -240,8 +236,8 @@ function AssignVideos(props) {
   function handleDelete(agentId, videoId, agentObj) {
     agent.unAssignVideo(agentId, videoId)
     .then((result) => {
-        if (result.status === 'Succesfull') {
-          // console.log('Assigned')
+        if (result.status === 'Unsuccesfull') {
+          console.log(result)
         }
     })
       let newList = Array.isArray(assAgents) ? assAgents.filter(agent => agent.agentId !== agentObj.agentId) : []
@@ -251,12 +247,10 @@ function AssignVideos(props) {
 
   React.useEffect(() => {
     setFilteredData(agents)
-    setLoadingAgents(false)
   }, [agents])
 
   React.useEffect(() => {
     setFilteredData2(assAgents)
-    setLoadingAssAgents(false)
   }, [assAgents])
 
   return (props.trigger) ? (
@@ -312,7 +306,7 @@ function AssignVideos(props) {
               />
             </div>
           </div>
-          {filteredData2.length !== 0 && Array.isArray(filteredData2) ? !loadingAssAgents(
+          {filteredData2.length !== 0 && Array.isArray(filteredData2) ? (
             <div className='assign-sub-container'>
               {filteredData2.map((value, key) => {
                 return (
