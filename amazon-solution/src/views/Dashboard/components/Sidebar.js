@@ -3,11 +3,9 @@ import AWS from "aws-sdk";
 import { Link, useNavigate } from 'react-router-dom'
 import { Auth } from 'aws-amplify';
 import { MdSpaceDashboard } from 'react-icons/md'
-import { IoCall } from 'react-icons/io5'
 import { RiSettingsFill } from 'react-icons/ri'
 import { HiMenu } from 'react-icons/hi'
 import { FaUserAlt } from 'react-icons/fa'
-import { CgAssign } from 'react-icons/cg'
 import { IoLogOut } from 'react-icons/io5'
 
 import { UserContext } from '../../../App.js'
@@ -18,7 +16,7 @@ function Sidebar() {
 
   const { user, setUser } = React.useContext(UserContext)
   const [role, setRole] = React.useState("...");
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   async function signOut() {
     try {

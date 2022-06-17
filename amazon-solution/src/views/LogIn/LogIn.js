@@ -1,8 +1,8 @@
-import AuthenticatorEmail from './components/AuthenticatorEmail.js';
 import React from 'react'
 import AWS from 'aws-sdk'
 import { UserContext } from '../../App.js'
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ReactLoading from 'react-loading'
 
 function LogIn() {
   const navigate = useNavigate();
@@ -13,8 +13,9 @@ function LogIn() {
 
   const {user, setUser} = React.useContext(UserContext)
   const [changePW, setChangePW] = React.useState(true)
+  const [loading, setLoading] = React.useState(false)
 
-  const [inputState, setInputState] = React.useState(false)
+  const [, setInputState] = React.useState(false)
 
   const [logInData, setLogInData] = React.useState({
     username: "",
@@ -43,9 +44,11 @@ function LogIn() {
   }
 
   function logInClick() {
-    setInputState(true)
-    console.log(logInData)
-    login()
+    setInputState(true);
+    setLoading(true);
+    login().then((res) => {
+      setLoading(false);
+    })
 
   }
 
@@ -95,8 +98,7 @@ function LogIn() {
     })
     .promise()
     .then(async (data) => {
-      console.log(data, 'DATA')
-      let ConnectId = data.UserAttributes.find((item) => item.Name == "custom:connect_id")
+      let ConnectId = data.UserAttributes.find((item) => item.Name === "custom:connect_id")
           ConnectId = (ConnectId) ? ConnectId.Value : undefined;
           if (ConnectId) {
         await connect.describeUser({
@@ -176,7 +178,7 @@ function LogIn() {
             })
             .promise()
             .then((data) => {
-                console.log(data);
+                // console.log(data);
             })
             .catch((error) => {
                 console.log(error);
@@ -226,8 +228,19 @@ function LogIn() {
                     <p className='login-subtitle'>or create your account.</p>
                     <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input'/> 
                     <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input'/> 
-              
-                    <button onClick={logInClick} className="login-button">Log In</button>
+                    {loading ?
+                      <div> 
+                        <ReactLoading
+                          type={"spin"}
+                          color={"#ffffff"}
+                          height={50}
+                          width={50}
+                          className="login-button"
+                        />
+                      </div>
+                      : 
+                      <button onClick={logInClick} className="login-button">Log In</button>
+                    }  
                 </div>
                 :
                 <div class="overlay-left">
@@ -238,13 +251,11 @@ function LogIn() {
                     <button onClick={commitPW} className="login-button">Change</button>
                 </div>
               }
-
-
               <div class="overlay-right">
                   <h1>Hello Compa!</h1>
                   <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
-
               </div>
+
           </div>
       </div>
     </div>
