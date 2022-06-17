@@ -648,6 +648,7 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
   max-width: 150px;
+  font-size: 15px;
 }
 
 .usercard-email {
