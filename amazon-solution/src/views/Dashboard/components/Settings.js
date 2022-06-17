@@ -15,12 +15,12 @@ function Settings() {
   return (
     <div className='menu'>
       <div className='account'>
-      <div className='a_logo'>
-        {<RiAccountCircleLine size={50} />}
-      </div>
-      <div className='a_title' >
-        <h1>Account</h1>
-      </div>
+        <div className='a_logo'>
+          {<RiAccountCircleLine size={50} />}
+        </div>
+        <div className='a_title' >
+          <h1>Account</h1>
+        </div>
 
     </div>
 

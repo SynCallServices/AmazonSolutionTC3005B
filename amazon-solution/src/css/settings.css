@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Karla:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Inter;
+}
+
+body {
+    background-color: #6084a0;
+    color: white;
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.dashboard {
+    display: flex;
+}
+
+.menu {
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    /*asi se centra todo*/
+    /* top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    height: 1000px;
+    width: 1500px;
+    margin-left: 130px;
+    margin-top: 60px;
+    animation: fadeIn 5s;
+}
+
+.account,
+.information,
+.sound,
+.help,
+.s-account {
+    background-color: #00274B;
+    display: flex;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 900px;
+    margin-left: 150px;
+    margin-bottom: 10px;
+    margin-top: 60px;
+    cursor: pointer;
+}
+
+.account:hover,
+.information:hover,
+.help:hover {
+    background-color: #00ABBA;
+}
+
+.a_title,
+.i_title,
+.h_title,
+.account-info {
+    color: white;
+    font-size: 32;
+    font-weight: bold;
+    margin: 10px;
+    justify-content: center;
+
+}
+
+.a_logo,
+.i_logo,
+.h_logo {
+    color: white;
+    margin: 10px;
+
+}
+
+
+.acc-card {
+    background-color: #00274B;
+    width: 300px;
+    height: 350px;
+    justify-content: center;
+    display: flex;
+    align-items: column;
+    border-radius: 10px;
+    padding: 5px;
+    margin-right: 900px;
+    margin-left: 500px;
+    margin-bottom: 40px;
+    margin-top: 60px;
+    animation: fadeIn 5s;
+}
+
+.a_button {
+    background-color: #00274B;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 60px;
+    margin-right: 900px;
+    margin-left: 500px;
+    color: white;
+    font-size: 24;
+    font-weight: bold;
+    padding: 5px 20px 5px 20px;
+    width: 300px;
+}
+
+.a_button:hover {
+    background-color: #00ABBA;
+}
+
+.account-info {
+    margin: 10px;
+    justify-content: center;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.help {
+    color: white;
+    animation: fadeIn 5s;
+    background: none;
+}
+
+.help-title {
+    background-color: #00274b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 60px;
+}
+
+.help-info {
+    position: absolute;
+    background: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360;
+    display: flex;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    font-size: small;
+    justify-content: space-around;
+}
+
+.info {
+    color: white;
+    animation: fadeIn 5s;
+    background: none;
+}
+
+.info-title {
+    background-color: #00274b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50px;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 60px;
+}
+
+.info-info {
+    position: absolute;
+    background: none;
+    margin-top: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360;
+    display: flex;
+    border-radius: 50px;
+    letter-spacing: 2px;
+    font-size: small;
+    justify-content: space-around;
+}
