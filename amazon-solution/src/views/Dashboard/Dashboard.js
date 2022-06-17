@@ -1,7 +1,7 @@
 import React from 'react'
 import 'amazon-connect-streams'
 import Sidebar from './components/Sidebar'
-import RecordRTC  from "recordrtc";
+import RecordRTC from "recordrtc";
 import * as video from "../ScreenRecorder/components/VideoAPI.js"
 import * as voice from "../ScreenRecorder/components/VoiceAPI.js"
 import { v4 as uuidv4 } from 'uuid'
@@ -29,7 +29,7 @@ function DashBoard() {
   const [callConnected, setCallConnected] = React.useState(false);
   const [contactId, setContactId] = React.useState('');
 
-  const {user, setUser} = React.useContext(UserContext)
+  const { user, setUser } = React.useContext(UserContext)
   const [stream, setStream] = React.useState(null);
   const [blob, setBlob] = React.useState(null);
   const recorderRef = React.useRef(null);
@@ -38,6 +38,7 @@ function DashBoard() {
   const [recordingStartTime, setRecordingStartTime] = React.useState(null);
   const [recordingEndTime, setRecordingEndTime] = React.useState(null);
   const [voicePath, setVoicePath] = React.useState('');
+  const [role, setRole] = React.useState('...');
 
   const [loggedIn, setLoggedIn] = React.useState(false);
 
@@ -47,8 +48,8 @@ function DashBoard() {
       if (res.status === "Unsuccesful") {
         console.log(res.data)
       }
-      })
-    }
+    })
+  }
 
   // Amazon Connect Embed
   React.useEffect(() => {
@@ -84,75 +85,100 @@ function DashBoard() {
         ccpLoadTimeout: 10000 //optional, defaults to 5000 (ms)
       });
 
-    // eslint-disable-next-line no-undef
-    const eventBus = connect.core.getEventBus();
-    // eslint-disable-next-line no-undef
-    eventBus.subscribe(connect.EventType.ACKNOWLEDGE, () => {
-      if (!loggedIn) setLoggedIn(true)
-      // Do stuff...
-    });
-    // eslint-disable-next-line no-undef
-    eventBus.subscribe(connect.EventType.TERMINATED, () => {
-      if (loggedIn) setLoggedIn(false)
-      // Do stuff...
-    });
-
       // eslint-disable-next-line no-undef
-    connect.contact((contact) => {
-      contact.onAccepted((contact) => {
-        console.log(contact);
-        setCallConnected(true);
-        setContactId(contact.contactId);
-        // console.log(contact.contactId);
-
-        handleRecording();
+      const eventBus = connect.core.getEventBus();
+      // eslint-disable-next-line no-undef
+      eventBus.subscribe(connect.EventType.ACKNOWLEDGE, () => {
+        if (!loggedIn) setLoggedIn(true)
+        // Do stuff...
+      });
+      // eslint-disable-next-line no-undef
+      eventBus.subscribe(connect.EventType.TERMINATED, () => {
+        if (loggedIn) setLoggedIn(false)
+        // Do stuff...
       });
 
+      // eslint-disable-next-line no-undef
+      connect.contact((contact) => {
+        contact.onAccepted((contact) => {
+          console.log(contact);
+          setCallConnected(true);
+          setContactId(contact.contactId);
+          // console.log(contact.contactId);
 
-      contact.onEnded(async (contact) => {
-        // console.log(contact.getInitialContactId());
+          handleRecording();
+        });
 
-        let body;
-        await amazonConnect.describeContact({
+
+        contact.onEnded(async (contact) => {
+          // console.log(contact.getInitialContactId());
+
+          let body;
+          await amazonConnect.describeContact({
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             ContactId: contact.contactId
-        })
-        .promise()
-        .then(async (data) => {
-          // console.log(data);
-          let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
-          let ContactId = data.Contact.Id;
-          let year = InitiationTimestamp.getFullYear();
-          let month = ('0' + (InitiationTimestamp.getUTCMonth() + 1)).slice(-2);
-          let day = ('0' + InitiationTimestamp.getUTCDate()).slice(-2);
-          const user = await amazonConnect.describeUser({
-            InstanceId: process.env.REACT_APP_INSTANCE_ID,
-            UserId: data.Contact.AgentInfo.Id
           })
-          .promise();
-          body = {
-              ContactId: ContactId,
-              AgentId: data.Contact.AgentInfo.Id,
-              RecordedBy: user.User.Username,
-              InitiationTimestamp: InitiationTimestamp,
-              Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getUTCHours()).slice(-2)}:${('0' + InitiationTimestamp.getUTCMinutes()).slice(-2)}_UTC.wav`,
-              QueueId: data.Contact.QueueInfo.Id
-          };
-        })
-        .catch((error) => {
-          console.log(error);
+            .promise()
+            .then(async (data) => {
+              // console.log(data);
+              let InitiationTimestamp = data.Contact.AgentInfo.ConnectedToAgentTimestamp;
+              let ContactId = data.Contact.Id;
+              let year = InitiationTimestamp.getFullYear();
+              let month = ('0' + (InitiationTimestamp.getUTCMonth() + 1)).slice(-2);
+              let day = ('0' + InitiationTimestamp.getUTCDate()).slice(-2);
+              const user = await amazonConnect.describeUser({
+                InstanceId: process.env.REACT_APP_INSTANCE_ID,
+                UserId: data.Contact.AgentInfo.Id
+              })
+                .promise();
+              body = {
+                ContactId: ContactId,
+                AgentId: data.Contact.AgentInfo.Id,
+                RecordedBy: user.User.Username,
+                InitiationTimestamp: InitiationTimestamp,
+                Path: `connect/csf-test-1/CallRecordings/${year}/${month}/${day}/${ContactId}_${year}${month}${day}T${('0' + InitiationTimestamp.getUTCHours()).slice(-2)}:${('0' + InitiationTimestamp.getUTCMinutes()).slice(-2)}_UTC.wav`,
+                QueueId: data.Contact.QueueInfo.Id
+              };
+            })
+            .catch((error) => {
+              console.log(error);
+            })
+
+          // console.log(body);
+          setVoicePath(body.Path);
+          CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path, body.QueueId, body.RecordedBy);
         })
 
-        // console.log(body);
-        setVoicePath(body.Path);
-        CreateVoice(body.ContactId, body.AgentId, body.InitiationTimestamp.toISOString(), body.Path, body.QueueId, body.RecordedBy);
-      })
-
-      contact.onDestroy((contact) => {
-        handleStop();
-      })
-    });
+        contact.onDestroy((contact) => {
+          handleStop();
+        })
+      });
     }
+
+    // example of how to obtain the security profile of a user
+    amazonConnect.describeUser({
+      InstanceId: process.env.REACT_APP_INSTANCE_ID,
+      UserId: user.userAttributes["custom:connect_id"]
+    }, function (err, data) {
+      if (err) {
+        console.log(err)
+      } else {
+        const securityProfile = data.User.SecurityProfileIds[0];
+        switch (securityProfile) {
+          case process.env.REACT_APP_AGENT_ID:
+            setRole("agent");
+            break;
+          case process.env.REACT_APP_SUPERVISOR_ID:
+            setRole("supervisor");
+            break;
+          case process.env.REACT_APP_ADMIN_ID:
+            setRole("admin");
+            break;
+          default:
+          // only for good practice
+        }
+      }
+    })
 
 
   }, [])
@@ -195,12 +221,12 @@ function DashBoard() {
       setBlobVar(recorderRef.current.getBlob())
       // console.log(res)
     });
-    stream.getTracks().forEach( track => track.stop() );
+    stream.getTracks().forEach(track => track.stop());
   };
 
   // Change hard coded values
-  async function uploadBlob () {
-    
+  async function uploadBlob() {
+
     console.log("UPLOAD BLOBL")
     const videoId = uuidv4()
     const uploadingVideo = video.uploadVideo(blob, user.userAttributes["custom:connect_id"], videoId)
@@ -221,15 +247,15 @@ function DashBoard() {
           videoPath: videoPath
         })
       })
-      .promise()
-      .then((data) => {
-        console.log("finished merging!");
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+        .promise()
+        .then((data) => {
+          console.log("finished merging!");
+        })
+        .catch((error) => {
+          console.log(error);
+        })
     })
-  }  
+  }
 
   const logIn = () => {
     window.open('https://csf-test-1.my.connect.aws', '_blank');
@@ -243,8 +269,11 @@ function DashBoard() {
         <Outlet />
       </div>
       <div id="ccp" />
-      {loggedIn ? null  : <ConnectLogIn logIn={logIn}/>}
-      
+      {loggedIn ? null :
+
+        role !== 'agent' ? null :
+          <ConnectLogIn logIn={logIn} />}
+
 
     </div>
   )

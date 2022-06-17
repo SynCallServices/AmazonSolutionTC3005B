@@ -49,7 +49,7 @@ function Sidebar() {
             setRole("admin");
             break;
           default:
-            // only for good practice
+          // only for good practice
         }
       }
     })
@@ -75,40 +75,41 @@ function Sidebar() {
       </div>
       <hr className='sidebar-separator' />
       <ul className='nav_list'>
-        <li>
-          <Link className='link' to='videodashboard'>
-            <i>
-              <MdSpaceDashboard />
-            </i>
-            <span className='links-name'>Dashboard</span>
-          </Link>
-          <span className='tooltip'>Dashboard</span>
-        </li>
+        {role === 'admin' ? null :
+          <li>
+            <Link className='link' to='videodashboard'>
+              <i>
+                <MdSpaceDashboard />
+              </i>
+              <span className='links-name'>Dashboard</span>
+            </Link>
+            <span className='tooltip'>Dashboard</span>
+          </li>}
 
-        {role === 'admin' ? 
-        <li>
-          <Link className='link' to='create-user'>
-            <i>
-              <FaUserPlus />
-            </i>
-            <span className='links-name'>Create User</span>
-          </Link>
-          <span className='tooltip'>Create User</span>
-        </li>
-        : null
+        {role === 'admin' ?
+          <li>
+            <Link className='link' to='create-user'>
+              <i>
+                <FaUserPlus />
+              </i>
+              <span className='links-name'>Create User</span>
+            </Link>
+            <span className='tooltip'>Create User</span>
+          </li>
+          : null
         }
 
-        {role === 'admin' ? 
-        <li>
-          <Link className='link' to='user-management'>
-            <i>
-              <FaUserEdit />
-            </i>
-            <span className='links-name'>User Management</span>
-          </Link>
-          <span className='tooltip'>User Management</span>
-        </li>
-        : null
+        {role === 'admin' ?
+          <li>
+            <Link className='link' to='user-management'>
+              <i>
+                <FaUserEdit />
+              </i>
+              <span className='links-name'>User Management</span>
+            </Link>
+            <span className='tooltip'>User Management</span>
+          </li>
+          : null
         }
 
         <li>
