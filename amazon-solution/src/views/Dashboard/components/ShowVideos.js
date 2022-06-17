@@ -50,15 +50,19 @@ function ShowVideos() {
   }, [])
 
   React.useEffect(() => {
-    setVideoCards(recList.map(vid => (
-      <ShowVideoCard
-        videoTitle={vid.title}
-        vidDuration={vid.duration}
-        videoPath={vid.path}
-        thisVid={vid}
-        setSelVideo={setSelVideo}
-      />
-    )))
+    if (recList.length > 0) {
+      setVideoCards(recList.map(vid => {
+        if (vid) {
+          return <ShowVideoCard
+            videoTitle={vid.title}
+            vidDuration={vid.duration}
+            videoPath={vid.path}
+            thisVid={vid}
+            setSelVideo={setSelVideo}
+          />
+        }
+      }))
+    }
 
   }, [recList])
 
@@ -97,6 +101,8 @@ function ShowVideos() {
     }
   }
 
+  console.log(user, 'USER')
+
   return (
     <div className='show-pop-up'>
       <div className='assign-container'>
@@ -118,7 +124,11 @@ function ShowVideos() {
             controls={true}
           />
         </div>
-        <button className='vid-assign-btn' onClick={() => setAssignPopUp(true)}>Assign Agents to video</button>
+          { user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID ?
+            <button className='vid-assign-btn' onClick={() => setAssignPopUp(true)}>Assign Agents to video</button>
+            :
+            ""
+          }
 
       </div>
       <AssignVideos videoId={selVideo.recordingId} trigger={assignPopUp} setTrigger={setAssignPopUp}/> 
