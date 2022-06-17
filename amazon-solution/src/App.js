@@ -10,11 +10,13 @@ import UserManagement from './views/Dashboard/components/UserManagement.js'
 import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
 import CreatedUser from './views/Dashboard/components/CreatedUser.js'
-import Home from './views/Dashboard/components/Home.js'
+import Account from './views/Dashboard/components/Account.js'
+import Home from './views/Dashboard/components/Home'
+import Info from './views/Dashboard/components/Info'
+import Help from './views/Dashboard/components/Help'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
-import Sidebar from './views/Dashboard/components/Sidebar.js'
 
 export const UserContext = React.createContext(null)
 
@@ -30,24 +32,19 @@ function App() {
             <Route exact path='dashboard' element={
               <ProtectedRoute user={user}>
                 <DashBoard />
-              </ProtectedRoute>
-            }>
+              </ProtectedRoute>}>
               <Route path='videoform' element={<VideoForm/>}/>
               <Route path='videodashboard' element={<ShowVideos />}/>
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
-              {/* <Route path='create-user' element={<CreateUser />}>
-                <Route path='created-user' element={<CreatedUser />}/>
-              </Route>
-              JORGE, NO SE REGRESA LA VISTA DE CREATE USER DESDE CREATED USER
-              */}
-              <Route path='create-user' element={<CreateUser />}></Route>
+              <Route path='create-user' element={<CreateUser />}/>
               <Route path='created-user' element={<CreatedUser />}/>
               <Route path='user-management' element={<UserManagement />}/>
               <Route path='assign-videos' element={<AssignVideos/>}/>
               <Route path='home' element={<Home />}/>
-              
-
+              <Route path='settings/account' element={<Account/>}/>
+              <Route path='settings/info' element={<Info />}/>
+              <Route path='settings/help' element={<Help />}/>
             </Route>
         </Routes>
       </UserContext.Provider>
