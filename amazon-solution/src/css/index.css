@@ -388,6 +388,11 @@ body {
   cursor: pointer;
 }
 
+.loading-wheel {
+  background-color: transparent;
+  margin-top: 15%;
+}
+
 .login-button:hover {
   background-color: #3e688F;
 }

@@ -2,7 +2,8 @@ import React from 'react'
 import AWS from 'aws-sdk'
 import { UserContext } from '../../App.js'
 import { useNavigate } from "react-router-dom";
-import ReactLoading from 'react-loading'
+import LoadingWheel from '../Dashboard/components/LoadingWheel.js';
+import * as agent from '../ScreenRecorder/components/AgentAPI';
 
 function LogIn() {
   const navigate = useNavigate();
@@ -178,8 +179,13 @@ function LogIn() {
               ]
             })
               .promise()
-              .then((data) => {
-                // console.log(data);
+              .then((res) => {
+                const createRes = agent.create(data.UserId);
+                createRes.then((res) => {
+                  if (res.status === "Unsuccesfull") {
+                    console.log(res.data)
+                  }
+                })
               })
               .catch((error) => {
                 console.log(error);
@@ -245,13 +251,7 @@ function LogIn() {
               </form>
               {loading ?
                 <div>
-                  <ReactLoading
-                    type={"spin"}
-                    color={"#ffffff"}
-                    height={50}
-                    width={50}
-                    className="login-button"
-                  />
+                  <LoadingWheel height={50} witdh={50} className={'login-button'}/>
                 </div>
                 :
                 <button onClick={logInClick} className="login-button">Log In</button>

@@ -1,6 +1,4 @@
 import React from 'react'
-import VideoPlayerComp from './VideoPlayerComp.js'
-import { AiFillPlayCircle, AiFillStar } from 'react-icons/ai'
 import '../../../css/videoCard.css'
 
 function ShowVideoCard(props) {
@@ -18,7 +16,6 @@ function ShowVideoCard(props) {
     return num.toString().padStart(2, '0');
   }
 
-  // ✅ format as MM:SS
   const result = `${padTo2Digits(minutes)}:${padTo2Digits(seconds)}`;
 
   return (

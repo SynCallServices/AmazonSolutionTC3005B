@@ -7,7 +7,6 @@ function CreateUser() {
   const [alert, setAlert] = React.useState(true)
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
-  //const ses = new AWS.SES();
 
   const [createData, setCreateData] = React.useState({
     email: "",
@@ -31,7 +30,6 @@ function CreateUser() {
     password += chars.slice(52,62)[Math.floor(Math.random() * chars.slice(52,62).length)];
     // special
     password += chars.slice(-3)[Math.floor(Math.random() * chars.slice(-3).length)];
-    console.log(password);
     await cognito.adminCreateUser({
         UserPoolId: process.env.REACT_APP_USER_POOL_ID,
         Username: createData.username,
@@ -57,12 +55,10 @@ function CreateUser() {
     })
     .promise()
     .then((data) => {
-      console.log("DONE ALERT")
         setAlert(false)
         // console.log(data);
     })
     .catch((error) => {
-
         console.log(error);
     })
   }
@@ -76,7 +72,7 @@ function CreateUser() {
   }
 
   function create() {
-    sendCredentials()
+    sendCredentials();
   }
 
   return (
