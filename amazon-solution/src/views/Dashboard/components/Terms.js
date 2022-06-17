@@ -2,7 +2,7 @@ function Terms() {
 
 
     return (
-      <h1>Hola Terms</h1>
+      <h1>Terms</h1>
     )
   }
   

@@ -11,18 +11,16 @@ import { Link, useNavigate } from 'react-router-dom'
 
 
 function Settings() {
-  const [alert, setAlert] = React.useState(true)
+  // const [alert, setAlert] = React.useState(true)
   return (
     <div className='menu'>
-      
-      <div>
       <div className='account'>
       <div className='a_logo'>
         {<RiAccountCircleLine size={50} />}
       </div>
-      <Link className='a_title' to='account-settings' >
-        <span>Account</span>
-      </Link>
+      <div className='a_title' >
+        <h1>Account</h1>
+      </div>
 
     </div>
 
@@ -44,9 +42,6 @@ function Settings() {
         <h1>Help</h1>
       </div>
     </div >
-    </div>
-    
-
    
   </div>
       

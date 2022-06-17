@@ -8,8 +8,8 @@ function Account() {
 
     <div>
       <div className='acc-card'>
-        <div className='acc-pic'>
-        </div>
+        {/* <div className='acc-pic'>
+        </div> */}
         <div className='account-info'>
           {<RiAccountCircleLine size={150} />}
           <h3>Carolina Ortega</h3>
@@ -22,10 +22,6 @@ function Account() {
           <button onClick={console.log("hola")} className='a_button'>Back</button>
 
     </div>
-
-
-
-
 
   )
 }

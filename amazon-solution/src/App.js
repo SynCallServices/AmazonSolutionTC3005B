@@ -9,7 +9,7 @@ import VideoForm from './views/Dashboard/components/VideoForm.js'
 import VideoDashboard from './views/Dashboard/components/VideoDashboard.js'
 import Settings from './views/Dashboard/components/Settings.js'
 import Account from './views/Dashboard/components/Account.js'
-import Terms from './views/Dashboard/components/Terms.js'
+import Info from './views/Dashboard/components/Info.js'
 import Help from './views/Dashboard/components/Help.js'
 import ShowVideos from './views/Dashboard/components/ShowVideos.js'
 import ScreenRecorder from './views/ScreenRecorder/ScreenRecorder.js'
@@ -32,7 +32,7 @@ function App() {
     <div>
       <UserContext.Provider value={{ user, setUser }}>
         <Routes>
-          <Route path='/' element={<LogIn/>} />
+          <Route path='/' element={<Info/>} />
           <Route exact path='dashboard' element={
             <ProtectedRoute user={user}>
               <DashBoard />
@@ -44,10 +44,10 @@ function App() {
             <Route path='videodashboard' element={<ShowVideos />} />
             <Route path='settings' element={<Settings />} > 
               <Route path='account-settings' element={<Account />}/>
-              {/* <Route path='terms' element={<Terms />}/>
-              <Route path='help' element={<Help />}/>  */}
+              <Route path='info-settings' element={<Info />}/>
+              <Route path='help-settings' element={<Help />}/>
             </Route> 
-            <Route path='account' element={<Settings/>}/>
+            {/* <Route path='account' element={<Settings/>}/> */}
             <Route path='screenrecorder' element={<ScreenRecorder />} />
           </Route>
         </Routes>

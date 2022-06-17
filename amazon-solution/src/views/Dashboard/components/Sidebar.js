@@ -66,7 +66,6 @@ function Sidebar() {
         <Link className='link' to='home'>
           <div className='logo' ><img src={require('../../../assets/Syncall_logo.png')} className='logo-icon' />
             <div className='logo-name'>SynCall</div>
-            
           </div>
         </Link>
         <div className='menu-btn' onClick={sidebarUtil}>
