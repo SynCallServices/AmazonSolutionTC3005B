@@ -1,15 +1,8 @@
-//import { RiAccountCircleLine, HiOutlineInformationCircle,BsVolumeUp,BiHelpCircle,HiOutlineLockClosed} from 'react-icons/ai'
-// import { Link } from '@aws-amplify/ui-react'
 import { RiAccountCircleLine } from 'react-icons/ri'
 import { HiOutlineInformationCircle } from 'react-icons/hi'
-import { BsVolumeUp } from 'react-icons/bs'
 import { BiHelpCircle } from 'react-icons/bi'
-import { HiOutlineLockClosed } from 'react-icons/hi'
-import Account from './Account.js'
-import Info from './Info.js'
-import Help from './Help.js'
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import "../../../css/settings.css"
 
 
@@ -56,9 +49,6 @@ function Settings() {
           </div>
         </div >
     </div>
-
-
-
   )
 }
 

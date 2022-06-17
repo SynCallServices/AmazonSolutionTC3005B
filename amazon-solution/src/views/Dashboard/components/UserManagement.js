@@ -1,6 +1,7 @@
 import UserManagementCard from './UserManagementCard.js'
 import AWS from 'aws-sdk'
 import React from 'react'
+import LoadingWheel from './LoadingWheel.js';
 
 
 const cognito = new AWS.CognitoIdentityServiceProvider({
@@ -36,8 +37,10 @@ function UserManagement() {
           let tmp = [];
           for await (let user of data.Users) {
               let ConnectId = user.Attributes.find((item) => item.Name == "custom:connect_id");
-              ConnectId = (ConnectId) ? ConnectId.Value : undefined;
               if (!ConnectId) continue;
+              else ConnectId = ConnectId.Value;
+              let hasRole = user.Attributes.find((item) => item.Name == "custom:role");
+              if (!hasRole) continue;
               let tmpObj = {
                   username: user.Username,
                   agentId: ConnectId
@@ -50,36 +53,15 @@ function UserManagement() {
                       case "custom:last_name":
                           tmpObj.lastName = attribute.Value;
                           break;
+                      case "custom:role":
+                          tmpObj.role = attribute.Value;
+                          break;
                       case "email":
                           tmpObj.email = attribute.Value
                           break;
                       default:
                           break;
                   }
-              })
-              await connect.describeUser({
-                  InstanceId: process.env.REACT_APP_INSTANCE_ID,
-                  UserId: ConnectId
-              })
-              .promise()
-              .then((response) => {
-                  let role = response.User.SecurityProfileIds[0];
-                  switch (role) {
-                      case process.env.REACT_APP_AGENT_ID:
-                          tmpObj.role = "agent";
-                          break;
-                      case process.env.REACT_APP_SUPERVISOR_ID:
-                          tmpObj.role = "supervisor";
-                          break;
-                      case process.env.REACT_APP_ADMIN_ID:
-                          tmpObj.role = "admin";
-                          break;
-                      default:
-                          break;
-                  }
-              })
-              .catch((error) => {
-                  console.log(error);
               })
               tmp.push(tmpObj);
           }
@@ -138,7 +120,7 @@ function UserManagement() {
      
 
       <div className="manage-card-container">
-        {filteredData.map(agent => {
+        {filteredData.length !== 0 ? filteredData.map(agent => {
           return (
             <UserManagementCard
               agentList={agents}
@@ -151,7 +133,7 @@ function UserManagement() {
               role={agent.role}
             />
           )
-        }) }
+        }) : <LoadingWheel witdh={200} height={200} className="loading-wheel-2"/>}
 
       </div>
     </div>

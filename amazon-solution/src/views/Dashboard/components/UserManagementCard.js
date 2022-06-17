@@ -29,7 +29,6 @@ export default function UserManagementCard(props) {
   }
 
   async function switchRole (role) {
-    role = process.env[`REACT_APP_${role.toUpperCase()}_ID`]
     await cognito.adminGetUser({
         UserPoolId: process.env.REACT_APP_USER_POOL_ID,
         Username: props.username // MODIFY
@@ -40,10 +39,26 @@ export default function UserManagementCard(props) {
         await connect.updateUserSecurityProfiles({
             InstanceId: process.env.REACT_APP_INSTANCE_ID,
             UserId: ConnectId,
-            SecurityProfileIds: [role]
+            SecurityProfileIds: [process.env[`REACT_APP_${role.toUpperCase()}_ID`]]
         }) .promise()
-        .then((data) => {
-            // console.log(data);
+        .then(async (response) => {
+            await cognito.adminUpdateUserAttributes({
+              UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+              Username: data.Username,
+              UserAttributes: [
+                {
+                  Name: "custom:role",
+                  Value: role
+                }
+              ]
+            })
+            .promise()
+            .then((data) => {
+              console.log(data);
+            })
+            .catch((error) => {
+              console.log(error);
+            })
         })
         .catch((error) => {
             console.log(error);

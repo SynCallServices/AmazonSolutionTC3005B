@@ -17,7 +17,6 @@ import Account from './views/Dashboard/components/Account.js'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
-import Sidebar from './views/Dashboard/components/Sidebar.js'
 
 export const UserContext = React.createContext(null)
 
@@ -39,12 +38,7 @@ function App() {
               <Route path='videodashboard' element={<ShowVideos />}/>
               <Route path='settings' element={<Settings/>}/>
               <Route path='screenrecorder' element={<ScreenRecorder/>}/>
-              {/* <Route path='create-user' element={<CreateUser />}>
-                <Route path='created-user' element={<CreatedUser />}/>
-              </Route>
-              JORGE, NO SE REGRESA LA VISTA DE CREATE USER DESDE CREATED USER
-              */}
-              <Route path='create-user' element={<CreateUser />}></Route>
+              <Route path='create-user' element={<CreateUser />}/>
               <Route path='created-user' element={<CreatedUser />}/>
               <Route path='user-management' element={<UserManagement />}/>
               <Route path='assign-videos' element={<AssignVideos/>}/>
@@ -52,8 +46,9 @@ function App() {
               <Route path='account' element={<Account />}/>
               <Route path='help' element={<Help />}/>
               <Route path='home' element={<Home />}/>
-              
-
+              <Route path='settings/account' element={<Account/>}/>
+              <Route path='settings/info' element={<Info />}/>
+              <Route path='settings/help' element={<Help />}/>
             </Route>
         </Routes>
       </UserContext.Provider>

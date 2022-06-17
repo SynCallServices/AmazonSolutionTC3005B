@@ -5,7 +5,7 @@ import { Auth } from 'aws-amplify';
 import { MdSpaceDashboard } from 'react-icons/md'
 import { RiSettingsFill } from 'react-icons/ri'
 import { HiMenu } from 'react-icons/hi'
-import { FaUserAlt } from 'react-icons/fa'
+import { FaUserEdit, FaUserPlus } from 'react-icons/fa'
 import { IoLogOut } from 'react-icons/io5'
 
 import { UserContext } from '../../../App.js'
@@ -49,7 +49,7 @@ function Sidebar() {
             setRole("admin");
             break;
           default:
-            // only for good practice
+          // only for good practice
         }
       }
     })
@@ -67,7 +67,6 @@ function Sidebar() {
         <Link className='link' to='home'>
           <div className='logo' ><img src={require('../../../assets/Syncall_logo.png')} className='logo-icon' />
             <div className='logo-name'>SynCall</div>
-            
           </div>
         </Link>
         <div className='menu-btn' onClick={sidebarUtil}>
@@ -76,40 +75,41 @@ function Sidebar() {
       </div>
       <hr className='sidebar-separator' />
       <ul className='nav_list'>
-        <li>
-          <Link className='link' to='videodashboard'>
-            <i>
-              <MdSpaceDashboard />
-            </i>
-            <span className='links-name'>Dashboard</span>
-          </Link>
-          <span className='tooltip'>Dashboard</span>
-        </li>
+        {role === 'admin' ? null :
+          <li>
+            <Link className='link' to='videodashboard'>
+              <i>
+                <MdSpaceDashboard />
+              </i>
+              <span className='links-name'>Dashboard</span>
+            </Link>
+            <span className='tooltip'>Dashboard</span>
+          </li>}
 
-        {role === 'admin' ? 
-        <li>
-          <Link className='link' to='create-user'>
-            <i>
-              <FaUserAlt />
-            </i>
-            <span className='links-name'>Create User</span>
-          </Link>
-          <span className='tooltip'>Create User</span>
-        </li>
-        : null
+        {role === 'admin' ?
+          <li>
+            <Link className='link' to='create-user'>
+              <i>
+                <FaUserPlus />
+              </i>
+              <span className='links-name'>Create User</span>
+            </Link>
+            <span className='tooltip'>Create User</span>
+          </li>
+          : null
         }
 
-        {role === 'admin' ? 
-        <li>
-          <Link className='link' to='user-management'>
-            <i>
-              <FaUserAlt />
-            </i>
-            <span className='links-name'>User Management</span>
-          </Link>
-          <span className='tooltip'>User Management</span>
-        </li>
-        : null
+        {role === 'admin' ?
+          <li>
+            <Link className='link' to='user-management'>
+              <i>
+                <FaUserEdit />
+              </i>
+              <span className='links-name'>User Management</span>
+            </Link>
+            <span className='tooltip'>User Management</span>
+          </li>
+          : null
         }
 
         <li>
