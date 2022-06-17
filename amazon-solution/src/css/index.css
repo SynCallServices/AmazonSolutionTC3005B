@@ -124,7 +124,7 @@ body {
   top: 0;
   transform: translate(-50%, -50%);
   border-radius: 6px;
-  width: 122px;
+  width: auto;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
   line-height: 35px;
@@ -133,7 +133,8 @@ body {
   opacity: 0;
   pointer-events: none;
   display: block;
-
+  padding-left: 5px;
+  padding-right: 5px;
   color: black;
 }
 
@@ -794,11 +795,11 @@ body {
   margin-bottom: 15px;
 }
 
-.assign-card-username{
+.assign-card-username {
   text-align: left;
 }
 
-.card-column{
+.card-column {
   display: flex;
   flex-direction: column;
   justify-content: left;
