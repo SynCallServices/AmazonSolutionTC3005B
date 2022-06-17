@@ -160,6 +160,7 @@ function AssignVideos(props) {
           else ConnectId = ConnectId.Value;
           let hasRole = user.Attributes.find((item) => item.Name === "custom:role");
           if (!hasRole) continue;
+          else if (hasRole.Value != "agent") continue;
           let tmpObj = {
             username: user.Username,
             agentId: ConnectId
@@ -273,7 +274,6 @@ function AssignVideos(props) {
               />
             </div>
           </div>
-          {filteredData.length !== 0 && Array.isArray(filteredData) && !loadingAgents ? (
             <div className='assign-sub-container'>
               {filteredData.map((value, key) => {
                 return (
@@ -290,8 +290,7 @@ function AssignVideos(props) {
                   />
                 );
               })}
-            </div>
-          ) : <LoadingWheel witdh={100} height={100} className="loading-wheel"/>}     
+            </div>     
         </div>
         <div className='assign-container'>
           <div className="assign-list-title">Assigned Agents</div>
@@ -307,7 +306,6 @@ function AssignVideos(props) {
               />
             </div>
           </div>
-          {filteredData2.length !== 0 && Array.isArray(filteredData2) ? (
             <div className='assign-sub-container'>
               {filteredData2.map((value, key) => {
                 return (
@@ -326,7 +324,6 @@ function AssignVideos(props) {
                 );
               })}
             </div>
-          ) : <LoadingWheel witdh={100} height={100} className="loading-wheel"/>}
         </div>  
       </div>
     </div>
