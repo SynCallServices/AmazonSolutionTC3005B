@@ -271,14 +271,16 @@ function LogIn() {
           <div class="overlay-right">
             <h1>Hello Compa!</h1>
             <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
-            <p style={{ 'text-align': 'left' }}>Make sure your password contains at least one of the following:
-              <ul>
-                <li>number</li>
-                <li>special character</li>
-                <li>uppercase letter</li>
-                <li>lowercase letter</li>
-              </ul>
-            </p>
+            {changePW ? null :
+              <p style={{ 'text-align': 'left' }}>Make sure your password contains at least one of the following:
+                <ul>
+                  <li>number</li>
+                  <li>special character</li>
+                  <li>uppercase letter</li>
+                  <li>lowercase letter</li>
+                </ul>
+              </p>
+            }
           </div>
 
         </div>
