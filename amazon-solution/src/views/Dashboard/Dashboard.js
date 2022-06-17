@@ -9,6 +9,7 @@ import { Outlet } from 'react-router-dom'
 import AWS from 'aws-sdk';
 import { UserContext } from '../../App.js'
 import ConnectLogIn from './components/ConnectLogIn.js'
+import Settings from './components/Settings.js'
 
 const amazonConnect = new AWS.Connect();
 const docClient = new AWS.DynamoDB.DocumentClient();

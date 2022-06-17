@@ -701,7 +701,7 @@ body {
   animation: fadeIn 5s;
 }
 
-.account,
+/* .account,
 .information,
 .sound,
 .help,
@@ -758,7 +758,7 @@ body {
   margin-bottom: 40px;
   margin-top: 60px;
   animation: fadeIn 5s;
-}
+} */
 
 .a_button {
   background-color: #00274B;

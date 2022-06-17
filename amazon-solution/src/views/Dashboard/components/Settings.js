@@ -8,6 +8,7 @@ import { HiOutlineLockClosed } from 'react-icons/hi'
 import Account from "./Account.js"
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import "../../../css/settings.css"
 
 
 function Settings() {
