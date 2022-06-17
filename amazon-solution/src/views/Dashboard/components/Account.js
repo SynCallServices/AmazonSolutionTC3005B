@@ -1,18 +1,21 @@
+import React from 'react'
+import { UserContext } from '../../../App.js'
 import { RiAccountCircleLine } from 'react-icons/ri'
 
 function Account() {
+  const {user,} = React.useContext(UserContext)
   return (
-    <div>
+    <div className='account-page'>
       <div className='acc-card'>
         <div className='account-info'>
           {<RiAccountCircleLine size={150} />}
-          <h3>Carolina Ortega</h3>
-          <h3>@sweetcaroline</h3>
-          <h3>carortega@abba.com</h3>
-          <h3>Rol</h3>
+          <div className='acc-info-inside'>
+            <h3>{user.userAttributes["custom:first_name"]} {user.userAttributes["custom:last_name"]}</h3>
+            <h3>@{user.username}</h3>
+            <h3>{user.UserAttributes[5].Value}</h3>
+          </div>
         </div>
       </div>
-      <button onClick={console.log("hola")} className='a_button'>Back</button>
     </div>
   )
 }
