@@ -1,5 +1,5 @@
 // AWS
-import {API, graphqlOperation} from 'aws-amplify';
+import { API, graphqlOperation } from 'aws-amplify';
 
 import { listAgents, getAgent } from '../../../graphql/queries';
 import { createAgent, deleteAgent, updateAgent } from '../../../graphql/mutations'
@@ -19,7 +19,7 @@ export async function list() {
             message: "Fetched agents correctly",
             data: agentsList
         }
-    } catch (error) { 
+    } catch (error) {
         return {
             status: "Unsuccesfull",
             data: error
@@ -32,7 +32,7 @@ export async function assignVideo(agentId_, videoId) {
         const agentData = await API.graphql(graphqlOperation(
             getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
         ))
-        
+
         let assingedRecordings = agentData.data.getAgent.asgnRec;
         if (assingedRecordings) {
             assingedRecordings.push(videoId);
@@ -66,7 +66,7 @@ export async function unAssignVideo(agentId_, videoId) {
         const agentData = await API.graphql(graphqlOperation(
             getAgent, { agentId: agentId_, folder: `public/${agentId_}` }
         ))
-        
+
         let assingedRecordings = agentData.data.getAgent.asgnRec;
 
         assingedRecordings = new Set(assingedRecordings);
@@ -75,7 +75,7 @@ export async function unAssignVideo(agentId_, videoId) {
 
         let newArr = assingedRecordings.filter(word => word != videoId);
         console.log(newArr, 'new')
-                
+
 
         const agentUpdateData = await API.graphql(graphqlOperation(
             updateAgent, { input: { agentId: agentId_, folder: `public/${agentId_}`, asgnRec: newArr } }
@@ -134,8 +134,8 @@ export async function create(agentId_) {
             throw new Error("Agent already exists")
         }
         const result = await API.graphql(graphqlOperation(
-            createAgent, { input: { agentId: agentId_, folder: `public/${agentId_}` } } 
-        )) 
+            createAgent, { input: { agentId: agentId_, folder: `public/${agentId_}` } }
+        ))
         return {
             status: "Succesfull",
             message: "Created agent correctly",
@@ -156,7 +156,7 @@ export async function getRecordings(agentId_) {
      */
     try {
         const recordingsData = await API.graphql(graphqlOperation(
-            listRecordings, { filter: { agentId: { eq: agentId_} } }
+            listRecordings, { filter: { agentId: { eq: agentId_ } } }
         ))
         const recordingsList = recordingsData.data.listRecordings.items;
         return {
@@ -187,7 +187,7 @@ export async function del(agentId_) {
         }
 
         const agentId = agent.id
-        
+
         const result = await API.graphql(graphqlOperation(
             deleteAgent, { input: { id: agentId } }
         ))
