@@ -1,9 +1,11 @@
 import { RiAccountCircleLine } from 'react-icons/ri'
+import { useNavigate } from 'react-router-dom'
 
 function Account() {
   // function goBack(){
   //   props.setTrigger(false)
   // }
+  const navigate = useNavigate()
   return (
 
     <div>
@@ -19,7 +21,10 @@ function Account() {
         </div>
 
       </div>
-          <button onClick={console.log("hola")} className='a_button'>Back</button>
+          <button onClick={() => {
+        navigate('/dashboard/settings')
+
+      }} className='a_button'>Back</button>
 
     </div>
 

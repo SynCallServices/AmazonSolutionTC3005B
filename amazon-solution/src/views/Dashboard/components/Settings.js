@@ -15,11 +15,13 @@ import "../../../css/settings.css"
 
 function Settings() {
   // const [alert, setAlert] = React.useState(true)
+  const navigate = useNavigate()
   return (
     <div className='menu'>
       <div>
-        <Link className='link' to='account-settings'>
-          <div className='account'>
+          <div className='account' onClick={() => {
+          navigate('/dashboard/account')
+        }}>
             <div className='a_logo'>
               {<RiAccountCircleLine size={50} />}
             </div>
@@ -27,13 +29,13 @@ function Settings() {
               <h1>Account</h1>
             </div>
           </div>
-        </Link>
 
 
       </div>
 
-      <Link className='link' to='info-settings'>
-        <div className='information'>
+        <div className='information' onClick={() => {
+          navigate('/dashboard/info')
+        }}>
           <div className='i_logo'>
             {<HiOutlineInformationCircle size={50} />}
           </div>
@@ -41,11 +43,11 @@ function Settings() {
             <h1>Information</h1>
           </div>
         </div>
-      </Link>
 
 
-      <Link className='link' to='help-settings'>
-        <div className='help'>
+        <div className='help' onClick={() => {
+        navigate('/dashboard/help')
+      }}>
           <div className='h_logo'>
             {<BiHelpCircle size={50} />}
           </div>
@@ -53,7 +55,6 @@ function Settings() {
             <h1>Help</h1>
           </div>
         </div >
-      </Link>
     </div>
 
 

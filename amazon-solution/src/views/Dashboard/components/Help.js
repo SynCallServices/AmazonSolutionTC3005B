@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom'
+
 function Help() {
+    const navigate = useNavigate()
 
 
     return (
@@ -26,6 +29,10 @@ function Help() {
 
                 </a>
             </div>
+          <button onClick={() => {
+        navigate('/dashboard/settings')
+
+      }} className='a_button_help'>Back</button>
         </div>
 
     )

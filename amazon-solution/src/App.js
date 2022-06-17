@@ -11,6 +11,9 @@ import AssignVideos from './views/Dashboard/components/AssignVideos.js'
 import CreateUser from './views/Dashboard/components/CreateUser.js'
 import CreatedUser from './views/Dashboard/components/CreatedUser.js'
 import Home from './views/Dashboard/components/Home.js'
+import Info from './views/Dashboard/components/Info.js'
+import Help from './views/Dashboard/components/Help.js'
+import Account from './views/Dashboard/components/Account.js'
 
 // Route restrictions
 import ProtectedRoute from './routes-config/ProtectedRoute.js'
@@ -29,7 +32,7 @@ function App() {
           <Route path='/' element={<LogIn/>} />
             <Route exact path='dashboard' element={
               <ProtectedRoute user={user}>
-                <DashBoard />
+                <DashBoard/>
               </ProtectedRoute>
             }>
               <Route path='videoform' element={<VideoForm/>}/>
@@ -45,6 +48,9 @@ function App() {
               <Route path='created-user' element={<CreatedUser />}/>
               <Route path='user-management' element={<UserManagement />}/>
               <Route path='assign-videos' element={<AssignVideos/>}/>
+              <Route path='info' element={<Info />}/>
+              <Route path='account' element={<Account />}/>
+              <Route path='help' element={<Help />}/>
               <Route path='home' element={<Home />}/>
               
 
