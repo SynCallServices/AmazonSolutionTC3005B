@@ -8,6 +8,7 @@ function Account() {
   //   props.setTrigger(false)
   // }
   const navigate = useNavigate()
+  const {user,} = React.useContext(UserContext)
   return (
     <div className='account-page'>
       <div className='acc-card'>

@@ -4,6 +4,7 @@ import { BiHelpCircle } from 'react-icons/bi'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../../../css/settings.css"
+import { useNavigate } from 'react-router-dom'
 
 
 function Settings() {
