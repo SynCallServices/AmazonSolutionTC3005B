@@ -11,21 +11,21 @@ function ShowVideos() {
 
   const [videoCards, setVideoCards] = React.useState()
   const [recList, setRecList] = React.useState([]);
-  const {user,} = React.useContext(UserContext)
-  const [selVideo, setSelVideo] = React.useState({path: 'public/recordings/2f1bbd69-1b64-4adb-869e-8c321355a115.mp4'});
+  const { user, } = React.useContext(UserContext)
+  const [selVideo, setSelVideo] = React.useState({ path: '' });
   const [assignPopUp, setAssignPopUp] = React.useState(false)
 
   React.useEffect(() => {
 
     async function getData() {
-      if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID){
+      if (user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID) {
         await video.listRec().then((result) => {
           if (result.status === 'Succesfull') {
             setRecList(result.data)
             if (!selVideo) {
               setSelVideo(result.data[0])
             }
-          } 
+          }
         })
       } else {
         let currAgentId;
@@ -95,7 +95,7 @@ function ShowVideos() {
   }
 
   return (
-    <div className='show-pop-up'> 
+    <div className='show-pop-up'>
       <div className='assign-container'>
         <div>
           <div className='assign-list-title'>All Videos</div>
@@ -107,8 +107,8 @@ function ShowVideos() {
           <div className='assign-sub-container'>
             {videoCards ? (
               videoCards
-            ) : <LoadingWheel witdh={200} height={200} className="loading-wheel-2"/>}
-              
+            ) : <LoadingWheel witdh={200} height={200} className="loading-wheel-2" />}
+
           </div>
         </div>
       </div>
@@ -119,18 +119,18 @@ function ShowVideos() {
         <div className='vid-container'>
           <ReactPlayer
             className='new-video-player'
-            url={`https://d1msutvtlsu91z.cloudfront.net/${selVideo.path}`} 
+            url={`https://d1msutvtlsu91z.cloudfront.net/${selVideo.path}`}
             controls={true}
           />
         </div>
-          { user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID ?
-            <button className='vid-assign-btn' onClick={() => setAssignPopUp(true)}>Assign Agents to video</button>
-            :
-            ""
-          }
+        {user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_SUPERVISOR_ID || user.ConnectData.User.SecurityProfileIds[0] === process.env.REACT_APP_ADMIN_ID ?
+          <button className='vid-assign-btn' onClick={() => setAssignPopUp(true)}>Assign Agents to video</button>
+          :
+          ""
+        }
 
       </div>
-      <AssignVideos videoId={selVideo.recordingId} trigger={assignPopUp} setTrigger={setAssignPopUp}/> 
+      <AssignVideos videoId={selVideo.recordingId} trigger={assignPopUp} setTrigger={setAssignPopUp} />
     </div>
   )
 }

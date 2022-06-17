@@ -251,7 +251,7 @@ function LogIn() {
               </form>
               {loading ?
                 <div>
-                  <LoadingWheel height={50} witdh={50} className={'login-button'}/>
+                  <LoadingWheel height={50} witdh={50} className={'login-button'} />
                 </div>
                 :
                 <button onClick={logInClick} className="login-button">Log In</button>
@@ -269,7 +269,7 @@ function LogIn() {
             </div>
           }
           <div class="overlay-right">
-            <h1>Hello Compa!</h1>
+            <h1>Hello User!</h1>
             <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
             {changePW ? null :
               <p style={{ 'text-align': 'left' }}>Make sure your password contains at least one of the following:
