@@ -48,6 +48,10 @@ function CreateUser() {
                 Value: createData.lastName
             },
             {
+              Name: "custom:role",
+              Value: "agent"
+            },
+            {
                 Name: "email_verified",
                 Value: "true"
             }
