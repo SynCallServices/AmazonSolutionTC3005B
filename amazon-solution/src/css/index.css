@@ -344,6 +344,11 @@ body {
   font-size: 12px;
 }
 
+.login-error {
+  font-size: 15px;
+  color: rgb(255, 74, 74);
+}
+
 .overlay-left,
 .overlay-right {
   display: flex;
@@ -492,7 +497,7 @@ body {
 }
 
 
-.manage-title{
+.manage-title {
   position: relative;
   /* margin-left: 30px ; */
   /* padding-left: 10px; */
@@ -500,8 +505,8 @@ body {
   font-size: 25px;
 }
 
-.manage-search-container{
- 
+.manage-search-container {
+
   position: relative;
   margin-left: 56%;
   margin-top: -3.5%;
@@ -519,7 +524,7 @@ body {
   border-radius: 12px;
 
   transform: translate(-50%, -50%);
-  
+
   padding: 20px;
 
 }
@@ -538,12 +543,12 @@ body {
   border: 0;
   border-radius: 50px;
 
- 
+
   font-size: 18px;
   padding: 15px;
   height: 30px;
   width: 300px;
-  background-color:rgba(255, 255, 255, 0.8) ;
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .manage-card-container {
@@ -567,7 +572,7 @@ body {
   overflow-y: auto;
 }
 
-.manage-card-container::-webkit-scrollbar { 
+.manage-card-container::-webkit-scrollbar {
   opacity: 0;
 }
 
@@ -587,9 +592,9 @@ body {
 }
 
 .manage-card-container::-webkit-scrollbar-thumb:vertical {
-background-color: #00ABBA;
-border: 1px solid white;
--webkit-border-radius: 6px;
+  background-color: #00ABBA;
+  border: 1px solid white;
+  -webkit-border-radius: 6px;
 }
 
 .manage-sub-container {
@@ -606,7 +611,7 @@ border: 1px solid white;
   background: #00274b;
   width: 95vh;
   height: 10vh;
-  text-align: left;  
+  text-align: left;
   align-items: center;
   gap: 40px;
   border-radius: 12px;
@@ -735,9 +740,9 @@ border: 1px solid white;
   justify-content: space-between;
   margin-top: 12px;
   margin-bottom: 15px;
-  
+
   justify-content: space-between;
-  
+
 
 }
 
@@ -924,20 +929,25 @@ border: 1px solid white;
   left: 10%;
 }
 
-.home_logo{
+.home_logo {
   display: flex;
 
   font-weight: bolder;
   font-size: 130px;
   font-style: normal;
   align-items: center;
-  
+
   animation: fadeIn 5s;
 }
 
 @keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 .syncallLogo {
@@ -953,12 +963,12 @@ border: 1px solid white;
   animation: fadeIn 5s;
 }
 
-.createduser-page{
+.createduser-page {
   padding-left: 22%;
   margin-top: 10vh;
 }
 
-.created-button{
+.created-button {
   letter-spacing: 1px;
   text-transform: uppercase;
   font-style: bold;
@@ -974,4 +984,9 @@ border: 1px solid white;
   letter-spacing: 4px;
   margin-bottom: 40px;
 
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
 }

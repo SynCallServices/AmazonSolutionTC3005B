@@ -57,9 +57,12 @@ function CreateUser() {
     })
     .promise()
     .then((data) => {
+      console.log("DONE ALERT")
+        setAlert(false)
         // console.log(data);
     })
     .catch((error) => {
+
         console.log(error);
     })
   }
@@ -81,7 +84,7 @@ function CreateUser() {
       <div className="create-card">
 
         {alert ? 
-        <div>
+        <div className='create-form'>
         <div className="create-title">Create account</div>
 
         <input onChange={handleChange} className="create-input" name="email" placeholder="Email"/>

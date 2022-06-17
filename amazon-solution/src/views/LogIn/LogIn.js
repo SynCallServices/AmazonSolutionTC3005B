@@ -11,9 +11,10 @@ function LogIn() {
   const cognito = new AWS.CognitoIdentityServiceProvider();
   const connect = new AWS.Connect();
 
-  const {user, setUser} = React.useContext(UserContext)
+  const { user, setUser } = React.useContext(UserContext)
   const [changePW, setChangePW] = React.useState(true)
   const [loading, setLoading] = React.useState(false)
+  const [loginError, setLoginError] = React.useState(null);
 
   const [, setInputState] = React.useState(false)
 
@@ -28,7 +29,7 @@ function LogIn() {
   })
 
   function handleChange(event) {
-    const { name, value} = event.target
+    const { name, value } = event.target
     setLogInData(prevValue => ({
       ...prevValue,
       [name]: value
@@ -36,7 +37,7 @@ function LogIn() {
   }
 
   function handleChangePW(event) {
-    const { name, value} = event.target
+    const { name, value } = event.target
     setNewPassData(prevValue => ({
       ...prevValue,
       [name]: value
@@ -69,16 +70,17 @@ function LogIn() {
       Password: logInData.password,
     }), {
       onSuccess: function (response) {
-          // LOG IN MADE
-          successfulLogIn = true
+        // LOG IN MADE
+        successfulLogIn = true
       },
       onFailure: function (response) {
-          successfulLogIn = false
-          setInputState(false)
+        setLoginError(response);
+        ; successfulLogIn = false
+        setInputState(false)
       },
       newPasswordRequired: function (response) {
-          successfulLogIn = true
-          isChange = true
+        successfulLogIn = true
+        isChange = true
       }
     });
 
@@ -96,29 +98,29 @@ function LogIn() {
       UserPoolId: process.env.REACT_APP_USER_POOL_ID,
       Username: username,
     })
-    .promise()
-    .then(async (data) => {
-      let ConnectId = data.UserAttributes.find((item) => item.Name === "custom:connect_id")
-          ConnectId = (ConnectId) ? ConnectId.Value : undefined;
-          if (ConnectId) {
-        await connect.describeUser({
-          InstanceId: process.env.REACT_APP_INSTANCE_ID,
-          UserId: ConnectId,
-        })
-        .promise()
-      .then((response) => {
-        data.ConnectData = response
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      }
+      .promise()
+      .then(async (data) => {
+        let ConnectId = data.UserAttributes.find((item) => item.Name === "custom:connect_id")
+        ConnectId = (ConnectId) ? ConnectId.Value : undefined;
+        if (ConnectId) {
+          await connect.describeUser({
+            InstanceId: process.env.REACT_APP_INSTANCE_ID,
+            UserId: ConnectId,
+          })
+            .promise()
+            .then((response) => {
+              data.ConnectData = response
+            })
+            .catch((error) => {
+              console.log(error)
+            })
+        }
         data.username = data.Username
         delete (data.Username)
 
         data.userAttributes = {};
         data.UserAttributes.forEach((attribute) => {
-            data.userAttributes[attribute.Name] = attribute.Value;
+          data.userAttributes[attribute.Name] = attribute.Value;
         })
 
         console.log("bruh")
@@ -128,72 +130,72 @@ function LogIn() {
           navigate("/dashboard/home")
         }
         if (isChange) {
-            setChangePW(false)
+          setChangePW(false)
         }
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
 
-  async function setUserPassword () {
+  async function setUserPassword() {
     console.log(user, "Booh")
     console.log(newPassData, "Booh")
     await cognito.adminSetUserPassword({
-        UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-        Username: user.username,
-        Password: newPassData.newPassword, // RANDOM PASSWORD
-        Permanent: true
+      UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+      Username: user.username,
+      Password: newPassData.newPassword, // RANDOM PASSWORD
+      Permanent: true
     })
-    .promise()
-    .then(async (data) => {
+      .promise()
+      .then(async (data) => {
         await connect.createUser({
-            InstanceId: process.env.REACT_APP_INSTANCE_ID,
-            PhoneConfig: {
-                PhoneType: "SOFT_PHONE"
-            },
-            RoutingProfileId: process.env.REACT_APP_GENERAL_ROUTING_PROFILE_ID,
-            SecurityProfileIds: [
-                process.env.REACT_APP_AGENT_ID
-            ],
-            Username: user.username, // MODIFY
-            IdentityInfo: {
-                Email: user.email, // MODIFY
-                FirstName: user.userAttributes["custom:first_name"],// MODIFY
-                LastName: user.userAttributes["custom:last_name"]// MODIFY
-            },
-            Password: newPassData.newPassword // RANDOM PASSWORD
+          InstanceId: process.env.REACT_APP_INSTANCE_ID,
+          PhoneConfig: {
+            PhoneType: "SOFT_PHONE"
+          },
+          RoutingProfileId: process.env.REACT_APP_GENERAL_ROUTING_PROFILE_ID,
+          SecurityProfileIds: [
+            process.env.REACT_APP_AGENT_ID
+          ],
+          Username: user.username, // MODIFY
+          IdentityInfo: {
+            Email: user.email, // MODIFY
+            FirstName: user.userAttributes["custom:first_name"],// MODIFY
+            LastName: user.userAttributes["custom:last_name"]// MODIFY
+          },
+          Password: newPassData.newPassword // RANDOM PASSWORD
         })
-        .promise()
-        .then(async (data) => {
-        await cognito.adminUpdateUserAttributes({
-                UserPoolId: process.env.REACT_APP_USER_POOL_ID,
-                Username: user.username,
-                UserAttributes: [
-                    {
-                        Name: "custom:connect_id",
-                        Value: data.UserId
-                    }
-                ]
+          .promise()
+          .then(async (data) => {
+            await cognito.adminUpdateUserAttributes({
+              UserPoolId: process.env.REACT_APP_USER_POOL_ID,
+              Username: user.username,
+              UserAttributes: [
+                {
+                  Name: "custom:connect_id",
+                  Value: data.UserId
+                }
+              ]
             })
-            .promise()
-            .then((data) => {
+              .promise()
+              .then((data) => {
                 // console.log(data);
-            })
-            .catch((error) => {
+              })
+              .catch((error) => {
                 console.log(error);
-            })
+              })
             console.log(data);
-        })
-        .catch((error) => {
+          })
+          .catch((error) => {
             console.log(error);
-        })
+          })
         await getUser(logInData.username)
         navigate("/dashboard/home")
-    })
-    .catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
-    })
+      })
   }
 
   React.useEffect(() => {
@@ -211,52 +213,61 @@ function LogIn() {
     setUserPassword();
   }
 
+  function onFormSubmit(e) {
+    e.preventDefault();
+    logInClick();
+  }
+
   return (
     <div>
       <div className='login-header' >
-        <img src={require('../../assets/Syncall_logo.png')} className='login-logo'/>
+        <img src={require('../../assets/Syncall_logo.png')} className='login-logo' />
         <h1 className='login-header-title'>Syncall</h1>
       </div>
 
       <div class="overlay-container">
-          <div class="overlay">
+        <div class="overlay">
 
 
-              {changePW ? 
-                <div class="overlay-left">
-                    <h1 className='login-title'>Log In</h1>
-                    <p className='login-subtitle'>or create your account.</p>
-                    <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input'/> 
-                    <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input'/> 
-                    {loading ?
-                      <div> 
-                        <ReactLoading
-                          type={"spin"}
-                          color={"#ffffff"}
-                          height={50}
-                          width={50}
-                          className="login-button"
-                        />
-                      </div>
-                      : 
-                      <button onClick={logInClick} className="login-button">Log In</button>
-                    }  
+          {changePW ?
+            <div class="overlay-left">
+              <h1 className='login-title'>Log In</h1>
+              <p className='login-subtitle'>or create your account.</p>
+              {loginError ? <p className='login-error'>{loginError.toString().split(': ')[1]}</p> : null}
+              <form onSubmit={(e) => onFormSubmit(e)}>
+                <input onChange={handleChange} name='username' type='text' placeholder='Username' className='login-input' />
+                <input onChange={handleChange} name='password' type='password' placeholder='Password' className='login-input' />
+                <input type="submit" hidden />
+              </form>
+              {loading ?
+                <div>
+                  <ReactLoading
+                    type={"spin"}
+                    color={"#ffffff"}
+                    height={50}
+                    width={50}
+                    className="login-button"
+                  />
                 </div>
                 :
-                <div class="overlay-left">
-                    <h1 className='login-title'>Change Password</h1>
-                    <input onChange={handleChangePW} name='newPassword' type='text' placeholder='New Password' className='login-input'/> 
-                    <input onChange={handleChangePW} name='confirmNewPassword' type='password' placeholder='Confirm' className='login-input'/> 
-              
-                    <button onClick={commitPW} className="login-button">Change</button>
-                </div>
+                <button onClick={logInClick} className="login-button">Log In</button>
               }
-              <div class="overlay-right">
-                  <h1>Hello Compa!</h1>
-                  <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
-              </div>
+            </div>
+            :
+            <div class="overlay-left">
+              <h1 className='login-title'>Change Password</h1>
+              <input onChange={handleChangePW} name='newPassword' type='text' placeholder='New Password' className='login-input' />
+              <input onChange={handleChangePW} name='confirmNewPassword' type='password' placeholder='Confirm' className='login-input' />
 
+              <button onClick={commitPW} className="login-button">Change</button>
+            </div>
+          }
+          <div class="overlay-right">
+            <h1>Hello Compa!</h1>
+            <p className='login-subtitle'>Welcome to Syncall by Team 2 Campus Santa Fe</p>
           </div>
+
+        </div>
       </div>
     </div>
   )
